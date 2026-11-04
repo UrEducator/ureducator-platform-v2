@@ -10,3 +10,4 @@ export * from './spacedRepetition';
 export * from './studyPlan';
 export * from './catalogue';
 export * from './adminSchemas';
+export * from './clientExam';

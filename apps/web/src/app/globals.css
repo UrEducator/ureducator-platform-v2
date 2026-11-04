@@ -1,0 +1,78 @@
+@import '@fontsource-variable/bricolage-grotesque/index.css';
+@import '@fontsource-variable/literata/index.css';
+@import '@fontsource/noto-sans-devanagari/400.css';
+@import '@fontsource/noto-sans-devanagari/600.css';
+@import '@fontsource/noto-serif-devanagari/400.css';
+@import '@fontsource/noto-serif-devanagari/600.css';
+@import 'tailwindcss';
+
+/*
+  UrEducator design tokens.
+  Concept: an answer sheet. Cool paper, exam-pen indigo, a marker-yellow highlight reserved for "look here",
+  and OMR-style bubbles as the one recurring signature (question palette, progress, result map).
+*/
+@theme {
+  --font-sans: 'Bricolage Grotesque Variable', 'Noto Sans Devanagari', ui-sans-serif, system-ui, sans-serif;
+  --font-read: 'Literata Variable', 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif;
+
+  --color-paper: #f4f6fb;
+  --color-surface: #ffffff;
+  --color-ink: #1b2130;
+  --color-muted: #566078;
+  --color-line: #d5dae6;
+  --color-line-strong: #aab2c5;
+
+  --color-pen-50: #eef0fc;
+  --color-pen-100: #dde2f9;
+  --color-pen-200: #bcc5f1;
+  --color-pen-500: #3b4fc4;
+  --color-pen-600: #2a3da6;
+  --color-pen-700: #1e2d86;
+  --color-pen-900: #121b57;
+
+  --color-marker: #ffd23f;
+  --color-marker-soft: #fff4c7;
+
+  --color-ok: #11704c;
+  --color-ok-soft: #dcf2e7;
+  --color-bad: #a92d1a;
+  --color-bad-soft: #fbe4df;
+  --color-review: #6a3c9e;
+  --color-review-soft: #ece2f7;
+  --color-info-soft: #e3effb;
+
+  --radius-bubble: 9999px;
+  --radius-sheet: 6px;
+  --radius-control: 8px;
+}
+
+:root { color-scheme: light; }
+html { -webkit-text-size-adjust: 100%; }
+body { background: var(--color-paper); color: var(--color-ink); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; font-optical-sizing: auto; -webkit-font-smoothing: antialiased; }
+:lang(hi) { font-family: 'Noto Sans Devanagari', var(--font-sans); line-height: 1.7; }
+.read { font-family: var(--font-read); line-height: 1.75; }
+.read:lang(hi) { font-family: 'Noto Serif Devanagari', var(--font-read); line-height: 1.9; }
+
+h1, h2, h3, h4 { font-weight: 650; letter-spacing: -0.015em; line-height: 1.12; text-wrap: balance; }
+p { text-wrap: pretty; }
+::selection { background: var(--color-marker); color: var(--color-ink); }
+
+/* Visible, consistent keyboard focus */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible { outline: 3px solid var(--color-pen-500); outline-offset: 2px; border-radius: 4px; }
+.skip-link { position: absolute; left: -9999px; top: 8px; background: var(--color-surface); color: var(--color-ink); padding: 8px 14px; border: 2px solid var(--color-pen-600); border-radius: 6px; z-index: 100; }
+.skip-link:focus { left: 8px; }
+
+/* The signature: OMR bubble. Shape plus glyph (never colour alone) encode state. */
+.bubble { position: relative; display: inline-grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: var(--radius-bubble); border: 2px solid var(--color-line-strong); background: var(--color-surface); color: var(--color-muted); font-weight: 600; font-size: 0.875rem; font-variant-numeric: tabular-nums; transition: background-color .12s, border-color .12s, transform .12s; }
+.bubble:hover { border-color: var(--color-pen-500); }
+.bubble[data-state='not_answered'] { border-color: var(--color-bad); background: var(--color-bad-soft); color: var(--color-bad); }
+.bubble[data-state='answered'] { border-color: var(--color-ok); background: var(--color-ok); color: #fff; }
+.bubble[data-state='marked'] { border-color: var(--color-review); background: var(--color-review-soft); color: var(--color-review); border-style: dashed; }
+.bubble[data-state='answered_marked'] { border-color: var(--color-review); background: var(--color-review); color: #fff; }
+.bubble[aria-current='true'] { outline: 3px solid var(--color-marker); outline-offset: 2px; }
+.bubble .glyph { position: absolute; top: -5px; right: -5px; width: 15px; height: 15px; border-radius: 9999px; background: var(--color-surface); color: var(--color-ink); display: grid; place-items: center; font-size: 9px; border: 1.5px solid currentColor; line-height: 1; }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
+
+/* Printing a result or report should drop the chrome */
+@media print { .no-print { display: none !important; } body { background: #fff; } }
