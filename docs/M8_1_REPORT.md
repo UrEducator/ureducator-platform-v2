@@ -65,6 +65,7 @@ After this phase's changes the same checks were re-run in the working tree (belo
 * `docs/DEPLOY_RUNBOOK_STAGING.md` — rewritten for PowerShell: `npm.cmd`/`npx.cmd`, no Bash syntax, no `git archive`, every cloud command pinned to `--project ugc-mock-test-staging`, no `firebase use`.
 * New `npm run verify:config` (34 checks: staging-only `.firebaserc` with no default project, hosting site, region, Functions runtime, noindex header, loopback emulators, env file values, instance limits, no production identifiers).
 * **Dry runs performed:** gate with the emulator step skipped → every other step passed and the result was `NOT READY` with exactly two gaps (rules not run; no web API key), exit 2. Gate with the emulator step enabled → stopped at that step with the blocker above, exit 1. Config gate against a deliberately unsafe copy → 10 checks failed as they should. Smoke script against a local fake server → 36/36 on a healthy fake, 16/36 with 20 detected failures on a deliberately broken fake; and it fails cleanly (exit 1, no exceptions) when the site is unreachable.
+* **Delivered zip re-verified:** extracted fresh and put through the whole PowerShell gate, including a clean `npm ci` (1,090 packages from the new lockfile): every step passed and the result was `NOT READY` with the same two expected gaps, exit 2.
 * **Not run:** on Windows or Windows PowerShell 5.1 (syntax kept 5.1-compatible; no `&&`, `??`, `$IsWindows`).
 
 ## 4. Staging configuration (verified by the config gate, 34/34)
