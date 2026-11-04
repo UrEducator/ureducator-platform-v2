@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { ProfilePatchSchema, buildWeeklyPlan, classifyTopics, isDue, review, type ProfilePatch } from '@ureducator/shared';
+import { ProfilePatchSchema, buildWeeklyPlan, classifyTopics, isDue, review, type AnswerKey, type ProfilePatch, type PublishedPaper } from '@ureducator/shared';
 import type { Actor, SessionDoc, SnapshotDoc } from '../domain/types';
 import { P } from '../domain/paths';
 import { err } from '../infra/errors';
@@ -53,7 +53,7 @@ export async function notebookQuestion(d: Deps, a: Actor, i: { entryId: string }
   if (!e) throw err('not-found', 'ENTRY_NOT_FOUND', 'Entry not found.');
   const s = await d.store.get<SessionDoc>(P.session(e.sessionId));
   if (!s || s.uid !== a.uid || s.status === 'in_progress' || d.clock() < (s.revealAvailableAtMs ?? Infinity)) throw err('failed-precondition', 'ANSWERS_LOCKED', 'Answers unlock after review opens.');
-  const [paper, key] = await Promise.all([d.store.get<{ questions: { qid: string }[] }>(P.paper(e.paperId)), d.store.get<Record<string, { correct: string[]; explanation?: unknown }>>(P.answerKey(e.paperId))]);
+  const [paper, key] = await Promise.all([d.store.get<PublishedPaper>(P.paper(e.paperId)), d.store.get<AnswerKey>(P.answerKey(e.paperId))]);
   const q = paper?.questions.find((x) => x.qid === e.qid);
   if (!q || !key?.[e.qid]) throw err('not-found', 'QUESTION_NOT_FOUND', 'Question not found.');
   return { question: q, correct: key[e.qid]!.correct, explanation: key[e.qid]!.explanation ?? null };

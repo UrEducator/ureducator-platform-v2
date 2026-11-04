@@ -63,7 +63,7 @@ p { text-wrap: pretty; }
 .skip-link:focus { left: 8px; }
 
 /* The signature: OMR bubble. Shape plus glyph (never colour alone) encode state. */
-.bubble { position: relative; display: inline-grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: var(--radius-bubble); border: 2px solid var(--color-line-strong); background: var(--color-surface); color: var(--color-muted); font-weight: 600; font-size: 0.875rem; font-variant-numeric: tabular-nums; transition: background-color .12s, border-color .12s, transform .12s; }
+.bubble { flex-shrink: 0; position: relative; display: inline-grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: var(--radius-bubble); border: 2px solid var(--color-line-strong); background: var(--color-surface); color: var(--color-muted); font-weight: 600; font-size: 0.875rem; font-variant-numeric: tabular-nums; transition: background-color .12s, border-color .12s, transform .12s; }
 .bubble:hover { border-color: var(--color-pen-500); }
 .bubble[data-state='not_answered'] { border-color: var(--color-bad); background: var(--color-bad-soft); color: var(--color-bad); }
 .bubble[data-state='answered'] { border-color: var(--color-ok); background: var(--color-ok); color: #fff; }
