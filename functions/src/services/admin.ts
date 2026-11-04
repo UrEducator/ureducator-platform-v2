@@ -183,3 +183,21 @@ export async function upsertPlan(d: Deps, a: StaffActor, i: z.infer<typeof Upser
   await log(d, a, 'plan.upsert', i.planId, { published: i.published });
   return { planId: i.planId };
 }
+
+/* ------------------------------------------------------------ support & leads */
+export async function updateTicket(d: Deps, a: StaffActor, i: { ticketId: string; status: 'open' | 'in_progress' | 'resolved'; note?: string | undefined }) {
+  need(a, 'support.write');
+  const t = await d.store.get(`supportTickets/${i.ticketId}`);
+  if (!t) throw err('not-found', 'TICKET_NOT_FOUND', 'Ticket not found.');
+  await d.store.merge(`supportTickets/${i.ticketId}`, { status: i.status, ...(i.note ? { staffNote: i.note } : {}), updatedAtMs: d.clock(), updatedBy: a.uid });
+  await log(d, a, 'ticket.update', i.ticketId, { status: i.status });
+  return { ticketId: i.ticketId };
+}
+export async function updateLead(d: Deps, a: StaffActor, i: { leadId: string; status: 'new' | 'contacted' | 'qualified' | 'converted' | 'lost' }) {
+  need(a, 'leads.write');
+  const l = await d.store.get(P.lead(i.leadId));
+  if (!l) throw err('not-found', 'LEAD_NOT_FOUND', 'Lead not found.');
+  await d.store.merge(P.lead(i.leadId), { status: i.status, updatedAtMs: d.clock(), updatedBy: a.uid });
+  await log(d, a, 'lead.update', i.leadId, { status: i.status });
+  return { leadId: i.leadId };
+}

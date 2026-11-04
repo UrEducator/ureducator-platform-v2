@@ -140,3 +140,22 @@ async function processEvent(d: Deps, ev: RzpEvent) {
     default: return { handled: false as const, duplicate: false as const };
   }
 }
+
+/**
+ * Razorpay Orders API adapter. NOT instantiated while PAYMENTS_ENABLED=false and never exercised against the network in this build.
+ * Credentials are injected by the caller (Secret Manager at runtime); they are never read from the repo or logged.
+ */
+export class RazorpayGateway implements PaymentGateway {
+  constructor(private o: { keyId: string; keySecret: string; fetchFn?: typeof fetch }) {}
+  async createOrder(x: { amountPaise: number; currency: 'INR'; receipt: string }) {
+    const res = await (this.o.fetchFn ?? fetch)('https://api.razorpay.com/v1/orders', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', authorization: 'Basic ' + Buffer.from(`${this.o.keyId}:${this.o.keySecret}`).toString('base64') },
+      body: JSON.stringify({ amount: x.amountPaise, currency: x.currency, receipt: x.receipt }),
+    });
+    if (!res.ok) throw err('unavailable', 'GATEWAY_ERROR', 'The payment service is unavailable. You have not been charged.');
+    const j = (await res.json()) as { id?: string };
+    if (!j.id || !/^order_[A-Za-z0-9]+$/.test(j.id)) throw err('unavailable', 'GATEWAY_ERROR', 'The payment service is unavailable. You have not been charged.');
+    return { id: j.id };
+  }
+}

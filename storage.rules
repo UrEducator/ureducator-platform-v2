@@ -1,0 +1,7 @@
+rules_version = '2';
+// Deny all client access. The bucket is only used from server code. This file must stay deny-all unless a reviewed feature needs otherwise.
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} { allow read, write: if false; }
+  }
+}

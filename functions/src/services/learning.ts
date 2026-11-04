@@ -64,3 +64,11 @@ export async function createTicket(d: Deps, a: Actor & { email?: string | undefi
   await d.store.set(`supportTickets/${id}`, { uid: a.uid, email: a.email ?? null, ...i, status: 'open', createdAtMs: d.clock() });
   return { ticketId: id };
 }
+
+/** Notebook entries become visible only when review opens, so 'reveal after close' does not leak which answers were wrong. */
+export async function listNotebook(d: Deps, a: Actor) {
+  const rows = await d.store.list<{ qid: string; topicId: string; unitId: string; sessionId: string; kind: string; createdAtMs: number; visibleAtMs?: number; review: unknown }>(`errorNotebook/${a.uid}/entries`, { limit: 200 });
+  const now = d.clock();
+  const entries = rows.filter((r) => (r.data.visibleAtMs ?? 0) <= now).map((r) => ({ id: r.id, qid: r.data.qid, topicId: r.data.topicId, unitId: r.data.unitId, sessionId: r.data.sessionId, kind: r.data.kind, createdAtMs: r.data.createdAtMs, review: r.data.review }));
+  return { entries, hidden: rows.length - entries.length };
+}

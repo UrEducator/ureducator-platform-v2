@@ -180,12 +180,12 @@ async function finalise(d: Deps, sid: string, uid: string | null, o: { provided:
     tx.set(P.snapshot(s.uid), next);
     tx.merge(P.responses(sid), { byQid: Object.fromEntries(Object.entries(responses)) });
     tx.merge(P.session(sid), { status, submittedAtMs, revealAvailableAtMs: reveal, ...(o.provided && !late ? { lastSeq: Math.max(s.lastSeq, o.finalSeq) } : {}) });
-    writeNotebook(tx, sid, s, key, score.perQuestion, responses, now);
+    writeNotebook(tx, sid, s, key, score.perQuestion, responses, now, reveal);
     return { resultId: sid, alreadySubmitted: false as const, summary: publicSummary(result) };
   });
 }
 
-function writeNotebook(tx: TxStore, sid: string, s: SessionDoc, key: AnswerKey, per: Record<string, { outcome: string }>, responses: Record<string, ExamResponse>, now: number) {
+function writeNotebook(tx: TxStore, sid: string, s: SessionDoc, key: AnswerKey, per: Record<string, { outcome: string }>, responses: Record<string, ExamResponse>, now: number, visibleAtMs: number) {
   for (const qid of s.questionOrder) {
     const o = per[qid]?.outcome; const r = responses[qid]; const k = key[qid];
     if (!k) continue;
@@ -194,7 +194,7 @@ function writeNotebook(tx: TxStore, sid: string, s: SessionDoc, key: AnswerKey, 
     if (!wrong && !flagged) continue;
     tx.set(P.notebookEntry(s.uid, `${s.paperId}_${qid}`), {
       qid, paperId: s.paperId, sessionId: sid, unitId: k.unitId, topicId: k.topicId,
-      kind: wrong ? 'incorrect' : 'flagged', createdAtMs: now, review: { ease: 2.5, intervalDays: 0, reps: 0, dueDate: dayKey(now) },
+      kind: wrong ? 'incorrect' : 'flagged', createdAtMs: now, visibleAtMs, review: { ease: 2.5, intervalDays: 0, reps: 0, dueDate: dayKey(now) },
     });
   }
 }

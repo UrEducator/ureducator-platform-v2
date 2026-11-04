@@ -1,0 +1,53 @@
+rules_version = '2';
+
+// UrEducator 2.0 — Firestore Security Rules (STAGING: ugc-mock-test-staging).
+// Principles: deny by default; clients only READ their own documents or public catalogue data; every WRITE is done by Cloud Functions
+// (Admin SDK bypasses rules). Answer keys, papers, questions, reports, leads, audit logs and settings are never readable from a browser.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function owns(uid) { return signedIn() && request.auth.uid == uid; }
+
+    // ---- Public catalogue (no secrets) ----
+    match /subjects/{id}        { allow get, list: if true; allow write: if false; }
+    match /units/{id}           { allow get, list: if true; allow write: if false; }
+    match /topics/{id}          { allow get, list: if true; allow write: if false; }
+    match /examBlueprints/{id}  { allow get, list: if true; allow write: if false; }
+
+    // Only published tests are visible. Queries must include where('status', '==', 'published').
+    match /mockTests/{id}       { allow get, list: if resource.data.status == 'published'; allow write: if false; }
+    // Prices are visible only once an authorised admin publishes them. Queries must include where('published', '==', true).
+    match /plans/{id}           { allow get, list: if resource.data.published == true; allow write: if false; }
+
+    // ---- Student-owned data (read only) ----
+    match /users/{uid}                  { allow get: if owns(uid); allow list: if false; allow write: if false; }
+    match /performanceSnapshots/{uid}   { allow get: if owns(uid); allow list: if false; allow write: if false; }
+    match /studyPlans/{uid}             { allow get: if owns(uid); allow list: if false; allow write: if false; }
+    match /subscriptions/{uid}          { allow get: if owns(uid); allow list: if false; allow write: if false; }
+    // Sessions hold the question order and option ids only (no answers). Queries must include where('uid', '==', auth.uid).
+    match /examSessions/{id}            { allow get, list: if signedIn() && resource.data.uid == request.auth.uid; allow write: if false; }
+    match /results/{id}                 { allow get, list: if signedIn() && resource.data.uid == request.auth.uid; allow write: if false; }
+    match /orders/{id}                  { allow get, list: if signedIn() && resource.data.uid == request.auth.uid; allow write: if false; }
+    match /supportTickets/{id}          { allow get, list: if signedIn() && resource.data.uid == request.auth.uid; allow write: if false; }
+
+    // ---- Server-only (explicitly denied for documentation; the catch-all below would also deny them) ----
+    match /publishedPapers/{id}         { allow read, write: if false; }  // served only through startExam
+    match /answerKeys/{id}              { allow read, write: if false; }
+    match /questions/{id=**}            { allow read, write: if false; }
+    match /examResponses/{id}           { allow read, write: if false; }
+    match /errorNotebook/{uid}/{doc=**} { allow read, write: if false; }  // served through listNotebook (honours reveal policy)
+    match /learningNotes/{id}           { allow read, write: if false; }
+    match /reports/{id}                 { allow read, write: if false; }  // verified through verifyReport
+    match /leads/{id}                   { allow read, write: if false; }
+    match /consentRecords/{id}          { allow read, write: if false; }
+    match /auditLogs/{id}               { allow read, write: if false; }
+    match /paymentEvents/{id}           { allow read, write: if false; }
+    match /coupons/{id}                 { allow read, write: if false; }
+    match /roles/{id}                   { allow read, write: if false; }
+    match /rateLimits/{id}              { allow read, write: if false; }
+    match /systemSettings/{id}          { allow read, write: if false; }  // includes the report signing key
+
+    match /{document=**} { allow read, write: if false; }
+  }
+}

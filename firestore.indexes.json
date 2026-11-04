@@ -1,0 +1,12 @@
+{
+  "indexes": [
+    { "collectionGroup": "examSessions", "queryScope": "COLLECTION", "fields": [ { "fieldPath": "uid", "order": "ASCENDING" }, { "fieldPath": "startedAtMs", "order": "DESCENDING" } ] },
+    { "collectionGroup": "results", "queryScope": "COLLECTION", "fields": [ { "fieldPath": "uid", "order": "ASCENDING" }, { "fieldPath": "submittedAtMs", "order": "DESCENDING" } ] },
+    { "collectionGroup": "mockTests", "queryScope": "COLLECTION", "fields": [ { "fieldPath": "status", "order": "ASCENDING" }, { "fieldPath": "title", "order": "ASCENDING" } ] },
+    { "collectionGroup": "plans", "queryScope": "COLLECTION", "fields": [ { "fieldPath": "published", "order": "ASCENDING" }, { "fieldPath": "pricePaise", "order": "ASCENDING" } ] },
+    { "collectionGroup": "supportTickets", "queryScope": "COLLECTION", "fields": [ { "fieldPath": "uid", "order": "ASCENDING" }, { "fieldPath": "createdAtMs", "order": "DESCENDING" } ] }
+  ],
+  "fieldOverrides": [
+    { "collectionGroup": "rateLimits", "fieldPath": "expireAt", "ttl": true, "indexes": [] }
+  ]
+}

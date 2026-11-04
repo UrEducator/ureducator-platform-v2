@@ -23,3 +23,6 @@ serviceAccount*.json
 functions/.runtimeconfig.json
 .DS_Store
 *.tsbuildinfo
+
+# Non-secret staging deploy configuration is committed on purpose
+!functions/.env.ugc-mock-test-staging

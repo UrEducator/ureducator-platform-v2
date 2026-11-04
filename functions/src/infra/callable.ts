@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { HttpsError, onCall, type CallableRequest } from 'firebase-functions/v2/https';
 import * as logger from 'firebase-functions/logger';
+import type { SecretParam } from 'firebase-functions/params';
 import type { z, ZodType } from 'zod';
 import { AppError } from './errors';
 import { CONFIG, assertEnvironment } from './config';
@@ -14,7 +15,7 @@ type Auth = 'public' | 'user' | 'verified';
 type Cfg<S extends ZodType> = {
   input: S; auth: Auth; run: (c: Ctx, i: z.infer<S>) => Promise<unknown>;
   rate?: { limit: number; windowSec: number; by: 'uid' | 'ip' };
-  memory?: '256MiB' | '512MiB' | '1GiB'; timeoutSeconds?: number;
+  memory?: '256MiB' | '512MiB' | '1GiB'; timeoutSeconds?: number; secrets?: SecretParam[];
 };
 
 let checked = false;
@@ -25,7 +26,7 @@ export function callable<S extends ZodType>(name: string, cfg: Cfg<S>) {
       region: CONFIG.region, maxInstances: CONFIG.maxInstances, minInstances: 0, cpu: 1, concurrency: 40,
       memory: cfg.memory ?? '512MiB', timeoutSeconds: cfg.timeoutSeconds ?? 30,
       cors: CONFIG.allowedOrigins.length ? CONFIG.allowedOrigins : false,
-      enforceAppCheck: CONFIG.enforceAppCheck,
+      enforceAppCheck: CONFIG.enforceAppCheck, ...(cfg.secrets?.length ? { secrets: cfg.secrets } : {}),
     },
     async (req: CallableRequest) => {
       const cid = String(req.rawRequest.headers['x-request-id'] ?? '').slice(0, 64) || randomUUID();

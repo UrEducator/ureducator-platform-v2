@@ -5,7 +5,7 @@ import { P } from '../domain/paths';
 import { askMentor, MockAiProvider, VertexGeminiProvider, retrieveSources, type AiProvider } from '../services/ai';
 import { generateReport, reportIdFor, verifyReport, pdfSafe, getSigningKey } from '../services/reports';
 import { captureLead, CONSENT_TEXT_VERSION } from '../services/leads';
-import { ensureProfile, updateProfile, generatePlan, reviewNotebook, notebookQuestion, createTicket } from '../services/learning';
+import { ensureProfile, updateProfile, generatePlan, reviewNotebook, notebookQuestion, createTicket, listNotebook } from '../services/learning';
 import { getExamResult, saveResponses, startExam, submitExam } from '../services/exam';
 import { rateLimit } from '../infra/ratelimit';
 import { assertEnvironment, CONFIG } from '../infra/config';
@@ -180,6 +180,24 @@ describe('profile, plan and notebook', () => {
     const e = await mk();
     const { ticketId } = await createTicket(e.d, { ...alice, email: 'a@x.test' }, { subject: 'Help me', message: 'My timer looked odd', category: 'technical' });
     expect(await e.store.get(`supportTickets/${ticketId}`)).toMatchObject({ uid: 'alice', status: 'open' });
+  });
+});
+
+describe('error notebook visibility', () => {
+  it('hides entries until review opens (reveal after close)', async () => {
+    const e = await mk({ revealPolicy: 'after_close', closesAtMs: T0 + 3_600_000 });
+    await sit(e);
+    expect(await listNotebook(e.d, alice)).toMatchObject({ entries: [], hidden: expect.any(Number) });
+    expect((await listNotebook(e.d, alice)).hidden).toBeGreaterThan(0);
+    e.tick(3_700_000);
+    const after = await listNotebook(e.d, alice);
+    expect(after.entries.length).toBeGreaterThan(0); expect(after.hidden).toBe(0);
+    expect(JSON.stringify(after)).not.toMatch(/correct"?:\s*\[/);
+    expect((await listNotebook(e.d, bob)).entries).toEqual([]);
+  });
+  it('shows entries straight away under the immediate policy', async () => {
+    const e = await mk(); await sit(e);
+    expect((await listNotebook(e.d, alice)).entries.length).toBeGreaterThan(0);
   });
 });
 
