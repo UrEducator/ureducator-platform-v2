@@ -1,6 +1,5 @@
 import { describe, expect, it } from 'vitest';
 import { PDFDocument } from 'pdf-lib';
-import { MemoryStore } from '../domain/memoryStore';
 import { P } from '../domain/paths';
 import { askMentor, MockAiProvider, VertexGeminiProvider, retrieveSources, type AiProvider } from '../services/ai';
 import { generateReport, reportIdFor, verifyReport, pdfSafe, getSigningKey } from '../services/reports';
@@ -125,7 +124,7 @@ describe('PDF report and verification', () => {
     expect((await e.store.get<{ issuedAtMs: number }>(P.report(a.reportId)))!.issuedAtMs).toBe(T0);
   });
   it('pdfSafe strips characters Helvetica cannot encode', () => {
-    expect(pdfSafe('Asha — टेस्ट\n')).not.toMatch(/[^\x20-\x7E -ÿ]/);
+    expect(pdfSafe('Asha — टेस्ट\n')).not.toMatch(/[^\x20-\x7E\xA0-\xFF]/);
   });
 });
 

@@ -4,7 +4,6 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { AuthFrame } from '@/components/AuthFrame';
 import { Alert, Button } from '@/components/ui';
 import { useAuth } from '@/lib/auth';
-import { ENV } from '@/lib/env';
 import { safeNext } from '@/lib/nav';
 import { mockVerifyEmail } from '@/lib/mockTools';
 import { asApiError } from '@/lib/types';
@@ -26,7 +25,7 @@ function Body() {
         <Button onClick={check} busy={busy}>I have confirmed my email</Button>
         <Button variant="secondary" onClick={resend} disabled={cool > 0}>{cool > 0 ? `Send again in ${cool}s` : 'Send the email again'}</Button>
         <Button variant="ghost" onClick={() => void a.signOut().then(() => router.replace('/'))}>Use a different account</Button>
-        {ENV.backend === 'mock' && <Button variant="marker" onClick={async () => { await mockVerifyEmail(); await check(); }}>Test build only: simulate clicking the email link</Button>}
+        {process.env.NEXT_PUBLIC_BACKEND === 'mock' && <Button variant="marker" onClick={async () => { await mockVerifyEmail(); await check(); }}>Test build only: simulate clicking the email link</Button>}
       </div>
     </AuthFrame>
   );

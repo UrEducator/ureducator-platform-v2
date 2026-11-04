@@ -19,6 +19,10 @@ const WEB_ONLY = [
   { name: 'answer-key collection name', re: /answerKeys/ },
   { name: 'report signing key doc', re: /_reportKey/ },
   { name: 'Firebase Admin SDK', re: /firebase-admin/ },
+  { name: 'local mock backend (test-only)', re: /UR_MOCK_BACKEND_MARKER/ },
+  { name: 'local mock auth session key', re: /ur_mock_session/ },
+  { name: 'local mock auth header', re: /x-mock-token/ },
+  { name: 'test-only UI text', re: /Test build only/ },
 ];
 const TEXT = new Set(['.js', '.mjs', '.cjs', '.json', '.html', '.css', '.txt', '.map', '.xml', '.webmanifest', '.svg']);
 function* walk(p) { const s = statSync(p); if (s.isFile()) { yield p; return; } for (const f of readdirSync(p)) yield* walk(join(p, f)); }

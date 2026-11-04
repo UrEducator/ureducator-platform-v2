@@ -12,5 +12,7 @@ const config: NextConfig = {
   distDir: backend === 'mock' ? 'out-mock' : 'out',
   typedRoutes: false,
   transpilePackages: ['@ureducator/shared'],
+  // Always defined, so process.env.NEXT_PUBLIC_BACKEND is replaced by a literal at build time and test-only branches are removed.
+  env: { NEXT_PUBLIC_BACKEND: backend },
 };
 export default config;

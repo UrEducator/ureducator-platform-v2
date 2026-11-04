@@ -1,8 +1,10 @@
 node_modules/
 .next/
-out/
+/apps/web/out/
+/apps/web/out-mock/
 dist/
-lib/
+/functions/lib/
+/packages/*/lib/
 coverage/
 playwright-report/
 test-results/
@@ -26,5 +28,3 @@ functions/.runtimeconfig.json
 
 # Non-secret staging deploy configuration is committed on purpose
 !functions/.env.ugc-mock-test-staging
-out-mock/
-.next-mock/

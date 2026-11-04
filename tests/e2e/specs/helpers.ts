@@ -20,6 +20,7 @@ export async function signInAs(page: Page, u: Awaited<ReturnType<typeof makeUser
 /** Calls a callable on behalf of a user, bypassing the UI (used to set up state quickly). */
 export async function call(u: Awaited<ReturnType<typeof makeUser>>, name: string, data: unknown) {
   const res = await fetch(`${HARNESS}/call/${name}`, { method: 'POST', headers: { 'content-type': 'application/json', 'x-mock-token': u.session.token }, body: JSON.stringify(data) });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- the harness returns loosely typed JSON; specs assert on it
   return { status: res.status, body: (await res.json()) as { data?: any; error?: { reason: string } } };
 }
 export async function expectNoConsoleErrors(page: Page, fn: () => Promise<void>) {

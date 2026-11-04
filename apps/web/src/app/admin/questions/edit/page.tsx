@@ -30,7 +30,9 @@ function Body() {
       setF({ subjectId: str(h.subjectId), unitId: str(h.unitId), topicId: str(h.topicId), difficulty: str(h.difficulty, 'medium') as Difficulty, type: v.content.type, stemEn: loc(v.content.stem).en, stemHi: loc(v.content.stem).hi ?? '', opts: IDS.map((i) => { const o = v.content.options.find((x) => x.id === i); return { id: i, en: loc(o?.text).en, hi: loc(o?.text).hi ?? '' }; }), correct: v.correct, expEn: loc(v.explanation).en, expHi: loc(v.explanation).hi ?? '', kind: v.provenance.kind, source: v.provenance.source ?? '', sourceYear: v.provenance.sourceYear ? String(v.provenance.sourceYear) : '', copyright: v.provenance.copyrightStatus, pyq: !!v.provenance.officialPyqVerified });
     } catch (e) { setMsg({ tone: 'error', text: asApiError(e).message }); } finally { setLoading(false); }
   };
-  useEffect(() => { void load(); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [backend, id]);
+  // load() is re-created every render; it should run only when the backend or the question id changes.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { void load(); }, [backend, id]);
 
   const unitsOf = useMemo(() => units.filter((u) => u.subjectId === f.subjectId), [units, f.subjectId]); const topicsOf = useMemo(() => topics.filter((t) => t.unitId === f.unitId), [topics, f.unitId]);
   const bilingual = !!f.stemHi.trim() && f.opts.every((o) => o.hi.trim());

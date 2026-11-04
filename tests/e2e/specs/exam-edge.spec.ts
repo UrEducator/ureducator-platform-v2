@@ -1,10 +1,10 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
 import { advanceClock, call, makeUser, reset, serverErrors, signInAs } from './helpers';
 
 test.beforeEach(async () => { await reset(); });
 test.afterEach(async () => { expect(await serverErrors(), 'unexpected server-side errors').toEqual([]); });
 
-const startMini = async (page: import('@playwright/test').Page, id = 'mt-mini') => {
+const startMini = async (page: Page, id = 'mt-mini') => {
   await page.goto(`/app/tests/detail?id=${id}`);
   await page.getByLabel(/I have read the instructions/).check();
   await page.getByTestId('start-test').click();

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { LABEL_TEXT, type Blueprint, type ContentLabel } from '@ureducator/shared';
 import { Alert, Button, Check, Input, PageHeader, Select, Sheet, Spinner, Textarea } from '@/components/ui';
-import { loc, num, str, useAdminList, type Row } from '@/lib/adminHooks';
+import { num, str, useAdminList, type Row } from '@/lib/adminHooks';
 import { useAuth } from '@/lib/auth';
 import { useDocumentTitle } from '@/lib/hooks';
 import { useNames } from '@/lib/names';

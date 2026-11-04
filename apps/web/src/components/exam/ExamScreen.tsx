@@ -33,7 +33,7 @@ function Options({ q, lang, selected, onChoose }: { q: PaperQuestion; lang: Lang
   );
 }
 
-function PalettePanel({ d, ex }: { d: ExamData; ex: ReturnType<typeof useExam> }) {
+function PalettePanel({ d, ex, onPick }: { d: ExamData; ex: ReturnType<typeof useExam>; onPick?: () => void }) {
   const bySection = d.blueprint.sections.map((s) => ({ s, items: d.questions.map((q, i) => ({ q, i })).filter((x) => x.q.sectionId === s.id) }));
   return (
     <div className="grid gap-4">
@@ -41,7 +41,7 @@ function PalettePanel({ d, ex }: { d: ExamData; ex: ReturnType<typeof useExam> }
         <section key={s.id} aria-label={pickText(s.title, ex.lang)}>
           <h3 className="mb-2 font-sans text-sm font-semibold">{pickText(s.title, ex.lang)}</h3>
           <div className="grid grid-cols-6 gap-2 sm:grid-cols-8 lg:grid-cols-5">
-            {items.map(({ q, i }) => <Bubble key={q.qid} n={i + 1} state={paletteStatus(ex.resp[q.qid])} current={i === ex.cur} onClick={() => ex.goTo(i)} />)}
+            {items.map(({ q, i }) => <Bubble key={q.qid} n={i + 1} state={paletteStatus(ex.resp[q.qid])} current={i === ex.cur} onClick={() => { ex.goTo(i); onPick?.(); }} />)}
           </div>
         </section>
       ))}
@@ -111,7 +111,7 @@ export function ExamScreen({ sessionId }: { sessionId: string }) {
             <Button variant="secondary" onClick={() => { ex.mark(!marked); }} aria-pressed={marked} data-testid="mark"><Flag className="size-4" aria-hidden />{marked ? 'Remove review mark' : 'Mark for review'}</Button>
             <Button variant="secondary" onClick={ex.clear} disabled={!r?.selected.length} data-testid="clear">Clear response</Button>
             <Button className="ml-auto" onClick={next} disabled={ex.cur === total - 1} data-testid="save-next">Save and next</Button>
-            <Button variant="ghost" className="lg:hidden" onClick={() => setPalette(true)}>Question palette</Button>
+            <Button variant="secondary" className="lg:hidden" onClick={() => setPalette(true)}>Question palette</Button>
           </div>
         </main>
 
@@ -124,7 +124,7 @@ export function ExamScreen({ sessionId }: { sessionId: string }) {
       </div>
 
       <Dialog open={palette} onClose={() => setPalette(false)} title="Question palette" footer={<Button onClick={() => setPalette(false)}>Close</Button>}>
-        <div className="max-h-[60vh] overflow-y-auto" onClick={(e) => { if ((e.target as HTMLElement).closest('button')) setPalette(false); }}><PalettePanel d={d} ex={ex} /></div>
+        <div className="max-h-[60vh] overflow-y-auto"><PalettePanel d={d} ex={ex} onPick={() => setPalette(false)} /></div>
       </Dialog>
 
       <Dialog open={confirm} onClose={() => setConfirm(false)} title="Submit your test?"

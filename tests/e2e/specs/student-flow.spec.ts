@@ -1,11 +1,11 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { expectNoConsoleErrors, reset, serverErrors } from './helpers';
 
 test.beforeEach(async () => { await reset(); });
 test.afterEach(async () => { expect(await serverErrors(), 'unexpected server-side errors').toEqual([]); });
 
-const shot = (page: import('@playwright/test').Page, name: string) => page.screenshot({ path: `tests/e2e/shots/${name}.png`, fullPage: false });
+const shot = (page: Page, name: string) => page.screenshot({ path: `tests/e2e/shots/${name}.png`, fullPage: false });
 
 test('new student: sign up, confirm email, take the demo test, read the result, use notebook, planner and mentor', async ({ page }) => {
   await expectNoConsoleErrors(page, async () => {

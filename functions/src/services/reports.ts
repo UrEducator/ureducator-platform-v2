@@ -22,7 +22,7 @@ export const reportIdFor = (sid: string, uid: string) => 'UR-' + createHash('sha
 const signatureFor = (key: string, id: string, sid: string, marks: number, max: number) => hmacHex(key, `${id}|${sid}|${marks}|${max}`).slice(0, 32);
 
 /** Helvetica only covers Latin-1. Replace anything else so PDF generation can never throw on a student's name. */
-export const pdfSafe = (s: string) => s.replace(/[^\x20-\x7E -ÿ]/g, '?').slice(0, 120);
+export const pdfSafe = (s: string) => s.replace(/[^\x20-\x7E\xA0-\xFF]/g, '?').slice(0, 120);
 
 export async function generateReport(d: Deps, actor: Actor, i: { sessionId: string }, o: { baseUrl: string }) {
   const s = await d.store.get<SessionDoc>(P.session(i.sessionId));

@@ -1,4 +1,4 @@
-import type { Blueprint, ExamResponse, Lang, SessionStatus } from '@ureducator/shared';
+import type { Blueprint, ExamResponse, Lang, SessionStatus, TopicAggregate } from '@ureducator/shared';
 
 export type Clock = () => number;
 export type Actor = { uid: string; emailVerified: boolean; role?: string | undefined };
@@ -37,4 +37,4 @@ export type ResultDoc = {
   revealAvailableAtMs: number; contentLabel: string;
 };
 
-export type SnapshotDoc = { topics: Record<string, import('@ureducator/shared').TopicAggregate>; recentScores: { sessionId: string; percentage: number; atMs: number }[]; activeDays: string[]; testsTaken: number; updatedAtMs: number };
+export type SnapshotDoc = { topics: Record<string, TopicAggregate>; recentScores: { sessionId: string; percentage: number; atMs: number }[]; activeDays: string[]; testsTaken: number; updatedAtMs: number };
