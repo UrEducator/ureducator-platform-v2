@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { CONTENT_LABELS, LANGS, PUBLICATION_STATUSES, DIFFICULTIES } from './constants';
 import { QuestionVersionBase, LocalizedTextSchema, refineQuestion } from './schemas';
+import { BlueprintSchema } from './blueprint';
 
 const id = z.string().regex(/^[A-Za-z0-9_-]{1,80}$/);
 
@@ -25,7 +26,7 @@ export const UpsertMockTestInput = z.object({
 });
 export const MockTestRefInput = z.object({ mockTestId: id });
 export const AdminListInput = z.object({
-  collection: z.enum(['users', 'subjects', 'units', 'topics', 'questions', 'mockTests', 'examBlueprints', 'leads', 'supportTickets', 'auditLogs', 'orders', 'paymentEvents', 'plans', 'coupons', 'resources']),
+  collection: z.enum(['users', 'roles', 'subjects', 'units', 'topics', 'questions', 'mockTests', 'examBlueprints', 'leads', 'supportTickets', 'auditLogs', 'orders', 'paymentEvents', 'plans', 'coupons', 'resources']),
   limit: z.number().int().min(1).max(50).default(25), startAfter: id.optional(),
   status: z.string().max(40).optional(),
 });
@@ -42,3 +43,7 @@ export const ReportInput = z.object({ sessionId: id });
 export const CreateOrderInput = z.object({ planId: id, couponCode: z.string().max(40).optional() });
 export const VerifyPaymentInput = z.object({ orderId: id, razorpayPaymentId: z.string().max(60), razorpaySignature: z.string().regex(/^[a-f0-9]{64}$/) });
 export const EmptyInput = z.object({}).strict();
+
+export const GetQuestionInput = z.object({ questionId: id, version: z.number().int().min(1).optional() });
+/** The server owns `version` and decides who may mark a blueprint as matching the official pattern. */
+export const UpsertBlueprintInput = z.object({ blueprint: BlueprintSchema });

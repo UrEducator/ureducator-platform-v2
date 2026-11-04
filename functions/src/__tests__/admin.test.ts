@@ -228,3 +228,34 @@ describe('pricing', () => {
     expect(await e.store.get(P.plan('pro'))).toMatchObject({ published: true, currency: 'INR' });
   });
 });
+
+describe('question detail, blueprints and overview', () => {
+  it('shows the full question (with the answer) only to authors and reviewers', async () => {
+    const e = mk(); const { questionId } = await admin.saveQuestion(e.d, editor, qInput(1));
+    const r = await admin.getQuestion(e.d, reviewer, { questionId });
+    expect((r.version as { correct: string[] }).correct).toEqual(['b']); expect(r.versions).toHaveLength(1);
+    await expect(admin.getQuestion(e.d, student, { questionId })).rejects.toMatchObject({ reason: 'FORBIDDEN' });
+    await expect(admin.getQuestion(e.d, support, { questionId })).rejects.toMatchObject({ reason: 'FORBIDDEN' });
+    await expect(admin.getQuestion(e.d, editor, { questionId: 'nope' })).rejects.toMatchObject({ reason: 'QUESTION_NOT_FOUND' });
+    expect((await e.store.get<{ preview: string }>(P.question(questionId)))?.preview).toBe('Synthetic demo question 1');
+  });
+  it('only a super admin or the owner can mark a blueprint as the official pattern, and a used blueprint cannot change', async () => {
+    const e = mk(); const input = { blueprint: { ...bp, officialPatternVerified: true } };
+    const byEditor = await admin.upsertBlueprint(e.d, editor, input); expect(byEditor.officialPatternVerified).toBe(false);
+    const byOwner = await admin.upsertBlueprint(e.d, owner, input); expect(byOwner.officialPatternVerified).toBe(true); expect(byOwner.version).toBe(2);
+    await expect(admin.upsertBlueprint(e.d, student, input)).rejects.toMatchObject({ reason: 'FORBIDDEN' });
+    await e.store.set(P.mockTest('live'), { blueprintId: bp.id, status: 'published' });
+    await expect(admin.upsertBlueprint(e.d, owner, input)).rejects.toMatchObject({ reason: 'BLUEPRINT_IN_USE' });
+  });
+  it('overview returns only the counts a role may see', async () => {
+    const e = mk(); await admin.saveQuestion(e.d, editor, qInput(1)); await e.store.set('leads/l1', { status: 'new' }); await e.store.set('users/u1', { displayName: 'A' });
+    const forEditor = await admin.overview(e.d, editor); expect(forEditor.counts.questionsDraft).toBe(1); expect(forEditor.counts).not.toHaveProperty('leadsNew'); expect(forEditor.counts).not.toHaveProperty('students');
+    const forOwner = await admin.overview(e.d, owner); expect(forOwner.counts.leadsNew).toBe(1); expect(forOwner.counts.students).toBe(1);
+    await expect(admin.overview(e.d, student)).rejects.toMatchObject({ reason: 'FORBIDDEN' });
+  });
+  it('lists staff roles only for people who may assign roles', async () => {
+    const e = mk(); await e.store.set('roles/x', { role: 'admin' });
+    await expect(admin.adminList(e.d, owner, { collection: 'roles', limit: 10 })).resolves.toMatchObject({ items: [{ id: 'x', role: 'admin' }] });
+    await expect(admin.adminList(e.d, adm, { collection: 'roles', limit: 10 })).rejects.toMatchObject({ reason: 'FORBIDDEN' });
+  });
+});

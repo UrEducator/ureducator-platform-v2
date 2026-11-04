@@ -3,7 +3,7 @@
  * entries with the same pipeline, so there is one definition of inputs, auth and limits.
  */
 import {
-  AdminListInput, AssignRoleInput, CreateOrderInput, EmptyInput, LeadInput, MentorAskInput, MockTestRefInput, NotebookQuestionInput,
+  AdminListInput, AssignRoleInput, CreateOrderInput, EmptyInput, GetQuestionInput, UpsertBlueprintInput, LeadInput, MentorAskInput, MockTestRefInput, NotebookQuestionInput,
   ProfilePatchSchema, ReportInput, ReviewNotebookInput, SaveQuestionInput, SaveResponsesInput, SessionRefInput, StartExamInput, SubmitExamInput,
   TicketInput, TransitionInput, UpdateLeadInput, UpdateTicketInput, UpsertCatalogueInput, UpsertMockTestInput, UpsertPlanInput,
   VerifyPaymentInput, VerifyReportInput,
@@ -60,6 +60,9 @@ export const ENDPOINTS = {
 
   /* admin / content studio */
   adminList: define({ ...staff, input: AdminListInput, run: async (c, i) => admin.adminList(c.d, c.actor, i) }),
+  adminOverview: define({ ...staff, input: EmptyInput, run: async (c) => admin.overview(c.d, c.actor) }),
+  adminGetQuestion: define({ ...staff, input: GetQuestionInput, run: async (c, i) => admin.getQuestion(c.d, c.actor, i) }),
+  adminUpsertBlueprint: define({ ...staff, input: UpsertBlueprintInput, run: async (c, i) => admin.upsertBlueprint(c.d, c.actor, i) }),
   adminUpsertCatalogue: define({ ...staff, input: UpsertCatalogueInput, run: async (c, i) => admin.upsertCatalogue(c.d, c.actor, i) }),
   adminSaveQuestion: define({ ...staff, input: SaveQuestionInput, run: async (c, i) => admin.saveQuestion(c.d, c.actor, i) }),
   adminTransitionQuestion: define({ ...staff, input: TransitionInput, run: async (c, i) => admin.transitionQuestion(c.d, c.actor, i) }),

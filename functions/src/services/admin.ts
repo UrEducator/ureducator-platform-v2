@@ -4,7 +4,7 @@ import {
   type AnswerKey, type Permission, type PublishedPaper, type Role, type PaperQuestion, ROLES,
 } from '@ureducator/shared';
 import type { z } from 'zod';
-import type { SaveQuestionInput, UpsertCatalogueInput, UpsertMockTestInput, AdminListInput, UpsertPlanInput } from '@ureducator/shared';
+import type { SaveQuestionInput, UpsertCatalogueInput, UpsertMockTestInput, AdminListInput, UpsertPlanInput, UpsertBlueprintInput } from '@ureducator/shared';
 import type { Actor, MockTestDoc } from '../domain/types';
 import { P } from '../domain/paths';
 import { err } from '../infra/errors';
@@ -51,7 +51,7 @@ export async function saveQuestion(d: Deps, a: StaffActor, i: z.infer<typeof Sav
     const parsed = QuestionVersionSchema.safeParse(doc);
     if (!parsed.success) throw err('invalid-argument', 'QUESTION_INVALID', parsed.error.issues[0]?.message ?? 'Invalid question.');
     tx.set(P.questionVersion(qid, version), { ...parsed.data, status: 'draft', createdAtMs: now });
-    tx.set(P.question(qid), { ...i.meta, status: 'draft', currentVersion: version, ...(head?.publishedVersion ? { publishedVersion: head.publishedVersion } : {}), updatedAtMs: now });
+    tx.set(P.question(qid), { ...i.meta, preview: i.version.content.stem.en.slice(0, 140), status: 'draft', currentVersion: version, ...(head?.publishedVersion ? { publishedVersion: head.publishedVersion } : {}), updatedAtMs: now });
     return { questionId: qid, version };
   }).then(async (r) => { await log(d, a, 'question.save', r.questionId, { version: r.version }); return r; });
 }
@@ -156,6 +156,7 @@ export async function claimOwner(d: Deps, auth: AuthPort, a: StaffActor, configu
 
 /* ------------------------------------------------------------ listing */
 const LIST_RULES: Record<z.infer<typeof AdminListInput>['collection'], { perm: Permission[]; pick?: string[]; order?: string }> = {
+  roles: { perm: ['roles.assign'] },
   users: { perm: ['students.read'], pick: ['displayName', 'email', 'createdAtMs', 'preferredPaper2Subject', 'onboardingComplete'], order: 'createdAtMs' },
   subjects: { perm: ['catalogue.write', 'questions.write', 'questions.review'] }, units: { perm: ['catalogue.write', 'questions.write', 'questions.review'] }, topics: { perm: ['catalogue.write', 'questions.write', 'questions.review'] },
   questions: { perm: ['questions.write', 'questions.review'], order: 'updatedAtMs' },
@@ -200,4 +201,48 @@ export async function updateLead(d: Deps, a: StaffActor, i: { leadId: string; st
   await d.store.merge(P.lead(i.leadId), { status: i.status, updatedAtMs: d.clock(), updatedBy: a.uid });
   await log(d, a, 'lead.update', i.leadId, { status: i.status });
   return { leadId: i.leadId };
+}
+
+/* ------------------------------------------------------------ question detail, blueprints, overview */
+/** Full question (including the answer) for authors and reviewers. Students never reach this: it needs a question permission. */
+export async function getQuestion(d: Deps, a: StaffActor, i: { questionId: string; version?: number | undefined }) {
+  if (!a.emailVerified || !(can(roleOf(a), 'questions.write') || can(roleOf(a), 'questions.review'))) throw err('permission-denied', 'FORBIDDEN', 'You do not have permission to view this.');
+  const head = await d.store.get<{ currentVersion: number }>(P.question(i.questionId));
+  if (!head) throw err('not-found', 'QUESTION_NOT_FOUND', 'Question not found.');
+  const versions = (await d.store.list<{ status: string; createdBy: string; createdAtMs?: number }>(`questions/${i.questionId}/versions`, { limit: 50 })).map((r) => ({ version: Number(r.id), status: r.data.status, createdBy: r.data.createdBy, createdAtMs: r.data.createdAtMs ?? null })).sort((x, y) => y.version - x.version);
+  const v = await d.store.get(P.questionVersion(i.questionId, i.version ?? head.currentVersion));
+  if (!v) throw err('not-found', 'VERSION_NOT_FOUND', 'Version not found.');
+  return { questionId: i.questionId, head, versions, version: v };
+}
+
+export async function upsertBlueprint(d: Deps, a: StaffActor, i: z.infer<typeof UpsertBlueprintInput>) {
+  need(a, 'tests.write');
+  const id = i.blueprint.id;
+  const inUse = await d.store.count('mockTests', [['blueprintId', '==', id], ['status', '==', 'published']]);
+  if (inUse > 0) throw err('failed-precondition', 'BLUEPRINT_IN_USE', 'A published test uses this blueprint. Unpublish those tests or create a new blueprint.');
+  const prev = await d.store.get<{ version?: number; officialPatternVerified?: boolean }>(P.blueprint(id));
+  // Claiming the official pattern is a content-governance decision: only people who can change settings may flip it.
+  const verified = can(roleOf(a), 'settings.write') ? i.blueprint.officialPatternVerified : (prev?.officialPatternVerified ?? false);
+  await d.store.set(P.blueprint(id), { ...i.blueprint, officialPatternVerified: verified, version: (prev?.version ?? 0) + 1, updatedAtMs: d.clock(), updatedBy: a.uid });
+  await log(d, a, 'blueprint.upsert', id, { verified });
+  return { id, version: (prev?.version ?? 0) + 1, officialPatternVerified: verified };
+}
+
+/** Counts only, filtered by what the caller's role may see. */
+export async function overview(d: Deps, a: StaffActor) {
+  if (!a.emailVerified || !roleOf(a)) throw err('permission-denied', 'FORBIDDEN', 'You do not have permission to view this.');
+  const r = roleOf(a); const out: Record<string, number> = {};
+  const jobs: Promise<void>[] = [];
+  const add = (key: string, perm: Permission, col: string, where: [string, '==', unknown][] = []) => { if (can(r, perm)) jobs.push(d.store.count(col, where).then((n) => { out[key] = n; })); };
+  add('questionsInReview', 'questions.review', 'questions', [['status', '==', 'review']]);
+  add('questionsDraft', 'questions.write', 'questions', [['status', '==', 'draft']]);
+  add('questionsApproved', 'questions.publish', 'questions', [['status', '==', 'approved']]);
+  add('questionsPublished', 'questions.write', 'questions', [['status', '==', 'published']]);
+  add('testsPublished', 'tests.write', 'mockTests', [['status', '==', 'published']]);
+  add('testsDraft', 'tests.write', 'mockTests', [['status', '==', 'draft']]);
+  add('leadsNew', 'leads.read', 'leads', [['status', '==', 'new']]);
+  add('ticketsOpen', 'support.read', 'supportTickets', [['status', '==', 'open']]);
+  add('students', 'students.read', 'users');
+  await Promise.all(jobs);
+  return { role: r, counts: out };
 }

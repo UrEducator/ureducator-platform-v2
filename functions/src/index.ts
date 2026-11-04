@@ -38,6 +38,9 @@ export const claimOwner = callable('claimOwner', E.claimOwner);
 export const assignRole = callable('assignRole', E.assignRole);
 
 export const adminList = callable('adminList', E.adminList);
+export const adminOverview = callable('adminOverview', E.adminOverview);
+export const adminGetQuestion = callable('adminGetQuestion', E.adminGetQuestion);
+export const adminUpsertBlueprint = callable('adminUpsertBlueprint', E.adminUpsertBlueprint);
 export const adminUpsertCatalogue = callable('adminUpsertCatalogue', E.adminUpsertCatalogue);
 export const adminSaveQuestion = callable('adminSaveQuestion', E.adminSaveQuestion);
 export const adminTransitionQuestion = callable('adminTransitionQuestion', E.adminTransitionQuestion);
