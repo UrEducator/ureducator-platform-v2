@@ -4,14 +4,14 @@
 
 | Control | Implementation | Verified how |
 |---|---|---|
-| Deny-by-default rules | `firestore.rules` (catch-all deny), `storage.rules` (deny-all) | Read-through + syntax lint (`npm run lint:rules`). **Not emulator-tested** (no emulator in this sandbox) |
+| Deny-by-default rules | `firestore.rules` (catch-all deny), `storage.rules` (deny-all) | Static lint (`npm run lint:rules`) passes. **Behavioural suite written (57 tests, `tests/rules`) but NOT YET EXECUTED**: the Firestore emulator cannot be downloaded in the build sandbox. Run `npm run test:rules` on a machine with Java 21 |
 | Writes only via server | Every `write` is `false` in rules; Admin SDK bypasses rules | Rules read-through |
 | Answer-key protection | Separate `answerKeys` collection, never readable; papers sanitised before storage | Unit tests + E2E response sniffing (no key in any API payload during an exam) |
 | Auth + email verification | `auth: 'public' | 'user' | 'verified'` per endpoint | E2E: unverified user cannot start a test or use the mentor |
 | RBAC | Custom claim `role`; matrix in `rbac.ts`; checked in each admin service | 4 admin unit tests + E2E per-role navigation and refusals |
 | Separation of duties | Approver must differ from author | Unit + E2E pipeline |
 | Owner bootstrap | `claimOwner` succeeds once, only for the verified email in `OWNER_BOOTSTRAP_EMAIL`. Empty = disabled | E2E |
-| Input validation | Zod schemas on every endpoint, size limits in `LIMITS` | Unit tests |
+| Input validation | Zod schemas on every endpoint, size limits in `LIMITS`. Sign-in is checked **before** validation so anonymous callers learn nothing about request shapes | Unit tests |
 | Idempotency | Deterministic session ids, `seq` on autosave, idempotent submit | Unit + E2E (double submit, late submit) |
 | Rate limiting | Firestore counters per IP/uid; autosave bounded by ownership, `seq`, schema limits, max instances | Unit + E2E (lead form) |
 | App Check | Wired (`ENFORCE_APP_CHECK`), **monitor mode** (false) at first; logs `appCheck: present/missing` | Not exercised: needs a reCAPTCHA Enterprise key |
@@ -27,7 +27,7 @@ Fails on: the production project id, `ur-educator`, `rzp_live_` keys, Razorpay-s
 
 ## Known gaps (honest list)
 
-1. Rules tests exist (`tests/rules`) but are skipped without the Firestore emulator.
+1. The rules test suite (`tests/rules`, 57 tests) has never been executed. It fails (never skips) without the emulator, and rules must not be deployed until `npm run test:rules` passes on a machine that can run the emulator.
 2. App Check is not enforced, and no key has been created.
 3. CSP allows `'unsafe-inline'` scripts.
 4. Report signing key sits in a server-only Firestore doc rather than Secret Manager.

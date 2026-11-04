@@ -7,7 +7,7 @@ All results below were produced in the build sandbox. **None touched Google Clou
 | Lint (ESLint 9, typescript-eslint, react-hooks, jsx-a11y) | `npx eslint . --max-warnings 0` | 0 errors, 0 warnings |
 | Typecheck | `npm run typecheck` (web, functions, shared) | Clean |
 | Shared unit tests | `npm test -w @ureducator/shared` | 37 passed (6 files) |
-| Functions unit tests | `npm test -w functions` | 97 passed (5 files) |
+| Functions unit tests | `npm test -w functions` | 98 passed (5 files) |
 | Production build | `npm run build` (shared → functions → web) | Success; every route prerendered as static content, web export 4.4 MB, functions bundle 1.9 MB |
 | Bundle scan, web | `npm run verify:bundle` | 249 files, 0 findings |
 | Bundle scan, functions | `npm run verify:functions` | 1 file, 0 findings |
@@ -24,7 +24,7 @@ Sign-up → email confirmation → exam → autosave → submit → result → H
 
 ## What has NOT been verified
 
-* Firestore Security Rules behaviour (rules tests exist but need the emulator; syntax is checked server-side only at deploy time).
+* Firestore Security Rules behaviour: a 57-test behavioural suite exists (`npm run test:rules`) but has **never been executed** because the emulator JAR (`storage.googleapis.com`) cannot be downloaded from the build sandbox. Static lint is not a substitute.
 * Real Firebase Auth, App Check, Firestore, Cloud Functions cold starts and IAM.
 * Real email delivery; the confirmation step is simulated by the test harness.
 * Live AI (Vertex) and payments (disabled by design).

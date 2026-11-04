@@ -17,10 +17,12 @@
     "test": "npm run test --workspaces --if-present",
     "build": "npm run build -w @ureducator/shared && npm run build -w functions && npm run build -w web",
     "verify:bundle": "node scripts/verify-bundle.mjs apps/web/out",
-    "test:rules": "vitest run --config tests/rules/vitest.config.mts",
+    "test:rules": "node scripts/test-rules.mjs",
     "lint:rules": "node scripts/lint-rules.mjs",
     "prepare:deploy": "node scripts/prepare-deploy.mjs",
-    "verify:functions": "node scripts/verify-bundle.mjs functions/lib"
+    "verify:functions": "node scripts/verify-bundle.mjs functions/lib dist/functions",
+    "test:rules:run": "vitest run --config tests/rules/vitest.config.ts",
+    "verify:config": "node scripts/verify-staging-config.mjs"
   },
   "devDependencies": {
     "@eslint/js": "9.39.5",
@@ -28,6 +30,7 @@
     "eslint": "9.39.5",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-react-hooks": "7.1.1",
+    "firebase-tools": "15.34.2",
     "globals": "17.14.0",
     "typescript-eslint": "8.72.1"
   }

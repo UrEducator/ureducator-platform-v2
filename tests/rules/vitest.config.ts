@@ -1,2 +1,13 @@
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vitest/config';
-export default defineConfig({ test: { include: ['tests/rules/**/*.test.ts'], root: new URL('../../', import.meta.url).pathname, testTimeout: 20000 } });
+
+// fileURLToPath (not URL.pathname) so the repository root resolves correctly on Windows ("C:\..." rather than "/C:/...").
+export default defineConfig({
+  test: {
+    include: ['tests/rules/**/*.test.ts'],
+    root: fileURLToPath(new URL('../../', import.meta.url)),
+    testTimeout: 30_000,
+    hookTimeout: 60_000,
+    fileParallelism: false,
+  },
+});

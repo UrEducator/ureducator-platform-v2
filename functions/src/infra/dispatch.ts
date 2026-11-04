@@ -19,15 +19,16 @@ export type Failure = { code: ErrorCode; reason: string; message: string; correl
 export type Outcome = { ok: true; data: unknown; cid: string } | { ok: false; error: Failure };
 
 /**
- * validate -> authenticate -> rate limit -> run -> map errors. No framework types in here, so the same pipeline runs inside
+ * authenticate -> validate -> verified-email check -> rate limit -> run -> map errors. No framework types in here, so the same pipeline runs inside
  * Cloud Functions and inside the local end-to-end harness. Internal errors never leak details to the caller.
  */
 export async function dispatch(name: string, def: EndpointDef, raw: unknown, who: Identity, o: { d: Deps; auth: AuthPort; ip: string; cid?: string; secret?: (n: string) => string | null; onError?: (cid: string, e: unknown) => void }): Promise<Outcome> {
   const cid = (o.cid ?? '').slice(0, 64) || randomUUID();
   try {
+    // Authenticate first: an anonymous caller must not learn anything about an endpoint's input schema from the error it gets.
+    if (def.auth !== 'public' && !who) throw new AppError('unauthenticated', 'SIGN_IN_REQUIRED', 'Please sign in.');
     const parsed = def.input.safeParse(raw ?? {});
     if (!parsed.success) throw new AppError('invalid-argument', 'INVALID_INPUT', `Invalid request: ${parsed.error.issues[0]?.path.join('.') || 'body'}`);
-    if (def.auth !== 'public' && !who) throw new AppError('unauthenticated', 'SIGN_IN_REQUIRED', 'Please sign in.');
     const actor: StaffActor = { uid: who?.uid ?? 'anonymous', emailVerified: who?.emailVerified === true, role: who?.role, email: who?.email };
     if (def.auth === 'verified' && !actor.emailVerified) throw new AppError('failed-precondition', 'EMAIL_NOT_VERIFIED', 'Verify your email address to continue.');
     if (def.rate) await rateLimit(o.d.store, o.d.clock, { bucket: name, subject: def.rate.by === 'uid' ? actor.uid : o.ip, limit: def.rate.limit, windowSec: def.rate.windowSec });

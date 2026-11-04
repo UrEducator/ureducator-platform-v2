@@ -17,6 +17,11 @@ describe('dispatch pipeline', () => {
     expect(await run('startExam', { mockTestId: 'mt1', clientRequestId: 'r1' }, null)).toMatchObject({ ok: false, error: { reason: 'SIGN_IN_REQUIRED' } });
     expect(await run('publicConfig', {}, null)).toMatchObject({ ok: true });
   });
+  it('tells an anonymous caller nothing about the input schema: sign-in is checked before validation', async () => {
+    for (const name of ['startExam', 'submitExam', 'adminList', 'assignRole', 'createOrder'] as const) {
+      expect(await run(name, {}, null), name).toMatchObject({ ok: false, error: { code: 'unauthenticated', reason: 'SIGN_IN_REQUIRED' } });
+    }
+  });
   it('requires a verified email for "verified" endpoints', async () => {
     expect(await run('startExam', { mockTestId: 'mt1', clientRequestId: 'r1' }, { uid: 'x', emailVerified: false })).toMatchObject({ ok: false, error: { reason: 'EMAIL_NOT_VERIFIED' } });
   });

@@ -1,15 +1,21 @@
-# What I need from the owner (exact blockers)
+# What I need from the owner (updated for Phase M8.1)
 
-Everything that could be built and verified without cloud credentials has been. These are the remaining items and why each is needed.
+Deployment is **blocked at the rules gate**, not by anything you did wrong: the Firestore emulator can only be downloaded from Google, and the build sandbox cannot reach that host. Per the M8.1 rules, nothing is deployed until the emulator rules suite passes. The suite is written and ready; it has to run once on your Windows PC.
 
-| # | Blocker | Why it blocks | Exact action |
+## Do these in order
+
+| # | You do | Where | Needed for |
 |---|---|---|---|
-| 1 | **No authenticated route to Google from the build environment** | The sandbox can reach only the npm registry and GitHub. The linked PC bridge was offline on the last attempt, so the Firebase CLI could not be checked. Nothing can be deployed from here | Either (a) bring the PC online with the Claude desktop app open so deployment can be driven from there, or (b) run `docs/DEPLOY_RUNBOOK_STAGING.md` yourself (every command is pinned to `ugc-mock-test-staging`) |
-| 2 | **Email/Password sign-in is not enabled in staging** | Students cannot sign up until a provider exists | Console → Authentication → Sign-in method → enable Email/Password. Keep Anonymous off |
-| 3 | **No owner identity authorised** | `OWNER_BOOTSTRAP_EMAIL` is empty, so nobody can become owner (this is intentional) | Tell me which email should own staging admin, or set it yourself in `functions/.env.ugc-mock-test-staging` |
-| 4 | **No App Check key** | App Check runs in monitor mode with no site key | Create a reCAPTCHA Enterprise key for the staging origin; supply the public site key only |
-| 5 | **No private GitHub repository** | `gh` token invalid and no GitHub connector, so the repo exists locally only (git history intact) | Authorise a GitHub connection or create an empty private repo `ureducator-platform-v2` and give push access; then `git push` |
-| 6 | **App Hosting not used** | Needs a GitHub link. The static-export design deploys to ordinary Firebase Hosting instead (ADR-001). This is the staging-only alternative; it is a reported decision, not a silent switch | Say so if you specifically want App Hosting in `asia-southeast1` later |
-| 7 | **Business decisions (non-blocking)** | Prices, GST, refund policy, brand copy are deliberately unset/unpublished | Decide when ready; the system holds them as configurable data |
+| 1 | Install **Node.js 24 LTS** and **Eclipse Temurin JDK 21+**, open a NEW PowerShell | your PC | the emulator rules tests |
+| 2 | Run the local gate and paste me the **whole output**: `powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\verify-readiness.ps1` | repo folder | proves the 57 rules tests pass on the real emulator |
+| 3 | Enable **Email/Password** sign-in in **ugc-mock-test-staging** only. Leave **Anonymous** off | Firebase console → Authentication → Sign-in method | students can register |
+| 4 | Run the read-only cloud preflight (runbook section 3) and paste the output: `login:list`, `apps:list`, `apps:sdkconfig` (all with `--project ugc-mock-test-staging`) | PowerShell | confirms account, project id and number, gives the public web API key |
+| 5 | Check billing in the console (Blaze linked, ₹1,000 alert-only budget, month-to-date cost) and tell me the number | Google Cloud console → Billing | cost guard |
+| 6 | Say **"go deploy staging"** once steps 2–5 look good (or run runbook section 5 yourself) | chat | the actual deployment |
 
-Not blockers, but still open: verification of the UGC-NET syllabus and exam pattern against official NTA documents (nothing is labelled "Fully verified"), real question content (only 10 original + 150 synthetic demo items exist), Razorpay test keys (payment phase), Vertex AI enablement (live AI is off).
+Later (not blocking the first staging release): choose the owner email for `OWNER_BOOTSTRAP_EMAIL`; App Check reCAPTCHA Enterprise site key; private GitHub repo.
+
+## Why I cannot do steps 2–6 myself right now
+
+* The PC bridge to your computer was offline on every attempt in this session, so I could not run anything on Windows or the Firebase CLI.
+* My sandbox cannot reach Google download or API hosts, so I cannot run the emulator or any cloud command from here.
