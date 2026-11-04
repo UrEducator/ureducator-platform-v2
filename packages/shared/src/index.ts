@@ -9,3 +9,4 @@ export * from './analytics';
 export * from './spacedRepetition';
 export * from './studyPlan';
 export * from './catalogue';
+export * from './adminSchemas';

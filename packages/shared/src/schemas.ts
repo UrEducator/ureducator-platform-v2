@@ -32,7 +32,7 @@ export const ProvenanceSchema = z.object({
   officialPyqVerified: z.boolean().default(false),
 });
 
-export const QuestionVersionSchema = z.object({
+export const QuestionVersionBase = z.object({
   version: z.number().int().min(1),
   content: QuestionContentSchema,
   correct: z.array(z.string().regex(/^[a-f]$/)).min(1).max(LIMITS.maxOptions),
@@ -40,13 +40,16 @@ export const QuestionVersionSchema = z.object({
   provenance: ProvenanceSchema,
   createdBy: z.string(),
   reviewedBy: z.string().optional(),
-}).superRefine((q, ctx) => {
+});
+/** Cross-field rules, shared by the full schema and by the admin input (zod 4 cannot .pick() a refined object). */
+export function refineQuestion(q: { content: { type: string; options: { id: string }[] }; correct: string[]; provenance: { kind: string; officialPyqVerified?: boolean | undefined } }, ctx: z.RefinementCtx) {
   const optionIds = new Set(q.content.options.map((o) => o.id));
   if (optionIds.size !== q.content.options.length) ctx.addIssue({ code: 'custom', message: 'duplicate option ids' });
   for (const c of q.correct) if (!optionIds.has(c)) ctx.addIssue({ code: 'custom', message: `correct answer ${c} is not an option` });
   if (q.content.type !== 'mcq_multi' && q.correct.length !== 1) ctx.addIssue({ code: 'custom', message: 'single-answer question must have exactly one correct option' });
   if (q.provenance.kind === 'official_pyq' && !q.provenance.officialPyqVerified) ctx.addIssue({ code: 'custom', message: 'official PYQ requires verified provenance' });
-});
+}
+export const QuestionVersionSchema = QuestionVersionBase.superRefine(refineQuestion);
 export type QuestionVersion = z.infer<typeof QuestionVersionSchema>;
 
 export const QuestionMetaSchema = z.object({
@@ -113,7 +116,7 @@ export const LeadInput = z.object({
   contactPreference: z.enum(['email', 'whatsapp', 'telegram', 'phone']).default('email'),
 }).refine((v) => v.email || v.phone, { message: 'email or phone required' });
 export const AssignRoleInput = z.object({ uid: id, role: z.enum(ROLES).nullable() });
-export const MentorAskInput = z.object({ question: z.string().min(3).max(1500), topicId: id.optional(), mode: z.enum(['concept', 'question_explanation', 'revision', 'study_plan']).default('concept') });
+export const MentorAskInput = z.object({ question: z.string().min(3).max(1500), topicId: id.optional(), mode: z.enum(['concept', 'question_explanation', 'revision', 'study_plan']).default('concept'), ref: z.object({ sessionId: id, qid: id }).optional() });
 export const VerifyReportInput = z.object({ reportId: z.string().regex(/^UR-[A-Z0-9]{8,24}$/), sig: z.string().regex(/^[a-f0-9]{16,64}$/) });
 
 /* ---------- Profile (user-editable fields only) ---------- */
@@ -126,4 +129,7 @@ export const ProfileUpdateSchema = z.object({
   onboardingComplete: z.boolean(),
 });
 export type ProfileUpdate = z.infer<typeof ProfileUpdateSchema>;
+/** Partial and strict: unknown or privileged keys (role, entitlements, email) are rejected, not ignored. */
+export const ProfilePatchSchema = ProfileUpdateSchema.partial().strict().refine((v) => Object.keys(v).length > 0, { message: 'nothing to update' });
+export type ProfilePatch = z.infer<typeof ProfilePatchSchema>;
 export const PROFILE_FIELDS = Object.keys(ProfileUpdateSchema.shape) as (keyof ProfileUpdate)[];

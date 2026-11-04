@@ -35,14 +35,17 @@ export class MemoryStore implements Store {
     const prev = this.lock; let release!: () => void;
     this.lock = new Promise((r) => (release = r)); await prev;
     try {
-      const pending: (() => void)[] = [];
+      const pending: (() => void)[] = []; const createdPaths: string[] = [];
       const tx: TxStore = {
         get: async (p) => this.get(p),
         set: (p, d) => { pending.push(() => { this.docs.set(p, structuredClone(d) as Record<string, unknown>); this.writes++; }); },
         merge: (p, d) => { pending.push(() => { this.docs.set(p, deepMerge(this.docs.get(p) ?? {}, d as Record<string, unknown>)); this.writes++; }); },
-        create: (p, d) => { pending.push(() => { if (this.docs.has(p)) throw new Error('ALREADY_EXISTS'); this.docs.set(p, structuredClone(d) as Record<string, unknown>); this.writes++; }); },
+        create: (p, d) => { createdPaths.push(p); pending.push(() => { this.docs.set(p, structuredClone(d) as Record<string, unknown>); this.writes++; }); },
       };
       const out = await fn(tx);
+      // Firestore commits atomically: check every create() precondition before applying anything.
+      const creates = new Set<string>();
+      for (const c of createdPaths) { if (this.docs.has(c) || creates.has(c)) throw new Error('ALREADY_EXISTS'); creates.add(c); }
       for (const w of pending) w(); // commit only when the callback succeeded
       return out;
     } finally { release(); }
