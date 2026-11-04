@@ -1,0 +1,169 @@
+import { describe, expect, it } from 'vitest';
+import { getExamResult, getSession, saveResponses, startExam, submitExam, sessionIdFor } from '../services/exam';
+import { P } from '../domain/paths';
+import { alice, bob, resp, seed } from './fixtures';
+
+const T0 = 1_800_000_000_000;
+const mkDeps = async (o = {}) => { let now = T0; const store = await seed(o); return { d: { store, clock: () => now }, store, tick: (ms: number) => (now += ms), at: (ms: number) => (now = ms) }; };
+const start = (d: Awaited<ReturnType<typeof mkDeps>>['d'], actor = alice, id = 'r1') => startExam(d, actor, { mockTestId: 'mt1', language: 'en', clientRequestId: id });
+
+describe('startExam', () => {
+  it('creates a server-timed session and never returns answers or explanations', async () => {
+    const { d } = await mkDeps();
+    const p = await start(d);
+    expect(p.questions).toHaveLength(5);
+    expect(p.deadlineMs).toBe(T0 + 10 * 60_000);
+    const json = JSON.stringify(p);
+    expect(json).not.toMatch(/"correct":\[|"correctOptions"|explanation|because q|_correct/);
+    expect(p.blueprint.marking).toEqual({ correct: 2, incorrect: 0 });
+  });
+  it('is idempotent for the same client request id and resumes an open attempt', async () => {
+    const { d, store } = await mkDeps();
+    const a = await start(d, alice, 'r1');
+    const b = await start(d, alice, 'r1');
+    const c = await start(d, alice, 'r2'); // different request, same test, attempt still open -> resumed
+    expect(b.sessionId).toBe(a.sessionId);
+    expect(c.sessionId).toBe(a.sessionId);
+    expect(await store.count('examSessions', [])).toBe(1);
+  });
+  it('requires a verified email, a published test and entitlement for paid tests', async () => {
+    const { d } = await mkDeps();
+    await expect(start(d, { uid: 'x', emailVerified: false })).rejects.toMatchObject({ reason: 'EMAIL_NOT_VERIFIED' });
+    const draft = await mkDeps({ status: 'draft' });
+    await expect(start(draft.d)).rejects.toMatchObject({ reason: 'TEST_NOT_AVAILABLE' });
+    const paid = await mkDeps({ access: 'paid' });
+    await expect(start(paid.d)).rejects.toMatchObject({ reason: 'NOT_ENTITLED' });
+    await paid.store.set(P.subscription('alice'), { status: 'active', expiresAtMs: T0 + 1e9, entitlements: ['all'] });
+    await expect(start(paid.d)).resolves.toBeTruthy();
+    await paid.store.set(P.subscription('bob'), { status: 'active', expiresAtMs: T0 - 1, entitlements: ['all'] });
+    await expect(start(paid.d, bob)).rejects.toMatchObject({ reason: 'NOT_ENTITLED' });
+  });
+  it('honours the schedule window', async () => {
+    const { d } = await mkDeps({ opensAtMs: T0 + 1000 });
+    await expect(start(d)).rejects.toMatchObject({ reason: 'TEST_NOT_OPEN' });
+    const closed = await mkDeps({ closesAtMs: T0 - 1000 });
+    await expect(start(closed.d)).rejects.toMatchObject({ reason: 'TEST_CLOSED' });
+  });
+  it('rate limits attempts per hour', async () => {
+    const { d, tick } = await mkDeps();
+    for (let i = 0; i < 6; i++) { const p = await start(d, alice, `r${i}`); await submitExam(d, alice, { sessionId: p.sessionId, clientRequestId: `s${i}`, finalSeq: 0, reason: 'manual' }); tick(1000); }
+    await expect(start(d, alice, 'r-extra')).rejects.toMatchObject({ reason: 'TOO_MANY_ATTEMPTS' });
+  });
+  it('refuses to open a paper that does not match its blueprint', async () => {
+    const { d, store } = await mkDeps();
+    const paper = (await store.get<{ questions: unknown[] }>(P.paper('p1')))!;
+    await store.merge(P.paper('p1'), { questions: paper.questions.slice(0, 4) });
+    await store.set(P.paper('p1'), { ...paper, questions: paper.questions.slice(0, 4) });
+    await expect(start(d)).rejects.toMatchObject({ reason: 'PAPER_BLUEPRINT_MISMATCH' });
+  });
+});
+
+describe('saveResponses', () => {
+  it('persists answers, ignores duplicate and stale sequence numbers', async () => {
+    const { d } = await mkDeps(); const p = await start(d);
+    expect(await saveResponses(d, alice, { sessionId: p.sessionId, seq: 1, responses: [resp('q1', ['a'])] })).toMatchObject({ ok: true, lastSeq: 1 });
+    expect(await saveResponses(d, alice, { sessionId: p.sessionId, seq: 1, responses: [resp('q1', ['b'])] })).toMatchObject({ duplicate: true, lastSeq: 1 });
+    expect(await saveResponses(d, alice, { sessionId: p.sessionId, seq: 3, responses: [resp('q2', ['b'])] })).toMatchObject({ lastSeq: 3 });
+    expect(await saveResponses(d, alice, { sessionId: p.sessionId, seq: 2, responses: [resp('q2', ['d'])] })).toMatchObject({ lastSeq: 3 });
+    const got = await getSession(d, alice, p.sessionId);
+    expect(got.responses['q1']?.selected).toEqual(['a']);
+    expect(got.responses['q2']?.selected).toEqual(['b']);
+  });
+  it('rejects unknown questions and options, multiple picks on single-answer questions, and foreign sessions', async () => {
+    const { d } = await mkDeps(); const p = await start(d);
+    await expect(saveResponses(d, alice, { sessionId: p.sessionId, seq: 1, responses: [resp('nope', ['a'])] })).rejects.toMatchObject({ reason: 'UNKNOWN_QUESTION' });
+    await expect(saveResponses(d, alice, { sessionId: p.sessionId, seq: 1, responses: [resp('q1', ['z'])] })).rejects.toMatchObject({ reason: 'UNKNOWN_OPTION' });
+    await expect(saveResponses(d, alice, { sessionId: p.sessionId, seq: 1, responses: [resp('q1', ['a', 'b'])] })).rejects.toMatchObject({ reason: 'TOO_MANY_OPTIONS' });
+    await expect(saveResponses(d, bob, { sessionId: p.sessionId, seq: 1, responses: [resp('q1', ['a'])] })).rejects.toMatchObject({ reason: 'SESSION_NOT_FOUND' });
+    await expect(saveResponses(d, alice, { sessionId: p.sessionId, seq: 1, responses: [resp('q4', ['a', 'c'])] })).resolves.toMatchObject({ ok: true });
+  });
+  it('rejects saves after the deadline (timer tampering cannot extend the exam)', async () => {
+    const { d, tick } = await mkDeps(); const p = await start(d);
+    tick(10 * 60_000 + 1);
+    expect(await saveResponses(d, alice, { sessionId: p.sessionId, seq: 1, responses: [resp('q1', ['a'])] })).toMatchObject({ ok: false, status: 'deadline_passed' });
+  });
+});
+
+describe('submitExam', () => {
+  it('scores on the server and ignores any client-side notion of score', async () => {
+    const { d } = await mkDeps(); const p = await start(d);
+    const out = await submitExam(d, alice, { sessionId: p.sessionId, clientRequestId: 's1', finalSeq: 1, reason: 'manual', responses: [resp('q1', ['a']), resp('q2', ['a']), resp('q4', ['a', 'c'])] });
+    expect(out.summary).toMatchObject({ marks: 4, maxMarks: 10, correct: 2, incorrect: 1, unattempted: 2 });
+  });
+  it('is idempotent: duplicate submissions return the same result and write once', async () => {
+    const { d, store } = await mkDeps(); const p = await start(d);
+    const a = await submitExam(d, alice, { sessionId: p.sessionId, clientRequestId: 's1', finalSeq: 0, reason: 'manual', responses: [resp('q1', ['a'])] });
+    const writes = store.writes;
+    const b = await submitExam(d, alice, { sessionId: p.sessionId, clientRequestId: 's2', finalSeq: 0, reason: 'manual', responses: [resp('q1', ['b'])] });
+    expect(b.alreadySubmitted).toBe(true);
+    expect(b.summary).toEqual(a.summary);
+    expect(store.writes).toBe(writes);
+    const snap = await store.get<{ testsTaken: number }>(P.snapshot('alice'));
+    expect(snap?.testsTaken).toBe(1);
+  });
+  it('handles concurrent duplicate submissions exactly once', async () => {
+    const { d, store } = await mkDeps(); const p = await start(d);
+    const input = { sessionId: p.sessionId, clientRequestId: 's', finalSeq: 0, reason: 'manual' as const, responses: [resp('q1', ['a'])] };
+    const all = await Promise.all([submitExam(d, alice, input), submitExam(d, alice, input), submitExam(d, alice, input)]);
+    expect(all.filter((x) => !x.alreadySubmitted)).toHaveLength(1);
+    expect((await store.get<{ testsTaken: number }>(P.snapshot('alice')))?.testsTaken).toBe(1);
+  });
+  it('uses only stored answers when the final request arrives long after the deadline', async () => {
+    const { d, tick } = await mkDeps(); const p = await start(d);
+    await saveResponses(d, alice, { sessionId: p.sessionId, seq: 1, responses: [resp('q1', ['a'])] });
+    tick(10 * 60_000 + 31_000);
+    const out = await submitExam(d, alice, { sessionId: p.sessionId, clientRequestId: 's', finalSeq: 2, reason: 'deadline', responses: [resp('q2', ['b']), resp('q3', ['c'])] });
+    expect(out.summary).toMatchObject({ correct: 1, reason: 'deadline' });
+  });
+  it('accepts the final autosave inside the grace window and marks it as deadline submission', async () => {
+    const { d, tick } = await mkDeps(); const p = await start(d);
+    tick(10 * 60_000 + 5_000);
+    const out = await submitExam(d, alice, { sessionId: p.sessionId, clientRequestId: 's', finalSeq: 1, reason: 'deadline', responses: [resp('q2', ['b'])] });
+    expect(out.summary).toMatchObject({ correct: 1, reason: 'deadline' });
+  });
+  it('lets only the owner submit', async () => {
+    const { d } = await mkDeps(); const p = await start(d);
+    await expect(submitExam(d, bob, { sessionId: p.sessionId, clientRequestId: 's', finalSeq: 0, reason: 'manual' })).rejects.toMatchObject({ reason: 'SESSION_NOT_FOUND' });
+  });
+  it('creates Error Notebook entries for wrong and flagged answers only', async () => {
+    const { d, store } = await mkDeps(); const p = await start(d);
+    await submitExam(d, alice, { sessionId: p.sessionId, clientRequestId: 's', finalSeq: 0, reason: 'manual', responses: [resp('q1', ['a']), resp('q2', ['a']), resp('q3', [], { marked: true })] });
+    const rows = await store.list('errorNotebook/alice/entries', { limit: 50 });
+    expect(rows.map((r) => r.id).sort()).toEqual(['p1_q2', 'p1_q3']);
+  });
+});
+
+describe('expiry and results', () => {
+  it('auto-finalises an abandoned attempt when read after the deadline', async () => {
+    const { d, tick, store } = await mkDeps(); const p = await start(d);
+    await saveResponses(d, alice, { sessionId: p.sessionId, seq: 1, responses: [resp('q1', ['a'])] });
+    tick(10 * 60_000 + 60_000);
+    await expect(getSession(d, alice, p.sessionId)).rejects.toMatchObject({ reason: 'SESSION_ENDED' });
+    const res = await getExamResult(d, alice, p.sessionId);
+    expect(res.summary.correct).toBe(1);
+    expect((await store.get<{ status: string }>(P.session(p.sessionId)))?.status).toBe('expired_finalised');
+  });
+  it('hides the result while the exam is running and reveals answers afterwards', async () => {
+    const { d } = await mkDeps(); const p = await start(d);
+    await expect(getExamResult(d, alice, p.sessionId)).rejects.toMatchObject({ reason: 'EXAM_IN_PROGRESS' });
+    await submitExam(d, alice, { sessionId: p.sessionId, clientRequestId: 's', finalSeq: 1, reason: 'manual', responses: [resp('q1', ['a'])] });
+    const res = await getExamResult(d, alice, p.sessionId);
+    expect(res.review).toHaveLength(5);
+    expect(res.review?.[0]).toMatchObject({ correct: ['a'], outcome: 'correct' });
+    await expect(getExamResult(d, bob, p.sessionId)).rejects.toMatchObject({ reason: 'SESSION_NOT_FOUND' });
+  });
+  it('keeps answers locked until the window closes when the test uses after_close reveal', async () => {
+    const { d, tick } = await mkDeps({ revealPolicy: 'after_close', closesAtMs: T0 + 3_600_000 });
+    const p = await start(d);
+    await submitExam(d, alice, { sessionId: p.sessionId, clientRequestId: 's', finalSeq: 0, reason: 'manual' });
+    const locked = await getExamResult(d, alice, p.sessionId);
+    expect(locked.review).toBeNull();
+    expect(JSON.stringify(locked)).not.toMatch(/"correct":\[|because/);
+    tick(3_600_001);
+    expect((await getExamResult(d, alice, p.sessionId)).review).not.toBeNull();
+  });
+  it('derives session ids deterministically per user and request', () => {
+    expect(sessionIdFor('a', 'x')).toBe(sessionIdFor('a', 'x'));
+    expect(sessionIdFor('a', 'x')).not.toBe(sessionIdFor('b', 'x'));
+  });
+});
