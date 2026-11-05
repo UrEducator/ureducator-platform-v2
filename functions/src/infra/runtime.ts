@@ -9,7 +9,8 @@ import type { Deps } from '../services/exam';
 export function defaultApp(): App {
   try {
     return getApp();
-  } catch {
+  } catch (e) {
+    if ((e as { code?: unknown }).code !== 'app/no-app') throw e;
     return initializeApp();
   }
 }

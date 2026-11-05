@@ -7,7 +7,7 @@ import type { z } from 'zod';
 import type { SaveQuestionInput, UpsertCatalogueInput, UpsertMockTestInput, AdminListInput, UpsertPlanInput, UpsertBlueprintInput } from '@ureducator/shared';
 import type { Actor, MockTestDoc } from '../domain/types';
 import { P } from '../domain/paths';
-import { err } from '../infra/errors';
+import { err, AppError } from '../infra/errors';
 import { audit } from '../infra/audit';
 import type { Deps } from './exam';
 
@@ -143,13 +143,67 @@ export async function assignRole(d: Deps, auth: AuthPort, a: StaffActor, i: { ui
   return { uid: i.uid, role: i.role };
 }
 
-/** One-time owner bootstrap: only the verified email configured at deploy time can claim it, and only once. */
+export interface OwnerClaimRecord {
+  uid: string;
+  email: string;
+  atMs: number;
+  status: 'pending' | 'complete';
+  completedAtMs?: number;
+}
+
+/** One-time owner bootstrap: only the verified email configured at deploy time can claim it, and only once. Resumable if role assignment fails. */
 export async function claimOwner(d: Deps, auth: AuthPort, a: StaffActor, configuredEmail: string) {
   if (!configuredEmail) throw err('failed-precondition', 'BOOTSTRAP_DISABLED', 'Owner bootstrap is not configured.');
-  if (!a.emailVerified || !a.email || a.email.toLowerCase() !== configuredEmail.toLowerCase()) throw err('permission-denied', 'FORBIDDEN', 'This account cannot claim ownership.');
-  await d.store.transact(async (tx) => { tx.create(P.setting('ownerClaim'), { uid: a.uid, atMs: d.clock() }); }).catch(() => { throw err('already-exists', 'OWNER_ALREADY_CLAIMED', 'Ownership has already been claimed.'); });
+  if (!a.emailVerified || !a.email || a.email.toLowerCase() !== configuredEmail.toLowerCase()) {
+    throw err('permission-denied', 'FORBIDDEN', 'This account cannot claim ownership.');
+  }
+
+  const claimPath = P.setting('ownerClaim');
+
+  // Phase 1: Atomically claim or resume ownership
+  await d.store.transact(async (tx) => {
+    const existing = await tx.get<Partial<OwnerClaimRecord>>(claimPath);
+    if (!existing) {
+      // First attempt: create pending claim bound to this user
+      tx.create(claimPath, {
+        uid: a.uid,
+        email: a.email!.toLowerCase(),
+        atMs: d.clock(),
+        status: 'pending',
+      });
+      return;
+    }
+
+    // Already completed or legacy claim without status: cannot be claimed again
+    if (existing.status === 'complete' || (!existing.status && existing.uid)) {
+      throw err('already-exists', 'OWNER_ALREADY_CLAIMED', 'Ownership has already been claimed.');
+    }
+
+    // Pending claim exists: only the same UID may resume
+    if (existing.uid !== a.uid) {
+      throw err('already-exists', 'OWNER_ALREADY_CLAIMED', 'Ownership has already been claimed.');
+    }
+
+    // Same UID resuming a pending claim: allowed to proceed
+  }).catch((e: unknown) => {
+    if (e instanceof AppError) throw e;
+    const c = (e as { code?: unknown }).code;
+    if (c === 6 || c === 'already-exists' || c === 'ALREADY_EXISTS') {
+      throw err('already-exists', 'OWNER_ALREADY_CLAIMED', 'Ownership has already been claimed.');
+    }
+    throw e;
+  });
+
+  // Phase 2: Role assignment (idempotent, retried safely on resumption)
   await auth.setRole(a.uid, 'owner');
   await d.store.set(`roles/${a.uid}`, { role: 'owner', assignedBy: a.uid, assignedAtMs: d.clock() });
+
+  // Phase 3: Mark claim as complete
+  await d.store.merge(claimPath, {
+    status: 'complete',
+    completedAtMs: d.clock(),
+  });
+
   await log(d, { ...a, role: 'owner' }, 'role.owner_claimed', a.uid);
   return { uid: a.uid, role: 'owner' as const };
 }

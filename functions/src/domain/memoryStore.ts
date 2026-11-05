@@ -45,7 +45,14 @@ export class MemoryStore implements Store {
       const out = await fn(tx);
       // Firestore commits atomically: check every create() precondition before applying anything.
       const creates = new Set<string>();
-      for (const c of createdPaths) { if (this.docs.has(c) || creates.has(c)) throw new Error('ALREADY_EXISTS'); creates.add(c); }
+      for (const c of createdPaths) {
+        if (this.docs.has(c) || creates.has(c)) {
+          const err = new Error('ALREADY_EXISTS');
+          (err as unknown as { code: number }).code = 6;
+          throw err;
+        }
+        creates.add(c);
+      }
       for (const w of pending) w(); // commit only when the callback succeeded
       return out;
     } finally { release(); }

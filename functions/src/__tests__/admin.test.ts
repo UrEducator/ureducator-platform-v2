@@ -205,16 +205,139 @@ describe('roles', () => {
     expect(await e.store.get('roles/new1')).toBeNull();
     expect(auth.calls.at(-1)).toEqual(['new1', null]);
   });
-  it('claimOwner: disabled until configured, verified-email only, and only once', async () => {
-    const e = mk(); const auth = authPort();
-    const me = as('me', undefined, { email: 'Founder@Example.test' });
-    await expect(admin.claimOwner(e.d, auth, me, '')).rejects.toMatchObject({ reason: 'BOOTSTRAP_DISABLED' });
-    await expect(admin.claimOwner(e.d, auth, as('other', undefined, { email: 'other@example.test' }), 'founder@example.test')).rejects.toMatchObject({ reason: 'FORBIDDEN' });
-    await expect(admin.claimOwner(e.d, auth, { ...me, emailVerified: false }, 'founder@example.test')).rejects.toMatchObject({ reason: 'FORBIDDEN' });
-    await expect(admin.claimOwner(e.d, auth, me, 'founder@example.test')).resolves.toMatchObject({ role: 'owner' });
-    expect(auth.calls).toEqual([['me', 'owner']]);
-    await expect(admin.claimOwner(e.d, auth, as('me2', undefined, { email: 'founder@example.test' }), 'founder@example.test')).rejects.toMatchObject({ reason: 'OWNER_ALREADY_CLAIMED' });
-    expect(auth.calls).toHaveLength(1);
+  describe('claimOwner resumable bootstrap', () => {
+    it('rejects when bootstrap is disabled', async () => {
+      const e = mk(); const auth = authPort();
+      const me = as('me', undefined, { email: 'Founder@Example.test' });
+      await expect(admin.claimOwner(e.d, auth, me, '')).rejects.toMatchObject({ reason: 'BOOTSTRAP_DISABLED' });
+    });
+
+    it('rejects unverified email', async () => {
+      const e = mk(); const auth = authPort();
+      const me = as('me', undefined, { email: 'founder@example.test', emailVerified: false });
+      await expect(admin.claimOwner(e.d, auth, me, 'founder@example.test')).rejects.toMatchObject({ reason: 'FORBIDDEN' });
+    });
+
+    it('rejects wrong email address', async () => {
+      const e = mk(); const auth = authPort();
+      const other = as('other', undefined, { email: 'other@example.test' });
+      await expect(admin.claimOwner(e.d, auth, other, 'founder@example.test')).rejects.toMatchObject({ reason: 'FORBIDDEN' });
+    });
+
+    it('first claim completes successfully, writes claim record, role doc and audit log', async () => {
+      const e = mk(); const auth = authPort();
+      const me = as('me', undefined, { email: 'Founder@Example.test' });
+      const res = await admin.claimOwner(e.d, auth, me, 'founder@example.test');
+      expect(res).toEqual({ uid: 'me', role: 'owner' });
+      expect(auth.calls).toEqual([['me', 'owner']]);
+
+      // Check ownerClaim record has status complete
+      const claim = await e.store.get<admin.OwnerClaimRecord>(P.setting('ownerClaim'));
+      expect(claim).toMatchObject({
+        uid: 'me',
+        email: 'founder@example.test',
+        status: 'complete',
+      });
+      expect(claim?.completedAtMs).toBeDefined();
+
+      // Check role document
+      const roleDoc = await e.store.get<{ role: Role; assignedBy: string }>('roles/me');
+      expect(roleDoc).toMatchObject({ role: 'owner', assignedBy: 'me' });
+    });
+
+    it('duplicate completed claim is rejected with OWNER_ALREADY_CLAIMED', async () => {
+      const e = mk(); const auth = authPort();
+      const me = as('me', undefined, { email: 'founder@example.test' });
+      await admin.claimOwner(e.d, auth, me, 'founder@example.test');
+
+      // Retry by same UID
+      await expect(admin.claimOwner(e.d, auth, me, 'founder@example.test')).rejects.toMatchObject({ reason: 'OWNER_ALREADY_CLAIMED' });
+      // Retry by different UID with same email
+      const me2 = as('me2', undefined, { email: 'founder@example.test' });
+      await expect(admin.claimOwner(e.d, auth, me2, 'founder@example.test')).rejects.toMatchObject({ reason: 'OWNER_ALREADY_CLAIMED' });
+      expect(auth.calls).toHaveLength(1);
+    });
+
+    it('handles legacy claim document without status field', async () => {
+      const e = mk(); const auth = authPort();
+      await e.store.set(P.setting('ownerClaim'), { uid: 'me', atMs: 12345 });
+      const me = as('me', undefined, { email: 'founder@example.test' });
+      await expect(admin.claimOwner(e.d, auth, me, 'founder@example.test')).rejects.toMatchObject({ reason: 'OWNER_ALREADY_CLAIMED' });
+    });
+
+    it('recovers when role assignment fails: leaves status pending, allows same UID to resume', async () => {
+      const e = mk();
+      let fail = true;
+      const flappyAuth = {
+        calls: [] as [string, Role | null][],
+        setRole: async (uid: string, r: Role | null) => {
+          if (fail) throw new Error('Auth service network glitch');
+          flappyAuth.calls.push([uid, r]);
+        },
+      };
+
+      const me = as('me', undefined, { email: 'founder@example.test' });
+
+      // First attempt fails during auth.setRole
+      await expect(admin.claimOwner(e.d, flappyAuth, me, 'founder@example.test')).rejects.toThrow('Auth service network glitch');
+
+      // Claim record must be in pending status
+      const pendingClaim = await e.store.get<admin.OwnerClaimRecord>(P.setting('ownerClaim'));
+      expect(pendingClaim).toMatchObject({
+        uid: 'me',
+        email: 'founder@example.test',
+        status: 'pending',
+      });
+      expect(pendingClaim?.completedAtMs).toBeUndefined();
+
+      // Another UID cannot take over pending claim
+      const attacker = as('attacker', undefined, { email: 'founder@example.test' });
+      await expect(admin.claimOwner(e.d, flappyAuth, attacker, 'founder@example.test')).rejects.toMatchObject({ reason: 'OWNER_ALREADY_CLAIMED' });
+
+      // Same UID retries when auth recovers: succeeds
+      fail = false;
+      const res = await admin.claimOwner(e.d, flappyAuth, me, 'founder@example.test');
+      expect(res).toEqual({ uid: 'me', role: 'owner' });
+      expect(flappyAuth.calls).toEqual([['me', 'owner']]);
+
+      // Claim is now marked complete
+      const completedClaim = await e.store.get<admin.OwnerClaimRecord>(P.setting('ownerClaim'));
+      expect(completedClaim).toMatchObject({
+        uid: 'me',
+        status: 'complete',
+      });
+      expect(completedClaim?.completedAtMs).toBeDefined();
+    });
+
+    it('rejects concurrent claim attempts, allowing only one winner', async () => {
+      const e = mk(); const auth = authPort();
+      const me1 = as('me1', undefined, { email: 'founder@example.test' });
+      const me2 = as('me2', undefined, { email: 'founder@example.test' });
+
+      const results = await Promise.allSettled([
+        admin.claimOwner(e.d, auth, me1, 'founder@example.test'),
+        admin.claimOwner(e.d, auth, me2, 'founder@example.test'),
+      ]);
+
+      const fulfilled = results.filter((r) => r.status === 'fulfilled');
+      const rejected = results.filter((r) => r.status === 'rejected');
+      expect(fulfilled).toHaveLength(1);
+      expect(rejected).toHaveLength(1);
+      expect((rejected[0] as PromiseRejectedResult).reason).toMatchObject({ reason: 'OWNER_ALREADY_CLAIMED' });
+    });
+
+    it('rethrows unrelated transaction failure without masking as OWNER_ALREADY_CLAIMED', async () => {
+      const e = mk(); const auth = authPort();
+      const me = as('me', undefined, { email: 'founder@example.test' });
+      // Inject unexpected error in store.transact
+      e.store.transact = async () => {
+        const err = new Error('Firestore connection unavailable');
+        (err as unknown as { code: number }).code = 14; // UNAVAILABLE, not 6
+        throw err;
+      };
+
+      await expect(admin.claimOwner(e.d, auth, me, 'founder@example.test')).rejects.toThrow('Firestore connection unavailable');
+    });
   });
 });
 

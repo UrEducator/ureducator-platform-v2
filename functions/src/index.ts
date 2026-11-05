@@ -8,11 +8,14 @@ import { CONFIG, assertEnvironment } from './infra/config';
 import { callable } from './infra/callable';
 import { defaultApp, deps } from './infra/runtime';
 import { rateLimit } from './infra/ratelimit';
-
-defaultApp();
 import { AppError } from './infra/errors';
 import { ENDPOINTS as E, SECRETS, payCfg } from './endpoints';
 import * as pay from './services/payments';
+
+// Eagerly initialise the [DEFAULT] Firebase app at module load time so that
+// firebase-functions/v2 callable token verification middleware reuses it and
+// never creates an isolated named app (__FIREBASE_FUNCTIONS_SDK__).
+defaultApp();
 
 /** Secrets are declared (and therefore required in Secret Manager) only when payments are enabled for this deployment. */
 const secretFor = (names: readonly string[]) => (CONFIG.paymentsEnabled ? names.map((n) => defineSecret(n)) : []);
