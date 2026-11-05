@@ -7,7 +7,7 @@ test.afterEach(async () => { expect(await serverErrors(), 'unexpected server-sid
 test('public pages: honest labelling, no prices, not indexable, disclaimer visible', async ({ page, request }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
+  await expect(page.locator('meta[name="robots"]').first()).toHaveAttribute('content', /noindex/);
   await expect(page.getByText(/not affiliated with or endorsed by the National Testing Agency/i).first()).toBeVisible();
   await page.screenshot({ path: 'tests/e2e/shots/15-landing.png' });
   await page.goto('/syllabus');

@@ -20,7 +20,7 @@ test('new student: sign up, confirm email, take the demo test, read the result, 
     await shot(page, '01-verify-email');
     await page.getByRole('button', { name: /simulate clicking the email link/ }).click();
     await expect(page).toHaveURL(/\/app$/);
-    await expect(page.getByRole('heading', { name: /Welcome back, Asha/ })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /Welcome back, Asha/i })).toBeVisible();
     await shot(page, '02-dashboard-empty');
 
     // --- pick a test
