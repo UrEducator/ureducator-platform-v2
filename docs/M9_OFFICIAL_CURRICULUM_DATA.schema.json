@@ -1,0 +1,1414 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ureducator:m9:official-curriculum-data:1.0.0",
+  "title": "UrEducator M9.0-A official curriculum dataset",
+  "description": "UGC NET > Paper > Subject > Unit > Topic > Subtopic, with source provenance and verification status at every level. Official text lives in unit.officialText (verbatim statements); topics and subtopics are an editorial layer that must cite it through officialRefs. Field names follow M9_CONTENT_DATA_DICTIONARY (officialText, officialRefs, origin official|editorial).",
+  "type": "object",
+  "required": [
+    "dataset",
+    "verificationLevels",
+    "authorities",
+    "sources",
+    "syllabusVersions",
+    "amendmentCheck",
+    "gaps",
+    "coverage",
+    "documents",
+    "ugcNet"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "dataset": {
+      "type": "object",
+      "required": [
+        "id",
+        "schemaVersion",
+        "datasetVersion",
+        "releaseStatus",
+        "generatedOn",
+        "hierarchy",
+        "importPolicy"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "schemaVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "datasetVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "releaseStatus": {
+          "enum": [
+            "SKELETON_UNVERIFIED",
+            "PARTIAL_VERIFIED",
+            "VERIFIED"
+          ]
+        },
+        "generatedOn": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "hierarchy": {
+          "type": "string"
+        },
+        "importPolicy": {
+          "type": "object",
+          "required": [
+            "importAsOfficialContent",
+            "allowedUses",
+            "forbiddenUses"
+          ],
+          "properties": {
+            "importAsOfficialContent": {
+              "type": "boolean"
+            },
+            "allowedUses": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "forbiddenUses": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "verificationLevels": {
+      "type": "object",
+      "required": [
+        "V0",
+        "V1",
+        "V2",
+        "V3"
+      ]
+    },
+    "authorities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "role"
+        ]
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "syllabusVersions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/syllabusVersion"
+      }
+    },
+    "subjectCountReconciliation": {
+      "type": "object"
+    },
+    "amendmentCheck": {
+      "type": "object",
+      "required": [
+        "question",
+        "checkedSources",
+        "notReadable",
+        "conclusion",
+        "conclusionLevel"
+      ],
+      "properties": {
+        "conclusionLevel": {
+          "enum": [
+            "ABSENCE_OF_EVIDENCE_ONLY",
+            "AMENDMENT_FOUND",
+            "NO_AMENDMENT_CONFIRMED_V2"
+          ]
+        },
+        "checkedSources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "source",
+              "finding"
+            ],
+            "properties": {
+              "source": {
+                "$ref": "#/$defs/sourceId"
+              },
+              "finding": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "notReadable": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "source",
+              "why"
+            ],
+            "properties": {
+              "source": {
+                "$ref": "#/$defs/sourceId"
+              },
+              "why": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gaps": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/gap"
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "required": [
+        "subjectRows",
+        "documents",
+        "unitRecords",
+        "recordsAtV2OrAbove"
+      ]
+    },
+    "documents": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/document"
+      }
+    },
+    "ugcNet": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "papers",
+        "verification",
+        "sourceRefs"
+      ],
+      "properties": {
+        "id": {
+          "const": "ugc-net"
+        },
+        "name": {
+          "type": "string"
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        },
+        "sourceRefs": {
+          "$ref": "#/$defs/sourceRefs"
+        },
+        "papers": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "$ref": "#/$defs/paper"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "verification": {
+      "enum": [
+        "V0",
+        "V1",
+        "V2",
+        "V3"
+      ]
+    },
+    "sourceId": {
+      "type": "string",
+      "pattern": "^S[0-9]+[a-z]?$"
+    },
+    "docId": {
+      "type": "string",
+      "pattern": "^doc-[0-9]{2,3}-(en|hi|both)$"
+    },
+    "sourceRef": {
+      "type": "string",
+      "pattern": "^(S[0-9]+[a-z]?|doc-[0-9]{2,3}-(en|hi|both))$"
+    },
+    "sourceRefs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/sourceRef"
+      }
+    },
+    "statusValue": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "value": {
+          "type": [
+            "string",
+            "integer",
+            "null"
+          ]
+        },
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "issuingAuthority",
+        "url",
+        "accessedOn",
+        "verification",
+        "readStatus",
+        "gaveThisDataset",
+        "limitations"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/sourceId"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "issuingAuthority": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https?://"
+        },
+        "accessedOn": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        },
+        "readStatus": {
+          "enum": [
+            "READ_TOOL_SUMMARY",
+            "READ_PARTIAL_TOOL_SUMMARY",
+            "NOT_READ",
+            "NOT_READ_USABLY",
+            "BLOCKED"
+          ]
+        },
+        "publicationDate": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "publicationDateBasis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gaveThisDataset": {
+          "type": "string"
+        },
+        "limitations": {
+          "type": "string"
+        },
+        "blockReason": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "readStatus": {
+                "enum": [
+                  "BLOCKED",
+                  "NOT_READ",
+                  "NOT_READ_USABLY"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "verification": {
+                "const": "V0"
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "syllabusVersion": {
+      "type": "object",
+      "required": [
+        "id",
+        "label",
+        "issuingAuthority",
+        "statedApplicability",
+        "statedBy",
+        "effectiveDateVerified",
+        "status",
+        "note"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^sv-[a-z0-9-]+$"
+        },
+        "label": {
+          "type": "string"
+        },
+        "issuingAuthority": {
+          "type": "string"
+        },
+        "statedApplicability": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "statedBy": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/sourceId"
+          }
+        },
+        "effectiveDateVerified": {
+          "type": "boolean"
+        },
+        "perSubjectDatesAvailable": {
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "BANNER_ONLY",
+            "UNRESOLVED",
+            "VERIFIED"
+          ]
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "gap": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "severity",
+        "detail",
+        "affects",
+        "resolution"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^GAP-[0-9]{2}$"
+        },
+        "title": {
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "BLOCKER",
+            "HIGH",
+            "MEDIUM",
+            "LOW"
+          ]
+        },
+        "detail": {
+          "type": "string"
+        },
+        "affects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "resolution": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "document": {
+      "type": "object",
+      "required": [
+        "id",
+        "subjectCode",
+        "role",
+        "catalogueColumns",
+        "catalogueUrl",
+        "sourceUrl",
+        "urlKind",
+        "fileName",
+        "issuingAuthority",
+        "documentTitle",
+        "publication",
+        "applicableExamPeriod",
+        "pageOrSection",
+        "language",
+        "file",
+        "linkObserved",
+        "contentRead",
+        "verification",
+        "verificationScope",
+        "sourceRefs"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/docId"
+        },
+        "subjectCode": {
+          "type": "string",
+          "pattern": "^[0-9]{2,3}$"
+        },
+        "role": {
+          "const": "syllabus"
+        },
+        "catalogueColumns": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "English",
+              "Hindi"
+            ]
+          }
+        },
+        "catalogueUrl": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "sourceUrl": {
+          "type": "string",
+          "pattern": "^https://www\\.ugcnetonline\\.in/showPdf\\.php\\?p1=NTA_All_R_Syllabus%2F"
+        },
+        "urlKind": {
+          "const": "CATALOGUE_LINK_TO_EXPIRING_PRESIGNED_URL"
+        },
+        "fileName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "issuingAuthority": {
+          "type": "object",
+          "required": [
+            "id",
+            "basis"
+          ],
+          "properties": {
+            "id": {
+              "enum": [
+                "UGC",
+                "NTA"
+              ]
+            },
+            "basis": {
+              "type": "string"
+            }
+          }
+        },
+        "documentTitle": {
+          "$ref": "#/$defs/statusValue"
+        },
+        "publication": {
+          "type": "object",
+          "required": [
+            "issueDate",
+            "revisionDate",
+            "status"
+          ],
+          "properties": {
+            "issueDate": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "revisionDate": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "status": {
+              "type": "string"
+            }
+          }
+        },
+        "applicableExamPeriod": {
+          "$ref": "#/$defs/statusValue"
+        },
+        "pageOrSection": {
+          "$ref": "#/$defs/statusValue"
+        },
+        "language": {
+          "type": "object",
+          "required": [
+            "value",
+            "basis",
+            "verified"
+          ],
+          "properties": {
+            "value": {
+              "enum": [
+                "en",
+                "hi",
+                null
+              ]
+            },
+            "basis": {
+              "type": "string"
+            },
+            "verified": {
+              "type": "boolean"
+            },
+            "hintFromFileName": {
+              "type": "string"
+            }
+          }
+        },
+        "file": {
+          "type": "object",
+          "required": [
+            "sha256",
+            "status"
+          ],
+          "properties": {
+            "sha256": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "sizeBytes": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "pageCount": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "retrievedOn": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "status": {
+              "enum": [
+                "NOT_CAPTURED",
+                "CAPTURED"
+              ]
+            }
+          }
+        },
+        "linkObserved": {
+          "type": "object",
+          "required": [
+            "on",
+            "via",
+            "verification"
+          ],
+          "properties": {
+            "on": {
+              "type": "string"
+            },
+            "via": {
+              "$ref": "#/$defs/sourceId"
+            },
+            "verification": {
+              "$ref": "#/$defs/verification"
+            }
+          }
+        },
+        "contentRead": {
+          "enum": [
+            "NONE",
+            "PARTIAL_TOOL_RENDERED_IDENTITY_UNPROVEN",
+            "PARTIAL",
+            "FULL_V2"
+          ]
+        },
+        "fetchAttempts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "on",
+              "outcome"
+            ]
+          }
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        },
+        "verificationScope": {
+          "type": "string"
+        },
+        "sourceRefs": {
+          "$ref": "#/$defs/sourceRefs"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "file": {
+                "properties": {
+                  "status": {
+                    "const": "CAPTURED"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "file": {
+                "required": [
+                  "sha256",
+                  "sizeBytes",
+                  "pageCount",
+                  "retrievedOn"
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "localizedText": {
+      "type": "object",
+      "required": [
+        "text",
+        "provenance"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provenance": {
+          "enum": [
+            "OFFICIAL_VERBATIM",
+            "TRANSLATION_UNVERIFIED",
+            "TRANSLATION_REVIEWED"
+          ]
+        },
+        "sourceDocRef": {
+          "$ref": "#/$defs/docId"
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "translatedFrom": {
+          "enum": [
+            "en",
+            "hi"
+          ]
+        },
+        "translatedBy": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "provenance": {
+                "enum": [
+                  "TRANSLATION_UNVERIFIED",
+                  "TRANSLATION_REVIEWED"
+                ]
+              }
+            },
+            "required": [
+              "provenance"
+            ]
+          },
+          "then": {
+            "required": [
+              "translatedFrom",
+              "translatedBy",
+              "sourceDocRef"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "provenance": {
+                "const": "OFFICIAL_VERBATIM"
+              }
+            },
+            "required": [
+              "provenance"
+            ]
+          },
+          "then": {
+            "required": [
+              "sourceDocRef",
+              "page"
+            ]
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "bilingualTitle": {
+      "type": "object",
+      "properties": {
+        "en": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/localizedText"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "hi": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/localizedText"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "en",
+        "hi"
+      ],
+      "anyOf": [
+        {
+          "properties": {
+            "en": {
+              "type": "object"
+            }
+          }
+        },
+        {
+          "properties": {
+            "hi": {
+              "type": "object"
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "statement": {
+      "type": "object",
+      "required": [
+        "id",
+        "no",
+        "text",
+        "page",
+        "sourceDocId"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^stmt-[0-9]{2,3}-[0-9]{2}-[0-9]{3}$"
+        },
+        "no": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "text": {
+          "$ref": "#/$defs/bilingualTitle"
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sourceDocId": {
+          "$ref": "#/$defs/docId"
+        }
+      },
+      "additionalProperties": false
+    },
+    "subtopic": {
+      "type": "object",
+      "required": [
+        "id",
+        "ordinal",
+        "title",
+        "origin",
+        "officialRefs",
+        "verification",
+        "importEligible",
+        "sourceRefs"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^sub-[0-9]{2,3}-[0-9]{2}-[0-9]{2}-[0-9]{2}$"
+        },
+        "ordinal": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "$ref": "#/$defs/bilingualTitle"
+        },
+        "origin": {
+          "enum": [
+            "official",
+            "editorial"
+          ]
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        },
+        "importEligible": {
+          "type": "boolean"
+        },
+        "sourceRefs": {
+          "$ref": "#/$defs/sourceRefs"
+        },
+        "officialRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/officialRef"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "origin": {
+                "const": "editorial"
+              }
+            },
+            "required": [
+              "origin"
+            ]
+          },
+          "then": {
+            "properties": {
+              "officialRefs": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "topic": {
+      "type": "object",
+      "required": [
+        "id",
+        "ordinal",
+        "title",
+        "origin",
+        "officialRefs",
+        "subtopics",
+        "verification",
+        "importEligible",
+        "sourceRefs"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^top-[0-9]{2,3}-[0-9]{2}-[0-9]{2}$"
+        },
+        "ordinal": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "$ref": "#/$defs/bilingualTitle"
+        },
+        "origin": {
+          "enum": [
+            "official",
+            "editorial"
+          ]
+        },
+        "subtopics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/subtopic"
+          }
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        },
+        "importEligible": {
+          "type": "boolean"
+        },
+        "sourceRefs": {
+          "$ref": "#/$defs/sourceRefs"
+        },
+        "officialRefs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/officialRef"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "origin": {
+                "const": "editorial"
+              }
+            },
+            "required": [
+              "origin"
+            ]
+          },
+          "then": {
+            "properties": {
+              "officialRefs": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "unit": {
+      "type": "object",
+      "required": [
+        "id",
+        "unitNumber",
+        "title",
+        "officialText",
+        "topics",
+        "verification",
+        "importEligible",
+        "sourceRefs",
+        "pageOrSection"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^unit-[0-9]{2,3}-[0-9]{2}$"
+        },
+        "unitNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "$ref": "#/$defs/bilingualTitle"
+        },
+        "topics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/topic"
+          }
+        },
+        "ambiguity": {
+          "type": "string"
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        },
+        "importEligible": {
+          "type": "boolean"
+        },
+        "sourceRefs": {
+          "$ref": "#/$defs/sourceRefs"
+        },
+        "pageOrSection": {
+          "$ref": "#/$defs/statusValue"
+        },
+        "officialText": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/statement"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "importEligible": {
+                "const": true
+              }
+            },
+            "required": [
+              "importEligible"
+            ]
+          },
+          "then": {
+            "properties": {
+              "verification": {
+                "enum": [
+                  "V2",
+                  "V3"
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "subject": {
+      "type": "object",
+      "required": [
+        "id",
+        "code",
+        "codeNumeric",
+        "codeCanonical3",
+        "codeIsOfficialSubjectCode",
+        "kind",
+        "name",
+        "languageSubject",
+        "documentLayout",
+        "documentRefs",
+        "syllabusVersionRef",
+        "effectiveFrom",
+        "coverage",
+        "units",
+        "gapRefs",
+        "verification",
+        "verificationScope",
+        "sourceRefs"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^subj-[0-9]{2,3}$"
+        },
+        "code": {
+          "type": "string",
+          "pattern": "^[0-9]{2,3}$"
+        },
+        "codeNumeric": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 999
+        },
+        "codeCanonical3": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9]{3}$"
+        },
+        "codeIsOfficialSubjectCode": {
+          "type": "boolean"
+        },
+        "printedCodeInFootnote": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "enum": [
+            "PAPER_1_GENERAL",
+            "PAPER_2_SUBJECT"
+          ]
+        },
+        "name": {
+          "type": "object",
+          "required": [
+            "official",
+            "officialSource",
+            "annexureII",
+            "catalogueVariant",
+            "variantNote"
+          ],
+          "properties": {
+            "official": {
+              "type": "string",
+              "minLength": 1
+            },
+            "officialSource": {
+              "$ref": "#/$defs/sourceId"
+            },
+            "annexureII": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "catalogueVariant": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "variantNote": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "languageSubject": {
+          "type": "object",
+          "required": [
+            "value",
+            "basis",
+            "official"
+          ],
+          "properties": {
+            "value": {
+              "type": "boolean"
+            },
+            "basis": {
+              "type": "string"
+            },
+            "official": {
+              "type": "boolean"
+            }
+          }
+        },
+        "inJune2026SubjectList": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "documentLayout": {
+          "enum": [
+            "separate_en_hi",
+            "single_file_both_columns",
+            "hi_only",
+            "en_only"
+          ]
+        },
+        "documentRefs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/docId"
+          }
+        },
+        "fileNameObservations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "syllabusVersionRef": {
+          "type": "string",
+          "pattern": "^sv-[a-z0-9-]+$"
+        },
+        "effectiveFrom": {
+          "$ref": "#/$defs/statusValue"
+        },
+        "unitsExpected": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "required": [
+                "count",
+                "basis",
+                "verified"
+              ],
+              "properties": {
+                "count": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "basis": {
+                  "enum": [
+                    "OWNER_BRIEF",
+                    "TOOL_OBSERVATION_V1",
+                    "OFFICIAL_DOCUMENT_V2"
+                  ]
+                },
+                "verified": {
+                  "type": "boolean"
+                },
+                "note": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        },
+        "coverage": {
+          "type": "object",
+          "required": [
+            "units",
+            "officialText",
+            "topics",
+            "subtopics",
+            "hindi"
+          ]
+        },
+        "units": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/unit"
+          }
+        },
+        "gapRefs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^GAP-[0-9]{2}$"
+          }
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        },
+        "verificationScope": {
+          "type": "string"
+        },
+        "sourceRefs": {
+          "$ref": "#/$defs/sourceRefs"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "paper": {
+      "type": "object",
+      "required": [
+        "id",
+        "paperNumber",
+        "name",
+        "examSchemeObserved",
+        "subjects",
+        "verification",
+        "sourceRefs"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "paper-1",
+            "paper-2"
+          ]
+        },
+        "paperNumber": {
+          "enum": [
+            1,
+            2
+          ]
+        },
+        "name": {
+          "type": "object",
+          "required": [
+            "official",
+            "officialSource"
+          ]
+        },
+        "examSchemeObserved": {
+          "type": "object",
+          "required": [
+            "questions",
+            "maxMarks",
+            "note"
+          ]
+        },
+        "subjects": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/subject"
+          }
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        },
+        "sourceRefs": {
+          "$ref": "#/$defs/sourceRefs"
+        }
+      },
+      "additionalProperties": false
+    },
+    "officialRef": {
+      "type": "object",
+      "required": [
+        "unitNo",
+        "statementNos"
+      ],
+      "properties": {
+        "unitNo": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "statementNos": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
