@@ -1,7 +1,7 @@
 # UrEducator 2.0 — Dual-Agent Project Status & Handoff Board
 
-**Last Updated:** 5 November 2026 (M8.7 Authorized Cloud Functions Staging Deployment)  
-**Current Milestone:** M8.7 (Functions Deployment & Post-Deploy Verification)  
+**Last Updated:** 5 November 2026 (M8.8.1 Firestore Index-Aligned Exam Start Rate-Limit Fix)  
+**Current Milestone:** M8.8.1 (Ready for Claude Review #004)  
 **Active Writer:** Antigravity (Implementation & Execution)  
 **Assigned Reviewer:** Claude (Senior Architect & Security Reviewer)  
 **Coordination:** ChatGPT  
@@ -22,6 +22,8 @@
 | **M8.5 Owner Claim Issue**| **DIAGNOSED & FIXED** | Antigravity | Root cause isolated; fix tested locally; Review Packet #002 ready |
 | **M8.6 Claude Corrections**| **IMPLEMENTED** | Antigravity | C1, C2, F2 resumable claim, F6, F7 (207 tests passed) |
 | **M8.7 Functions Deploy** | **DEPLOYED** | Antigravity | All 34 Cloud Functions Gen 2 updated on staging; 36/36 smoke passed |
+| **M8.8 Exam Start Diagnosis**| **DIAGNOSED** | Antigravity | Missing composite index on count query isolated; report in `docs/M8_8_EXAM_START_FAILURE_DIAGNOSIS_REPORT.md` |
+| **M8.8.1 Index-Aligned Fix**| **IMPLEMENTED** | Antigravity | Query aligned with deployed index `(uid ASC, startedAtMs DESC)`; Review Packet #004 ready |
 
 ---
 
@@ -367,3 +369,93 @@ When authorised:
 3. Navigate directly to `/admin` (`https://ugc-mock-test-staging.web.app/admin`). The Admin Studio and `adminOverview` dashboard will open with full owner privileges.
 4. If `/app/claim-owner` is visited and clicked again, the new resumable bootstrap logic cleanly displays:
    *"Platform ownership has already been claimed."* (Reason: `OWNER_ALREADY_CLAIMED`), with zero unhandled 500 errors.
+
+---
+
+## 9. Review Packet #004: M8.8.1 Firestore Index-Aligned Exam Start Rate-Limit Fix
+
+**Author:** Google Antigravity (Primary Executor)  
+**Recipient:** Claude (Senior Architecture & Security Review)  
+**Commit Reference:** `eb0e9cb` (`fix(exam): align hourly rate-limit query with deployed composite index`)  
+**Target Environment:** `ugc-mock-test-staging` (`336521990930`, `asia-south1`)  
+
+### 9.1 Background & Root Cause Analysis
+During milestone M8.8, the owner attempted to start the staging full-length mock test (`mt-full`) at approximately 9:32 PM IST on 5 November 2026. The client UI displayed:
+`Something went wrong. Reference 47db7585. [500]`
+
+Antigravity performed a read-only investigation (recorded in `docs/M8_8_EXAM_START_FAILURE_DIAGNOSIS_REPORT.md`):
+- Cloud Logging for correlation ID `47db7585` revealed:
+  `9 FAILED_PRECONDITION: The query requires an index. You can create it here: https://console.firebase.google.com/v1/r/project/ugc-mock-test-staging/firestore/indexes?create_composite=Clpwcm9qZWN0cy91Z2MtbW9jay10ZXN0LXN0YWdpbmcvZGF0YWJhc2VzLyhkZWZhdWx0KS9jb2xsZWN0aW9uR3JvdXBzL2V4YW1TZXNzaW9ucy9pbmRleGVzL18QARoHCgN1aWQQARoPCgtzdGFydGVkQXRNcxABGgwKCF9fbmFtZV9fEAE`
+- The failing call occurred in `functions/src/services/exam.ts`:
+  ```typescript
+  const recent = await d.store.count('examSessions', [['uid', '==', actor.uid], ['startedAtMs', '>=', now - 3_600_000]]);
+  ```
+- **Cause:** When an aggregate `.count()` query contains an equality clause (`uid == ...`) and an inequality/range clause (`startedAtMs >= ...`) without an explicit sort direction, the Firestore query planner defaults to `startedAtMs ASC`.
+- The deployed composite index in `ugc-mock-test-staging` (`collectionGroups/examSessions/indexes/CICAgOjXh4EK`) has fields:
+  - `uid`: `ASCENDING`
+  - `startedAtMs`: `DESCENDING`
+- Because the query's implicit ascending order did not match the index's descending order, Firestore rejected the query with `9 FAILED_PRECONDITION`.
+
+### 9.2 Technical Design & Implementation
+Rather than triggering a cloud index creation or modifying `firestore.indexes.json`, the approved technical approach aligns the query with the existing deployed composite index while simultaneously bounding database read costs:
+
+1. **Bounded `d.store.list` with Explicit Descending Sort:**
+   In `functions/src/services/exam.ts`:
+   ```typescript
+   // Uses the deployed composite index (uid ASC, startedAtMs DESC) to check the hourly limit
+   const recentSessions = await d.store.list<SessionDoc>('examSessions', {
+     where: [['uid', '==', actor.uid]],
+     orderBy: 'startedAtMs',
+     desc: true,
+     limit: LIMITS.maxSessionsPerHourPerUser,
+   });
+   const recent = recentSessions.filter((s) => s.data.startedAtMs >= now - 3_600_000).length;
+   if (recent >= LIMITS.maxSessionsPerHourPerUser) throw err('resource-exhausted', 'TOO_MANY_ATTEMPTS', 'Too many tests started recently. Please try again later.');
+   ```
+
+2. **Index Match Parity:**
+   In `FirestoreStore.list` (`functions/src/infra/firestoreStore.ts`):
+   `this.db.collection('examSessions').where('uid', '==', actor.uid).orderBy('startedAtMs', 'desc').limit(6)`
+   Matches `(uid ASC, startedAtMs DESC)` exactly in Firestore, as equality filtering does not depend on index order, and the explicit `desc` ordering directly satisfies the composite index.
+
+3. **Mathematical Correctness of Bounded Retrieval:**
+   - The hourly limit is `LIMITS.maxSessionsPerHourPerUser = 6`.
+   - By querying `orderBy: 'startedAtMs', desc: true, limit: 6`, the query returns at most the 6 most recent sessions ever started by the user.
+   - If fewer than 6 sessions exist in total, all sessions are returned.
+   - If 6 or more sessions exist, the returned set contains the 6 newest.
+   - If the count of returned sessions with `startedAtMs >= now - 3_600_000` is `>= 6`, all 6 newest sessions occurred within the last hour -> rate limit triggered.
+   - If the count is `< 6`, any older sessions not returned are strictly older than the 6th session and therefore also outside the 1-hour window -> rate limit not triggered.
+   - Cost advantage: Reads are capped at 6 documents regardless of user lifetime session history.
+
+### 9.3 Regression Testing Coverage
+Four new test cases added to `functions/src/__tests__/exam.test.ts` covering all 5 scenarios:
+1. **Normal first examination start:** Verified in existing `creates a server-timed session and never returns answers or explanations`.
+2. **Six recent sessions followed by blocked 7th attempt:** `blocks the 7th attempt when 6 sessions started within the hour (rate limit)`.
+3. **Six sessions older than one hour followed by allowed attempt:** `allows starting exam when past sessions are older than 1 hour (verifying deployed index query pattern)`.
+4. **Mixture of old and recent sessions:** `allows starting exam with mixture of old and recent sessions when recent count < 6, blocks when recent count reaches 6`.
+5. **Descending ordering and bounded retrieval:** `guarantees correct descending ordering and bounded retrieval` (verifies 10 historical sessions + 6 recent sessions: bounded query inspects the newest 6, enforcing the limit; proves older sessions do not distort recent window enforcement).
+
+### 9.4 Executed Test & Build Evidence
+
+| Suite | Scope | Result | Execution Context |
+| :--- | :--- | :--- | :--- |
+| **Functions Unit** | Admin, exam, payments, AI, platform, runtime | **116/116 passed** | Vitest (8 test files) |
+| **Shared Unit** | Scoring, session, RBAC, learning schemas | **37/37 passed** | Vitest (6 test files) |
+| **TypeScript** | Repository-wide across all workspaces | **0 errors** | `tsc --noEmit` |
+| **ESLint** | Repository-wide across all workspaces | **0 errors, 0 warnings** | ESLint 9 |
+| **Production Build** | Web (Next.js) & Functions | **Compiled cleanly** | Next.js 41 static pages, functions bundle 1.9MB |
+| **Functions Prepare** | `dist/functions` bundle packaging | **Prepared** | `node scripts/prepare-deploy.mjs` |
+| **Functions SHA-256** | Bundle checksum | `74CACE218CEAA93888072E94BBDADC66DF7A7235D977E80EF1E3217BEE51E58C` | Identical in `functions/lib/index.js` and `dist/functions/lib/index.js` |
+| **Bundle Scans** | Web (249 files) & Functions (4 files) | **0 findings** | `verify-bundle.mjs` |
+| **Staging Config** | Environment variables, headers, aliases | **34/34 passed** | `verify-staging-config.mjs` |
+
+### 9.5 Strict Isolation & Cloud Safety Guarantees
+- **Zero Cloud Deployments Executed:** No functions, rules, hosting, or storage were deployed in this task.
+- **Zero Cloud Modifications:** No Firestore documents, indexes, or IAM bindings were modified or recreated.
+- **Authoritative Ownership Unchanged:** Staging owner records (`77an2K2D2MecjzA4dmvsgnzqu9P2`, `subhashbanti99@gmail.com`) remain intact.
+- **No Local Handler ADC Execution:** Application handlers were not run locally with ADC credentials.
+
+### 9.6 Specific Questions for Claude's Architecture & Security Review
+1. Does the bounded query pattern (`d.store.list` with `orderBy: 'startedAtMs', desc: true, limit: 6`) provide complete parity with the rate-limiting requirement while preventing unbounded scan costs?
+2. Does the descending sort order on `startedAtMs` with equality on `uid` align with Firestore's composite index resolution rules without requiring any server-side index modifications?
+3. Following your review, do you recommend authorizing deployment of the updated `functions` bundle to `ugc-mock-test-staging`?
