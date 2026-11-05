@@ -1,7 +1,7 @@
 # UrEducator 2.0 — Dual-Agent Project Status & Handoff Board
 
-**Last Updated:** 5 November 2026 (M8.8.4 Staging Functions Deployment & Post-Deploy Verification)  
-**Current Milestone:** M8.8.4 (Functions Deployed; V1, V2, V7 Passed; Awaiting Owner Acceptance V3–V5)  
+**Last Updated:** 5 November 2026 (M8.8.5 Owner Browser Acceptance Complete)  
+**Current Milestone:** M8.8.5 (CBT Engine Staging Verified; Pre-Production Roadmap Established)  
 **Active Writer:** Antigravity (Implementation & Execution)  
 **Assigned Reviewer:** Claude (Senior Architect & Security Reviewer)  
 **Coordination:** ChatGPT  
@@ -27,6 +27,7 @@
 | **M8.8.2 Claude Edge Tests**| **ADOPTED** | Antigravity | 5/5 Claude edge tests adopted in `exam-ratelimit-edges.test.ts` (158 tests total) |
 | **M8.8.3 Deploy Preflight** | **PASSED** | Antigravity | 7/7 preflight checks passed; bundle hash verified; 5 indexes READY |
 | **M8.8.4 Functions Deploy** | **DEPLOYED** | Antigravity | All 34 Functions updated; V1, V2, V7 passed; 36/36 smoke passed |
+| **M8.8.5 Owner Acceptance**| **PASSED** | Owner (Browser) | V3 (start), V4 (resume), V5a (autosave), V5b (submit/score) verified live |
 
 ---
 
@@ -564,14 +565,61 @@ All 34 Cloud Functions Gen 2 updated cleanly with zero creates, zero deletions, 
 | :--- | :--- | :---: | :--- |
 | **V1** | All 34 functions show successful update with no errors | **PASS** | Deployment output: 34 successful updates, 0 errors, 0 deletes |
 | **V2** | Cloud Logging clean: no `FAILED_PRECONDITION`, no "requires an index", 0 new errors | **PASS** | Queried Cloud Logging for `cloud_run_revision` with `timestamp >= 16:56:00Z`: **0 error/warning log entries** returned |
-| **V3** | Owner browser: Open `mt-full` and press Start (no HTTP 500 error; payload hides answers) | **PENDING OWNER** | Reserved for owner in browser at `https://ugc-mock-test-staging.web.app` |
-| **V4** | Owner browser: Press Start again; resumes existing session rather than creating second | **PENDING OWNER** | Reserved for owner in browser |
-| **V5** | Owner browser: Answer 1 question, wait for autosave, submit exam, view results | **PENDING OWNER** | Reserved for owner in browser |
+| **V3** | Owner browser: Open `mt-full` and press Start (no HTTP 500 error; payload hides answers) | **PASS** | Verified by owner: Full-length synthetic exam started; 150 questions loaded cleanly without HTTP 500 |
+| **V4** | Owner browser: Press Start again; resumes existing session rather than creating second | **PASS** | Verified by owner: Reopening exam resumed active session seamlessly without duplicates |
+| **V5a** | Owner browser: Answer question, verify response autosave | **PASS** | Verified by owner: Client responses persisted via autosave |
+| **V5b** | Owner browser: Submit examination, verify server scoring and result view | **PASS** | Verified by owner: Session scored on server; result page rendered score, accuracy, and breakdown |
 | **V6** | 7th attempt block verification on staging | **OMITTED** | Deliberately omitted per Claude condition V6 to prevent polluting staging with 6 mock sessions; verified in unit tests (`exam-ratelimit-edges.test.ts`) |
 | **V7** | Confirm owner documents and Auth claim remain unchanged | **PASS** | Verified intact: `systemSettings/ownerClaim` (`atMs: 1793870736068`), `roles/77an2K2D2MecjzA4dmvsgnzqu9P2` (`role: 'owner'`), Auth custom claims (`role: 'owner'`) |
+
+**Acceptance Status:** **ALL V3–V5 CHECKS PASSED LIVE.**
 
 ### 11.3 Automated Staging Smoke Verification
 - Command: `.\scripts\smoke-staging.ps1`
 - Target: `https://ugc-mock-test-staging.web.app`
 - Result: **36 of 36 checks passed**
 - Public endpoints: `publicConfig` returning HTTP 200 with `env: "staging"`, `paymentsEnabled: false`, `aiLive: false`. Protected callables (`startExam`, `submitExam`, etc.) rejecting unauthenticated requests with HTTP 401. Private Firestore paths rejecting unauthenticated reads with HTTP 403.
+
+---
+
+## 12. M8.8.5 Project State Classification & Pre-Production Roadmap
+
+With the successful completion of the live owner acceptance tests (V3–V5), the platform has reached an important milestone: the end-to-end Computer-Based Testing (CBT) engine is fully validated on staging infrastructure.
+
+To ensure clarity across both engineering agents and project coordination, the current project state is classified into four distinct operational tiers:
+
+### 12.1 Verified Staging CBT Functionality (Ready & Working)
+The core application mechanics and cloud backend services are fully functional and verified on live staging (`ugc-mock-test-staging`):
+- **Examination Lifecycle Engine:** Server-timed sessions, deterministic deadlines, anti-tampering guards, and client session resumption (`startExam`, `getExamSession`).
+- **Autosave & Synchronisation:** Sequence-numbered incremental response autosave with duplicate/stale packet rejection (`saveResponses`).
+- **Server-Side Scoring & Integrity:** Tamper-proof server-side evaluation, negative marking calculations, and automated Error Notebook entry generation (`submitExam`, `getExamResult`).
+- **Anti-Leakage Security:** Answer keys kept strictly in private collections with zero client exposure prior to exam submission or window closure.
+- **Index-Aligned Abuse Prevention:** Hourly attempt limits bounded to 6 documents and fully aligned with the deployed composite index `(uid ASC, startedAtMs DESC)` without index errors.
+- **Administrative Lifecycle & RBAC:** Single-claim resumable owner bootstrap (`claimOwner`), audit logging, role assignment (`assignRole`), and Admin Studio dashboard (`/admin`).
+- **Clean Container Runtime:** Cloud Functions Gen 2 running on Node.js 24 with explicit default app initialisation and zero unhandled 500 errors.
+
+### 12.2 Synthetic Examination Content (Current Staging Fixtures)
+The content currently populating staging is synthetic test fixture data generated during M8.4:
+- **Synthetic Structure:** 4 subjects (`Paper 1`, `History`, `Commerce`, `Computer Science`), 13 units, 15 topics, and 3 mock tests (`mt-full`, `mt-unit`, `mt-quick`).
+- **Synthetic Paper:** Test `mt-full` references paper `demo-full-p` containing 150 synthetic questions (`fx-001` through `fx-150`) across Paper 1 (50 questions) and Paper 2 (100 questions).
+- **Purpose:** These items were seeded purely to validate data models, pagination, UI rendering, layout responsiveness, and full-length exam submission mechanics under load.
+
+### 12.3 Academic Content Awaiting Preparation & Verification (Future Work)
+Real educational content has NOT yet been ingested or verified on the platform:
+- **Curriculum Alignment:** Official UGC NET Paper 1 and Paper 2 syllabus question banks, subject taxonomies, and difficulty tiers.
+- **Pedagogical Asset Review:** Authentic multi-lingual question stems, mathematical formulas (LaTeX/KaTeX), high-resolution diagram attachments, and peer-reviewed explanations.
+- **Paper Assembly:** Curated question sets mapped to official NTA UGC NET blueprints with verified answer keys.
+- **Ingestion Pipeline:** Structured ingestion tooling to author, validate, and batch-upload approved curriculum items to Firestore (`questions`, `publishedPapers`, `answerKeys`).
+
+### 12.4 Pre-Production Security & Infrastructure Roadmap (Claude Reviews #003 & #004)
+Before proceeding to production deployment on `ugc-mock-test`, the following recommendations and conditions must be addressed:
+
+| Item | Scope | Source | Action Required | Priority |
+| :--- | :--- | :---: | :--- | :---: |
+| **P-1** | Permanent Index Validator | Claude #004 (F-2) | Add automated test asserting every `Store.list()` and `Store.count()` query shape in the repo matches `firestore.indexes.json` | High |
+| **P-2** | Local Live-Run Guards | Claude #003 (P-4) / #004 (F-7) | Introduce explicit authorization guards to prevent local CLI scripts from accessing live cloud endpoints with ADC without deliberate flags | High |
+| **P-3** | Read Projection | Claude #004 (F-5) | Optional interface enhancement to project partial fields for session counting under high user scale | Medium |
+| **P-4** | Payment Gateway Hardening | Claude #001 / #003 | Configure live Razorpay key/secret and webhook signing secrets; test webhook signature validation and idempotency in production mode | Mandatory before launch |
+| **P-5** | Live AI Provider Activation | Claude #001 / #003 | Configure production Gemini API keys, usage budgets, safety settings, and rate-limiting for `askMentor` | Mandatory before launch |
+| **P-6** | App Check Strict Enforcement | Claude #001 / #003 | Switch `ENFORCE_APP_CHECK` from monitor mode (`false`) to enforced (`true`) after staging client validation | Mandatory before launch |
+| **P-7** | Production Isolation Audit | System Boundary | Complete pre-flight audit confirming `ugc-mock-test` production environment readiness and clean deployment separation | Mandatory before launch |
