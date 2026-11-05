@@ -9,7 +9,29 @@ import { asApiError } from '@/lib/types';
 /** One-time bootstrap. The server accepts it only from the verified email configured at deploy time, and only once. */
 export default function Page() {
   useDocumentTitle('Claim owner access'); const { backend, refresh, user } = useAuth(); const [busy, setBusy] = useState(false); const [msg, setMsg] = useState<{ tone: 'ok' | 'error'; text: string } | null>(null);
-  async function claim() { if (!backend) return; setBusy(true); setMsg(null); try { await backend.call('claimOwner', {}); await refresh(); setMsg({ tone: 'ok', text: 'You are now the owner.' }); } catch (e) { setMsg({ tone: 'error', text: asApiError(e).message }); } finally { setBusy(false); } }
+  async function claim() {
+    if (!backend) return;
+    setBusy(true);
+    setMsg(null);
+    try {
+      await backend.call('claimOwner', {});
+      await refresh();
+      setMsg({ tone: 'ok', text: 'You are now the owner.' });
+    } catch (e) {
+      const err = asApiError(e);
+      let text = err.message;
+      if (err.reason === 'FORBIDDEN') {
+        text = 'This account cannot claim ownership. Ensure you are signed in with the authorised owner address and that your email is verified.';
+      } else if (err.reason === 'OWNER_ALREADY_CLAIMED') {
+        text = 'Platform ownership has already been claimed.';
+      } else if (err.reason === 'BOOTSTRAP_DISABLED') {
+        text = 'Owner bootstrap is not configured in this environment.';
+      }
+      setMsg({ tone: 'error', text });
+    } finally {
+      setBusy(false);
+    }
+  }
   return (
     <>
       <PageHeader title="Claim owner access" intro="This works once, and only for the email address that was set when this environment was configured. Anyone else is refused." />

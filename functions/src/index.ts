@@ -6,8 +6,10 @@ import { onRequest } from 'firebase-functions/v2/https';
 import { defineSecret } from 'firebase-functions/params';
 import { CONFIG, assertEnvironment } from './infra/config';
 import { callable } from './infra/callable';
-import { deps } from './infra/runtime';
+import { defaultApp, deps } from './infra/runtime';
 import { rateLimit } from './infra/ratelimit';
+
+defaultApp();
 import { AppError } from './infra/errors';
 import { ENDPOINTS as E, SECRETS, payCfg } from './endpoints';
 import * as pay from './services/payments';
