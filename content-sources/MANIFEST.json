@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "UrEducator 2.0 Official Content Sources Manifest Template",
+  "template": {
+    "fileName": "",
+    "sourcePageUrl": "",
+    "retrievedOn": "",
+    "sizeBytes": 0,
+    "pageCount": 0,
+    "sha256": "",
+    "capturedBy": ""
+  },
+  "sources": []
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "./paper1.schema.json",
+  "subjectCode": "00",
+  "subjectName": {
+    "en": "General Paper on Teaching & Research Aptitude (Paper-I)",
+    "hi": "सामान्य प्रश्नपत्र: शिक्षण और शोध अभिवृत्ति (प्रश्नपत्र-I)"
+  },
+  "syllabusVersion": 1,
+  "status": "draft",
+  "verification": "unverified",
+  "effectiveFrom": "unknown",
+  "sourceDocuments": [],
+  "transcription": {
+    "transcriber": {
+      "name": "PENDING_TRANSCRIPTION",
+      "date": ""
+    },
+    "verifier": {
+      "name": "PENDING_VERIFICATION",
+      "date": ""
+    }
+  },
+  "units": []
+}

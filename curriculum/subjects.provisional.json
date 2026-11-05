@@ -1,0 +1,1243 @@
+{
+  "_comment": "STARTER FILE for M9.0. Level V1: read through a page-reading tool, not checked by a person. Replace with a human-verified file (V2/V3) in M9.0. 'units' is null on purpose: no syllabus content has been verified for any subject. languageSubjectInferred is the author's classification from the subject name, not an official fact.",
+  "retrievedOn": "2026-11-05",
+  "sources": {
+    "S3": "Updated Information Bulletin UGC-NET December 2026 (as on 16.10.2026), Annexure II",
+    "S4": "https://ugcnetonline.in/syllabus-new.php"
+  },
+  "subjects": [
+    {
+      "code": "00",
+      "officialNameAsPrinted": "General Paper on Teaching & Research Aptitude (Paper-I)  [name as on syllabus page; not in Annexure II]",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "01",
+      "officialNameAsPrinted": "Economics / Rural Economics /Co-operation / Demography / Development Planning/Development Studies / Econometrics/ Applied Economics / Development Economics /Business Economics",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "Umbrella title; footnote in bulletin shows no special rule",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "02",
+      "officialNameAsPrinted": "Political Science",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "03",
+      "officialNameAsPrinted": "Philosophy",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "04",
+      "officialNameAsPrinted": "Psychology",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "05",
+      "officialNameAsPrinted": "Sociology",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "06",
+      "officialNameAsPrinted": "History",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "07",
+      "officialNameAsPrinted": "Anthropology",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "08",
+      "officialNameAsPrinted": "Commerce",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "09",
+      "officialNameAsPrinted": "Education",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "10",
+      "officialNameAsPrinted": "Social Work",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "11",
+      "officialNameAsPrinted": "Defence and Strategic Studies",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "12",
+      "officialNameAsPrinted": "Home Science",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "14",
+      "officialNameAsPrinted": "Public Administration",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "15",
+      "printedCodeInFootnote": "015",
+      "officialNameAsPrinted": "Population Studies",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "Bulletin footnote prints the code as 015 (table prints 15)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "16",
+      "officialNameAsPrinted": "Music",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "17",
+      "officialNameAsPrinted": "Management (including Business Admn. Mgt./Marketing / Marketing Mgt./ Industrial Relations and Personnel Mgt./ Personnel Mgt./Financial Mgt. /Co- operative Management)",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "18",
+      "officialNameAsPrinted": "Maithili",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "19",
+      "officialNameAsPrinted": "Bengali",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "20",
+      "officialNameAsPrinted": "Hindi",
+      "syllabusFilesListed": "hi_only",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred); English cell blank",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "21",
+      "officialNameAsPrinted": "Kannada",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "22",
+      "officialNameAsPrinted": "Malayalam",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "23",
+      "officialNameAsPrinted": "Oriya",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred); file on the page is named Odia",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "24",
+      "officialNameAsPrinted": "Punjabi",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "25",
+      "officialNameAsPrinted": "Sanskrit",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "26",
+      "officialNameAsPrinted": "Tamil",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "27",
+      "officialNameAsPrinted": "Telugu",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "28",
+      "officialNameAsPrinted": "Urdu",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "29",
+      "officialNameAsPrinted": "Arabic",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "30",
+      "officialNameAsPrinted": "English",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "31",
+      "officialNameAsPrinted": "Linguistics",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "32",
+      "officialNameAsPrinted": "Chinese",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "33",
+      "officialNameAsPrinted": "Dogri",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "34",
+      "officialNameAsPrinted": "Nepali",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "35",
+      "officialNameAsPrinted": "Manipuri",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "36",
+      "officialNameAsPrinted": "Assamese",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "37",
+      "officialNameAsPrinted": "Gujarati",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "38",
+      "officialNameAsPrinted": "Marathi",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "39",
+      "officialNameAsPrinted": "French (French Version)",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "40",
+      "officialNameAsPrinted": "Spanish",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "41",
+      "officialNameAsPrinted": "Russian",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "42",
+      "officialNameAsPrinted": "Persian",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "43",
+      "officialNameAsPrinted": "Rajasthani",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred); the single file is named Rajasthani_Hindi",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "44",
+      "officialNameAsPrinted": "German",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "45",
+      "officialNameAsPrinted": "Japanese",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "46",
+      "officialNameAsPrinted": "Adult Education/ Continuing Education/ Andragogy/ Non-Formal Education",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "47",
+      "officialNameAsPrinted": "Physical Education",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "49",
+      "officialNameAsPrinted": "Arab Culture and Islamic Studies",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "50",
+      "officialNameAsPrinted": "Indian Culture",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "55",
+      "officialNameAsPrinted": "Labour Welfare / Personnel Management / Industrial Relations/ Labour and Social Welfare / Human Resource Management",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "58",
+      "officialNameAsPrinted": "Law",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "59",
+      "officialNameAsPrinted": "Library and Information Science",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "60",
+      "officialNameAsPrinted": "Buddhist, Jaina, Gandhian and Peace Studies",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "Hindi file name on the page contains a typo (Peaces Stusies)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "62",
+      "officialNameAsPrinted": "Comparative Study of Religions",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "63",
+      "officialNameAsPrinted": "Mass Communication and Journalism",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "65",
+      "officialNameAsPrinted": "Performing Art - Dance/Drama/Theatre",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "66",
+      "officialNameAsPrinted": "Museology & Conservation",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "67",
+      "officialNameAsPrinted": "Archaeology",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "68",
+      "officialNameAsPrinted": "Criminology",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "70",
+      "officialNameAsPrinted": "Tribal and Regional Language/Literature",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "71",
+      "officialNameAsPrinted": "Folk Literature",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "72",
+      "officialNameAsPrinted": "Comparative Literature",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "73",
+      "officialNameAsPrinted": "Sanskrit traditional subjects (including Jyotisha/Sidhanta Jyotish/ Navya Vyakarna/ Vyakarna/ Mimansa/ Navya Nyaya/ Sankhya Yoga/ Tulanatmaka Darsan/ Shukla Yajurveda/ Madhav Vedant/ Dharmasasta/ Sahitya/ Puranotihasa /Agama)",
+      "syllabusFilesListed": "hi_only",
+      "languageSubjectInferred": false,
+      "note": "Hindi file only; English cell blank",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "74",
+      "printedCodeInFootnote": "074",
+      "officialNameAsPrinted": "Women Studies",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "Bulletin footnote (eligibility for Humanities/Social Sciences masters) has a ** marker that is not attached to any table row",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "79",
+      "officialNameAsPrinted": "Visual Art (including Drawing & Painting/Sculpture Graphics/Applied Art/History of Art)",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "80",
+      "officialNameAsPrinted": "Geography",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "81",
+      "officialNameAsPrinted": "Social Medicine & Community Health",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "82",
+      "officialNameAsPrinted": "Forensic Science",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "83",
+      "officialNameAsPrinted": "Pali",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "84",
+      "officialNameAsPrinted": "Kashmiri",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "85",
+      "officialNameAsPrinted": "Konkani",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": true,
+      "note": "Language subject (inferred)",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "87",
+      "officialNameAsPrinted": "Computer Science and Applications",
+      "syllabusFilesListed": "single_file_both_columns",
+      "languageSubjectInferred": false,
+      "note": "Same file in both columns; file name says English Only",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "88",
+      "officialNameAsPrinted": "Electronic Science",
+      "syllabusFilesListed": "en_only",
+      "languageSubjectInferred": false,
+      "note": "English file only; Hindi cell blank; file name says English Only",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "89",
+      "officialNameAsPrinted": "Environmental Sciences",
+      "syllabusFilesListed": "en_only",
+      "languageSubjectInferred": false,
+      "note": "English file only; Hindi cell blank; file name says English Only",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "90",
+      "officialNameAsPrinted": "Politics including International Relations/International Studies including Defence / Strategic Studies, West Asian Studies, Southeast Asian Studies, African Studies, South Asian Studies, Soviet Studies, American Studies",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "91",
+      "officialNameAsPrinted": "Prakrit",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "92",
+      "officialNameAsPrinted": "Human Rights and Duties",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "93",
+      "officialNameAsPrinted": "Tourism Administration and Management",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "94",
+      "officialNameAsPrinted": "Bodo",
+      "syllabusFilesListed": "hi_only",
+      "languageSubjectInferred": false,
+      "note": "Hindi file only (named Hindi_Only); English cell blank",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "95",
+      "officialNameAsPrinted": "Santali",
+      "syllabusFilesListed": "hi_only",
+      "languageSubjectInferred": false,
+      "note": "Hindi file only (named Hindi_Only); English cell blank",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "100",
+      "officialNameAsPrinted": "Yoga",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "101",
+      "officialNameAsPrinted": "Sindhi",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "English-column file is named Sindhi_Arabic",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "102",
+      "officialNameAsPrinted": "Hindu Studies",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "103",
+      "officialNameAsPrinted": "Indian Knowledge System",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "104",
+      "officialNameAsPrinted": "Disaster Management",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "105",
+      "officialNameAsPrinted": "Ayurveda Biology",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "106",
+      "officialNameAsPrinted": "Forestry",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    },
+    {
+      "code": "107",
+      "officialNameAsPrinted": "Statistics",
+      "syllabusFilesListed": "separate_en_hi",
+      "languageSubjectInferred": false,
+      "note": "Only syllabus document actually opened in this session (Hindi PDF); see section 5",
+      "status": "listed",
+      "verification": "V1",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "units": null
+    }
+  ]
+}

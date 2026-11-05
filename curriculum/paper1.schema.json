@@ -1,0 +1,145 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ureducator.internal/schemas/paper1.schema.json",
+  "title": "PaperISyllabusTranscription",
+  "description": "Schema for official UGC NET Paper I syllabus transcription records with dual verification",
+  "type": "object",
+  "required": [
+    "subjectCode",
+    "subjectName",
+    "syllabusVersion",
+    "status",
+    "verification",
+    "sourceDocuments",
+    "transcription",
+    "units"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "subjectCode": {
+      "type": "string",
+      "enum": ["00"]
+    },
+    "subjectName": {
+      "type": "object",
+      "required": ["en", "hi"],
+      "properties": {
+        "en": { "type": "string", "minLength": 1 },
+        "hi": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "syllabusVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "in_review", "verified", "published", "retired"]
+    },
+    "verification": {
+      "type": "string",
+      "enum": ["unverified", "verified", "dual_verified"]
+    },
+    "effectiveFrom": {
+      "type": "string",
+      "pattern": "^(\\d{4}-\\d{2}|unknown)$"
+    },
+    "sourceDocuments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["docId", "title", "language", "sha256"],
+        "properties": {
+          "docId": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "url": { "type": "string" },
+          "language": { "type": "string", "enum": ["en", "hi", "both"] },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "pageCount": { "type": "integer", "minimum": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "transcription": {
+      "type": "object",
+      "required": ["transcriber", "verifier"],
+      "properties": {
+        "transcriber": {
+          "type": "object",
+          "required": ["name", "date"],
+          "properties": {
+            "name": { "type": "string", "minLength": 1 },
+            "date": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "verifier": {
+          "type": "object",
+          "required": ["name", "date"],
+          "properties": {
+            "name": { "type": "string", "minLength": 1 },
+            "date": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["unitNo", "title", "statements"],
+        "properties": {
+          "unitNo": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "title": {
+            "type": "object",
+            "required": ["en", "hi"],
+            "properties": {
+              "en": { "type": "string", "minLength": 1 },
+              "hi": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          },
+          "statements": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["statementNo", "text", "page", "sourceDocId"],
+              "properties": {
+                "statementNo": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "text": {
+                  "type": "object",
+                  "required": ["en", "hi"],
+                  "properties": {
+                    "en": { "type": "string", "minLength": 1 },
+                    "hi": { "type": "string", "minLength": 1 }
+                  },
+                  "additionalProperties": false
+                },
+                "page": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "sourceDocId": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
