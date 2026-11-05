@@ -139,7 +139,10 @@ Instead of an un-ordered range `count()`:
 
 ---
 
-## 7. Review-Ready Diff
+## 7. Review-Ready Diff (Preliminary Diagnosis — Superseded by Commit `eb0e9cb`)
+
+> [!NOTE]
+> **Superseded by Commit `eb0e9cb`:** The preliminary diff below was produced during the initial M8.8 diagnosis with a single regression test (151 unit tests total). It was formally superseded by commit `eb0e9cb` which implemented the full five-scenario regression suite in `exam.test.ts` (116 functions + 37 shared = 153 tests), and subsequently augmented in M8.8.2 by `exam-ratelimit-edges.test.ts` (121 functions + 37 shared = 158 tests).
 
 ```diff
 diff --git a/functions/src/services/exam.ts b/functions/src/services/exam.ts
@@ -192,7 +195,9 @@ index d7f3bb3..958a9d9 100644
 
 ## 8. Verification Evidence
 
-- **Unit Tests:** **151/151 passed** (114 functions + 37 shared).
+- **Preliminary Diagnostic State:** 151/151 passed (114 functions + 37 shared).
+- **Final Implemented State (`eb0e9cb`):** **153/153 passed** (116 functions + 37 shared).
+- **M8.8.2 Augmented State (`exam-ratelimit-edges.test.ts`):** **158/158 passed** (121 functions + 37 shared).
 - **TypeScript:** **0 errors** across all workspaces.
 - **ESLint:** **0 errors, 0 warnings** repository-wide.
 - **Boundaries Preserved:** No code deployed; no Firestore rules, indexes, Storage, or Hosting touched; owner records untouched.

@@ -1,7 +1,7 @@
 # UrEducator 2.0 — Dual-Agent Project Status & Handoff Board
 
-**Last Updated:** 5 November 2026 (M8.8.1 Firestore Index-Aligned Exam Start Rate-Limit Fix)  
-**Current Milestone:** M8.8.1 (Ready for Claude Review #004)  
+**Last Updated:** 5 November 2026 (M8.8.2 Adoption of Claude Review #004 Edge Tests)  
+**Current Milestone:** M8.8.2 (Claude Edge Tests Adopted; 158/158 Tests Passed; Ready for Deploy Authorization)  
 **Active Writer:** Antigravity (Implementation & Execution)  
 **Assigned Reviewer:** Claude (Senior Architect & Security Reviewer)  
 **Coordination:** ChatGPT  
@@ -24,6 +24,7 @@
 | **M8.7 Functions Deploy** | **DEPLOYED** | Antigravity | All 34 Cloud Functions Gen 2 updated on staging; 36/36 smoke passed |
 | **M8.8 Exam Start Diagnosis**| **DIAGNOSED** | Antigravity | Missing composite index on count query isolated; report in `docs/M8_8_EXAM_START_FAILURE_DIAGNOSIS_REPORT.md` |
 | **M8.8.1 Index-Aligned Fix**| **IMPLEMENTED** | Antigravity | Query aligned with deployed index `(uid ASC, startedAtMs DESC)`; Review Packet #004 ready |
+| **M8.8.2 Claude Edge Tests**| **ADOPTED** | Antigravity | 5/5 Claude edge tests adopted in `exam-ratelimit-edges.test.ts` (158 tests total) |
 
 ---
 
@@ -416,7 +417,7 @@ Rather than triggering a cloud index creation or modifying `firestore.indexes.js
 2. **Index Match Parity:**
    In `FirestoreStore.list` (`functions/src/infra/firestoreStore.ts`):
    `this.db.collection('examSessions').where('uid', '==', actor.uid).orderBy('startedAtMs', 'desc').limit(6)`
-   Matches `(uid ASC, startedAtMs DESC)` exactly in Firestore, as equality filtering does not depend on index order, and the explicit `desc` ordering directly satisfies the composite index.
+   Matches `(uid ASC, startedAtMs DESC)` in Firestore. Specifically, while the equality filter on `uid` satisfies the leading index field regardless of sort direction, the original range query defaulted to `startedAtMs ASC` (which triggered the missing index precondition error). Providing explicit `orderBy: 'startedAtMs', desc: true` directly satisfies the composite index's second field (`startedAtMs DESC`).
 
 3. **Mathematical Correctness of Bounded Retrieval:**
    - The hourly limit is `LIMITS.maxSessionsPerHourPerUser = 6`.
@@ -428,12 +429,12 @@ Rather than triggering a cloud index creation or modifying `firestore.indexes.js
    - Cost advantage: Reads are capped at 6 documents regardless of user lifetime session history.
 
 ### 9.3 Regression Testing Coverage
-Four new test cases added to `functions/src/__tests__/exam.test.ts` covering all 5 scenarios:
+Three new test cases plus one renamed existing test were added to `functions/src/__tests__/exam.test.ts` covering five scenarios:
 1. **Normal first examination start:** Verified in existing `creates a server-timed session and never returns answers or explanations`.
 2. **Six recent sessions followed by blocked 7th attempt:** `blocks the 7th attempt when 6 sessions started within the hour (rate limit)`.
-3. **Six sessions older than one hour followed by allowed attempt:** `allows starting exam when past sessions are older than 1 hour (verifying deployed index query pattern)`.
+3. **Six sessions older than one hour followed by allowed attempt:** `allows starting exam when past sessions are older than 1 hour (verifying deployed index query pattern)`. Note: While `MemoryStore` has no native Firestore index engine, this test validates that past sessions older than the one-hour window do not consume quota.
 4. **Mixture of old and recent sessions:** `allows starting exam with mixture of old and recent sessions when recent count < 6, blocks when recent count reaches 6`.
-5. **Descending ordering and bounded retrieval:** `guarantees correct descending ordering and bounded retrieval` (verifies 10 historical sessions + 6 recent sessions: bounded query inspects the newest 6, enforcing the limit; proves older sessions do not distort recent window enforcement).
+5. **Descending ordering and bounded retrieval:** `guarantees correct descending ordering and bounded retrieval` (verifies 10 historical sessions + 6 recent sessions: bounded query inspects the newest 6, enforcing the limit; proves older sessions do not distort recent window enforcement). Note: Explicit boundedness and contract verification of the underlying `store.list` parameters are formally enforced by Claude Review #004 edge test `query contract` in `exam-ratelimit-edges.test.ts`.
 
 ### 9.4 Executed Test & Build Evidence
 
@@ -459,3 +460,47 @@ Four new test cases added to `functions/src/__tests__/exam.test.ts` covering all
 1. Does the bounded query pattern (`d.store.list` with `orderBy: 'startedAtMs', desc: true, limit: 6`) provide complete parity with the rate-limiting requirement while preventing unbounded scan costs?
 2. Does the descending sort order on `startedAtMs` with equality on `uid` align with Firestore's composite index resolution rules without requiring any server-side index modifications?
 3. Following your review, do you recommend authorizing deployment of the updated `functions` bundle to `ugc-mock-test-staging`?
+
+---
+
+## 10. Claude Review #004 Verdict & Adoption of Edge Tests (M8.8.2)
+
+**Author:** Google Antigravity (Primary Executor)  
+**Recipient:** Claude (Senior Architecture & Security Review)  
+**Reference Commit:** `eb0e9cb` (Implementation) & `5f166bd` (Review Packet #004)  
+**Target Environment:** `ugc-mock-test-staging` (`336521990930`, `asia-south1`)  
+
+### 10.1 Claude Review #004 Summary
+- **Verdict:** `PASS WITH CONDITIONS`
+- **Assessment:** Fix in `functions/src/services/exam.ts` is verified mathematically correct and equivalent to the rate limit requirement. Deployed composite index matches the query shape (`uid ASC, startedAtMs DESC`). Zero blockers for staging deployment.
+- **Key Findings:**
+  - **F-1 (Low - Test Gap):** Four potential regressions (unbounded limit, inclusive cutoff `>=` vs `>`, per-user isolation, shortened window) were not strictly killed by initial test cases. Recommended adopting 5 edge tests.
+  - **F-2 (Low - Structural):** MemoryStore cannot detect missing Firestore indexes; recommended permanent index shape verification before production.
+  - **F-3 (Info - Acceptance Test):** Treat the first live owner exam start on staging as an acceptance test (V3 to V5).
+  - **F-4 (Info - Docs Inaccuracies):** Clarified test counts and query matching descriptions; marked earlier diagnostic report diff as superseded by `eb0e9cb`.
+  - **F-5 / F-6 / F-7:** Document transfer projection note, concurrency note, and local-run guard reminder.
+
+### 10.2 Adoption of Finding F-1 Edge Tests
+Antigravity created `functions/src/__tests__/exam-ratelimit-edges.test.ts` adopting all 5 edge tests designed by Claude without changing intended assertions:
+1. `cutoff is inclusive: 6 sessions started exactly 1 hour ago still block`: Asserts strict `>=` window boundary.
+2. `6 sessions started 1 hour + 1 ms ago do not count`: Asserts expiration outside sliding window.
+3. `sessions 45 minutes old still count (the window is a full hour)`: Asserts full 60-minute duration.
+4. `is per user: bob's 6 recent sessions never block alice, and still block bob`: Asserts strict multi-tenant isolation.
+5. `query contract: one examSessions list (uid equality only, startedAtMs desc, limit 6) and no examSessions count()`: Enforces the exact query contract, proving boundedness (`limit: 6`) and preventing regression to `store.count()`.
+
+### 10.3 Verification Results Across Workspaces
+
+| Suite | Scope | Result | Execution Context |
+| :--- | :--- | :--- | :--- |
+| **Functions Unit** | Admin, exam, ratelimit-edges, payments, AI, platform, runtime | **121/121 passed** | Vitest (9 test files) |
+| **Shared Unit** | Scoring, session, RBAC, learning schemas | **37/37 passed** | Vitest (6 test files) |
+| **Total Test Count** | Repository-wide unit tests | **158/158 passed** | 121 Functions + 37 Shared |
+| **TypeScript** | Repository-wide across all workspaces | **0 errors** | `tsc --noEmit` |
+| **ESLint** | Repository-wide across all workspaces | **0 errors, 0 warnings** | ESLint 9 |
+| **Functions Bundle** | SHA-256 Checksum | `74CACE218CEAA93888072E94BBDADC66DF7A7235D977E80EF1E3217BEE51E58C` | Byte-identical to reviewed bundle |
+| **Exam Implementation** | `functions/src/services/exam.ts` | **Unchanged** | Verified identical to commit `eb0e9cb` |
+
+### 10.4 Deployment Safeguards & Cloud Boundaries
+- **Zero Cloud Deployments:** No functions, hosting, storage, or rules were deployed in M8.8.2.
+- **Zero Cloud Resource Modifications:** Cloud indexes, documents, IAM policies, and owner claims (`77an2K2D2MecjzA4dmvsgnzqu9P2`) remain untouched.
+- **Production Isolation:** Production project `ugc-mock-test` and trial `ur-educator` remain strictly off-limits.
