@@ -1,7 +1,7 @@
 # UrEducator 2.0 — Dual-Agent Project Status & Handoff Board
 
-**Last Updated:** 5 November 2026 (M8.5 Owner Claim Failure Diagnosis & Resolution)  
-**Current Milestone:** M8.5 (Owner Claim Diagnosis, Remediation & Verification)  
+**Last Updated:** 5 November 2026 (M8.7 Authorized Cloud Functions Staging Deployment)  
+**Current Milestone:** M8.7 (Functions Deployment & Post-Deploy Verification)  
 **Active Writer:** Antigravity (Implementation & Execution)  
 **Assigned Reviewer:** Claude (Senior Architect & Security Reviewer)  
 **Coordination:** ChatGPT  
@@ -20,6 +20,8 @@
 | **M8.4 Synthetic Seed** | **POPULATED** | Antigravity | 4 subjects, 13 units, 15 topics, 3 tests |
 | **M8.4 Live Smoke Tests**| **PASSED** | Antigravity | 36/36 checks on `ugc-mock-test-staging.web.app` |
 | **M8.5 Owner Claim Issue**| **DIAGNOSED & FIXED** | Antigravity | Root cause isolated; fix tested locally; Review Packet #002 ready |
+| **M8.6 Claude Corrections**| **IMPLEMENTED** | Antigravity | C1, C2, F2 resumable claim, F6, F7 (207 tests passed) |
+| **M8.7 Functions Deploy** | **DEPLOYED** | Antigravity | All 34 Cloud Functions Gen 2 updated on staging; 36/36 smoke passed |
 
 ---
 
@@ -296,11 +298,72 @@ When authorised:
 
 ---
 
-## 7. Next Actions & Preflight Decision Required
+## 7. M8.7 Cloud Functions Deployment & Post-Deployment Verification
 
-1. **Owner / Claude Review of Live Preflight Records:**
-   - Confirm whether to retain the existing completed ownership records (`systemSettings/ownerClaim` and `roles/77an2K2D2MecjzA4dmvsgnzqu9P2`), or reset them to exercise the resumable bootstrap flow from a clean slate.
-2. **Authorize Functions Deployment:**
-   - Deploy full functions bundle to `ugc-mock-test-staging`.
-3. **Verify Live Operation:**
-   - Validate `/admin` access and verify Cloud Functions logs show zero `FirebaseAppError` instances.
+**Author:** Google Antigravity (Primary Executor)  
+**Deployment Timestamp:** 5 November 2026, 17:41:18 IST (12:11:18 UTC)  
+**Target Project:** `ugc-mock-test-staging` (`336521990930`, `asia-south1`)  
+**Deployment Scope:** `--only functions --project ugc-mock-test-staging` (All 34 Cloud Functions Gen 2)  
+**Command Executed:** `npx.cmd --no-install firebase deploy --only functions --project ugc-mock-test-staging`  
+
+### 7.1 Pre-Deployment Verification
+- **Git HEAD:** `7de87e0` containing commit `58d261c`.
+- **Working Tree:** `functions/` and `packages/shared/` clean with zero uncommitted changes.
+- **Bundle SHA-256:** `1D3E9D055C7E1052D5C0EA7C199AEBD53F21734F48F22E0DFF527A2FBAACB692` (exact match across `dist/functions/lib/index.js` and `functions/lib/index.js`).
+- **Configuration Gate:** 34/34 passed (`verify-staging-config.mjs`). Safe boolean checks: `paymentsEnabled === false`, `aiLive === false`, `paymentMode === 'test'`, `appCheckEnforced === false`.
+- **Zero Local Bundle Cloud Execution:** Preserved existing ownership documents without running ADC locally.
+
+### 7.2 Deployment Results (All 34 Functions Updated)
+1. `adminGetQuestion(asia-south1)` — Successful update
+2. `adminList(asia-south1)` — Successful update
+3. `adminOverview(asia-south1)` — Successful update
+4. `adminPublishMockTest(asia-south1)` — Successful update
+5. `adminSaveQuestion(asia-south1)` — Successful update
+6. `adminTransitionQuestion(asia-south1)` — Successful update
+7. `adminUnpublishMockTest(asia-south1)` — Successful update
+8. `adminUpdateLead(asia-south1)` — Successful update
+9. `adminUpdateTicket(asia-south1)` — Successful update
+10. `adminUpsertBlueprint(asia-south1)` — Successful update
+11. `adminUpsertCatalogue(asia-south1)` — Successful update
+12. `adminUpsertMockTest(asia-south1)` — Successful update
+13. `adminUpsertPlan(asia-south1)` — Successful update
+14. `askMentor(asia-south1)` — Successful update
+15. `assignRole(asia-south1)` — Successful update
+16. `captureLead(asia-south1)` — Successful update
+17. `claimOwner(asia-south1)` — Successful update
+18. `createOrder(asia-south1)` — Successful update
+19. `createTicket(asia-south1)` — Successful update
+20. `ensureProfile(asia-south1)` — Successful update
+21. `generatePlan(asia-south1)` — Successful update
+22. `generateReport(asia-south1)` — Successful update
+23. `getExamResult(asia-south1)` — Successful update
+24. `getExamSession(asia-south1)` — Successful update
+25. `listNotebook(asia-south1)` — Successful update
+26. `notebookQuestion(asia-south1)` — Successful update
+27. `publicConfig(asia-south1)` — Successful update
+28. `reviewNotebook(asia-south1)` — Successful update
+29. `saveResponses(asia-south1)` — Successful update
+30. `startExam(asia-south1)` — Successful update
+31. `submitExam(asia-south1)` — Successful update
+32. `updateProfile(asia-south1)` — Successful update
+33. `verifyPayment(asia-south1)` — Successful update
+34. `verifyReport(asia-south1)` — Successful update
+
+### 7.3 Post-Deployment Cloud Verification
+1. **Live Smoke Suite:** 36/36 checks passed (`scripts/smoke-staging.ps1`).
+2. **`publicConfig`:** Responding HTTP 200 with `{ env: "staging", paymentsEnabled: false, paymentMode: "test", aiLive: false, appCheckEnforced: false }`.
+3. **Cloud Logging:** Queried Cloud Logging entries with `severity >= ERROR` and `timestamp >= deployment`; returned **0 errors** (the previous `app/no-app` error is completely eliminated).
+4. **Authoritative Ownership Document Integrity:**
+   - `systemSettings/ownerClaim`: `{ uid: "77an2K2D2MecjzA4dmvsgnzqu9P2", atMs: 1793870736068 }` (Unchanged).
+   - `roles/77an2K2D2MecjzA4dmvsgnzqu9P2`: `{ role: "owner", assignedBy: "77an2K2D2MecjzA4dmvsgnzqu9P2", assignedAtMs: 1793870736846 }` (Unchanged).
+   - Firebase Auth User (`subhashbanti99@gmail.com`): `emailVerified: true`, `customClaims: { role: 'owner' }` (Unchanged).
+
+---
+
+## 8. Owner Verification Steps in Browser
+
+1. Sign out on `https://ugc-mock-test-staging.web.app` (if signed in).
+2. Sign in as `subhashbanti99@gmail.com`.
+3. Navigate directly to `/admin` (`https://ugc-mock-test-staging.web.app/admin`). The Admin Studio and `adminOverview` dashboard will open with full owner privileges.
+4. If `/app/claim-owner` is visited and clicked again, the new resumable bootstrap logic cleanly displays:
+   *"Platform ownership has already been claimed."* (Reason: `OWNER_ALREADY_CLAIMED`), with zero unhandled 500 errors.
