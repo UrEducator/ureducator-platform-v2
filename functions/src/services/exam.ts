@@ -37,7 +37,14 @@ export async function startExam(d: Deps, actor: Actor, input: { mockTestId: stri
     await finaliseExpired(d, row.id); // an old attempt that ran out of time is closed before a new one starts
   }
 
-  const recent = await d.store.count('examSessions', [['uid', '==', actor.uid], ['startedAtMs', '>=', now - 3_600_000]]);
+  // Uses the deployed composite index (uid ASC, startedAtMs DESC) to check the hourly limit
+  const recentSessions = await d.store.list<SessionDoc>('examSessions', {
+    where: [['uid', '==', actor.uid]],
+    orderBy: 'startedAtMs',
+    desc: true,
+    limit: LIMITS.maxSessionsPerHourPerUser,
+  });
+  const recent = recentSessions.filter((s) => s.data.startedAtMs >= now - 3_600_000).length;
   if (recent >= LIMITS.maxSessionsPerHourPerUser) throw err('resource-exhausted', 'TOO_MANY_ATTEMPTS', 'Too many tests started recently. Please try again later.');
 
   const bp = BlueprintSchema.parse(await d.store.get(P.blueprint(test.blueprintId)));

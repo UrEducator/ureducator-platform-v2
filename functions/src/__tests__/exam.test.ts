@@ -44,10 +44,80 @@ describe('startExam', () => {
     const closed = await mkDeps({ closesAtMs: T0 - 1000 });
     await expect(start(closed.d)).rejects.toMatchObject({ reason: 'TEST_CLOSED' });
   });
-  it('rate limits attempts per hour', async () => {
+  it('blocks the 7th attempt when 6 sessions started within the hour (rate limit)', async () => {
     const { d, tick } = await mkDeps();
-    for (let i = 0; i < 6; i++) { const p = await start(d, alice, `r${i}`); await submitExam(d, alice, { sessionId: p.sessionId, clientRequestId: `s${i}`, finalSeq: 0, reason: 'manual' }); tick(1000); }
+    for (let i = 0; i < 6; i++) {
+      const p = await start(d, alice, `r${i}`);
+      await submitExam(d, alice, { sessionId: p.sessionId, clientRequestId: `s${i}`, finalSeq: 0, reason: 'manual' });
+      tick(1000);
+    }
     await expect(start(d, alice, 'r-extra')).rejects.toMatchObject({ reason: 'TOO_MANY_ATTEMPTS' });
+  });
+  it('allows starting exam when past sessions are older than 1 hour (verifying deployed index query pattern)', async () => {
+    const { d, at } = await mkDeps();
+    // Simulate 6 sessions started 2 hours ago
+    at(T0 - 7_200_000);
+    for (let i = 0; i < 6; i++) {
+      const p = await start(d, alice, `r-old-${i}`);
+      await submitExam(d, alice, { sessionId: p.sessionId, clientRequestId: `s-old-${i}`, finalSeq: 0, reason: 'manual' });
+    }
+    // Advance clock to T0
+    at(T0);
+    // User should be able to start a new test because all past sessions are older than 1 hour
+    await expect(start(d, alice, 'r-fresh')).resolves.toMatchObject({ sessionId: expect.any(String) });
+  });
+  it('allows starting exam with mixture of old and recent sessions when recent count < 6, blocks when recent count reaches 6', async () => {
+    const { d, at } = await mkDeps();
+    // 4 sessions 2 hours ago
+    at(T0 - 7_200_000);
+    for (let i = 0; i < 4; i++) {
+      const p = await start(d, alice, `r-mix-old-${i}`);
+      await submitExam(d, alice, { sessionId: p.sessionId, clientRequestId: `s-mix-old-${i}`, finalSeq: 0, reason: 'manual' });
+    }
+    // 2 sessions 10 minutes ago
+    at(T0 - 600_000);
+    for (let i = 0; i < 2; i++) {
+      const p = await start(d, alice, `r-mix-rec-${i}`);
+      await submitExam(d, alice, { sessionId: p.sessionId, clientRequestId: `s-mix-rec-${i}`, finalSeq: 0, reason: 'manual' });
+    }
+    // Total 6 sessions in database, but only 2 within 1 hour: 3rd recent start should succeed
+    at(T0);
+    const pAllowed = await start(d, alice, 'r-mix-rec-2');
+    await submitExam(d, alice, { sessionId: pAllowed.sessionId, clientRequestId: 's-mix-rec-2', finalSeq: 0, reason: 'manual' });
+
+    // Add 3 more recent sessions (now 6 recent sessions: indices 0..5)
+    for (let i = 3; i < 6; i++) {
+      const p = await start(d, alice, `r-mix-rec-${i}`);
+      await submitExam(d, alice, { sessionId: p.sessionId, clientRequestId: `s-mix-rec-${i}`, finalSeq: 0, reason: 'manual' });
+    }
+    // 7th recent attempt should be blocked
+    await expect(start(d, alice, 'r-mix-rec-blocked')).rejects.toMatchObject({ reason: 'TOO_MANY_ATTEMPTS' });
+  });
+  it('guarantees correct descending ordering and bounded retrieval', async () => {
+    const { d, at, store } = await mkDeps();
+    // Simulate 10 historical sessions, spaced 2 hours apart starting 24 hours ago
+    for (let i = 0; i < 10; i++) {
+      at(T0 - (24 - i * 2) * 3_600_000);
+      const p = await start(d, alice, `r-bound-hist-${i}`);
+      await submitExam(d, alice, { sessionId: p.sessionId, clientRequestId: `s-bound-hist-${i}`, finalSeq: 0, reason: 'manual' });
+    }
+    expect(await store.count('examSessions', [['uid', '==', alice.uid]])).toBe(10);
+
+    // Current time: bounded retrieval of limit 6 retrieves the 6 most recent historical sessions (6h to 16h ago) -> allowed
+    at(T0);
+    const p1 = await start(d, alice, 'r-bound-rec-0');
+    await submitExam(d, alice, { sessionId: p1.sessionId, clientRequestId: 's-bound-rec-0', finalSeq: 0, reason: 'manual' });
+
+    // Now add 5 more recent sessions within the last hour (total 6 recent: rec-0 through rec-5)
+    for (let i = 1; i < 6; i++) {
+      const p = await start(d, alice, `r-bound-rec-${i}`);
+      await submitExam(d, alice, { sessionId: p.sessionId, clientRequestId: `s-bound-rec-${i}`, finalSeq: 0, reason: 'manual' });
+    }
+
+    // Now there are 16 total sessions in the store (10 historical + 6 recent).
+    // Bounded query with desc: true retrieves the 6 recent sessions and correctly blocks the 7th attempt within the hour.
+    // If order were asc, it would retrieve the oldest historical sessions and fail to enforce the limit.
+    await expect(start(d, alice, 'r-bound-rec-7th')).rejects.toMatchObject({ reason: 'TOO_MANY_ATTEMPTS' });
   });
   it('refuses to open a paper that does not match its blueprint', async () => {
     const { d, store } = await mkDeps();
