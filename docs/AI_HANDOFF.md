@@ -1,7 +1,7 @@
 # UrEducator 2.0 — Dual-Agent Project Status & Handoff Board
 
-**Last Updated:** 5 November 2026 (M8.8.2 Adoption of Claude Review #004 Edge Tests)  
-**Current Milestone:** M8.8.2 (Claude Edge Tests Adopted; 158/158 Tests Passed; Ready for Deploy Authorization)  
+**Last Updated:** 5 November 2026 (M8.8.4 Staging Functions Deployment & Post-Deploy Verification)  
+**Current Milestone:** M8.8.4 (Functions Deployed; V1, V2, V7 Passed; Awaiting Owner Acceptance V3–V5)  
 **Active Writer:** Antigravity (Implementation & Execution)  
 **Assigned Reviewer:** Claude (Senior Architect & Security Reviewer)  
 **Coordination:** ChatGPT  
@@ -25,6 +25,8 @@
 | **M8.8 Exam Start Diagnosis**| **DIAGNOSED** | Antigravity | Missing composite index on count query isolated; report in `docs/M8_8_EXAM_START_FAILURE_DIAGNOSIS_REPORT.md` |
 | **M8.8.1 Index-Aligned Fix**| **IMPLEMENTED** | Antigravity | Query aligned with deployed index `(uid ASC, startedAtMs DESC)`; Review Packet #004 ready |
 | **M8.8.2 Claude Edge Tests**| **ADOPTED** | Antigravity | 5/5 Claude edge tests adopted in `exam-ratelimit-edges.test.ts` (158 tests total) |
+| **M8.8.3 Deploy Preflight** | **PASSED** | Antigravity | 7/7 preflight checks passed; bundle hash verified; 5 indexes READY |
+| **M8.8.4 Functions Deploy** | **DEPLOYED** | Antigravity | All 34 Functions updated; V1, V2, V7 passed; 36/36 smoke passed |
 
 ---
 
@@ -504,3 +506,72 @@ Antigravity created `functions/src/__tests__/exam-ratelimit-edges.test.ts` adopt
 - **Zero Cloud Deployments:** No functions, hosting, storage, or rules were deployed in M8.8.2.
 - **Zero Cloud Resource Modifications:** Cloud indexes, documents, IAM policies, and owner claims (`77an2K2D2MecjzA4dmvsgnzqu9P2`) remain untouched.
 - **Production Isolation:** Production project `ugc-mock-test` and trial `ur-educator` remain strictly off-limits.
+
+---
+
+## 11. M8.8.4 Authorized Cloud Functions Deployment & Post-Deploy Verification
+
+**Deployment Timestamp:** 5 November 2026, 22:27:46 IST (16:57:46 UTC)  
+**Target Project:** `ugc-mock-test-staging` (`336521990930`, `asia-south1`)  
+**Deployment Scope:** `--only functions --project ugc-mock-test-staging` (All 34 Cloud Functions Gen 2)  
+**Command Executed:**
+```powershell
+npx.cmd --no-install firebase deploy --only functions --project ugc-mock-test-staging
+```
+**Pre-Deployment Bundle SHA-256:** `74CACE218CEAA93888072E94BBDADC66DF7A7235D977E80EF1E3217BEE51E58C`  
+**Execution Agent:** Google Antigravity (Primary Executor)  
+
+### 11.1 Deployment Results (All 34 Functions Updated)
+All 34 Cloud Functions Gen 2 updated cleanly with zero creates, zero deletions, and zero errors:
+1. `adminGetQuestion(asia-south1)` — Successful update
+2. `adminList(asia-south1)` — Successful update
+3. `adminOverview(asia-south1)` — Successful update
+4. `adminPublishMockTest(asia-south1)` — Successful update
+5. `adminSaveQuestion(asia-south1)` — Successful update
+6. `adminTransitionQuestion(asia-south1)` — Successful update
+7. `adminUnpublishMockTest(asia-south1)` — Successful update
+8. `adminUpdateLead(asia-south1)` — Successful update
+9. `adminUpdateTicket(asia-south1)` — Successful update
+10. `adminUpsertBlueprint(asia-south1)` — Successful update
+11. `adminUpsertCatalogue(asia-south1)` — Successful update
+12. `adminUpsertMockTest(asia-south1)` — Successful update
+13. `adminUpsertPlan(asia-south1)` — Successful update
+14. `askMentor(asia-south1)` — Successful update
+15. `assignRole(asia-south1)` — Successful update
+16. `captureLead(asia-south1)` — Successful update
+17. `claimOwner(asia-south1)` — Successful update
+18. `createOrder(asia-south1)` — Successful update
+19. `createTicket(asia-south1)` — Successful update
+20. `ensureProfile(asia-south1)` — Successful update
+21. `generatePlan(asia-south1)` — Successful update
+22. `generateReport(asia-south1)` — Successful update
+23. `getExamResult(asia-south1)` — Successful update
+24. `getExamSession(asia-south1)` — Successful update
+25. `listNotebook(asia-south1)` — Successful update
+26. `notebookQuestion(asia-south1)` — Successful update
+27. `publicConfig(asia-south1)` — Successful update
+28. `reviewNotebook(asia-south1)` — Successful update
+29. `saveResponses(asia-south1)` — Successful update
+30. `startExam(asia-south1)` — Successful update
+31. `submitExam(asia-south1)` — Successful update
+32. `updateProfile(asia-south1)` — Successful update
+33. `verifyPayment(asia-south1)` — Successful update
+34. `verifyReport(asia-south1)` — Successful update
+
+### 11.2 Claude Review #004 Verification Checks (V1 to V7 Status)
+
+| Check ID | Verification Description | Status | Evidence |
+| :--- | :--- | :---: | :--- |
+| **V1** | All 34 functions show successful update with no errors | **PASS** | Deployment output: 34 successful updates, 0 errors, 0 deletes |
+| **V2** | Cloud Logging clean: no `FAILED_PRECONDITION`, no "requires an index", 0 new errors | **PASS** | Queried Cloud Logging for `cloud_run_revision` with `timestamp >= 16:56:00Z`: **0 error/warning log entries** returned |
+| **V3** | Owner browser: Open `mt-full` and press Start (no HTTP 500 error; payload hides answers) | **PENDING OWNER** | Reserved for owner in browser at `https://ugc-mock-test-staging.web.app` |
+| **V4** | Owner browser: Press Start again; resumes existing session rather than creating second | **PENDING OWNER** | Reserved for owner in browser |
+| **V5** | Owner browser: Answer 1 question, wait for autosave, submit exam, view results | **PENDING OWNER** | Reserved for owner in browser |
+| **V6** | 7th attempt block verification on staging | **OMITTED** | Deliberately omitted per Claude condition V6 to prevent polluting staging with 6 mock sessions; verified in unit tests (`exam-ratelimit-edges.test.ts`) |
+| **V7** | Confirm owner documents and Auth claim remain unchanged | **PASS** | Verified intact: `systemSettings/ownerClaim` (`atMs: 1793870736068`), `roles/77an2K2D2MecjzA4dmvsgnzqu9P2` (`role: 'owner'`), Auth custom claims (`role: 'owner'`) |
+
+### 11.3 Automated Staging Smoke Verification
+- Command: `.\scripts\smoke-staging.ps1`
+- Target: `https://ugc-mock-test-staging.web.app`
+- Result: **36 of 36 checks passed**
+- Public endpoints: `publicConfig` returning HTTP 200 with `env: "staging"`, `paymentsEnabled: false`, `aiLive: false`. Protected callables (`startExam`, `submitExam`, etc.) rejecting unauthenticated requests with HTTP 401. Private Firestore paths rejecting unauthenticated reads with HTTP 403.
