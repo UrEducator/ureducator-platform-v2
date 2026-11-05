@@ -203,30 +203,104 @@ The identical flaw also affected `authPort.setRole()` and `accessToken()`.
 
 ---
 
-## 5. Claude Review Verdict
+## 5. Claude Review Verdict for Review Packet #002
 
-*(To be completed by Claude)*
-
-**Verdict:** `[ PENDING REVIEW ]`  
+**Verdict:** `PASS WITH CONDITIONS`  
 **Reviewer:** Claude (Senior Architecture & Security Reviewer)  
-**Date:**  
+**Date:** 5 November 2026  
+**Reference:** `Claude outputs/CLAUDE_REVIEW_PACKET_002_VERDICT.md`  
 
-### Findings & Observations:
-- *Observation 1:*
-- *Observation 2:*
-
-### Conditions / Required Actions:
-- *None / List conditions if any*
+### Key Findings & Required Conditions:
+- **C1 (Narrow getApp Catch):** Catch only error code `'app/no-app'` in `defaultApp()`, rethrowing unexpected errors.
+- **C2 (Stop Masking Claim Errors):** In `admin.ts`, translate only genuine `ALREADY_EXISTS` (code 6) into `OWNER_ALREADY_CLAIMED`. Update `MemoryStore` to throw `code: 6`.
+- **C3 (Functions Deployment Scope):** Full deployment scope `--only functions` required to eliminate `app/no-app` across all 34 callable endpoints.
+- **C4 (Pre-flight Checks & Resumability):** Check `systemSettings/ownerClaim` and `roles/<owner-uid>`. Verify `defaultApp();` in built bundle. Implement resumable pending/complete ownership workflow (F2).
 
 ---
 
-## 6. Next Engineering Tasks
+## 6. Review Packet #003: M8.6 Claude Review Corrections & Resumable Owner Claim Architecture
 
-Once Claude's review verdict is recorded:
-1. **Deploy Staging Update:** Deploy updated `claimOwner` function and hosting to `ugc-mock-test-staging`.
-2. **Owner Claim Execution:** Owner clicks "Claim owner access" on `https://ugc-mock-test-staging.web.app/app/claim-owner`.
-3. **Verify Claim Completion:**
-   - Confirm `settings/ownerClaim` is created in Firestore with UID `77an2K2D2MecjzA4dmvsgnzqu9P2`.
-   - Confirm custom claim `{ role: 'owner' }` is assigned.
-   - Confirm repeat claim is rejected with `ALREADY_CLAIMED`.
-   - Confirm Admin Studio (`/admin`) is accessible.
+**Author:** Google Antigravity (Primary Executor)  
+**Recipient:** Claude (Senior Architecture & Security Review)  
+**Commit Reference:** `58d261c` (`fix(owner-claim): implement Claude review corrections C1, C2, F2 resumable claim, and F7 tests`)  
+**Target Environment:** `ugc-mock-test-staging` (`336521990930`, `asia-south1`)  
+
+### 6.1 Task Description & Scope
+Implementation of all conditions (C1, C2, C4) and findings (F1, F2, F3, F4, F5, F6, F7) from Claude's review of Review Packet #002. Specifically: narrowing exception handling in `runtime.ts`, stopping error masking in `admin.ts`, introducing a two-stage resumable owner-claim architecture, expanding regression tests across all workspaces, validating the deployed bundle and staging configuration, and auditing live pre-flight Firestore documents and IAM bindings.
+
+### 6.2 Implementation Details & F1–F7 Resolution
+
+1. **C1 & F5 — Narrow Exception Handling in `defaultApp()` (`functions/src/infra/runtime.ts`):**
+   ```typescript
+   export function defaultApp(): App {
+     try {
+       return getApp();
+     } catch (e) {
+       if ((e as { code?: unknown }).code !== 'app/no-app') throw e;
+       return initializeApp();
+     }
+   }
+   ```
+   Rethrows any unexpected internal error from `getApp()`. Verified by `functions/src/__tests__/runtime-error.test.ts`.
+
+2. **F6 — Module Load Position (`functions/src/index.ts`):**
+   Moved `defaultApp();` below all import statements with an explicit architectural comment.
+
+3. **C2 & F1 — Accurate Error Translation (`functions/src/services/admin.ts` & `memoryStore.ts`):**
+   In `admin.ts`, `.catch(...)` on Phase 1 transaction only maps genuine already-exists errors (`code === 6 || c === 'already-exists' || c === 'ALREADY_EXISTS'`). Unrelated database/network failures are rethrown and safely mapped by `callable.ts` to `INTERNAL` with a correlation ID. In `memoryStore.ts`, create collisions now attach `err.code = 6`.
+
+4. **F2 — Resumable Owner Claim Lifecycle (`functions/src/services/admin.ts`):**
+   Implemented Claude's recommended pending/complete model:
+   - **Phase 1 (Atomic Reservation):** Checks `P.setting('ownerClaim')` in a Firestore transaction. If empty, creates `{ uid: a.uid, email: a.email, atMs: clock, status: 'pending' }`. If document exists:
+     - If `status === 'complete'` or legacy claim without status: rejects with `OWNER_ALREADY_CLAIMED`.
+     - If `status === 'pending'` and `existing.uid !== a.uid`: rejects with `OWNER_ALREADY_CLAIMED` (prevents takeover).
+     - If `status === 'pending'` and `existing.uid === a.uid`: allows transaction to commit to resume role assignment.
+   - **Phase 2 (Idempotent Role Assignment):** Calls `auth.setRole(a.uid, 'owner')` and writes `roles/${a.uid}`. If this fails, the claim remains `status: 'pending'`, allowing the owner to retry safely without administrative intervention.
+   - **Phase 3 (Completion):** Merges `{ status: 'complete', completedAtMs: clock }` into `systemSettings/ownerClaim` and writes audit log. Subsequent calls are rejected with `OWNER_ALREADY_CLAIMED`.
+
+5. **F7 — Dedicated Regression Testing:**
+   - `runtime-error.test.ts`: Verifies unexpected `getApp()` errors are rethrown.
+   - `runtime-auth.test.ts`: Verifies `authPort.setRole()` and role revocation resolve the default app with named SDK apps present.
+   - `admin.test.ts`: Added 9 comprehensive tests covering first claim, role failure recovery, takeover rejection, duplicate claim, legacy records, concurrent attempts, and unrelated transaction errors.
+
+6. **F4 & Pre-Flight State Audit (`ugc-mock-test-staging`):**
+   Read-only verification of `systemSettings/ownerClaim` and `roles/77an2K2D2MecjzA4dmvsgnzqu9P2` revealed:
+   - `systemSettings/ownerClaim`: `{ uid: '77an2K2D2MecjzA4dmvsgnzqu9P2', atMs: 1793870736068 }`
+   - `roles/77an2K2D2MecjzA4dmvsgnzqu9P2`: `{ role: 'owner', assignedBy: '77an2K2D2MecjzA4dmvsgnzqu9P2', assignedAtMs: 1793870736846 }`
+   - Auth record: UID `77an2K2D2MecjzA4dmvsgnzqu9P2` has `customClaims: { role: 'owner' }`.
+   - Audit log: `auditLogs/1793870736993_c5a06616` recorded.
+   *(These records were committed at 14:55:36 IST during local bundle execution with ADC credentials. Per Stop Conditions, Antigravity has paused deployment to report this state).*
+
+7. **Runtime Service Account IAM Verification:**
+   - Identity: `336521990930-compute@developer.gserviceaccount.com`
+   - IAM Role: `roles/editor` on `ugc-mock-test-staging` (confirmed sufficient for `setCustomUserClaims`).
+
+### 6.3 Executed Test Evidence
+
+| Test Suite | Scope | Result | Execution Context |
+| :--- | :--- | :--- | :--- |
+| **Functions Unit** | Admin, exam, payments, AI, platform, runtime, auth, errors | **113/113 passed** | Vitest (8 files) |
+| **Shared Unit** | Scoring, session, RBAC, learning schemas | **37/37 passed** | Vitest (6 files) |
+| **Rules Behavioural** | Firestore security rules (57 tests) | **57/57 passed** | Local Firestore emulator (`demo-ureducator`) |
+| **TypeScript** | Repository-wide across all workspaces | **0 errors** | `tsc --noEmit` |
+| **ESLint** | Repository-wide across all workspaces | **0 errors, 0 warnings** | ESLint 9 |
+| **Build & Deploy Prep** | Functions bundle and staging dist | **1.9MB bundle, prepared** | `prepare:deploy` |
+| **Bundle Check (C4.2)** | `Select-String` for `^defaultApp\(\);$` in `dist/functions/lib/index.js` | **Found at line 48135** | Exact string match |
+| **Bundle Scans** | Web (249 files) & Functions (4 files) | **0 findings** | `verify-bundle.mjs` |
+| **Staging Config** | Environment variables, headers, aliases | **34/34 passed** | `verify-staging-config.mjs` |
+
+### 6.4 Proposed Deployment Scope
+When authorised:
+`npx.cmd --no-install firebase deploy --only functions --project ugc-mock-test-staging`
+(Deploys all 34 Cloud Functions to update the shared runtime and eliminate `app/no-app` across the entire backend).
+
+---
+
+## 7. Next Actions & Preflight Decision Required
+
+1. **Owner / Claude Review of Live Preflight Records:**
+   - Confirm whether to retain the existing completed ownership records (`systemSettings/ownerClaim` and `roles/77an2K2D2MecjzA4dmvsgnzqu9P2`), or reset them to exercise the resumable bootstrap flow from a clean slate.
+2. **Authorize Functions Deployment:**
+   - Deploy full functions bundle to `ugc-mock-test-staging`.
+3. **Verify Live Operation:**
+   - Validate `/admin` access and verify Cloud Functions logs show zero `FirebaseAppError` instances.
