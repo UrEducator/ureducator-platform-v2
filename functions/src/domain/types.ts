@@ -1,7 +1,27 @@
+import { z } from 'zod';
 import type { Blueprint, ExamResponse, Lang, SessionStatus, TopicAggregate } from '@ureducator/shared';
 
 export type Clock = () => number;
-export type Actor = { uid: string; emailVerified: boolean; role?: string | undefined };
+export type Actor = { uid: string; emailVerified: boolean; role?: string | undefined; email?: string | undefined };
+
+export const PilotCohortDocSchema = z.object({
+  enabled: z.boolean().optional(),
+  allowedEmails: z.array(z.string().email().max(254)).optional(),
+  allowedUids: z.array(z.string().min(1).max(128).regex(/^[^/\\]+$/)).optional(),
+  appliesTo: z.object({
+    kinds: z.array(z.string()).optional(),
+    mockTestIds: z.array(z.string().regex(/^[^/\\]+$/)).optional(),
+  }).optional(),
+}).passthrough();
+
+export type PilotCohortDoc = z.infer<typeof PilotCohortDocSchema>;
+
+export type PilotCohortMember = {
+  active?: boolean;
+  email?: string;
+  uid?: string;
+  addedAtMs?: number;
+};
 
 export type MockTestDoc = {
   title: string; kind: 'full' | 'paper1' | 'paper2' | 'unit' | 'topic' | 'pyq' | 'custom';

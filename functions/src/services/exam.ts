@@ -3,7 +3,11 @@ import {
   BlueprintSchema, LIMITS, PublishedPaperSchema, applySave, mergeTopics, scoreAttempt, seededOrder,
   type AnswerKey, type Blueprint, type ExamResponse, type PaperQuestion, type PublishedPaper,
 } from '@ureducator/shared';
-import type { Actor, Clock, MockTestDoc, ResponsesDoc, ResultDoc, SessionDoc, SnapshotDoc } from '../domain/types';
+import {
+  PilotCohortDocSchema,
+  type Actor, type Clock, type MockTestDoc, type PilotCohortDoc, type PilotCohortMember,
+  type ResponsesDoc, type ResultDoc, type SessionDoc, type SnapshotDoc,
+} from '../domain/types';
 import { P } from '../domain/paths';
 import type { Store, TxStore } from '../domain/store';
 import { err } from '../infra/errors';
@@ -14,17 +18,80 @@ export const sessionIdFor = (uid: string, clientRequestId: string) =>
   's_' + createHash('sha256').update(`${uid}:${clientRequestId}`).digest('hex').slice(0, 28);
 
 const dayKey = (ms: number) => new Date(ms).toISOString().slice(0, 10);
+const isValidDocId = (s: string) => !s.includes('/') && !s.includes('\\') && !s.includes('\0') && s.length > 0 && s.length <= 1500;
 
 /* ---------------------------------------------------------------- start */
+export async function assertPilotAccess(d: Deps, actor: Actor, test?: MockTestDoc, mockTestId?: string) {
+  if (actor.role && ['owner', 'super_admin', 'admin'].includes(actor.role)) return;
+
+  const raw = await d.store.get<unknown>(P.setting('pilotCohort'));
+  let settings: PilotCohortDoc;
+  if (!raw) {
+    // FAIL-CLOSED (Owner decision F-1): if pilotCohort configuration document is missing,
+    // the gate completely locks down the exam (enabled: true with empty allowlist).
+    settings = { enabled: true, allowedEmails: [], allowedUids: [] };
+  } else {
+    const parsed = PilotCohortDocSchema.safeParse(raw);
+    if (!parsed.success) {
+      throw err('internal', 'PILOT_CONFIG_INVALID', 'Invalid pilot cohort configuration.');
+    }
+    settings = parsed.data;
+    if (settings.enabled === false) return;
+  }
+
+  if (settings.appliesTo) {
+    const hasKinds = !!settings.appliesTo.kinds?.length;
+    const hasIds = !!settings.appliesTo.mockTestIds?.length;
+    if (hasKinds || hasIds) {
+      const kindMatch = hasKinds && !!test && settings.appliesTo.kinds!.includes(test.kind);
+      const idMatch = hasIds && !!mockTestId && settings.appliesTo.mockTestIds!.includes(mockTestId);
+      if (!kindMatch && !idMatch) return;
+    }
+  }
+
+  let email = actor.email?.toLowerCase().trim();
+  if (!email && actor.uid) {
+    const userDoc = await d.store.get<{ email?: string | null }>(P.user(actor.uid));
+    if (userDoc?.email) email = userDoc.email.toLowerCase().trim();
+  }
+  const uid = actor.uid;
+
+  if (email && settings.allowedEmails?.some((e: string) => e.toLowerCase().trim() === email)) return;
+  if (uid && settings.allowedUids?.includes(uid)) return;
+
+  if (email && isValidDocId(email)) {
+    const docByEmail = await d.store.get<PilotCohortMember>(P.pilotCohort(email));
+    if (docByEmail && docByEmail.active === true) return;
+  }
+  if (uid && isValidDocId(uid)) {
+    const docByUid = await d.store.get<PilotCohortMember>(P.pilotCohort(uid));
+    if (docByUid && docByUid.active === true) return;
+  }
+
+  const testDesc = test?.title ? `"${test.title}"` : 'This test';
+  throw err(
+    'permission-denied',
+    'PILOT_ACCESS_DENIED',
+    `Pilot Access Denied: ${testDesc} is currently in a closed private pilot. Your account is not on the authorized cohort allowlist.`
+  );
+}
+
 export async function startExam(d: Deps, actor: Actor, input: { mockTestId: string; language: 'en' | 'hi'; clientRequestId: string }) {
   if (!actor.emailVerified) throw err('failed-precondition', 'EMAIL_NOT_VERIFIED', 'Verify your email address before starting a test.');
   const now = d.clock();
   const sid = sessionIdFor(actor.uid, input.clientRequestId);
 
+  const test = await d.store.get<MockTestDoc>(P.mockTest(input.mockTestId));
+
+  // Enforce A1 Pilot Access Gate BEFORE returning existing session
+  await assertPilotAccess(d, actor, test ?? undefined, input.mockTestId);
+
+  // Idempotent session lookup: same-clientRequestId retry returns existing session
+  // BEFORE checking if test is closed / unavailable
   const same = await d.store.get<SessionDoc>(P.session(sid));
   if (same) return sessionPayload(d, sid, same);
 
-  const test = await d.store.get<MockTestDoc>(P.mockTest(input.mockTestId));
+  // For new attempts: test existence, status, schedule window, and entitlement
   if (!test || test.status !== 'published') throw err('not-found', 'TEST_NOT_AVAILABLE', 'This test is not available.');
   if (test.opensAtMs && now < test.opensAtMs) throw err('failed-precondition', 'TEST_NOT_OPEN', 'This test has not opened yet.');
   if (test.closesAtMs && now > test.closesAtMs) throw err('failed-precondition', 'TEST_CLOSED', 'This test window has closed.');

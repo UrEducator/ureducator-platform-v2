@@ -30,6 +30,7 @@ export async function seed(overrides: Partial<MockTestDoc> = {}) {
   await store.set(P.paper('p1'), paper);
   await store.set(P.answerKey('p1'), key);
   await store.set(P.mockTest('mt1'), { ...test, ...overrides });
+  await store.set(P.setting('pilotCohort'), { enabled: true, allowedUids: ['alice', 'bob'] });
   return store;
 }
 export const alice = { uid: 'alice', emailVerified: true };

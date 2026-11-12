@@ -25,4 +25,5 @@ export const P = {
   order: (id: string) => `orders/${id}`,
   paymentEvent: (id: string) => `paymentEvents/${id}`,
   studyPlan: (uid: string) => `studyPlans/${uid}`,
+  pilotCohort: (id: string) => `pilotCohort/${id}`,
 } as const;

@@ -142,6 +142,7 @@ describe('mock test publishing', () => {
   }
   it('publishes a sanitised paper and a separate server-only answer key, and students can sit the exam', async () => {
     const e = mk(); const { mockTestId } = await setup(e);
+    await e.store.set(P.setting('pilotCohort'), { enabled: true, allowedUids: ['stu'] });
     const r = await admin.publishMockTest(e.d, adm, mockTestId);
     expect(r).toMatchObject({ paperVersion: 1, paperId: `${mockTestId}_v1` });
     const paper = await e.store.get<{ questions: object[] }>(P.paper(r.paperId));

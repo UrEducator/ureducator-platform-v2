@@ -1,11 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { getExamResult, getSession, saveResponses, startExam, submitExam, sessionIdFor } from '../services/exam';
+import type { Actor, MockTestDoc } from '../domain/types';
 import { P } from '../domain/paths';
 import { alice, bob, resp, seed } from './fixtures';
 
 const T0 = 1_800_000_000_000;
 const mkDeps = async (o = {}) => { let now = T0; const store = await seed(o); return { d: { store, clock: () => now }, store, tick: (ms: number) => (now += ms), at: (ms: number) => (now = ms) }; };
-const start = (d: Awaited<ReturnType<typeof mkDeps>>['d'], actor = alice, id = 'r1') => startExam(d, actor, { mockTestId: 'mt1', language: 'en', clientRequestId: id });
+const start = (d: Awaited<ReturnType<typeof mkDeps>>['d'], actor: Actor = alice, id = 'r1') => startExam(d, actor, { mockTestId: 'mt1', language: 'en', clientRequestId: id });
 
 describe('startExam', () => {
   it('creates a server-timed session and never returns answers or explanations', async () => {
@@ -125,6 +126,178 @@ describe('startExam', () => {
     await store.merge(P.paper('p1'), { questions: paper.questions.slice(0, 4) });
     await store.set(P.paper('p1'), { ...paper, questions: paper.questions.slice(0, 4) });
     await expect(start(d)).rejects.toMatchObject({ reason: 'PAPER_BLUEPRINT_MISMATCH' });
+  });
+
+  describe('A1 Pilot Access Gate', () => {
+    it('fails closed and blocks access when no pilotCohort settings exist', async () => {
+      const { d, store } = await mkDeps();
+      await store.delete(P.setting('pilotCohort'));
+      // Fails closed by default: non-allowlisted users are completely locked out
+      await expect(start(d, alice)).rejects.toMatchObject({
+        code: 'permission-denied',
+        reason: 'PILOT_ACCESS_DENIED',
+      });
+      // Individual active document in pilotCohort collection can still grant access
+      await store.set(P.pilotCohort('alice'), { active: true, uid: 'alice' });
+      await expect(start(d, alice)).resolves.toMatchObject({ sessionId: expect.any(String) });
+    });
+
+    it('allows access when pilotCohort settings have enabled: false', async () => {
+      const { d, store } = await mkDeps();
+      await store.set(P.setting('pilotCohort'), { enabled: false, allowedEmails: ['pilot@example.com'] });
+      await expect(start(d, alice)).resolves.toMatchObject({ sessionId: expect.any(String) });
+    });
+
+    it('forcefully blocks verified non-cohort accounts when pilotCohort is enabled', async () => {
+      const { d, store } = await mkDeps();
+      await store.set(P.setting('pilotCohort'), {
+        enabled: true,
+        allowedEmails: ['pilot1@example.com', 'pilot2@example.com'],
+        allowedUids: ['uid_pilot_1'],
+      });
+      const nonCohort = { uid: 'eve_non_cohort', emailVerified: true, email: 'eve@random.com' };
+      await expect(start(d, nonCohort)).rejects.toMatchObject({
+        code: 'permission-denied',
+        reason: 'PILOT_ACCESS_DENIED',
+        message: expect.stringContaining('closed private pilot'),
+      });
+    });
+
+    it('permits allowlisted account matching by email (case-insensitive)', async () => {
+      const { d, store } = await mkDeps();
+      await store.set(P.setting('pilotCohort'), {
+        enabled: true,
+        allowedEmails: ['Cohort.Student@Example.Com'],
+      });
+      const cohortUser = { uid: 'student_123', emailVerified: true, email: 'cohort.student@example.com' };
+      await expect(start(d, cohortUser)).resolves.toMatchObject({ sessionId: expect.any(String) });
+    });
+
+    it('permits allowlisted account matching by UID', async () => {
+      const { d, store } = await mkDeps();
+      await store.set(P.setting('pilotCohort'), {
+        enabled: true,
+        allowedUids: ['uid_authorized_456'],
+      });
+      const cohortUser = { uid: 'uid_authorized_456', emailVerified: true, email: 'other@example.com' };
+      await expect(start(d, cohortUser)).resolves.toMatchObject({ sessionId: expect.any(String) });
+    });
+
+    it('resolves email from user document when actor.email is omitted', async () => {
+      const { d, store } = await mkDeps();
+      await store.set(P.setting('pilotCohort'), {
+        enabled: true,
+        allowedEmails: ['lookup@example.com'],
+      });
+      await store.set(P.user('uid_lookup_user'), { email: 'lookup@example.com' });
+      const actorWithoutEmail = { uid: 'uid_lookup_user', emailVerified: true };
+      await expect(start(d, actorWithoutEmail)).resolves.toMatchObject({ sessionId: expect.any(String) });
+    });
+
+    it('permits account allowlisted via individual pilotCohort collection document by email or uid', async () => {
+      const { d, store } = await mkDeps();
+      await store.set(P.setting('pilotCohort'), { enabled: true, allowedEmails: [] });
+      await store.set(P.pilotCohort('member1@example.com'), { active: true, email: 'member1@example.com' });
+      await store.set(P.pilotCohort('uid_member2'), { active: true, uid: 'uid_member2' });
+
+      await expect(start(d, { uid: 'uid_1', emailVerified: true, email: 'member1@example.com' })).resolves.toMatchObject({ sessionId: expect.any(String) });
+      await expect(start(d, { uid: 'uid_member2', emailVerified: true, email: 'unknown@example.com' })).resolves.toMatchObject({ sessionId: expect.any(String) });
+      await expect(start(d, { uid: 'uid_unauthorized', emailVerified: true, email: 'unauthorized@example.com' })).rejects.toMatchObject({ reason: 'PILOT_ACCESS_DENIED' });
+    });
+
+    it('bypasses pilot gate for staff and owner roles', async () => {
+      const { d, store } = await mkDeps();
+      await store.set(P.setting('pilotCohort'), { enabled: true, allowedEmails: [] });
+      const adminActor = { uid: 'admin_1', emailVerified: true, role: 'admin' };
+      const ownerActor = { uid: 'owner_1', emailVerified: true, role: 'owner' };
+      await expect(start(d, adminActor)).resolves.toMatchObject({ sessionId: expect.any(String) });
+      await expect(start(d, ownerActor)).resolves.toMatchObject({ sessionId: expect.any(String) });
+    });
+
+    it('honours appliesTo filters when pilot gate is scoped to specific test kinds or test IDs', async () => {
+      const { d, store } = await mkDeps();
+      await store.set(P.setting('pilotCohort'), {
+        enabled: true,
+        allowedEmails: ['pilot@example.com'],
+        appliesTo: { kinds: ['paper1'] },
+      });
+      // mt1 in fixtures has kind: 'full' -> not scoped to paper1, so non-pilot user is allowed
+      const nonPilot = { uid: 'non_pilot_user', emailVerified: true, email: 'eve@random.com' };
+      await expect(start(d, nonPilot)).resolves.toMatchObject({ sessionId: expect.any(String) });
+
+      // Change mt1 to kind: 'paper1' -> now scoped, non-pilot user is blocked
+      const cur = (await store.get<MockTestDoc>(P.mockTest('mt1')))!;
+      await store.set(P.mockTest('mt1'), { ...cur, kind: 'paper1' });
+      await expect(start(d, nonPilot)).rejects.toMatchObject({ reason: 'PILOT_ACCESS_DENIED' });
+
+      // Allowlisted user is permitted
+      await expect(start(d, { uid: 'pilot_user', emailVerified: true, email: 'pilot@example.com' })).resolves.toMatchObject({ sessionId: expect.any(String) });
+    });
+
+    it('blocks member with active: false in individual pilotCohort doc', async () => {
+      const { d, store } = await mkDeps();
+      await store.set(P.setting('pilotCohort'), { enabled: true, allowedEmails: [] });
+      await store.set(P.pilotCohort('inactive@example.com'), { active: false, email: 'inactive@example.com' });
+      await expect(start(d, { uid: 'uid_inactive', emailVerified: true, email: 'inactive@example.com' }))
+        .rejects.toMatchObject({ reason: 'PILOT_ACCESS_DENIED' });
+    });
+
+    it('blocks removed member when document is deleted from pilotCohort collection', async () => {
+      const { d, store } = await mkDeps();
+      await store.set(P.setting('pilotCohort'), { enabled: true, allowedEmails: [] });
+      await store.set(P.pilotCohort('temp@example.com'), { active: true, email: 'temp@example.com' });
+      await expect(start(d, { uid: 'uid_temp', emailVerified: true, email: 'temp@example.com' })).resolves.toBeTruthy();
+      await store.delete(P.pilotCohort('temp@example.com'));
+      await expect(start(d, { uid: 'uid_temp', emailVerified: true, email: 'temp@example.com' }, 'r_after_del'))
+        .rejects.toMatchObject({ reason: 'PILOT_ACCESS_DENIED' });
+    });
+
+    it('exempts super_admin role from pilot access gate', async () => {
+      const { d, store } = await mkDeps();
+      await store.set(P.setting('pilotCohort'), { enabled: true, allowedEmails: [] });
+      const superAdmin = { uid: 'super_admin_user', emailVerified: true, role: 'super_admin' };
+      await expect(start(d, superAdmin)).resolves.toMatchObject({ sessionId: expect.any(String) });
+    });
+
+    it('blocks non-exempt staff roles (e.g., content_editor) if not on allowlist', async () => {
+      const { d, store } = await mkDeps();
+      await store.set(P.setting('pilotCohort'), { enabled: true, allowedEmails: [] });
+      const editor = { uid: 'editor_1', emailVerified: true, role: 'content_editor', email: 'editor@example.com' };
+      await expect(start(d, editor)).rejects.toMatchObject({ reason: 'PILOT_ACCESS_DENIED' });
+    });
+
+    it('returns existing session on same-clientRequestId retry even if test has closed, but blocks non-cohort retry', async () => {
+      const { d, store } = await mkDeps();
+      await store.set(P.setting('pilotCohort'), { enabled: true, allowedEmails: ['pilot@example.com'] });
+      const cohortUser = { uid: 'pilot_student', emailVerified: true, email: 'pilot@example.com' };
+      const p = await start(d, cohortUser, 'req_idempotent_1');
+
+      // Set closesAtMs in the past so new attempts would be closed
+      const cur = (await store.get<MockTestDoc>(P.mockTest('mt1')))!;
+      await store.set(P.mockTest('mt1'), { ...cur, closesAtMs: T0 - 1000 });
+
+      // Same-clientRequestId retry succeeds and returns existing session despite test being closed
+      const retry = await start(d, cohortUser, 'req_idempotent_1');
+      expect(retry.sessionId).toBe(p.sessionId);
+
+      // A different request id fails with TEST_CLOSED
+      await expect(start(d, cohortUser, 'req_idempotent_different')).rejects.toMatchObject({ reason: 'TEST_CLOSED' });
+
+      // If user is removed from allowlist, same-clientRequestId retry is blocked by pilot gate
+      await store.set(P.setting('pilotCohort'), { enabled: true, allowedEmails: [] });
+      await expect(start(d, cohortUser, 'req_idempotent_1')).rejects.toMatchObject({ reason: 'PILOT_ACCESS_DENIED' });
+    });
+
+    it('rejects invalid pilotCohort settings schema with PILOT_CONFIG_INVALID', async () => {
+      const { d, store } = await mkDeps();
+      // allowedEmails contains non-email string
+      await store.set(P.setting('pilotCohort'), { enabled: true, allowedEmails: ['not-an-email'] });
+      await expect(start(d, alice)).rejects.toMatchObject({ reason: 'PILOT_CONFIG_INVALID' });
+
+      // allowedUids contains invalid characters (slashes)
+      await store.set(P.setting('pilotCohort'), { enabled: true, allowedUids: ['invalid/uid/with/slashes'] });
+      await expect(start(d, alice)).rejects.toMatchObject({ reason: 'PILOT_CONFIG_INVALID' });
+    });
   });
 });
 
