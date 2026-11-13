@@ -5,7 +5,7 @@
  * paper is deliberately synthetic ("Choose the option labelled ...") so the exam format, palette and scoring can be rehearsed without
  * pretending to be UGC-NET content. No question here is an official previous-year question.
  */
-import { DEFAULT_BLUEPRINT, SEED_SUBJECTS, type AnswerKey, type Blueprint, type PaperQuestion, type PublishedPaper } from '@ureducator/shared';
+import { DEFAULT_BLUEPRINT, PAPER1_PILOT_BLUEPRINT, SEED_SUBJECTS, type AnswerKey, type Blueprint, type PaperQuestion, type PublishedPaper } from '@ureducator/shared';
 import type { Store } from '../domain/store';
 import { P } from '../domain/paths';
 import type { MockTestDoc } from '../domain/types';
@@ -60,6 +60,7 @@ export async function seedDemo(store: Store, nowMs: number): Promise<{ miniKey: 
   }
   await store.set(P.blueprint(DEFAULT_BLUEPRINT.id), DEFAULT_BLUEPRINT);
   await store.set(P.blueprint(MINI_BLUEPRINT.id), MINI_BLUEPRINT);
+  await store.set(P.blueprint(PAPER1_PILOT_BLUEPRINT.id), PAPER1_PILOT_BLUEPRINT);
 
   const mini = toPaper(REAL); const full = fullSynthetic();
   const mkPaper = (paperId: string, mockTestId: string, qs: PaperQuestion[]): PublishedPaper => ({ paperId, mockTestId, version: 1, questions: qs, contentLabel: 'sample' });

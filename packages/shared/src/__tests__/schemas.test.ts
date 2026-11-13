@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { LeadInput, ProfileUpdateSchema, QuestionVersionSchema, SaveResponsesInput, SubmitExamInput } from '../schemas';
 import { SEED_SUBJECTS } from '../catalogue';
+import { BlueprintSchema, PAPER1_PILOT_BLUEPRINT, maxMarks, totalQuestions } from '../blueprint';
 
 const base = {
   version: 1, createdBy: 'u1',
@@ -45,3 +46,24 @@ describe('seed catalogue', () => {
     for (const s of SEED_SUBJECTS) expect(s.label).not.toBe('fully_verified');
   });
 });
+
+describe('pilot blueprint', () => {
+  it('PAPER1_PILOT_BLUEPRINT conforms to BlueprintSchema with exactly 50 questions, +2/0 scoring, and unverified pattern', () => {
+    expect(BlueprintSchema.safeParse(PAPER1_PILOT_BLUEPRINT).success).toBe(true);
+    expect(PAPER1_PILOT_BLUEPRINT.id).toBe('ugcnet-paper1-pilot-v1');
+    expect(totalQuestions(PAPER1_PILOT_BLUEPRINT)).toBe(50);
+    expect(maxMarks(PAPER1_PILOT_BLUEPRINT)).toBe(100);
+    expect(PAPER1_PILOT_BLUEPRINT.durationMinutes).toBe(60);
+    expect(PAPER1_PILOT_BLUEPRINT.marking).toMatchObject({
+      correct: 2,
+      incorrect: 0,
+      unattempted: 0,
+      multiCorrectPolicy: 'all_or_nothing',
+    });
+    expect(PAPER1_PILOT_BLUEPRINT.officialPatternVerified).toBe(false);
+    expect(PAPER1_PILOT_BLUEPRINT.sections).toHaveLength(1);
+    expect(PAPER1_PILOT_BLUEPRINT.sections[0]?.paper).toBe('paper1');
+    expect(PAPER1_PILOT_BLUEPRINT.sections[0]?.questionCount).toBe(50);
+  });
+});
+

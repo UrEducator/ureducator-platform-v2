@@ -39,7 +39,7 @@ function Body() {
         <Sheet className="p-6">
           <h2 className="text-xl">Instructions</h2>
           <ol className="read mt-4 grid list-decimal gap-2.5 pl-5">
-            {bp && <li>The test has <strong>{totalQuestions(bp)} questions</strong> for <strong>{maxMarks(bp)} marks</strong> and lasts <strong>{bp.durationMinutes} minutes</strong>.</li>}
+            {bp && <li>The test has <strong>{totalQuestions(bp)} questions</strong> for <strong>{maxMarks(bp)} marks</strong> and lasts <strong>{bp.durationMinutes} minutes</strong>{!bp.officialPatternVerified ? ' (practice setting)' : ''}.</li>}
             {bp && <li>Each correct answer earns <strong>{bp.marking.correct} marks</strong>. {bp.marking.incorrect < 0 ? `Each wrong answer costs ${Math.abs(bp.marking.incorrect)} mark(s).` : 'There is no negative marking.'}</li>}
             <li>The countdown follows the server clock. It keeps running if you close the page, and the test submits itself at zero.</li>
             <li>Your answers are saved automatically. If your connection drops, they are kept on your device and sent when it returns.</li>

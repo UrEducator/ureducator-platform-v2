@@ -58,3 +58,21 @@ export const DEFAULT_BLUEPRINT: Blueprint = BlueprintSchema.parse({
   languages: ['en', 'hi'],
   officialPatternVerified: false,
 });
+
+/**
+ * Dedicated Paper I blueprint for the private pilot.
+ * 50 questions, +2/0 scoring, 60 minutes practice setting, unverified pattern.
+ */
+export const PAPER1_PILOT_BLUEPRINT: Blueprint = BlueprintSchema.parse({
+  id: 'ugcnet-paper1-pilot-v1',
+  name: 'UGC-NET Paper I — Dedicated Pilot (Practice)',
+  version: 1,
+  durationMinutes: 60,
+  sections: [
+    { id: 'paper1', title: { en: 'Paper I — Teaching & Research Aptitude' }, paper: 'paper1', questionCount: 50 },
+  ],
+  marking: { correct: 2, incorrect: 0, unattempted: 0, multiCorrectPolicy: 'all_or_nothing' },
+  languages: ['en', 'hi'],
+  officialPatternVerified: false,
+});
+
