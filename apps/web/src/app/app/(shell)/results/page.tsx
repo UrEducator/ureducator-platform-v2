@@ -37,7 +37,7 @@ function BucketTable({ caption, rows, nameOf }: { caption: string; rows: [string
 function Body() {
   useDocumentTitle('Result');
   const sid = useSearchParams().get('s') ?? ''; const { backend, user } = useAuth(); const { name } = useNames(); const uid = user?.uid ?? '';
-  const [data, setData] = useState<Result | null>(null); const [err, setErr] = useState<{ reason: string; message: string } | null>(null); const [lang, setLang] = useState<Lang>('en');
+  const [data, setData] = useState<Result | null>(null); const [err, setErr] = useState<{ reason: string; message: string } | null>(null); const [lang] = useState<Lang>('en');
   const [pdfBusy, setPdfBusy] = useState(false); const [pdfErr, setPdfErr] = useState('');
   const row = useLoad((b) => b.reads.results(uid), [uid]); const tests = useLoad((b) => b.reads.publishedTests()); const bps = useLoad((b) => b.reads.blueprints());
 
@@ -56,8 +56,22 @@ function Body() {
     } catch (e) { setPdfErr(asApiError(e).message); } finally { setPdfBusy(false); }
   }
 
-  if (err?.reason === 'EXAM_IN_PROGRESS') return <Alert tone="info" title="This test is still running"><Link className="font-semibold underline" href={`/app/exam?s=${sid}`}>Go back to the test</Link></Alert>;
-  if (err) return <Alert tone="error" title="Result not available">{err.message}</Alert>;
+  if (err?.reason === 'EXAM_IN_PROGRESS') return (
+    <>
+      <div role="status" className="mb-6 rounded-sheet border border-[#f59e0b] bg-[#fef3c7] px-4 py-2.5 text-center text-xs sm:text-sm font-semibold text-[#92400e]">
+        UrEducator Pilot Study — Practice Content Only — Not an Official NTA/UGC Publication
+      </div>
+      <Alert tone="info" title="This test is still running"><Link className="font-semibold underline" href={`/app/exam?s=${sid}`}>Go back to the test</Link></Alert>
+    </>
+  );
+  if (err) return (
+    <>
+      <div role="status" className="mb-6 rounded-sheet border border-[#f59e0b] bg-[#fef3c7] px-4 py-2.5 text-center text-xs sm:text-sm font-semibold text-[#92400e]">
+        UrEducator Pilot Study — Practice Content Only — Not an Official NTA/UGC Publication
+      </div>
+      <Alert tone="error" title="Result not available">{err.message}</Alert>
+    </>
+  );
   if (!data) return <Spinner label="Loading your result" />;
 
   const s = data.summary; const stored = row.data?.find((x) => x.id === sid); const test = tests.data?.find((t) => t.id === stored?.mockTestId); const bp = test ? bps.data?.[test.blueprintId] : undefined;
@@ -72,6 +86,9 @@ function Body() {
 
   return (
     <>
+      <div role="status" className="mb-6 rounded-sheet border border-[#f59e0b] bg-[#fef3c7] px-4 py-2.5 text-center text-xs sm:text-sm font-semibold text-[#92400e]">
+        UrEducator Pilot Study — Practice Content Only — Not an Official NTA/UGC Publication
+      </div>
       <PageHeader title={data.testTitle} intro={<>Submitted {fmtDateTime(s.submittedAtMs)}{s.reason !== 'manual' ? ', automatically when time ran out' : ''}.</>} actions={<Button variant="secondary" onClick={pdf} busy={pdfBusy}><Download aria-hidden className="size-4" /> Download report (PDF)</Button>} />
       {pdfErr && <Alert tone="error" className="mb-4">{pdfErr}</Alert>}
       {test && test.contentLabel !== 'fully_verified' && <Alert tone="warn" className="mb-6" title="Practice content">This score is for practice only. The test’s questions are labelled “{test.contentLabel === 'sample' ? 'sample content' : test.contentLabel.replace('_', ' ')}”. {DISCLAIMERS.notNta}</Alert>}
@@ -101,7 +118,7 @@ function Body() {
 
       <section className="mt-10" aria-labelledby="h-review">
         <div className="flex flex-wrap items-center justify-between gap-3"><h2 id="h-review" className="text-xl">Question review</h2>
-          {review && <div role="group" aria-label="Review language" className="flex rounded-md border border-line-strong bg-surface p-0.5 text-sm">{(['en', 'hi'] as const).map((l) => <button key={l} type="button" aria-pressed={lang === l} onClick={() => setLang(l)} className={cn('rounded px-3 py-1 font-semibold', lang === l ? 'bg-ink text-white' : 'text-muted hover:text-ink')}>{l === 'en' ? 'English' : 'हिन्दी'}</button>)}</div>}
+          {/* Review language toggle temporarily hidden for English-only pilot (T-1) */}
         </div>
         {!review ? (
           <Alert tone="info" className="mt-3" title="Answers and explanations are not open yet">They unlock on {fmtDateTime(data.reviewAvailableAtMs)}. Your score and the breakdown above are final. <button className="font-semibold underline" onClick={() => void load()}>Check again</button></Alert>

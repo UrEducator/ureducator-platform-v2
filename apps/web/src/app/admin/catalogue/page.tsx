@@ -46,7 +46,8 @@ export default function Page() {
                 <Input label="Official source reference" value={f.sourceRef} onChange={(e) => setF({ ...f, sourceRef: e.target.value })} hint="Required for “Fully verified”. Name the official document and its date." /></>}
               {kind === 'unit' && <Select label="Subject" value={f.parent} onChange={(e) => setF({ ...f, parent: e.target.value })}><option value="">Choose…</option>{subjects.map((s) => <option key={s.id} value={s.id}>{s.name.en}</option>)}</Select>}
               {kind === 'topic' && <Select label="Unit" value={f.parent} onChange={(e) => setF({ ...f, parent: e.target.value })}><option value="">Choose…</option>{units.map((u) => <option key={u.id} value={u.id}>{subjects.find((s) => s.id === u.subjectId)?.name.en} / {u.name.en}</option>)}</Select>}
-              <Input label="Name (English)" value={f.en} onChange={(e) => setF({ ...f, en: e.target.value })} /><Input label="Name (Hindi, optional)" lang="hi" value={f.hi} onChange={(e) => setF({ ...f, hi: e.target.value })} />
+              <Input label="Name (English)" value={f.en} onChange={(e) => setF({ ...f, en: e.target.value })} />
+              <Input label="Name (Hindi — disabled for English-only pilot)" lang="hi" value={f.hi} onChange={(e) => setF({ ...f, hi: e.target.value })} disabled hint="Hindi catalogue entries are disabled during the English-only pilot." />
               {msg && <Alert tone={msg.tone}>{msg.text}</Alert>}
               <Button type="submit" busy={busy} disabled={!idOk || !f.en.trim() || (kind !== 'subject' && !f.parent)}>Save {kind}</Button>
             </form>

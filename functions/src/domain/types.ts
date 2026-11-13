@@ -44,6 +44,7 @@ export type SessionDoc = {
   startedAtMs: number; deadlineMs: number; status: SessionStatus;
   lastSeq: number; lastSavedAtMs?: number; clientRequestId: string;
   submittedAtMs?: number; revealAvailableAtMs?: number;
+  contentLabel?: string;
 };
 
 export type ResponsesDoc = { byQid: Record<string, ExamResponse> };

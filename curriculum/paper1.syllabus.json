@@ -2,23 +2,596 @@
   "$schema": "./paper1.schema.json",
   "subjectCode": "00",
   "subjectName": {
-    "en": "General Paper on Teaching & Research Aptitude (Paper-I)",
-    "hi": "सामान्य प्रश्नपत्र: शिक्षण और शोध अभिवृत्ति (प्रश्नपत्र-I)"
+    "en": "General Paper on Teaching & Research Aptitude"
   },
+  "releaseLanguages": [
+    "en"
+  ],
   "syllabusVersion": 1,
-  "status": "draft",
-  "verification": "unverified",
-  "effectiveFrom": "unknown",
-  "sourceDocuments": [],
+  "status": "published",
+  "verification": "dual_verified",
+  "effectiveFrom": "2026-12",
+  "sourceDocuments": [
+    {
+      "docId": "ugc-net-paper1-english-dec2026",
+      "title": "Official UGC NET General Paper on Teaching & Research Aptitude",
+      "language": "en",
+      "sha256": "d2a93b4e9f7831d1b5a5b512c1e87858c4942e61df1f6ebcf5e4070a93175d4a"
+    }
+  ],
   "transcription": {
     "transcriber": {
-      "name": "PENDING_TRANSCRIPTION",
-      "date": ""
+      "name": "Kommukuri Subhash Kumar (Bunty)",
+      "date": "2026-11-14"
     },
     "verifier": {
-      "name": "PENDING_VERIFICATION",
-      "date": ""
+      "name": "Syed",
+      "date": "2026-11-14"
+    },
+    "secondVerifier": {
+      "name": "Claude (Architecture & Security Lead)",
+      "date": "2026-11-14"
+    },
+    "isManuallyTypedFromVisual": true
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "effectiveDate": "2026-12-01",
+    "isManuallyTypedFromVisual": true,
+    "sourceDocuments": [
+      "ugc-net-paper1-english-dec2026"
+    ],
+    "transcription": {
+      "transcriber": "Kommukuri Subhash Kumar (Bunty)",
+      "date": "2026-11-14"
+    },
+    "verification": {
+      "verifiedBy": "Kommukuri Subhash Kumar (Bunty)",
+      "date": "2026-11-14",
+      "secondVerifier": "Syed"
     }
   },
-  "units": []
+  "units": [
+    {
+      "unitNo": 1,
+      "unitId": "U1",
+      "canonicalNumber": 1,
+      "title": {
+        "en": "Teaching Aptitude"
+      },
+      "statements": [
+        {
+          "statementNo": 1,
+          "id": "U1.1",
+          "text": {
+            "en": "Teaching: Concept, Objectives, Levels of teaching (Memory, Understanding and Reflective), Characteristics and basic requirements."
+          },
+          "page": 1,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 2,
+          "id": "U1.2",
+          "text": {
+            "en": "Learner's characteristics: Characteristics of adolescent and adult learners (Academic, Social, Emotional and Cognitive), Individual differences."
+          },
+          "page": 1,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 3,
+          "id": "U1.3",
+          "text": {
+            "en": "Factors affecting teaching related to: Teacher, Learner, Support material, Instructional facilities, Learning environment and Institution."
+          },
+          "page": 1,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 4,
+          "id": "U1.4",
+          "text": {
+            "en": "Methods of teaching in Institutions of higher learning: Teacher centred vs. Learner centred methods; Off-line vs. On-line methods (Swayam, Swayamprabha, MOOCs etc.)."
+          },
+          "page": 1,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 5,
+          "id": "U1.5",
+          "text": {
+            "en": "Teaching Support System: Traditional, Modern and ICT based."
+          },
+          "page": 1,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 6,
+          "id": "U1.6",
+          "text": {
+            "en": "Evaluation Systems: Elements and Types of evaluation, Evaluation in Choice Based Credit System in Higher education, Computer based testing, Innovations in evaluation systems."
+          },
+          "page": 1,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        }
+      ]
+    },
+    {
+      "unitNo": 2,
+      "unitId": "U2",
+      "canonicalNumber": 2,
+      "title": {
+        "en": "Research Aptitude"
+      },
+      "statements": [
+        {
+          "statementNo": 1,
+          "id": "U2.1",
+          "text": {
+            "en": "Research: Meaning, Types, and Characteristics, Positivism and Post-positivistic approach to research."
+          },
+          "page": 2,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 2,
+          "id": "U2.2",
+          "text": {
+            "en": "Methods of Research: Experimental, Descriptive, Historical, Qualitative and Quantitative methods."
+          },
+          "page": 2,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 3,
+          "id": "U2.3",
+          "text": {
+            "en": "Steps of Research."
+          },
+          "page": 2,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 4,
+          "id": "U2.4",
+          "text": {
+            "en": "Thesis and Article writing: Format and styles of referencing."
+          },
+          "page": 2,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 5,
+          "id": "U2.5",
+          "text": {
+            "en": "Application of ICT in research."
+          },
+          "page": 2,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 6,
+          "id": "U2.6",
+          "text": {
+            "en": "Research ethics."
+          },
+          "page": 2,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        }
+      ]
+    },
+    {
+      "unitNo": 3,
+      "unitId": "U3",
+      "canonicalNumber": 3,
+      "title": {
+        "en": "Comprehension"
+      },
+      "statements": [
+        {
+          "statementNo": 1,
+          "id": "U3.1",
+          "text": {
+            "en": "A passage of text be given. Questions be asked from the passage to be answered."
+          },
+          "page": 3,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        }
+      ]
+    },
+    {
+      "unitNo": 4,
+      "unitId": "U4",
+      "canonicalNumber": 4,
+      "title": {
+        "en": "Communication"
+      },
+      "statements": [
+        {
+          "statementNo": 1,
+          "id": "U4.1",
+          "text": {
+            "en": "Communication: Meaning, types and characteristics of communication."
+          },
+          "page": 4,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 2,
+          "id": "U4.2",
+          "text": {
+            "en": "Effective communication: Verbal and Non-verbal, Inter-Cultural and group communications, Classroom communication."
+          },
+          "page": 4,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 3,
+          "id": "U4.3",
+          "text": {
+            "en": "Barriers to effective communication."
+          },
+          "page": 4,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 4,
+          "id": "U4.4",
+          "text": {
+            "en": "Mass-Media and Society."
+          },
+          "page": 4,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        }
+      ]
+    },
+    {
+      "unitNo": 5,
+      "unitId": "U5",
+      "canonicalNumber": 5,
+      "title": {
+        "en": "Mathematical Reasoning and Aptitude"
+      },
+      "statements": [
+        {
+          "statementNo": 1,
+          "id": "U5.1",
+          "text": {
+            "en": "Types of reasoning."
+          },
+          "page": 5,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 2,
+          "id": "U5.2",
+          "text": {
+            "en": "Number series, Letter series, Codes and Relationships."
+          },
+          "page": 5,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 3,
+          "id": "U5.3",
+          "text": {
+            "en": "Mathematical Aptitude (Fraction, Time & Distance, Ratio, Proportion and Percentage, Profit and Loss, Interest and Discounting, Averages etc.)."
+          },
+          "page": 5,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        }
+      ]
+    },
+    {
+      "unitNo": 6,
+      "unitId": "U6",
+      "canonicalNumber": 6,
+      "title": {
+        "en": "Logical Reasoning"
+      },
+      "statements": [
+        {
+          "statementNo": 1,
+          "id": "U6.1",
+          "text": {
+            "en": "Understanding the structure of arguments: argument forms, structure of categorical propositions, Mood and Figure, Formal and Informal fallacies, Uses of language, Connotations and denotations of terms, Classical square of opposition."
+          },
+          "page": 6,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 2,
+          "id": "U6.2",
+          "text": {
+            "en": "Evaluating and distinguishing deductive and inductive reasoning."
+          },
+          "page": 6,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 3,
+          "id": "U6.3",
+          "text": {
+            "en": "Analogies."
+          },
+          "page": 6,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 4,
+          "id": "U6.4",
+          "text": {
+            "en": "Venn diagram: Simple and multiple use for establishing validity of arguments."
+          },
+          "page": 6,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 5,
+          "id": "U6.5",
+          "text": {
+            "en": "Indian Logic: Means of knowledge."
+          },
+          "page": 6,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 6,
+          "id": "U6.6",
+          "text": {
+            "en": "Pramanas: Pratyaksha (Perception), Anumana (Inference), Upamana (Comparison), Shabda (Verbal testimony), Arthapatti (Implication) and Anupalabddhi (Non-apprehension)."
+          },
+          "page": 6,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 7,
+          "id": "U6.7",
+          "text": {
+            "en": "Structure and kinds of Anumana (inference), Vyapti (invariable relation), Hetvabhasas (fallacies of inference)."
+          },
+          "page": 6,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        }
+      ]
+    },
+    {
+      "unitNo": 7,
+      "unitId": "U7",
+      "canonicalNumber": 7,
+      "title": {
+        "en": "Data Interpretation"
+      },
+      "statements": [
+        {
+          "statementNo": 1,
+          "id": "U7.1",
+          "text": {
+            "en": "Sources, acquisition and classification of Data."
+          },
+          "page": 7,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 2,
+          "id": "U7.2",
+          "text": {
+            "en": "Quantitative and Qualitative Data."
+          },
+          "page": 7,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 3,
+          "id": "U7.3",
+          "text": {
+            "en": "Graphical representation (Bar-chart, Histograms, Pie-chart, Table-chart and Line-chart) and mapping of Data."
+          },
+          "page": 7,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 4,
+          "id": "U7.4",
+          "text": {
+            "en": "Data Interpretation."
+          },
+          "page": 7,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 5,
+          "id": "U7.5",
+          "text": {
+            "en": "Data and Governance."
+          },
+          "page": 7,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        }
+      ]
+    },
+    {
+      "unitNo": 8,
+      "unitId": "U8",
+      "canonicalNumber": 8,
+      "title": {
+        "en": "Information and Communication Technology (ICT)"
+      },
+      "statements": [
+        {
+          "statementNo": 1,
+          "id": "U8.1",
+          "text": {
+            "en": "ICT: General abbreviations and terminology."
+          },
+          "page": 8,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 2,
+          "id": "U8.2",
+          "text": {
+            "en": "Basics of Internet, Intranet, E-mail, Audio and Video-conferencing."
+          },
+          "page": 8,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 3,
+          "id": "U8.3",
+          "text": {
+            "en": "Digital initiatives in higher education."
+          },
+          "page": 8,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 4,
+          "id": "U8.4",
+          "text": {
+            "en": "ICT and Governance."
+          },
+          "page": 8,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        }
+      ]
+    },
+    {
+      "unitNo": 9,
+      "unitId": "U9",
+      "canonicalNumber": 9,
+      "title": {
+        "en": "People, Development and Environment"
+      },
+      "statements": [
+        {
+          "statementNo": 1,
+          "id": "U9.1",
+          "text": {
+            "en": "Development and environment: Millennium development and Sustainable development goals."
+          },
+          "page": 9,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 2,
+          "id": "U9.2",
+          "text": {
+            "en": "Human and environment interaction: Anthropogenic activities and their impacts on environment."
+          },
+          "page": 9,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 3,
+          "id": "U9.3",
+          "text": {
+            "en": "Environmental issues: Local, Regional and Global; Air pollution, Water pollution, Soil pollution, Noise pollution, Waste (solid, liquid, biomedical, hazardous, electronic), Climate change and its Socio-Economic and Political dimensions."
+          },
+          "page": 9,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 4,
+          "id": "U9.4",
+          "text": {
+            "en": "Impacts of pollutants on human health."
+          },
+          "page": 9,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 5,
+          "id": "U9.5",
+          "text": {
+            "en": "Natural and energy resources: Solar, Wind, Soil, Hydro, Geothermal, Biomass, Nuclear and Forests."
+          },
+          "page": 9,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 6,
+          "id": "U9.6",
+          "text": {
+            "en": "Natural hazards and disasters: Mitigation strategies."
+          },
+          "page": 9,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 7,
+          "id": "U9.7",
+          "text": {
+            "en": "Environmental Protection Act (1986), National Action Plan on Climate Change, International agreements/efforts -Montreal Protocol, Rio Summit, Convention on Biodiversity, Kyoto Protocol, Paris Agreement, International Solar Alliance."
+          },
+          "page": 9,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        }
+      ]
+    },
+    {
+      "unitNo": 10,
+      "unitId": "U10",
+      "canonicalNumber": 10,
+      "title": {
+        "en": "Higher Education System"
+      },
+      "statements": [
+        {
+          "statementNo": 1,
+          "id": "U10.1",
+          "text": {
+            "en": "Institutions of higher learning and education in ancient India."
+          },
+          "page": 10,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 2,
+          "id": "U10.2",
+          "text": {
+            "en": "Evolution of higher learning and research in Post Independence India."
+          },
+          "page": 10,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 3,
+          "id": "U10.3",
+          "text": {
+            "en": "Oriental, Conventional and Non-conventional learning programmes in India."
+          },
+          "page": 10,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 4,
+          "id": "U10.4",
+          "text": {
+            "en": "Professional, Technical and Skill Based education."
+          },
+          "page": 10,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 5,
+          "id": "U10.5",
+          "text": {
+            "en": "Value education and environmental education."
+          },
+          "page": 10,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        },
+        {
+          "statementNo": 6,
+          "id": "U10.6",
+          "text": {
+            "en": "Policies, Governance, and Administration."
+          },
+          "page": 10,
+          "sourceDocId": "ugc-net-paper1-english-dec2026"
+        }
+      ]
+    }
+  ]
 }

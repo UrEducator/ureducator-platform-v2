@@ -22,7 +22,10 @@
     "prepare:deploy": "node scripts/prepare-deploy.mjs",
     "verify:functions": "node scripts/verify-bundle.mjs functions/lib dist/functions",
     "test:rules:run": "vitest run --config tests/rules/vitest.config.ts",
-    "verify:config": "node scripts/verify-staging-config.mjs"
+    "verify:config": "node scripts/verify-staging-config.mjs",
+    "test:curriculum": "node scripts/test-curriculum-checker.mjs",
+    "check:curriculum": "node scripts/check-curriculum.mjs curriculum/paper1.syllabus.json",
+    "check:curriculum:release": "node scripts/check-curriculum.mjs curriculum/paper1.syllabus.json --release"
   },
   "devDependencies": {
     "@eslint/js": "9.39.5",

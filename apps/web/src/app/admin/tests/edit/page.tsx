@@ -16,10 +16,10 @@ const KINDS = [['full', 'Full length'], ['paper1', 'Paper I'], ['paper2', 'Paper
 function Body() {
   useDocumentTitle('Edit test'); const id = useSearchParams().get('id') ?? ''; const router = useRouter(); const { backend } = useAuth(); const { name } = useNames();
   const bps = useAdminList('examBlueprints', undefined, 50); const published = useAdminList('questions', 'published', 50); const tests = useAdminList('mockTests', undefined, 50);
-  const [f, setF] = useState({ title: '', kind: 'custom', blueprintId: '', access: 'free', label: 'sample', reveal: 'immediate', timed: true, shuffle: false, description: '', closes: '' }); const [refs, setRefs] = useState<Ref[]>([]); const [busy, setBusy] = useState(false); const [msg, setMsg] = useState<{ tone: 'ok' | 'error'; text: string } | null>(null); const [loaded, setLoaded] = useState(!id);
+  const [f, setF] = useState({ title: '', kind: 'custom', blueprintId: '', access: 'free', label: 'under_development', reveal: 'immediate', timed: true, shuffle: false, description: '', closes: '' }); const [refs, setRefs] = useState<Ref[]>([]); const [busy, setBusy] = useState(false); const [msg, setMsg] = useState<{ tone: 'ok' | 'error'; text: string } | null>(null); const [loaded, setLoaded] = useState(!id);
   useEffect(() => {
     if (!id || loaded || tests.loading) return; const t = tests.items.find((x) => x.id === id); if (!t) { setLoaded(true); return; }
-    setF({ title: str(t.title), kind: str(t.kind, 'custom'), blueprintId: str(t.blueprintId), access: str(t.access, 'free'), label: str(t.contentLabel, 'sample'), reveal: str(t.revealPolicy, 'immediate'), timed: t.timed !== false, shuffle: t.shuffle === true, description: str(t.description), closes: typeof t.closesAtMs === 'number' ? new Date(t.closesAtMs).toISOString().slice(0, 16) : '' });
+    setF({ title: str(t.title), kind: str(t.kind, 'custom'), blueprintId: str(t.blueprintId), access: str(t.access, 'free'), label: str(t.contentLabel, 'under_development'), reveal: str(t.revealPolicy, 'immediate'), timed: t.timed !== false, shuffle: t.shuffle === true, description: str(t.description), closes: typeof t.closesAtMs === 'number' ? new Date(t.closesAtMs).toISOString().slice(0, 16) : '' });
     setRefs(Array.isArray(t.questionRefs) ? (t.questionRefs as Ref[]) : []); setLoaded(true);
   }, [id, loaded, tests.loading, tests.items]);
 

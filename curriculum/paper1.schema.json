@@ -22,12 +22,18 @@
     },
     "subjectName": {
       "type": "object",
-      "required": ["en", "hi"],
+      "required": ["en"],
       "properties": {
         "en": { "type": "string", "minLength": 1 },
         "hi": { "type": "string", "minLength": 1 }
       },
       "additionalProperties": false
+    },
+    "releaseLanguages": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["en", "hi"] },
+      "minItems": 1,
+      "uniqueItems": true
     },
     "syllabusVersion": {
       "type": "integer",
@@ -82,9 +88,33 @@
             "date": { "type": "string" }
           },
           "additionalProperties": false
+        },
+        "secondVerifier": {
+          "type": "object",
+          "required": ["name", "date"],
+          "properties": {
+            "name": { "type": "string", "minLength": 1 },
+            "date": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "isManuallyTypedFromVisual": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
         }
       },
       "additionalProperties": false
+    },
+    "importEligible": {
+      "type": "boolean"
+    },
+    "importAsOfficialContent": {
+      "type": "boolean"
+    },
+    "metadata": {
+      "type": "object"
     },
     "units": {
       "type": "array",
@@ -96,9 +126,15 @@
             "type": "integer",
             "minimum": 1
           },
+          "unitId": {
+            "type": "string"
+          },
+          "canonicalNumber": {
+            "type": "integer"
+          },
           "title": {
             "type": "object",
-            "required": ["en", "hi"],
+            "required": ["en"],
             "properties": {
               "en": { "type": "string", "minLength": 1 },
               "hi": { "type": "string", "minLength": 1 }
@@ -115,9 +151,12 @@
                   "type": "integer",
                   "minimum": 1
                 },
+                "id": {
+                  "type": "string"
+                },
                 "text": {
                   "type": "object",
-                  "required": ["en", "hi"],
+                  "required": ["en"],
                   "properties": {
                     "en": { "type": "string", "minLength": 1 },
                     "hi": { "type": "string", "minLength": 1 }

@@ -3,7 +3,7 @@ import { Suspense, useRef, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { DISCLAIMERS, maxMarks, totalQuestions } from '@ureducator/shared';
 import { ContentLabelPill, PaletteLegend } from '@/components/brand';
-import { Alert, Button, Check, PageHeader, Select, Sheet, Spinner } from '@/components/ui';
+import { Alert, Button, Check, PageHeader, Sheet, Spinner } from '@/components/ui';
 import { useAuth } from '@/lib/auth';
 import { useDocumentTitle, useLoad } from '@/lib/hooks';
 import { asApiError } from '@/lib/types';
@@ -12,14 +12,21 @@ function Body() {
   useDocumentTitle('Test instructions');
   const id = useSearchParams().get('id') ?? ''; const router = useRouter(); const { backend, user } = useAuth();
   const tests = useLoad((b) => b.reads.publishedTests()); const bps = useLoad((b) => b.reads.blueprints()); const attempts = useLoad((b) => b.reads.attempts(user?.uid ?? ''), [user?.uid]);
-  const [lang, setLang] = useState<'en' | 'hi'>('en'); const [agree, setAgree] = useState(false); const [busy, setBusy] = useState(false);
+  const [lang] = useState<'en' | 'hi'>('en'); const [agree, setAgree] = useState(false); const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<{ message: string; reason?: string } | null>(null);
   const reqId = useRef(`r${Date.now().toString(36)}${Math.random().toString(36).slice(2, 10)}`); // one id per page view: double clicks cannot start two attempts
   const t = tests.data?.find((x) => x.id === id); const bp = t ? bps.data?.[t.blueprintId] : undefined;
   const open = attempts.data?.find((a) => a.mockTestId === id && a.status === 'in_progress' && a.deadlineMs > Date.now());
+  const isAdmin = Boolean(user?.role && ['owner', 'super_admin', 'admin'].includes(user.role));
+  const isSynthetic = Boolean(t && (['mt-mini', 'mt-mini-late', 'mt-full'].includes(t.id) || t.contentLabel === 'sample' || t.paperId?.startsWith('demo-')));
 
   async function start() {
-    if (!backend || !t) return; setBusy(true); setErr(null);
+    if (!backend || !t) return;
+    if (isSynthetic && !isAdmin) {
+      setErr({ message: 'Synthetic demo mock tests are restricted to administrators.', reason: 'SYNTHETIC_TEST_RESTRICTED' });
+      return;
+    }
+    setBusy(true); setErr(null);
     try {
       const r = await backend.call('startExam', { mockTestId: t.id, language: lang, clientRequestId: reqId.current });
       router.push(`/app/exam?s=${r.sessionId}`);
@@ -31,8 +38,23 @@ function Body() {
   }
   if (tests.loading || bps.loading) return <Spinner />;
   if (!t) return <Alert tone="warn" title="Test not found">This test is not published or the link is wrong.</Alert>;
+  if (isSynthetic && !isAdmin) {
+    return (
+      <>
+        <div role="status" className="mb-6 rounded-sheet border border-[#f59e0b] bg-[#fef3c7] px-4 py-2.5 text-center text-xs sm:text-sm font-semibold text-[#92400e]">
+          UrEducator Pilot Study — Practice Content Only — Not an Official NTA/UGC Publication
+        </div>
+        <Alert tone="error" title="Synthetic Test Restricted">
+          Synthetic demo mock tests are restricted to administrators.
+        </Alert>
+      </>
+    );
+  }
   return (
     <>
+      <div role="status" className="mb-6 rounded-sheet border border-[#f59e0b] bg-[#fef3c7] px-4 py-2.5 text-center text-xs sm:text-sm font-semibold text-[#92400e]">
+        UrEducator Pilot Study — Practice Content Only — Not an Official NTA/UGC Publication
+      </div>
       <PageHeader title={t.title} intro={t.description} actions={<ContentLabelPill label={t.contentLabel} />} />
       {t.contentLabel !== 'fully_verified' && <Alert tone="warn" className="mb-6" title="Practice content">This test is labelled “{t.contentLabel === 'sample' ? 'sample content' : t.contentLabel.replace('_', ' ')}”. Its questions have not all been checked against official sources, so treat the score as practice only.</Alert>}
       <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
@@ -45,7 +67,7 @@ function Body() {
             <li>Your answers are saved automatically. If your connection drops, they are kept on your device and sent when it returns.</li>
             <li>Use <em>Mark for review</em> to flag a question. Marked questions are still scored if answered.</li>
             <li>Use the palette on the right to jump to any question. The shapes below show each state.</li>
-            <li>You can switch between English and Hindi at any time, where a question has both.</li>
+            {/* Language switching note temporarily removed for English-only pilot (T-1) */}
           </ol>
           <div className="mt-6 border-t border-line pt-5"><PaletteLegend /></div>
           <p className="mt-6 text-sm text-muted">{DISCLAIMERS.notNta}</p>
@@ -53,7 +75,7 @@ function Body() {
         <Sheet className="h-fit p-6">
           <h2 className="text-xl">Ready to begin</h2>
           <div className="mt-4 grid gap-4">
-            {bp && bp.languages.length > 1 && <Select label="Start in" value={lang} onChange={(e) => setLang(e.target.value as 'en' | 'hi')}><option value="en">English</option><option value="hi">हिन्दी (Hindi)</option></Select>}
+            {/* Language selection temporarily hidden for English-only pilot (T-1) */}
             {open ? <Alert tone="info">You already have an attempt open. Starting continues it.</Alert> : <Check checked={agree} onChange={(e) => setAgree(e.target.checked)} label="I have read the instructions and I am ready to start the timer." />}
             {err && err.reason === 'PILOT_ACCESS_DENIED' ? (
               <Alert tone="warn" title="Closed Private Pilot Access Only">

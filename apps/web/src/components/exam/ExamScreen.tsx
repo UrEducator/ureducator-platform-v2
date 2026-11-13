@@ -73,12 +73,13 @@ export function ExamScreen({ sessionId }: { sessionId: string }) {
   return (
     <div className="flex min-h-screen flex-col bg-paper">
       <header className="sticky top-0 z-30 border-b border-pen-900 bg-pen-900 text-white">
+        <div role="status" className="border-b border-[#f59e0b] bg-[#fef3c7] px-4 py-1.5 text-center text-xs sm:text-sm font-semibold text-[#92400e]">
+          UrEducator Pilot Study — Practice Content Only — Not an Official NTA/UGC Publication
+        </div>
         <div className="mx-auto flex max-w-[90rem] flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-2.5">
           <div className="min-w-0"><p className="truncate font-semibold">{d.testTitle}</p><p className="truncate text-xs text-white/75">{user?.displayName ?? user?.email}</p></div>
           <div className="flex items-center gap-2 sm:gap-3">
-            <div className="flex overflow-hidden rounded-control border border-white/30 text-sm" role="group" aria-label="Question language">
-              {(['en', 'hi'] as const).filter((l) => d.blueprint.languages.includes(l)).map((l) => <button key={l} type="button" aria-pressed={ex.lang === l} onClick={() => ex.setLang(l)} className={cn('px-3 py-1.5 font-semibold', ex.lang === l ? 'bg-white text-pen-900' : 'text-white hover:bg-white/10')}>{l === 'en' ? 'English' : 'हिन्दी'}</button>)}
-            </div>
+            {/* Language switcher temporarily hidden for English-only pilot (T-1) */}
             <button type="button" className="hidden size-9 place-items-center rounded-control border border-white/30 hover:bg-white/10 sm:grid" aria-label={full ? 'Exit full screen' : 'Enter full screen'} onClick={() => { if (document.fullscreenElement) void document.exitFullscreen(); else void document.documentElement.requestFullscreen?.(); }}><Expand className="size-4" /></button>
             <div role="timer" aria-label="Time left" className={cn('rounded-control px-3 py-1.5 text-lg font-semibold tabular-nums', timerTone, ex.warning === 'one_minute' && 'motion-safe:animate-pulse')} data-testid="timer">{fmtClock(ex.remaining)}</div>
             <Button variant="marker" size="sm" onClick={() => { ex.flush(); setConfirm(true); }} disabled={submitting} data-testid="open-submit">Submit test</Button>

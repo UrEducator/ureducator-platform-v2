@@ -1,14 +1,11 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "description": "UrEducator 2.0 Official Content Sources Manifest Template",
-  "template": {
-    "fileName": "",
-    "sourcePageUrl": "",
-    "retrievedOn": "",
-    "sizeBytes": 0,
-    "pageCount": 0,
-    "sha256": "",
-    "capturedBy": ""
-  },
-  "sources": []
+  "sources": [
+    {
+      "id": "ugc-net-paper1-english-dec2026",
+      "filename": "Paper-I_English (1).pdf",
+      "sha256": "d2a93b4e9f7831d1b5a5b512c1e87858c4942e61df1f6ebcf5e4070a93175d4a",
+      "description": "Official UGC NET General Paper on Teaching & Research Aptitude",
+      "verifiedAuthentic": true
+    }
+  ]
 }

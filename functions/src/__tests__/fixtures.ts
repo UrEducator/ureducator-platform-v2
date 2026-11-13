@@ -16,12 +16,12 @@ const mk = (qid: string, sectionId: string, correct: string[], multi = false) =>
   _correct: correct,
 });
 const qs = [mk('q1', 'paper1', ['a']), mk('q2', 'paper1', ['b']), mk('q3', 'paper1', ['c']), mk('q4', 'paper2', ['a', 'c'], true), mk('q5', 'paper2', ['d'])];
-export const paper: PublishedPaper = { paperId: 'p1', mockTestId: 'mt1', version: 1, contentLabel: 'sample', questions: qs.map(({ _correct, ...q }) => q) };
+export const paper: PublishedPaper = { paperId: 'p1', mockTestId: 'mt1', version: 1, contentLabel: 'under_development', questions: qs.map(({ _correct, ...q }) => q) };
 export const key: AnswerKey = Object.fromEntries(qs.map((q) => [q.qid, { correct: q._correct, sectionId: q.sectionId, unitId: q.unitId, topicId: q.topicId, difficulty: q.difficulty, explanation: { en: `because ${q.qid}` } }]));
 
 export const test: MockTestDoc = {
   title: 'Demo full test', kind: 'full', blueprintId: 'mini', paperId: 'p1', paperVersion: 1, access: 'free', status: 'published',
-  timed: true, shuffle: false, revealPolicy: 'immediate', contentLabel: 'sample', version: 1,
+  timed: true, shuffle: false, revealPolicy: 'immediate', contentLabel: 'under_development', version: 1,
 };
 
 export async function seed(overrides: Partial<MockTestDoc> = {}) {

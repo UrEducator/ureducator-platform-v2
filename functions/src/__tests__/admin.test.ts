@@ -133,7 +133,7 @@ describe('catalogue', () => {
 });
 
 describe('mock test publishing', () => {
-  async function setup(e: Env, label: 'sample' | 'fully_verified' = 'sample') {
+  async function setup(e: Env, label: 'sample' | 'under_development' | 'fully_verified' = 'under_development') {
     await e.store.set(P.blueprint('mini'), bp);
     const refs: { qid: string; version: number; sectionId: string }[] = [];
     for (let n = 1; n <= 5; n++) { const q = await publishedQuestion(e, n); refs.push({ ...q, sectionId: n <= 3 ? 'paper1' : 'paper2' }); }

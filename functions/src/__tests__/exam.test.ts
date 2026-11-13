@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { getExamResult, getSession, saveResponses, startExam, submitExam, sessionIdFor } from '../services/exam';
-import type { Actor, MockTestDoc } from '../domain/types';
+import { getExamResult, getSession, saveResponses, startExam, submitExam, sessionIdFor, isSyntheticMockTest, isSyntheticSession } from '../services/exam';
+import { adminList } from '../services/admin';
+import type { Actor, MockTestDoc, SessionDoc } from '../domain/types';
 import { P } from '../domain/paths';
-import { alice, bob, resp, seed } from './fixtures';
+import { alice, bob, resp, seed, test, paper, key, bp } from './fixtures';
 
 const T0 = 1_800_000_000_000;
 const mkDeps = async (o = {}) => { let now = T0; const store = await seed(o); return { d: { store, clock: () => now }, store, tick: (ms: number) => (now += ms), at: (ms: number) => (now = ms) }; };
@@ -297,6 +298,313 @@ describe('startExam', () => {
       // allowedUids contains invalid characters (slashes)
       await store.set(P.setting('pilotCohort'), { enabled: true, allowedUids: ['invalid/uid/with/slashes'] });
       await expect(start(d, alice)).rejects.toMatchObject({ reason: 'PILOT_CONFIG_INVALID' });
+    });
+  });
+
+  describe('A5 Synthetic Isolation', () => {
+    it('strictly blocks pilot non-admin accounts from starting synthetic tests while admins can', async () => {
+      const { d, store } = await mkDeps();
+      // Setup synthetic mock test mt-full referencing synthetic paper demo-full-p
+      await store.set(P.mockTest('mt-full'), {
+        ...test,
+        title: 'Full-length format rehearsal (synthetic items)',
+        paperId: 'demo-full-p',
+      });
+      await store.set(P.paper('demo-full-p'), {
+        ...paper,
+        paperId: 'demo-full-p',
+        mockTestId: 'mt-full',
+      });
+      await store.set(P.answerKey('demo-full-p'), key);
+      // Ensure pilot cohort allowlist permits alice
+      await store.set(P.setting('pilotCohort'), { enabled: true, allowedUids: ['alice'] });
+
+      // 1. Pilot student is blocked from starting synthetic test
+      await expect(
+        startExam(d, alice, { mockTestId: 'mt-full', language: 'en', clientRequestId: 'r_synth_student' })
+      ).rejects.toMatchObject({
+        code: 'permission-denied',
+        reason: 'SYNTHETIC_TEST_RESTRICTED',
+      });
+
+      // 2. Admin account CAN start the synthetic test
+      const adminActor: Actor = { uid: 'admin_user', emailVerified: true, role: 'admin' };
+      const adminRes = await startExam(d, adminActor, { mockTestId: 'mt-full', language: 'en', clientRequestId: 'r_synth_admin' });
+      expect(adminRes.sessionId).toBeDefined();
+      expect(adminRes.questions).toHaveLength(5);
+    });
+
+    it('blocks pilot non-admin accounts from listing mock tests via adminList while admins can', async () => {
+      const { d, store } = await mkDeps();
+      await store.set(P.mockTest('mt-full'), {
+        title: 'Full-length format rehearsal',
+        kind: 'full',
+        blueprintId: 'mini',
+        paperId: 'demo-full-p',
+        status: 'published',
+      });
+
+      // 1. Pilot student cannot list mock tests (FORBIDDEN)
+      const studentActor = { uid: 'alice', emailVerified: true, email: 'alice@example.test' };
+      await expect(
+        adminList(d, studentActor, { collection: 'mockTests', limit: 10 })
+      ).rejects.toMatchObject({
+        code: 'permission-denied',
+        reason: 'FORBIDDEN',
+      });
+
+      // 2. Admin account can list mock tests
+      const adminActor = { uid: 'adm', emailVerified: true, role: 'admin' as const, email: 'admin@example.test' };
+      const res = await adminList(d, adminActor, { collection: 'mockTests', limit: 10 });
+      expect(res.items.some((item) => item.id === 'mt-full' || item.id === 'mt1')).toBe(true);
+    });
+
+    it('strictly blocks non-admin accounts from getSession, saveResponses, submitExam, and getExamResult on synthetic sessions while admins succeed', async () => {
+      const { d, store } = await mkDeps();
+      await store.set(P.mockTest('mt-full'), {
+        ...test,
+        title: 'Full-length format rehearsal (synthetic items)',
+        paperId: 'demo-full-p',
+      });
+      await store.set(P.paper('demo-full-p'), {
+        ...paper,
+        paperId: 'demo-full-p',
+        mockTestId: 'mt-full',
+      });
+      await store.set(P.answerKey('demo-full-p'), key);
+
+      const qmeta: SessionDoc['qmeta'] = {
+        q1: { opts: 'abcd', multi: false },
+        q2: { opts: 'abcd', multi: false },
+        q3: { opts: 'abcd', multi: false },
+        q4: { opts: 'abcd', multi: true },
+        q5: { opts: 'abcd', multi: false },
+      };
+
+      // 1. Setup pre-existing synthetic session for non-admin student alice
+      const aliceSid = 's_synth_alice';
+      const aliceSession: SessionDoc = {
+        uid: alice.uid,
+        mockTestId: 'mt-full',
+        paperId: 'demo-full-p',
+        paperVersion: 1,
+        testTitle: 'Full-length format rehearsal (synthetic items)',
+        blueprint: bp,
+        language: 'en',
+        questionOrder: ['q1', 'q2', 'q3', 'q4', 'q5'],
+        qmeta,
+        startedAtMs: T0,
+        deadlineMs: T0 + 10 * 60_000,
+        status: 'in_progress',
+        lastSeq: 0,
+        clientRequestId: 'r_synth_alice',
+      };
+      await store.set(P.session(aliceSid), aliceSession);
+      await store.set(P.responses(aliceSid), { byQid: {} });
+
+      // Alice is blocked from getSession
+      await expect(getSession(d, alice, aliceSid)).rejects.toMatchObject({
+        code: 'permission-denied',
+        reason: 'SYNTHETIC_TEST_RESTRICTED',
+      });
+
+      // Alice is blocked from saveResponses
+      await expect(
+        saveResponses(d, alice, { sessionId: aliceSid, seq: 1, responses: [resp('q1', ['a'])] })
+      ).rejects.toMatchObject({
+        code: 'permission-denied',
+        reason: 'SYNTHETIC_TEST_RESTRICTED',
+      });
+
+      // Alice is blocked from submitExam
+      await expect(
+        submitExam(d, alice, { sessionId: aliceSid, clientRequestId: 'sub_alice', finalSeq: 0, reason: 'manual' })
+      ).rejects.toMatchObject({
+        code: 'permission-denied',
+        reason: 'SYNTHETIC_TEST_RESTRICTED',
+      });
+
+      // Alice is blocked from getExamResult (even if session is submitted)
+      await store.set(P.session(aliceSid), { ...aliceSession, status: 'submitted' });
+      await store.set(P.result(aliceSid), {
+        sessionId: aliceSid, uid: alice.uid, mockTestId: 'mt-full', testTitle: 'Full-length format rehearsal',
+        submittedAtMs: T0 + 5000, reason: 'manual', marks: 10, maxMarks: 10, correct: 5, incorrect: 0, unattempted: 0, attempted: 5,
+        accuracy: 1, attemptRate: 1, percentage: 100, durationMs: 600000, timeSpentMs: 5000,
+        bySection: {}, byUnit: {}, byTopic: {}, byDifficulty: {}, revealAvailableAtMs: T0, contentLabel: 'sample',
+      });
+      await expect(getExamResult(d, alice, aliceSid)).rejects.toMatchObject({
+        code: 'permission-denied',
+        reason: 'SYNTHETIC_TEST_RESTRICTED',
+      });
+
+      // 2. Admin account can start, getSession, saveResponses, submitExam, and getExamResult on synthetic tests
+      const adminActor: Actor = { uid: 'admin_user', emailVerified: true, role: 'admin' };
+      const adminRes = await startExam(d, adminActor, { mockTestId: 'mt-full', language: 'en', clientRequestId: 'r_synth_adm' });
+      const adminSid = adminRes.sessionId;
+
+      const adminSession = await getSession(d, adminActor, adminSid);
+      expect(adminSession.sessionId).toBe(adminSid);
+
+      const saveRes = await saveResponses(d, adminActor, { sessionId: adminSid, seq: 1, responses: [resp('q1', ['a'])] });
+      expect(saveRes.ok).toBe(true);
+
+      const submitRes = await submitExam(d, adminActor, { sessionId: adminSid, clientRequestId: 'sub_adm', finalSeq: 1, reason: 'manual' });
+      expect(submitRes.resultId).toBe(adminSid);
+
+      const resultRes = await getExamResult(d, adminActor, adminSid);
+      expect(resultRes.summary).toBeDefined();
+    });
+
+    it('identifies and restricts tests with contentLabel === "sample" regardless of ID (A5-3 trigger)', async () => {
+      const { d, store } = await mkDeps();
+      // Arbitrary test ID and paper ID (neither mt-mini/full nor demo-*)
+      const customId = 'mt-custom-arbitrary-id';
+      const customPaperId = 'paper-custom-arbitrary-id';
+      const sampleTestDoc: MockTestDoc = {
+        ...test,
+        title: 'Custom Test with Sample Content',
+        paperId: customPaperId,
+        contentLabel: 'sample',
+        status: 'published',
+      };
+
+      // 1. isSyntheticMockTest helper check
+      expect(isSyntheticMockTest(customId, sampleTestDoc, customPaperId)).toBe(true);
+      expect(isSyntheticMockTest('unknown-id', { ...sampleTestDoc, contentLabel: 'fully_verified' }, 'p-regular')).toBe(false);
+
+      // 2. Server-side startExam enforcement on sample contentLabel
+      await store.set(P.mockTest(customId), sampleTestDoc);
+      await store.set(P.paper(customPaperId), {
+        ...paper,
+        paperId: customPaperId,
+        mockTestId: customId,
+      });
+      await store.set(P.answerKey(customPaperId), key);
+      await store.set(P.setting('pilotCohort'), { enabled: true, allowedUids: ['alice'] });
+
+      // Non-admin student is blocked by SYNTHETIC_TEST_RESTRICTED due to contentLabel === 'sample'
+      await expect(
+        startExam(d, alice, { mockTestId: customId, language: 'en', clientRequestId: 'r_custom_sample_student' })
+      ).rejects.toMatchObject({
+        code: 'permission-denied',
+        reason: 'SYNTHETIC_TEST_RESTRICTED',
+      });
+
+      // Admin is allowed to start
+      const adminActor: Actor = { uid: 'admin_user', emailVerified: true, role: 'admin' };
+      const adminRes = await startExam(d, adminActor, { mockTestId: customId, language: 'en', clientRequestId: 'r_custom_sample_admin' });
+      expect(adminRes.sessionId).toBeDefined();
+    });
+
+    it('strictly blocks non-admin on existing session for sample-labelled test across getSession, saveResponses, submitExam, and getExamResult (A5-3 session path)', async () => {
+      const { d, store } = await mkDeps();
+      // Arbitrary non-hardcoded test ID and paper ID (neither mt-mini/full nor demo-*)
+      const customId = 'mt-arbitrary-session-test';
+      const customPaperId = 'paper-arbitrary-session-paper';
+      const sampleTestDoc: MockTestDoc = {
+        ...test,
+        title: 'Arbitrary Test with Sample Content',
+        paperId: customPaperId,
+        contentLabel: 'sample',
+        status: 'published',
+      };
+      await store.set(P.mockTest(customId), sampleTestDoc);
+      await store.set(P.paper(customPaperId), {
+        ...paper,
+        paperId: customPaperId,
+        mockTestId: customId,
+      });
+      await store.set(P.answerKey(customPaperId), key);
+
+      const qmeta: SessionDoc['qmeta'] = {
+        q1: { opts: 'abcd', multi: false },
+        q2: { opts: 'abcd', multi: false },
+        q3: { opts: 'abcd', multi: false },
+        q4: { opts: 'abcd', multi: true },
+        q5: { opts: 'abcd', multi: false },
+      };
+
+      // Existing session created without an explicit contentLabel on SessionDoc, referencing customId
+      const aliceSid = 's_existing_sample_session_alice';
+      const aliceSession: SessionDoc = {
+        uid: alice.uid,
+        mockTestId: customId,
+        paperId: customPaperId,
+        paperVersion: 1,
+        testTitle: 'Arbitrary Test with Sample Content',
+        blueprint: bp,
+        language: 'en',
+        questionOrder: ['q1', 'q2', 'q3', 'q4', 'q5'],
+        qmeta,
+        startedAtMs: T0,
+        deadlineMs: T0 + 10 * 60_000,
+        status: 'in_progress',
+        lastSeq: 0,
+        clientRequestId: 'r_existing_sample',
+      };
+      await store.set(P.session(aliceSid), aliceSession);
+      await store.set(P.responses(aliceSid), { byQid: {} });
+
+      // Helper check: isSyntheticSession loads test from store and returns true
+      expect(await isSyntheticSession(aliceSession, store)).toBe(true);
+
+      // 1. Non-admin student alice is blocked on getSession
+      await expect(getSession(d, alice, aliceSid)).rejects.toMatchObject({
+        code: 'permission-denied',
+        reason: 'SYNTHETIC_TEST_RESTRICTED',
+      });
+
+      // 2. Non-admin student alice is blocked on saveResponses
+      await expect(
+        saveResponses(d, alice, { sessionId: aliceSid, seq: 1, responses: [resp('q1', ['a'])] })
+      ).rejects.toMatchObject({
+        code: 'permission-denied',
+        reason: 'SYNTHETIC_TEST_RESTRICTED',
+      });
+
+      // 3. Non-admin student alice is blocked on submitExam
+      await expect(
+        submitExam(d, alice, { sessionId: aliceSid, clientRequestId: 'sub_sample_alice', finalSeq: 0, reason: 'manual' })
+      ).rejects.toMatchObject({
+        code: 'permission-denied',
+        reason: 'SYNTHETIC_TEST_RESTRICTED',
+      });
+
+      // 4. Non-admin student alice is blocked on getExamResult (even if result document exists)
+      await store.set(P.session(aliceSid), { ...aliceSession, status: 'submitted' });
+      await store.set(P.result(aliceSid), {
+        sessionId: aliceSid, uid: alice.uid, mockTestId: customId, testTitle: 'Arbitrary Test with Sample Content',
+        submittedAtMs: T0 + 5000, reason: 'manual', marks: 10, maxMarks: 10, correct: 5, incorrect: 0, unattempted: 0, attempted: 5,
+        accuracy: 1, attemptRate: 1, percentage: 100, durationMs: 600000, timeSpentMs: 5000,
+        bySection: {}, byUnit: {}, byTopic: {}, byDifficulty: {}, revealAvailableAtMs: T0, contentLabel: 'sample',
+      });
+      await expect(getExamResult(d, alice, aliceSid)).rejects.toMatchObject({
+        code: 'permission-denied',
+        reason: 'SYNTHETIC_TEST_RESTRICTED',
+      });
+
+      // 5. Admin actor succeeds on their session for the same sample test
+      const adminActor: Actor = { uid: 'admin_user', emailVerified: true, role: 'admin' };
+      const adminSid = 's_existing_sample_session_admin';
+      const adminSession: SessionDoc = {
+        ...aliceSession,
+        uid: adminActor.uid,
+        clientRequestId: 'r_existing_sample_admin',
+      };
+      await store.set(P.session(adminSid), adminSession);
+      await store.set(P.responses(adminSid), { byQid: {} });
+
+      const adminGet = await getSession(d, adminActor, adminSid);
+      expect(adminGet.sessionId).toBe(adminSid);
+
+      const adminSave = await saveResponses(d, adminActor, { sessionId: adminSid, seq: 1, responses: [resp('q1', ['a'])] });
+      expect(adminSave.ok).toBe(true);
+
+      const adminSubmit = await submitExam(d, adminActor, { sessionId: adminSid, clientRequestId: 'sub_sample_adm', finalSeq: 1, reason: 'manual' });
+      expect(adminSubmit.resultId).toBe(adminSid);
+
+      const adminResult = await getExamResult(d, adminActor, adminSid);
+      expect(adminResult.summary).toBeDefined();
     });
   });
 });

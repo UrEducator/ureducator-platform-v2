@@ -17,6 +17,32 @@ export type Deps = { store: Store; clock: Clock };
 export const sessionIdFor = (uid: string, clientRequestId: string) =>
   's_' + createHash('sha256').update(`${uid}:${clientRequestId}`).digest('hex').slice(0, 28);
 
+export const isSyntheticMockTest = (mockTestId?: string, test?: MockTestDoc | null, paperId?: string): boolean => {
+  if (test?.contentLabel === 'sample') return true;
+  if (!mockTestId && !test && !paperId) return false;
+  const id = mockTestId ?? '';
+  if (['mt-mini', 'mt-mini-late', 'mt-full'].includes(id)) return true;
+  const pId = paperId ?? test?.paperId ?? '';
+  if (pId === 'demo-mini-p' || pId === 'demo-full-p' || pId.startsWith('demo-')) return true;
+  return false;
+};
+
+export const isSyntheticSession = async (
+  s: SessionDoc,
+  store: { get<T>(p: string): Promise<T | null> },
+  test?: MockTestDoc | null
+): Promise<boolean> => {
+  if (s.contentLabel === 'sample') return true;
+  if (s.contentLabel !== undefined) return s.contentLabel === 'sample';
+  if (!test && s.mockTestId) {
+    test = await store.get<MockTestDoc>(P.mockTest(s.mockTestId));
+  }
+  return isSyntheticMockTest(s.mockTestId, test, s.paperId);
+};
+
+export const isAdminActor = (actor: Actor): boolean =>
+  Boolean(actor.role && ['owner', 'super_admin', 'admin'].includes(actor.role));
+
 const dayKey = (ms: number) => new Date(ms).toISOString().slice(0, 10);
 const isValidDocId = (s: string) => !s.includes('/') && !s.includes('\\') && !s.includes('\0') && s.length > 0 && s.length <= 1500;
 
@@ -86,10 +112,20 @@ export async function startExam(d: Deps, actor: Actor, input: { mockTestId: stri
   // Enforce A1 Pilot Access Gate BEFORE returning existing session
   await assertPilotAccess(d, actor, test ?? undefined, input.mockTestId);
 
+  // A5 Synthetic Isolation: Server-side enforcement so synthetic/demo tests cannot be started by non-admin accounts
+  if (isSyntheticMockTest(input.mockTestId, test) && !isAdminActor(actor)) {
+    throw err('permission-denied', 'SYNTHETIC_TEST_RESTRICTED', 'Synthetic demo mock tests are restricted to administrators.');
+  }
+
   // Idempotent session lookup: same-clientRequestId retry returns existing session
   // BEFORE checking if test is closed / unavailable
   const same = await d.store.get<SessionDoc>(P.session(sid));
-  if (same) return sessionPayload(d, sid, same);
+  if (same) {
+    if ((await isSyntheticSession(same, d.store, test)) && !isAdminActor(actor)) {
+      throw err('permission-denied', 'SYNTHETIC_TEST_RESTRICTED', 'Synthetic demo mock tests are restricted to administrators.');
+    }
+    return sessionPayload(d, sid, same);
+  }
 
   // For new attempts: test existence, status, schedule window, and entitlement
   if (!test || test.status !== 'published') throw err('not-found', 'TEST_NOT_AVAILABLE', 'This test is not available.');
@@ -128,6 +164,7 @@ export async function startExam(d: Deps, actor: Actor, input: { mockTestId: stri
     uid: actor.uid, mockTestId: input.mockTestId, paperId: test.paperId, paperVersion: test.paperVersion, testTitle: test.title,
     blueprint: bp, language: input.language, questionOrder: ordered.map((q) => q.qid), qmeta,
     startedAtMs: now, deadlineMs: now + bp.durationMinutes * 60_000, status: 'in_progress', lastSeq: 0, clientRequestId: input.clientRequestId,
+    contentLabel: test.contentLabel,
   };
   await d.store.transact(async (tx) => { tx.create(P.session(sid), session); tx.create(P.responses(sid), { byQid: {} } satisfies ResponsesDoc); });
   return sessionPayload(d, sid, session);
@@ -164,6 +201,9 @@ export async function sessionPayload(d: Deps, sid: string, s: SessionDoc) {
 export async function getSession(d: Deps, actor: Actor, sessionId: string) {
   const s = await d.store.get<SessionDoc>(P.session(sessionId));
   if (!s || s.uid !== actor.uid) throw err('not-found', 'SESSION_NOT_FOUND', 'Session not found.');
+  if ((await isSyntheticSession(s, d.store)) && !isAdminActor(actor)) {
+    throw err('permission-denied', 'SYNTHETIC_TEST_RESTRICTED', 'Synthetic demo mock tests are restricted to administrators.');
+  }
   if (s.status === 'in_progress' && d.clock() > s.deadlineMs + LIMITS.autosaveGraceMs) {
     await finaliseExpired(d, sessionId);
     throw err('failed-precondition', 'SESSION_ENDED', 'This test has ended. Your answers were submitted.');
@@ -178,6 +218,9 @@ export async function saveResponses(d: Deps, actor: Actor, input: { sessionId: s
   return d.store.transact(async (tx) => {
     const s = await tx.get<SessionDoc>(P.session(input.sessionId));
     if (!s || s.uid !== actor.uid) throw err('not-found', 'SESSION_NOT_FOUND', 'Session not found.');
+    if ((await isSyntheticSession(s, tx)) && !isAdminActor(actor)) {
+      throw err('permission-denied', 'SYNTHETIC_TEST_RESTRICTED', 'Synthetic demo mock tests are restricted to administrators.');
+    }
     if (s.status !== 'in_progress') return { ok: true as const, status: s.status, lastSeq: s.lastSeq, serverNowMs: now };
     if (now > s.deadlineMs) return { ok: false as const, status: 'deadline_passed' as const, lastSeq: s.lastSeq, serverNowMs: now };
     const verdict = applySave(s.lastSeq, input.seq);
@@ -203,6 +246,11 @@ function validateResponses(s: SessionDoc, rs: ExamResponse[]): ExamResponse[] {
 
 /* ---------------------------------------------------------------- submit */
 export async function submitExam(d: Deps, actor: Actor, input: { sessionId: string; clientRequestId: string; finalSeq: number; responses?: ExamResponse[] | undefined; reason: 'manual' | 'deadline' }) {
+  const s = await d.store.get<SessionDoc>(P.session(input.sessionId));
+  if (!s || s.uid !== actor.uid) throw err('not-found', 'SESSION_NOT_FOUND', 'Session not found.');
+  if ((await isSyntheticSession(s, d.store)) && !isAdminActor(actor)) {
+    throw err('permission-denied', 'SYNTHETIC_TEST_RESTRICTED', 'Synthetic demo mock tests are restricted to administrators.');
+  }
   const out = await finalise(d, input.sessionId, actor.uid, { provided: input.responses, finalSeq: input.finalSeq, claimed: input.reason });
   return out;
 }
@@ -282,6 +330,9 @@ const publicSummary = (r: ResultDoc) => ({
 export async function getExamResult(d: Deps, actor: Actor, sessionId: string) {
   let s = await d.store.get<SessionDoc>(P.session(sessionId));
   if (!s || s.uid !== actor.uid) throw err('not-found', 'SESSION_NOT_FOUND', 'Session not found.');
+  if ((await isSyntheticSession(s, d.store)) && !isAdminActor(actor)) {
+    throw err('permission-denied', 'SYNTHETIC_TEST_RESTRICTED', 'Synthetic demo mock tests are restricted to administrators.');
+  }
   if (s.status === 'in_progress') {
     if (d.clock() <= s.deadlineMs) throw err('failed-precondition', 'EXAM_IN_PROGRESS', 'Finish the test to see results.');
     await finaliseExpired(d, sessionId);

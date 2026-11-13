@@ -67,7 +67,7 @@ export async function seedDemo(store: Store, nowMs: number): Promise<{ miniKey: 
   await store.set(P.paper('demo-mini-p'), mkPaper('demo-mini-p', 'mt-mini', mini.qs)); await store.set(P.answerKey('demo-mini-p'), mini.key);
   await store.set(P.paper('demo-full-p'), mkPaper('demo-full-p', 'mt-full', full.qs)); await store.set(P.answerKey('demo-full-p'), full.key);
 
-  const base = { access: 'free', status: 'published', timed: true, shuffle: false, contentLabel: 'sample', version: 1 } as const;
+  const base = { access: 'free', status: 'draft', timed: true, shuffle: false, contentLabel: 'sample', version: 1 } as const;
   const tests: Record<string, MockTestDoc> = {
     'mt-mini': { ...base, title: 'Demo mini test', kind: 'custom', blueprintId: MINI_BLUEPRINT.id, paperId: 'demo-mini-p', paperVersion: 1, revealPolicy: 'immediate', description: 'Ten sample questions, 15 minutes. Good for trying the exam screen and the result report.' },
     'mt-mini-late': { ...base, title: 'Demo mini test (answers open later)', kind: 'custom', blueprintId: MINI_BLUEPRINT.id, paperId: 'demo-mini-p', paperVersion: 1, revealPolicy: 'after_close', closesAtMs: nowMs + 86_400_000, description: 'The same ten questions, but answers and explanations unlock only after the test window closes.' },
@@ -76,6 +76,6 @@ export async function seedDemo(store: Store, nowMs: number): Promise<{ miniKey: 
   for (const [id, t] of Object.entries(tests)) await store.set(P.mockTest(id), t);
 
   // Notes used by the mentor in local tests only. In staging, notes appear only after an editor verifies them.
-  await store.set('learningNotes/n-sampling', { title: 'Probability and non-probability sampling', body: 'In probability sampling every member of the population has a known chance of selection. Simple random, stratified, systematic and cluster sampling are probability methods. Quota, snowball, purposive and convenience sampling are non-probability methods.', verified: true, label: 'Demo note (local test data)', topicId: 'p1-research-types', keywords: ['sampling', 'probability', 'stratified'] });
+  await store.set('learningNotes/n-sampling', { title: 'Probability and non-probability sampling', body: 'In probability sampling every member of the population has a known chance of selection. Simple random, stratified, systematic and cluster sampling are probability methods. Quota, snowball, purposive and convenience sampling are non-probability methods.', verified: false, label: 'Demo note (local test data)', topicId: 'p1-research-types', keywords: ['sampling', 'probability', 'stratified'] });
   return { miniKey: mini.key };
 }
