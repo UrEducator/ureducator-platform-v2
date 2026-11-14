@@ -6,73 +6,258 @@
 @import '@fontsource/noto-serif-devanagari/600.css';
 @import 'tailwindcss';
 
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
 /*
-  UrEducator design tokens.
-  Concept: an answer sheet. Cool paper, exam-pen indigo, a marker-yellow highlight reserved for "look here",
-  and OMR-style bubbles as the one recurring signature (question palette, progress, result map).
+  UrEducator 2.0 Design Tokens (Light & Dark Mode)
+  Concept: an answer sheet. Paper surface, exam-pen indigo, a marker-yellow highlight
+  reserved for "look here", and OMR-style bubbles as the recurring signature.
 */
 @theme {
   --font-sans: 'Bricolage Grotesque Variable', 'Noto Sans Devanagari', ui-sans-serif, system-ui, sans-serif;
   --font-read: 'Literata Variable', 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif;
 
-  --color-paper: #f4f6fb;
-  --color-surface: #ffffff;
-  --color-ink: #1b2130;
-  --color-muted: #566078;
-  --color-line: #d5dae6;
-  --color-line-strong: #aab2c5;
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
 
-  --color-pen-50: #eef0fc;
-  --color-pen-100: #dde2f9;
-  --color-pen-200: #bcc5f1;
-  --color-pen-500: #3b4fc4;
-  --color-pen-600: #2a3da6;
-  --color-pen-700: #1e2d86;
-  --color-pen-900: #121b57;
+  --color-pen-50: var(--pen-50);
+  --color-pen-100: var(--pen-100);
+  --color-pen-200: var(--pen-200);
+  --color-pen-500: var(--pen-500);
+  --color-pen-600: var(--pen-600);
+  --color-pen-700: var(--pen-700);
+  --color-pen-900: var(--pen-900);
+
+  --color-pen-surface: var(--pen-surface);
+  --color-pen-surface-ink: var(--pen-surface-ink);
+  --color-pen-surface-hover: var(--pen-surface-hover);
 
   --color-marker: #ffd23f;
-  --color-marker-soft: #fff4c7;
+  --color-marker-soft: var(--marker-soft);
 
-  --color-ok: #11704c;
-  --color-ok-soft: #dcf2e7;
-  --color-bad: #a92d1a;
-  --color-bad-soft: #fbe4df;
-  --color-review: #6a3c9e;
-  --color-review-soft: #ece2f7;
-  --color-info-soft: #e3effb;
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --color-review: var(--review);
+  --color-review-soft: var(--review-soft);
+  --color-info-soft: var(--info-soft);
 
   --radius-bubble: 9999px;
-  --radius-sheet: 6px;
+  --radius-sheet: 8px;
   --radius-control: 8px;
+  --radius-card: 12px;
 }
 
-:root { color-scheme: light; }
-html { -webkit-text-size-adjust: 100%; }
-body { background: var(--color-paper); color: var(--color-ink); font-family: var(--font-sans); font-size: 16px; line-height: 1.55; font-optical-sizing: auto; -webkit-font-smoothing: antialiased; }
+:root, [data-theme='light'] {
+  color-scheme: light;
+  --paper: #f4f6fb;
+  --surface: #ffffff;
+  --surface-hover: #f8fafc;
+  --ink: #1b2130;
+  --muted: #566078;
+  --line: #d5dae6;
+  --line-strong: #aab2c5;
+
+  --pen-50: #eef0fc;
+  --pen-100: #dde2f9;
+  --pen-200: #bcc5f1;
+  --pen-500: #3b4fc4;
+  --pen-600: #2a3da6;
+  --pen-700: #1e2d86;
+  --pen-900: #121b57;
+
+  --pen-surface: #1e2d86;
+  --pen-surface-ink: #ffffff;
+  --pen-surface-hover: #121b57;
+  --bubble-answered-ink: #ffffff;
+
+  --marker-soft: #fff4c7;
+
+  --ok: #11704c;
+  --ok-soft: #dcf2e7;
+  --bad: #a92d1a;
+  --bad-soft: #fbe4df;
+  --review: #6a3c9e;
+  --review-soft: #ece2f7;
+  --info-soft: #e3effb;
+}
+
+.dark, [data-theme='dark'] {
+  color-scheme: dark;
+  --paper: #0b0f17;
+  --surface: #141b27;
+  --surface-hover: #1c2637;
+  --ink: #f0f4fc;
+  --muted: #9aa5bf;
+  --line: #222d3f;
+  --line-strong: #33425b;
+
+  --pen-50: #162040;
+  --pen-100: #1e2d5c;
+  --pen-200: #2d4285;
+  --pen-500: #647cf6;
+  --pen-600: #7b90f8;
+  --pen-700: #93a5fa;
+  --pen-900: #c2cdfc;
+
+  --pen-surface: #647cf6;
+  --pen-surface-ink: #0b0f17;
+  --pen-surface-hover: #7b90f8;
+  --bubble-answered-ink: #0b0f17;
+
+  --marker-soft: #382c09;
+
+  --ok: #1db974;
+  --ok-soft: #0d3822;
+  --bad: #e24329;
+  --bad-soft: #3e1713;
+  --review: #a855f7;
+  --review-soft: #2b1542;
+  --info-soft: #10263f;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
 :lang(hi) { font-family: 'Noto Sans Devanagari', var(--font-sans); line-height: 1.7; }
 .read { font-family: var(--font-read); line-height: 1.75; }
 .read:lang(hi) { font-family: 'Noto Serif Devanagari', var(--font-read); line-height: 1.9; }
 
-h1, h2, h3, h4 { font-weight: 650; letter-spacing: -0.015em; line-height: 1.12; text-wrap: balance; }
+h1, h2, h3, h4 { font-weight: 650; letter-spacing: -0.015em; line-height: 1.15; text-wrap: balance; }
 p { text-wrap: pretty; }
-::selection { background: var(--color-marker); color: var(--color-ink); }
+::selection { background: var(--color-marker); color: #1b2130; }
 
 /* Visible, consistent keyboard focus */
-:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible { outline: 3px solid var(--color-pen-500); outline-offset: 2px; border-radius: 4px; }
-.skip-link { position: absolute; left: -9999px; top: 8px; background: var(--color-surface); color: var(--color-ink); padding: 8px 14px; border: 2px solid var(--color-pen-600); border-radius: 6px; z-index: 100; }
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-pen-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 8px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  padding: 8px 14px;
+  border: 2px solid var(--color-pen-600);
+  border-radius: 6px;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 .skip-link:focus { left: 8px; }
 
 /* The signature: OMR bubble. Shape plus glyph (never colour alone) encode state. */
-.bubble { flex-shrink: 0; position: relative; display: inline-grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: var(--radius-bubble); border: 2px solid var(--color-line-strong); background: var(--color-surface); color: var(--color-muted); font-weight: 600; font-size: 0.875rem; font-variant-numeric: tabular-nums; transition: background-color .12s, border-color .12s, transform .12s; }
-.bubble:hover { border-color: var(--color-pen-500); }
-.bubble[data-state='not_answered'] { border-color: var(--color-bad); background: var(--color-bad-soft); color: var(--color-bad); }
-.bubble[data-state='answered'] { border-color: var(--color-ok); background: var(--color-ok); color: #fff; }
-.bubble[data-state='marked'] { border-color: var(--color-review); background: var(--color-review-soft); color: var(--color-review); border-style: dashed; }
-.bubble[data-state='answered_marked'] { border-color: var(--color-review); background: var(--color-review); color: #fff; }
-.bubble[aria-current='true'] { outline: 3px solid var(--color-marker); outline-offset: 2px; }
-.bubble .glyph { position: absolute; top: -5px; right: -5px; width: 15px; height: 15px; border-radius: 9999px; background: var(--color-surface); color: var(--color-ink); display: grid; place-items: center; font-size: 9px; border: 1.5px solid currentColor; line-height: 1; }
+.bubble {
+  flex-shrink: 0;
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-bubble);
+  border: 2px solid var(--color-line-strong);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  font-weight: 600;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, color 0.15s ease;
+  user-select: none;
+}
+.bubble:hover {
+  border-color: var(--color-pen-500);
+  transform: translateY(-1px);
+}
+.bubble:active {
+  transform: scale(0.95);
+}
+.bubble[data-state='not_answered'] {
+  border-color: var(--color-bad);
+  background: var(--color-bad-soft);
+  color: var(--color-bad);
+}
+.bubble[data-state='answered'] {
+  border-color: var(--color-ok);
+  background: var(--color-ok);
+  color: var(--bubble-answered-ink);
+}
+.bubble[data-state='marked'] {
+  border-color: var(--color-review);
+  background: var(--color-review-soft);
+  color: var(--color-review);
+  border-style: dashed;
+}
+.bubble[data-state='answered_marked'] {
+  border-color: var(--color-review);
+  background: var(--color-review);
+  color: #ffffff;
+}
+.bubble[aria-current='true'] {
+  outline: 3px solid var(--color-marker);
+  outline-offset: 2px;
+}
+.bubble .glyph {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 15px;
+  height: 15px;
+  border-radius: 9999px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  display: grid;
+  place-items: center;
+  font-size: 9px;
+  border: 1.5px solid currentColor;
+  line-height: 1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
 
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
+/* Custom scrollbars for clean exam/pane layout */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-line-strong);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
 
-/* Printing a result or report should drop the chrome */
-@media print { .no-print { display: none !important; } body { background: #fff; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Printing a result or report drops the chrome */
+@media print {
+  .no-print { display: none !important; }
+  body { background: #ffffff !important; color: #000000 !important; }
+}
