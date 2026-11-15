@@ -1,0 +1,4843 @@
+{
+  "target": "mt-pyq-2026-sep09-s2",
+  "shiftId": "ugcnet-2026-sep09-s2",
+  "mockTestId": "mt-pyq-2026-sep09-s2",
+  "paperId": "paper-pyq-2026-sep09-s2",
+  "title": "UGC NET Paper 1 — 09 September 2026 (Shift 2)",
+  "kind": "pyq",
+  "blueprintId": "ugcnet-paper1-pilot-v1",
+  "paperVersion": 1,
+  "access": "paid",
+  "collectionId": "plan-pyq-2023-premium-pack",
+  "status": "draft",
+  "timed": true,
+  "shuffle": false,
+  "revealPolicy": "immediate",
+  "contentLabel": "under_development",
+  "description": "UGC NET Paper 1, 09 September 2026, Shift 2. 50 questions, 100 marks, 60 minutes.",
+  "instructions": "1. Total duration of UGC NET Paper 1 is 60 minutes.\n2. The paper consists of 50 Multiple Choice Questions (MCQs) carrying 2 marks each (Total 100 marks).\n3. There is NO negative marking for incorrect or unattempted responses.\n4. You can navigate freely between questions using the Question Palette.\n5. Questions can be saved, marked for review, or cleared at any time before final submission.\n6. When the countdown timer reaches 00:00:00, your exam will automatically submit.",
+  "version": 1,
+  "mockTest": {
+    "title": "UGC NET Paper 1 — 09 September 2026 (Shift 2)",
+    "kind": "pyq",
+    "blueprintId": "ugcnet-paper1-pilot-v1",
+    "paperId": "paper-pyq-2026-sep09-s2",
+    "paperVersion": 1,
+    "access": "paid",
+    "collectionId": "plan-pyq-2023-premium-pack",
+    "status": "draft",
+    "timed": true,
+    "shuffle": false,
+    "revealPolicy": "immediate",
+    "contentLabel": "under_development",
+    "description": "UGC NET Paper 1, 09 September 2026, Shift 2. 50 questions, 100 marks, 60 minutes.",
+    "instructions": "1. Total duration of UGC NET Paper 1 is 60 minutes.\n2. The paper consists of 50 Multiple Choice Questions (MCQs) carrying 2 marks each (Total 100 marks).\n3. There is NO negative marking for incorrect or unattempted responses.\n4. You can navigate freely between questions using the Question Palette.\n5. Questions can be saved, marked for review, or cleared at any time before final submission.\n6. When the countdown timer reaches 00:00:00, your exam will automatically submit.",
+    "version": 1,
+    "transcriber": "Bunty",
+    "verifier": "Pending Human Verification"
+  },
+  "paper": {
+    "paperId": "paper-pyq-2026-sep09-s2",
+    "mockTestId": "mt-pyq-2026-sep09-s2",
+    "version": 1,
+    "questions": [
+      {
+        "qid": "q-01",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: The following table shows the total number of employees working in a Global Firm having a total of 312 offices across 8 countries (A-H), alongwith the ratio of male (M) and female (F) employees and percentage of Post-Graduate (PG) employees among all the employees in a given country. Based on the data in the table, answer the questions that follow. Country-wise Employees Details in a Global Firm 10:11 20 : 21 9:5 Numer of Country c Offices 48 36 28 50 26 34 48 42 Total Number of Employees 5136 5760 4620 7150 4108 5576 7440 6720 Ratio of Employees 5 II 7 8 Percentage fo PG Employees 5500\n\nQ.1 Which of the following countries has the highest average of the number of employees per office ?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-02",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: The following table shows the total number of employees working in a Global Firm having a total of 312 offices across 8 countries (A-H), alongwith the ratio of male (M) and female (F) employees and percentage of Post-Graduate (PG) employees among all the employees in a given country. Based on the data in the table, answer the questions that follow. Country-wise Employees Details in a Global Firm 10:11 20 : 21 9:5 Numer of Country c Offices 48 36 28 50 26 34 48 42 Total Number of Employees 5136 5760 4620 7150 4108 5576 7440 6720 Ratio of Employees 5 II 7 8 Percentage fo PG Employees 5500\n\nQ.2 If M represents the total number of male employees in countries B and H together and N represents the total number of female employees in countries C and D together, then M is approximately more than N. 1. 45.67 2. 51.33 3. 61.42 4. 56.82"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-03",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: The following table shows the total number of employees working in a Global Firm having a total of 312 offices across 8 countries (A-H), alongwith the ratio of male (M) and female (F) employees and percentage of Post-Graduate (PG) employees among all the employees in a given country. Based on the data in the table, answer the questions that follow. Country-wise Employees Details in a Global Firm 10:11 20 : 21 9:5 Numer of Country c Offices 48 36 28 50 26 34 48 42 Total Number of Employees 5136 5760 4620 7150 4108 5576 7440 6720 Ratio of Employees 5 II 7 8 Percentage fo PG Employees 5500\n\nQ.3 What is the difference between the average number of PG employees in countries A, B and D together and the average number of PG employees in countries F, G and H together ? 1. 388 2. 488 3. 588 4. 688"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-04",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: The following table shows the total number of employees working in a Global Firm having a total of 312 offices across 8 countries (A-H), alongwith the ratio of male (M) and female (F) employees and percentage of Post-Graduate (PG) employees among all the employees in a given country. Based on the data in the table, answer the questions that follow. Country-wise Employees Details in a Global Firm 10:11 20 : 21 9:5 Numer of Country c Offices 48 36 28 50 26 34 48 42 Total Number of Employees 5136 5760 4620 7150 4108 5576 7440 6720 Ratio of Employees 5 II 7 8 Percentage fo PG Employees 5500\n\nQ.4 Percentage of female employees with respect to the total number of employees is more than 40% for 1.2 exactly countries. 3. 4. 4 5"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-05",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: The following table shows the total number of employees working in a Global Firm having a total of 312 offices across 8 countries (A-H), alongwith the ratio of male (M) and female (F) employees and percentage of Post-Graduate (PG) employees among all the employees in a given country. Based on the data in the table, answer the questions that follow. Country-wise Employees Details in a Global Firm 10:11 20 : 21 9:5 Numer of Country c Offices 48 36 28 50 26 34 48 42 Total Number of Employees 5136 5760 4620 7150 4108 5576 7440 6720 Ratio of Employees 5 II 7 8 Percentage fo PG Employees 5500\n\nQ.5 In the context of CountlY-H, if the number of male PG employees is 3600, then employees are PGs ? 1. 64 2. 74 3. 76 4. 68 0 0 of female"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-06",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U2",
+        "topicId": "U2.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Identify the correct order of the standard phases (A-D) in the cyclical model of Action Research.\n(None) Observe\n(None) Plan\n(None) Reflect\n(None) Act Choose the correct answer from the options given below •"
+          },
+          "options": [
+            {
+              "id": "c",
+              "text": {
+                "en": "D, C,BA"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A, B, CD"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-07",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U1",
+        "topicId": "U1.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match the LIST-I with LIST-II LIST-I (Learning Phases) LIST-II (Instructional events of Phases)\n(None) c.\n(None) Acquisition phase Apprehending phase Generalization phase Feedback phase"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "11. Promoting transfer of learning Stimulating recall Directing attention Eliciting performance Choose the correct answer from the options given below:"
+              }
+            },
+            {
+              "id": "a",
+              "text": {
+                "en": "A-III, B-11, C-1, D-lV"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-II, B-111, C-1, D-lV"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-IV, B-111, C-11, D-l"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-I, B-111, C-11, D-lV"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-08",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Identify the correct order of (A-D) to fill in the missing terms in the paragraph given below. is the tool used in Windows OS to manage files and folders. A is a virtual container used to organize and store files. The physical components of a computer system are known as . The\n(None) OS\n(None) Folder\n(None) File Explorer\n(None) Hardware manages all other software and hardware on the computer. Choose the correct answer from the options given below . 3. D, A, c,B"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option A"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option B"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option C"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option D"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-09",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following would create the most stable network with the fastest data transmission ? 1. Use of wireless access point to connect devices 2. Connect devices wirelessly using a mobile phone 3. Use coaxial cables to connect devices in sequence 4. Connect devices to a switch using fiber optic cables"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-10",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U9",
+        "topicId": "U9.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Millennium Development Goal-3 was aimed at eliminating gender disparity in :\n(None) Primmy school education\n(None) Secondmy school education\n(None) Tertiary- education\n(None) All public sectors Choose the correct answer from the options given below l. A and B only"
+          },
+          "options": [
+            {
+              "id": "b",
+              "text": {
+                "en": "A, B and C only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "C and D only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-11",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following pairs of ICT acronyms and their expansions are correctly matched ?\n(None) MPEG - Motion Picture Electronic Group\n(None) BIOS - Basic Input-output System\n(None) POP - Post Office Protocol\n(None) FTP - File Tracking Protocol Choose the correct answer from the options given below l. A and D only"
+          },
+          "options": [
+            {
+              "id": "b",
+              "text": {
+                "en": "B, C and D only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "B and C only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A, B and C only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-12",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Adverse impact of excessive noise on human health may lead to\n(None) Respiratory disease\n(None) Hearing impairment\n(None) Physical and mental fatigue\n(None) Reduced work efficiency E. Insomnia Choose the correct answer from the options given below : I . B and D only 2. B, C, D and E only A and C only 3."
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option A"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option B"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option C"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option D"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-13",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Arrange the Westley and MacLean 's model of communication in correct sequence.\n(None) f : Feedback\n(None) B : Audience\n(None) X : Source of information\n(None) C : Mass communication organization (gatekeeper) E. A : Communicator Choose the correct answer from the options given below :"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option A"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option B"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option C"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option D"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-14",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Arrange the following expressions according to their values in ascending order. Choose the correct answer from the options given below . D, B, CA 4."
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-15",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U10",
+        "topicId": "U10.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "'PARAKH' as a standard setting body of MoE (Formerly MHRD) guides for : 1. Students assessment and evaluation for all recongnized school boards of India. 2. Students assessment and evaluation for all undergraduate colleges. 3. Students assessment and evaluation for all professional and vocational institutions. 4. Students assessment and evaluation for all higher educational institutions."
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-16",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following statements are tme ?\n(None) A valid deductive reasoning constitutes a proof.\n(None) Any inductive inference is, at best, highly probable.\n(None) An inductive inference is demonstrative but does not constitute a proof.\n(None) A valid deductive reasoning constitutes a demonstration. Choose the correct answer from the options given below :"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A, B and C only"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A, B and D only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "B and C only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A, C and D only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-17",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U1",
+        "topicId": "U1.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Arrange the following steps in a Herbaftian method of teaching in sequence.\n(None) Generalization\n(None) Application\n(None) Preparation\n(None) Comparison E. Presentation Choose the correct answer from the options given below :"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option A"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option B"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option C"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option D"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-18",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Four sample data sets l, 2,"
+          },
+          "options": [
+            {
+              "id": "c",
+              "text": {
+                "en": "and"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "representing four different populations are given in A-D below. Compute the variance for each of these four data sets and arrange them in ascending order.\n(None) Data Set 1: {2, 4, 6, 8, 10}\n(None) Data Set"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-19",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "The audience in mass communication, according to which of the following mass communication experts, is relatively large, heterogeneous and anonymous to the source? l. Wright 2. Berlo 3. Lasswell 4. D. MacQuai1"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-20",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U6",
+        "topicId": "U6.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Identify the fallacy in the following argument : \"All dogs are mammals. All cats are mammals. Therefore all cats are dogs\" I. 2. 3. 4. Four terms Existential fallacy Exclusive premises Undistributed middle"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-21",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U6",
+        "topicId": "U6.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "\"I believe this is a case where it is impofiant for me to send a signal about what I may do because it is a case where we are dealing with a man's innocence or guilt.\" Which fallacy is involved in the above statement ? l. Missing the point 2. The Straw Man 3. False Cause 4. Hasty Generalization"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-22",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U2",
+        "topicId": "U2.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following are primary goals of using triangulation in qualitative research study ?\n(None) To increase the validity and credibility ofthe findings.\n(None) To reduce the inherent bias ofusing a single method or obsewer.\n(None) To ensure the research process is completed as quickly as possible.\n(None) To provide a more comprehensive, multi-dimensional understanding of the phenomenon. Choose the correct answer from the options given below l. A, Band Conly"
+          },
+          "options": [
+            {
+              "id": "b",
+              "text": {
+                "en": "A, B and D only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "B, C and D only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A, C and D only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-23",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U5",
+        "topicId": "U5.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following is/are correct ?\n(None) of of 500 is 125\n(None) of 798 + 365 — 1075.22\n(None) 3.6% of 750 is 37\n(None) Half of 1% (in decimal) is = 0.005 Choose the correct answer from the options given below"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A, B and C only"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "B, C and D only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "C and D only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "B and D only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-24",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U5",
+        "topicId": "U5.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match the LIST-I with LIST-II\n(None) B.\n(None) D. LIST-I (Description) The fallacy of the unproved middle The fallacy of the non-inferentially contradicted term The reason is counter-balanced by another reason The fallacy ofthe irregular middle I. II. III. IV. LIST-II (Fallacy) Bädhita Sädhyasama Anaikäntik Satpratipaksa Choose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A-IV, B-111, C-1, D-11"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-III, B-1, c-IV, D-11"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-I, B-lV, C-11, D-111"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-II, B-1, c-IV, D-111"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-25",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U5",
+        "topicId": "U5.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "In a certain language, if CERTAIN is coded as EGTVCKP, then how SUMMER shall be coded in that language ? 1. UWOPGT 2. VWOOGT 3. UWOOGT 4. TVNNFS"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-26",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U10",
+        "topicId": "U10.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "The ancient Indian literacy work 'Kadambari' by Banabhatta states that a good education means knowledge of : l. 75 arts 2. 91 arts 3. 84 arts 4. 64 arts"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-27",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match the LIST-I with LIST-II LIST-I (Elements of Communication)\n(None) c.\n(None) Who Says what To whom With what purpose 11. LIST-II (Interpretation) The message The communicator The objective The audience Choose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A-I, B-11, C-111, D-lV"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-IV, B-111, C-11, D-l"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-I, B-11, c-IV, D-111"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A•ll, B-1, c-IV, D-111"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-28",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Arrange the following according to the year of their occurrence staning from older to recent.\n(None) Montreal Protocol\n(None) Rio Summit\n(None) International Solar Alliance\n(None) Environment (Protection) Act Choose the correct answer from the options given below :"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option A"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option B"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option C"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option D"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-29",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which among the following are known as mass media ?\n(None) Laptop\n(None) Radio\n(None) Tablet\n(None) Television E. Cinema Choose the correct answer from the options given below l. A and C only"
+          },
+          "options": [
+            {
+              "id": "b",
+              "text": {
+                "en": "A, B and C only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "B, D and E only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A, C and D only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-30",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U10",
+        "topicId": "U10.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "NEP (2020) has recommended to convert all stand-alone Teacher Education Institutes to: l. Autonomous Colleges by 2030 2. Multidisciplinary Institutions by 2030 3. Deemed Universities by 2030 4. Departments of Education by 2030"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-31",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "\"What is not different-from-other-elements has no smell. The earth has smell. Therefore the earth is different-from-other-elements.\" As per Nyäya school this is an example of which of the following type of inference ? I. Kevalänvayi 2. Anaikäntika 3. Anvayavyatireki 4. kevalavyatireki"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-32",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": ""
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-33",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match the LIST-I with LIST-II\n(None) c.\n(None) LIST-I (Founders) Dr.\n(None) Bell Charles Wilkins Jonathan Duncan Anderson and Braidwood 11. LIST-II (Education System) Calcutta Madrassa (Bengal) Sanskrit College (Benares) Christian College (Madras) Madras System (England) Choose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A-I, B-lV, C-11, D-111"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-I, B-11, C-111, D-lV"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-II, B-111, C-1, D-lV"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A•rv, m, c-11, D-111"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-34",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U5",
+        "topicId": "U5.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Alan Turing is primarily popular for being the \"Father of Computer Science\" because he 1. provided the theoretical foundations for how computers work today 2. was a key designer of \"Colossus\", the first large-scale electronic computer 3. coined the term \"Artificial Intelligence\" 4. provided the theoretical foundation for ubiquitous computing"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-35",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match the LIST-I with LIST-II\n(None) c.\n(None) LIST-I (Noise Source) Human Breathing Jet engine Whisper Lawn mower"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "11. 111. LIST-II (Typical Level) -140 dB -30 dB -80 dB Choose the correct answer from the options given below:"
+              }
+            },
+            {
+              "id": "a",
+              "text": {
+                "en": "A-II, B-1, C-111, D-lV"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-I, B-11, c-IV, D-111"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-II, B-1, c-IV, D-111"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A•l, B-111, c-IV, D-11"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-36",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U1",
+        "topicId": "U1.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "According to NEP (2020) document, the children can build a positive cultural identity and self-esteem through the development of a strong sense and knowledge of their own\n(None) cultural history\n(None) arts\n(None) languages\n(None) traditions Choose the correct answer from the options given below :"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "B, C and D Only"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A, C and D only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A, B and D only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-37",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match the LIST-I with LIST-II LIST-I LIST-II (Level of (Characteristics) Measurement)\n(None) B.\n(None) D. Nominal Ordinal Interval Ratio Categories with a meaningful order or rank but the distance between ranks is not"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "equal or measurable II. Categories only; no order Ordered data with equal interval between points, plus a tme, absolute zero point, 111. allowing for proportional comparisons Ordered data with equal intervals between points, but zero is arbitrary (does not mean absence of the trait) Choose the correct answer from the options given below:"
+              }
+            },
+            {
+              "id": "a",
+              "text": {
+                "en": "A-III, B-1, c-IV, D-11"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A4, B-111, C-11, D-lV"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-IV, B-11, C-1, D-111"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-II, B-1, c-IV, D-111"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-38",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "The Appiko Movement also known as \"tree hugging\" movement staffed in which state of India ? 1. Himachal Pradesh 2. Jammu and Kashmir 3. Karnataka 4. Odisha"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-39",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U2",
+        "topicId": "U2.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "As per NEP (2020), the National Research Foundation will perform these activities •\n(None) To recognise outstanding research\n(None) To seed, grow and facilitate research\n(None) To organise research course work\n(None) To train research supervisors E. To fund peer-reviewed research grant proposals Choose the correct answer from the options given below • l. A, Band COnly"
+          },
+          "options": [
+            {
+              "id": "b",
+              "text": {
+                "en": "B, C and D only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A, DandEOn1y"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A, B and E only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-40",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match the LIST-I with LIST-II LIST-I (Web Browser)\n(None) c.\n(None) Safari Chrome Firefox Edge 11. 111. LIST-II (Developer) Google Microsoft Apple Mozilla Choose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A-II, B-111, C-1, D-lV"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-III, B-1, c-IV, D-11"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-IV, B-11, C-111, D-l"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-III, B-11, C-1, D-lV"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-41",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "In theory' of mass communication, counters those who speak of the harmful effects of the mass media by arguing that first and foremost the media serves audiences as play experiences. Fill in the blank space l. Maxwell McCombs 2. William Stephenson 3. Donald L. Shaw 4. George Gerbner"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-42",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U5",
+        "topicId": "U5.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Find the number that can replace question mark (?) in the series given below. 3, 4, 8, 17, 58, 94, 143 1. 27 2. 23 3. 33 4. 43"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-43",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U2",
+        "topicId": "U2.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "In the context of research, what term refers to the consistency of a measurement, meaning that a number of researchers using the same definition to measure a variable, achieve the same results ? l. Validity 2. Reliability 3. Objectivity 4. Subjectivity"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-44",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U9",
+        "topicId": "U9.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "In the context of intelligence, list out the types of reasoning in the given list.\n(None) Verbal reasoning\n(None) Communicative reasoning\n(None) Quantitative reasoning\n(None) Skill based reasoning E. Abstract visual reasoning Choose the correct answer from the options given below : l. B, C and D only"
+          },
+          "options": [
+            {
+              "id": "b",
+              "text": {
+                "en": "A, C and E only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A, B and C only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "C, D and E only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-45",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U9",
+        "topicId": "U9.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Since the word order and some stmctural characteristics of Kannada, Urdu and Marathi are similar in Kupwar, these languages now have a possibility of • I. different varieties 2. word-for-word translation 3. writing of poetry 4. writing of autobiographies"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-46",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U3",
+        "topicId": "U3.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "comprehension",
+          "stem": {
+            "en": "inguish themselves from speakers of other varieties, so close contact and frequent communication foster linguistic similarity. As varieties of the same language spoken by people in close social contact tend to become alike, different languages spoken in a community may also tend to merge. Kupwar is a village in India on the border between two major language families: the Indo- European family (which includes the languages of North India) and the unrelated Dravidian family (the languages of South India). Kupwar's 3,000 inhabitants fall into three groups and regularly use three languages in their daily activities. The Jains speak Kannada (a Dravidian language), the Muslims speak Urdu (an Indo-European language closely related to Hindi), and the Untouchables speak Marathi (the regional Indo-European language surrounding Kupwar and the principal literary language of the area). These groups have lived in the village for centuries, and most men are bilingual or multilingual. Over the course of time, with individual switching back and forth among at least two of these languages, the varieties used in Kupwar have come to be more and more alike. In fact, the grammatical structures of the village varieties are now so similar that a word-for-word translation is possible among the languages because word order and other structural characteristics of the three languages are now virtually identical. This merging is remarkable because the varieties of these languages that are used elsewhere are very different from one another.\n\nQ.46 Which of these people who live in Kupwar are all bilingual or multilingual ? l. Jains and Muslims 2. All the males 3. Jains, Muslims and untouchables 4. Women and Children"
+          },
+          "passage": {
+            "en": "Read the passage given below and answer the questions that follow : Just as physical and social distance enable speakers of one variety to dist"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-47",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U3",
+        "topicId": "U3.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "comprehension",
+          "stem": {
+            "en": "inguish themselves from speakers of other varieties, so close contact and frequent communication foster linguistic similarity. As varieties of the same language spoken by people in close social contact tend to become alike, different languages spoken in a community may also tend to merge. Kupwar is a village in India on the border between two major language families: the Indo- European family (which includes the languages of North India) and the unrelated Dravidian family (the languages of South India). Kupwar's 3,000 inhabitants fall into three groups and regularly use three languages in their daily activities. The Jains speak Kannada (a Dravidian language), the Muslims speak Urdu (an Indo-European language closely related to Hindi), and the Untouchables speak Marathi (the regional Indo-European language surrounding Kupwar and the principal literary language of the area). These groups have lived in the village for centuries, and most men are bilingual or multilingual. Over the course of time, with individual switching back and forth among at least two of these languages, the varieties used in Kupwar have come to be more and more alike. In fact, the grammatical structures of the village varieties are now so similar that a word-for-word translation is possible among the languages because word order and other structural characteristics of the three languages are now virtually identical. This merging is remarkable because the varieties of these languages that are used elsewhere are very different from one another.\n\nQ.47 Kannada, Urdu and Marathi all over the world are known as languages : I. that are very different from each other 2. that are very similar to each other 3. that are easy to learn 4. that belong to the same language family"
+          },
+          "passage": {
+            "en": "Read the passage given below and answer the questions that follow : Just as physical and social distance enable speakers of one variety to dist"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-48",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U3",
+        "topicId": "U3.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "comprehension",
+          "stem": {
+            "en": "inguish themselves from speakers of other varieties, so close contact and frequent communication foster linguistic similarity. As varieties of the same language spoken by people in close social contact tend to become alike, different languages spoken in a community may also tend to merge. Kupwar is a village in India on the border between two major language families: the Indo- European family (which includes the languages of North India) and the unrelated Dravidian family (the languages of South India). Kupwar's 3,000 inhabitants fall into three groups and regularly use three languages in their daily activities. The Jains speak Kannada (a Dravidian language), the Muslims speak Urdu (an Indo-European language closely related to Hindi), and the Untouchables speak Marathi (the regional Indo-European language surrounding Kupwar and the principal literary language of the area). These groups have lived in the village for centuries, and most men are bilingual or multilingual. Over the course of time, with individual switching back and forth among at least two of these languages, the varieties used in Kupwar have come to be more and more alike. In fact, the grammatical structures of the village varieties are now so similar that a word-for-word translation is possible among the languages because word order and other structural characteristics of the three languages are now virtually identical. This merging is remarkable because the varieties of these languages that are used elsewhere are very different from one another.\n\nQ.48 During their evelyday activities, the residents of Kupwar on a regular basis use : I. All languages 2. three languages 3. two languages 4. one mother tongue"
+          },
+          "passage": {
+            "en": "Read the passage given below and answer the questions that follow : Just as physical and social distance enable speakers of one variety to dist"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-49",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U10",
+        "topicId": "U10.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "comprehension",
+          "stem": {
+            "en": "inguish themselves from speakers of other varieties, so close contact and frequent communication foster linguistic similarity. As varieties of the same language spoken by people in close social contact tend to become alike, different languages spoken in a community may also tend to merge. Kupwar is a village in India on the border between two major language families: the Indo- European family (which includes the languages of North India) and the unrelated Dravidian family (the languages of South India). Kupwar's 3,000 inhabitants fall into three groups and regularly use three languages in their daily activities. The Jains speak Kannada (a Dravidian language), the Muslims speak Urdu (an Indo-European language closely related to Hindi), and the Untouchables speak Marathi (the regional Indo-European language surrounding Kupwar and the principal literary language of the area). These groups have lived in the village for centuries, and most men are bilingual or multilingual. Over the course of time, with individual switching back and forth among at least two of these languages, the varieties used in Kupwar have come to be more and more alike. In fact, the grammatical structures of the village varieties are now so similar that a word-for-word translation is possible among the languages because word order and other structural characteristics of the three languages are now virtually identical. This merging is remarkable because the varieties of these languages that are used elsewhere are very different from one another.\n\nQ.49 Question 49 regarding UGC NET Paper 1 comprehension and analysis."
+          },
+          "passage": {
+            "en": "Read the passage given below and answer the questions that follow : Just as physical and social distance enable speakers of one variety to dist"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-50",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U10",
+        "topicId": "U10.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "comprehension",
+          "stem": {
+            "en": "inguish themselves from speakers of other varieties, so close contact and frequent communication foster linguistic similarity. As varieties of the same language spoken by people in close social contact tend to become alike, different languages spoken in a community may also tend to merge. Kupwar is a village in India on the border between two major language families: the Indo- European family (which includes the languages of North India) and the unrelated Dravidian family (the languages of South India). Kupwar's 3,000 inhabitants fall into three groups and regularly use three languages in their daily activities. The Jains speak Kannada (a Dravidian language), the Muslims speak Urdu (an Indo-European language closely related to Hindi), and the Untouchables speak Marathi (the regional Indo-European language surrounding Kupwar and the principal literary language of the area). These groups have lived in the village for centuries, and most men are bilingual or multilingual. Over the course of time, with individual switching back and forth among at least two of these languages, the varieties used in Kupwar have come to be more and more alike. In fact, the grammatical structures of the village varieties are now so similar that a word-for-word translation is possible among the languages because word order and other structural characteristics of the three languages are now virtually identical. This merging is remarkable because the varieties of these languages that are used elsewhere are very different from one another.\n\nQ.50 Question 50 regarding UGC NET Paper 1 comprehension and analysis."
+          },
+          "passage": {
+            "en": "Read the passage given below and answer the questions that follow : Just as physical and social distance enable speakers of one variety to dist"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      }
+    ],
+    "contentLabel": "under_development",
+    "title": "UGC NET Paper 1 — 09 September 2026 (Shift 2)"
+  },
+  "questions": [
+    {
+      "qid": "q-01",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: The following table shows the total number of employees working in a Global Firm having a total of 312 offices across 8 countries (A-H), alongwith the ratio of male (M) and female (F) employees and percentage of Post-Graduate (PG) employees among all the employees in a given country. Based on the data in the table, answer the questions that follow. Country-wise Employees Details in a Global Firm 10:11 20 : 21 9:5 Numer of Country c Offices 48 36 28 50 26 34 48 42 Total Number of Employees 5136 5760 4620 7150 4108 5576 7440 6720 Ratio of Employees 5 II 7 8 Percentage fo PG Employees 5500\n\nQ.1 Which of the following countries has the highest average of the number of employees per office ?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-02",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: The following table shows the total number of employees working in a Global Firm having a total of 312 offices across 8 countries (A-H), alongwith the ratio of male (M) and female (F) employees and percentage of Post-Graduate (PG) employees among all the employees in a given country. Based on the data in the table, answer the questions that follow. Country-wise Employees Details in a Global Firm 10:11 20 : 21 9:5 Numer of Country c Offices 48 36 28 50 26 34 48 42 Total Number of Employees 5136 5760 4620 7150 4108 5576 7440 6720 Ratio of Employees 5 II 7 8 Percentage fo PG Employees 5500\n\nQ.2 If M represents the total number of male employees in countries B and H together and N represents the total number of female employees in countries C and D together, then M is approximately more than N. 1. 45.67 2. 51.33 3. 61.42 4. 56.82"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-03",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: The following table shows the total number of employees working in a Global Firm having a total of 312 offices across 8 countries (A-H), alongwith the ratio of male (M) and female (F) employees and percentage of Post-Graduate (PG) employees among all the employees in a given country. Based on the data in the table, answer the questions that follow. Country-wise Employees Details in a Global Firm 10:11 20 : 21 9:5 Numer of Country c Offices 48 36 28 50 26 34 48 42 Total Number of Employees 5136 5760 4620 7150 4108 5576 7440 6720 Ratio of Employees 5 II 7 8 Percentage fo PG Employees 5500\n\nQ.3 What is the difference between the average number of PG employees in countries A, B and D together and the average number of PG employees in countries F, G and H together ? 1. 388 2. 488 3. 588 4. 688"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-04",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: The following table shows the total number of employees working in a Global Firm having a total of 312 offices across 8 countries (A-H), alongwith the ratio of male (M) and female (F) employees and percentage of Post-Graduate (PG) employees among all the employees in a given country. Based on the data in the table, answer the questions that follow. Country-wise Employees Details in a Global Firm 10:11 20 : 21 9:5 Numer of Country c Offices 48 36 28 50 26 34 48 42 Total Number of Employees 5136 5760 4620 7150 4108 5576 7440 6720 Ratio of Employees 5 II 7 8 Percentage fo PG Employees 5500\n\nQ.4 Percentage of female employees with respect to the total number of employees is more than 40% for 1.2 exactly countries. 3. 4. 4 5"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-05",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: The following table shows the total number of employees working in a Global Firm having a total of 312 offices across 8 countries (A-H), alongwith the ratio of male (M) and female (F) employees and percentage of Post-Graduate (PG) employees among all the employees in a given country. Based on the data in the table, answer the questions that follow. Country-wise Employees Details in a Global Firm 10:11 20 : 21 9:5 Numer of Country c Offices 48 36 28 50 26 34 48 42 Total Number of Employees 5136 5760 4620 7150 4108 5576 7440 6720 Ratio of Employees 5 II 7 8 Percentage fo PG Employees 5500\n\nQ.5 In the context of CountlY-H, if the number of male PG employees is 3600, then employees are PGs ? 1. 64 2. 74 3. 76 4. 68 0 0 of female"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-06",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Identify the correct order of the standard phases (A-D) in the cyclical model of Action Research.\n(None) Observe\n(None) Plan\n(None) Reflect\n(None) Act Choose the correct answer from the options given below •"
+        },
+        "options": [
+          {
+            "id": "c",
+            "text": {
+              "en": "D, C,BA"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A, B, CD"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-07",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U1",
+      "topicId": "U1.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match the LIST-I with LIST-II LIST-I (Learning Phases) LIST-II (Instructional events of Phases)\n(None) c.\n(None) Acquisition phase Apprehending phase Generalization phase Feedback phase"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "11. Promoting transfer of learning Stimulating recall Directing attention Eliciting performance Choose the correct answer from the options given below:"
+            }
+          },
+          {
+            "id": "a",
+            "text": {
+              "en": "A-III, B-11, C-1, D-lV"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-II, B-111, C-1, D-lV"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-IV, B-111, C-11, D-l"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-I, B-111, C-11, D-lV"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-08",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Identify the correct order of (A-D) to fill in the missing terms in the paragraph given below. is the tool used in Windows OS to manage files and folders. A is a virtual container used to organize and store files. The physical components of a computer system are known as . The\n(None) OS\n(None) Folder\n(None) File Explorer\n(None) Hardware manages all other software and hardware on the computer. Choose the correct answer from the options given below . 3. D, A, c,B"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option A"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option C"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option D"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-09",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following would create the most stable network with the fastest data transmission ? 1. Use of wireless access point to connect devices 2. Connect devices wirelessly using a mobile phone 3. Use coaxial cables to connect devices in sequence 4. Connect devices to a switch using fiber optic cables"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-10",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Millennium Development Goal-3 was aimed at eliminating gender disparity in :\n(None) Primmy school education\n(None) Secondmy school education\n(None) Tertiary- education\n(None) All public sectors Choose the correct answer from the options given below l. A and B only"
+        },
+        "options": [
+          {
+            "id": "b",
+            "text": {
+              "en": "A, B and C only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "C and D only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-11",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following pairs of ICT acronyms and their expansions are correctly matched ?\n(None) MPEG - Motion Picture Electronic Group\n(None) BIOS - Basic Input-output System\n(None) POP - Post Office Protocol\n(None) FTP - File Tracking Protocol Choose the correct answer from the options given below l. A and D only"
+        },
+        "options": [
+          {
+            "id": "b",
+            "text": {
+              "en": "B, C and D only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "B and C only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A, B and C only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-12",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Adverse impact of excessive noise on human health may lead to\n(None) Respiratory disease\n(None) Hearing impairment\n(None) Physical and mental fatigue\n(None) Reduced work efficiency E. Insomnia Choose the correct answer from the options given below : I . B and D only 2. B, C, D and E only A and C only 3."
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option A"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option C"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option D"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-13",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Arrange the Westley and MacLean 's model of communication in correct sequence.\n(None) f : Feedback\n(None) B : Audience\n(None) X : Source of information\n(None) C : Mass communication organization (gatekeeper) E. A : Communicator Choose the correct answer from the options given below :"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option A"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option C"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option D"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-14",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Arrange the following expressions according to their values in ascending order. Choose the correct answer from the options given below . D, B, CA 4."
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-15",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "'PARAKH' as a standard setting body of MoE (Formerly MHRD) guides for : 1. Students assessment and evaluation for all recongnized school boards of India. 2. Students assessment and evaluation for all undergraduate colleges. 3. Students assessment and evaluation for all professional and vocational institutions. 4. Students assessment and evaluation for all higher educational institutions."
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-16",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following statements are tme ?\n(None) A valid deductive reasoning constitutes a proof.\n(None) Any inductive inference is, at best, highly probable.\n(None) An inductive inference is demonstrative but does not constitute a proof.\n(None) A valid deductive reasoning constitutes a demonstration. Choose the correct answer from the options given below :"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A, B and C only"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A, B and D only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "B and C only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A, C and D only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-17",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U1",
+      "topicId": "U1.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Arrange the following steps in a Herbaftian method of teaching in sequence.\n(None) Generalization\n(None) Application\n(None) Preparation\n(None) Comparison E. Presentation Choose the correct answer from the options given below :"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option A"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option C"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option D"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-18",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Four sample data sets l, 2,"
+        },
+        "options": [
+          {
+            "id": "c",
+            "text": {
+              "en": "and"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "representing four different populations are given in A-D below. Compute the variance for each of these four data sets and arrange them in ascending order.\n(None) Data Set 1: {2, 4, 6, 8, 10}\n(None) Data Set"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-19",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "The audience in mass communication, according to which of the following mass communication experts, is relatively large, heterogeneous and anonymous to the source? l. Wright 2. Berlo 3. Lasswell 4. D. MacQuai1"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-20",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Identify the fallacy in the following argument : \"All dogs are mammals. All cats are mammals. Therefore all cats are dogs\" I. 2. 3. 4. Four terms Existential fallacy Exclusive premises Undistributed middle"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-21",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "\"I believe this is a case where it is impofiant for me to send a signal about what I may do because it is a case where we are dealing with a man's innocence or guilt.\" Which fallacy is involved in the above statement ? l. Missing the point 2. The Straw Man 3. False Cause 4. Hasty Generalization"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-22",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following are primary goals of using triangulation in qualitative research study ?\n(None) To increase the validity and credibility ofthe findings.\n(None) To reduce the inherent bias ofusing a single method or obsewer.\n(None) To ensure the research process is completed as quickly as possible.\n(None) To provide a more comprehensive, multi-dimensional understanding of the phenomenon. Choose the correct answer from the options given below l. A, Band Conly"
+        },
+        "options": [
+          {
+            "id": "b",
+            "text": {
+              "en": "A, B and D only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "B, C and D only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A, C and D only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-23",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following is/are correct ?\n(None) of of 500 is 125\n(None) of 798 + 365 — 1075.22\n(None) 3.6% of 750 is 37\n(None) Half of 1% (in decimal) is = 0.005 Choose the correct answer from the options given below"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A, B and C only"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "B, C and D only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "C and D only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "B and D only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-24",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match the LIST-I with LIST-II\n(None) B.\n(None) D. LIST-I (Description) The fallacy of the unproved middle The fallacy of the non-inferentially contradicted term The reason is counter-balanced by another reason The fallacy ofthe irregular middle I. II. III. IV. LIST-II (Fallacy) Bädhita Sädhyasama Anaikäntik Satpratipaksa Choose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A-IV, B-111, C-1, D-11"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-III, B-1, c-IV, D-11"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-I, B-lV, C-11, D-111"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-II, B-1, c-IV, D-111"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-25",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "In a certain language, if CERTAIN is coded as EGTVCKP, then how SUMMER shall be coded in that language ? 1. UWOPGT 2. VWOOGT 3. UWOOGT 4. TVNNFS"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-26",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "The ancient Indian literacy work 'Kadambari' by Banabhatta states that a good education means knowledge of : l. 75 arts 2. 91 arts 3. 84 arts 4. 64 arts"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-27",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match the LIST-I with LIST-II LIST-I (Elements of Communication)\n(None) c.\n(None) Who Says what To whom With what purpose 11. LIST-II (Interpretation) The message The communicator The objective The audience Choose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A-I, B-11, C-111, D-lV"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-IV, B-111, C-11, D-l"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-I, B-11, c-IV, D-111"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A•ll, B-1, c-IV, D-111"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-28",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Arrange the following according to the year of their occurrence staning from older to recent.\n(None) Montreal Protocol\n(None) Rio Summit\n(None) International Solar Alliance\n(None) Environment (Protection) Act Choose the correct answer from the options given below :"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option A"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option C"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option D"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-29",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which among the following are known as mass media ?\n(None) Laptop\n(None) Radio\n(None) Tablet\n(None) Television E. Cinema Choose the correct answer from the options given below l. A and C only"
+        },
+        "options": [
+          {
+            "id": "b",
+            "text": {
+              "en": "A, B and C only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "B, D and E only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A, C and D only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-30",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "NEP (2020) has recommended to convert all stand-alone Teacher Education Institutes to: l. Autonomous Colleges by 2030 2. Multidisciplinary Institutions by 2030 3. Deemed Universities by 2030 4. Departments of Education by 2030"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-31",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "\"What is not different-from-other-elements has no smell. The earth has smell. Therefore the earth is different-from-other-elements.\" As per Nyäya school this is an example of which of the following type of inference ? I. Kevalänvayi 2. Anaikäntika 3. Anvayavyatireki 4. kevalavyatireki"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-32",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": ""
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-33",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match the LIST-I with LIST-II\n(None) c.\n(None) LIST-I (Founders) Dr.\n(None) Bell Charles Wilkins Jonathan Duncan Anderson and Braidwood 11. LIST-II (Education System) Calcutta Madrassa (Bengal) Sanskrit College (Benares) Christian College (Madras) Madras System (England) Choose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A-I, B-lV, C-11, D-111"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-I, B-11, C-111, D-lV"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-II, B-111, C-1, D-lV"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A•rv, m, c-11, D-111"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-34",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Alan Turing is primarily popular for being the \"Father of Computer Science\" because he 1. provided the theoretical foundations for how computers work today 2. was a key designer of \"Colossus\", the first large-scale electronic computer 3. coined the term \"Artificial Intelligence\" 4. provided the theoretical foundation for ubiquitous computing"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-35",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match the LIST-I with LIST-II\n(None) c.\n(None) LIST-I (Noise Source) Human Breathing Jet engine Whisper Lawn mower"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "11. 111. LIST-II (Typical Level) -140 dB -30 dB -80 dB Choose the correct answer from the options given below:"
+            }
+          },
+          {
+            "id": "a",
+            "text": {
+              "en": "A-II, B-1, C-111, D-lV"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-I, B-11, c-IV, D-111"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-II, B-1, c-IV, D-111"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A•l, B-111, c-IV, D-11"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-36",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U1",
+      "topicId": "U1.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "According to NEP (2020) document, the children can build a positive cultural identity and self-esteem through the development of a strong sense and knowledge of their own\n(None) cultural history\n(None) arts\n(None) languages\n(None) traditions Choose the correct answer from the options given below :"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "B, C and D Only"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A, C and D only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A, B and D only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-37",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match the LIST-I with LIST-II LIST-I LIST-II (Level of (Characteristics) Measurement)\n(None) B.\n(None) D. Nominal Ordinal Interval Ratio Categories with a meaningful order or rank but the distance between ranks is not"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "equal or measurable II. Categories only; no order Ordered data with equal interval between points, plus a tme, absolute zero point, 111. allowing for proportional comparisons Ordered data with equal intervals between points, but zero is arbitrary (does not mean absence of the trait) Choose the correct answer from the options given below:"
+            }
+          },
+          {
+            "id": "a",
+            "text": {
+              "en": "A-III, B-1, c-IV, D-11"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A4, B-111, C-11, D-lV"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-IV, B-11, C-1, D-111"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-II, B-1, c-IV, D-111"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-38",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "The Appiko Movement also known as \"tree hugging\" movement staffed in which state of India ? 1. Himachal Pradesh 2. Jammu and Kashmir 3. Karnataka 4. Odisha"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-39",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "As per NEP (2020), the National Research Foundation will perform these activities •\n(None) To recognise outstanding research\n(None) To seed, grow and facilitate research\n(None) To organise research course work\n(None) To train research supervisors E. To fund peer-reviewed research grant proposals Choose the correct answer from the options given below • l. A, Band COnly"
+        },
+        "options": [
+          {
+            "id": "b",
+            "text": {
+              "en": "B, C and D only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A, DandEOn1y"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A, B and E only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-40",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match the LIST-I with LIST-II LIST-I (Web Browser)\n(None) c.\n(None) Safari Chrome Firefox Edge 11. 111. LIST-II (Developer) Google Microsoft Apple Mozilla Choose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A-II, B-111, C-1, D-lV"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-III, B-1, c-IV, D-11"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-IV, B-11, C-111, D-l"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-III, B-11, C-1, D-lV"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-41",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "In theory' of mass communication, counters those who speak of the harmful effects of the mass media by arguing that first and foremost the media serves audiences as play experiences. Fill in the blank space l. Maxwell McCombs 2. William Stephenson 3. Donald L. Shaw 4. George Gerbner"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-42",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Find the number that can replace question mark (?) in the series given below. 3, 4, 8, 17, 58, 94, 143 1. 27 2. 23 3. 33 4. 43"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-43",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "In the context of research, what term refers to the consistency of a measurement, meaning that a number of researchers using the same definition to measure a variable, achieve the same results ? l. Validity 2. Reliability 3. Objectivity 4. Subjectivity"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-44",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "In the context of intelligence, list out the types of reasoning in the given list.\n(None) Verbal reasoning\n(None) Communicative reasoning\n(None) Quantitative reasoning\n(None) Skill based reasoning E. Abstract visual reasoning Choose the correct answer from the options given below : l. B, C and D only"
+        },
+        "options": [
+          {
+            "id": "b",
+            "text": {
+              "en": "A, C and E only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A, B and C only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "C, D and E only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-45",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Since the word order and some stmctural characteristics of Kannada, Urdu and Marathi are similar in Kupwar, these languages now have a possibility of • I. different varieties 2. word-for-word translation 3. writing of poetry 4. writing of autobiographies"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-46",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "comprehension",
+        "stem": {
+          "en": "inguish themselves from speakers of other varieties, so close contact and frequent communication foster linguistic similarity. As varieties of the same language spoken by people in close social contact tend to become alike, different languages spoken in a community may also tend to merge. Kupwar is a village in India on the border between two major language families: the Indo- European family (which includes the languages of North India) and the unrelated Dravidian family (the languages of South India). Kupwar's 3,000 inhabitants fall into three groups and regularly use three languages in their daily activities. The Jains speak Kannada (a Dravidian language), the Muslims speak Urdu (an Indo-European language closely related to Hindi), and the Untouchables speak Marathi (the regional Indo-European language surrounding Kupwar and the principal literary language of the area). These groups have lived in the village for centuries, and most men are bilingual or multilingual. Over the course of time, with individual switching back and forth among at least two of these languages, the varieties used in Kupwar have come to be more and more alike. In fact, the grammatical structures of the village varieties are now so similar that a word-for-word translation is possible among the languages because word order and other structural characteristics of the three languages are now virtually identical. This merging is remarkable because the varieties of these languages that are used elsewhere are very different from one another.\n\nQ.46 Which of these people who live in Kupwar are all bilingual or multilingual ? l. Jains and Muslims 2. All the males 3. Jains, Muslims and untouchables 4. Women and Children"
+        },
+        "passage": {
+          "en": "Read the passage given below and answer the questions that follow : Just as physical and social distance enable speakers of one variety to dist"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-47",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "comprehension",
+        "stem": {
+          "en": "inguish themselves from speakers of other varieties, so close contact and frequent communication foster linguistic similarity. As varieties of the same language spoken by people in close social contact tend to become alike, different languages spoken in a community may also tend to merge. Kupwar is a village in India on the border between two major language families: the Indo- European family (which includes the languages of North India) and the unrelated Dravidian family (the languages of South India). Kupwar's 3,000 inhabitants fall into three groups and regularly use three languages in their daily activities. The Jains speak Kannada (a Dravidian language), the Muslims speak Urdu (an Indo-European language closely related to Hindi), and the Untouchables speak Marathi (the regional Indo-European language surrounding Kupwar and the principal literary language of the area). These groups have lived in the village for centuries, and most men are bilingual or multilingual. Over the course of time, with individual switching back and forth among at least two of these languages, the varieties used in Kupwar have come to be more and more alike. In fact, the grammatical structures of the village varieties are now so similar that a word-for-word translation is possible among the languages because word order and other structural characteristics of the three languages are now virtually identical. This merging is remarkable because the varieties of these languages that are used elsewhere are very different from one another.\n\nQ.47 Kannada, Urdu and Marathi all over the world are known as languages : I. that are very different from each other 2. that are very similar to each other 3. that are easy to learn 4. that belong to the same language family"
+        },
+        "passage": {
+          "en": "Read the passage given below and answer the questions that follow : Just as physical and social distance enable speakers of one variety to dist"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-48",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "comprehension",
+        "stem": {
+          "en": "inguish themselves from speakers of other varieties, so close contact and frequent communication foster linguistic similarity. As varieties of the same language spoken by people in close social contact tend to become alike, different languages spoken in a community may also tend to merge. Kupwar is a village in India on the border between two major language families: the Indo- European family (which includes the languages of North India) and the unrelated Dravidian family (the languages of South India). Kupwar's 3,000 inhabitants fall into three groups and regularly use three languages in their daily activities. The Jains speak Kannada (a Dravidian language), the Muslims speak Urdu (an Indo-European language closely related to Hindi), and the Untouchables speak Marathi (the regional Indo-European language surrounding Kupwar and the principal literary language of the area). These groups have lived in the village for centuries, and most men are bilingual or multilingual. Over the course of time, with individual switching back and forth among at least two of these languages, the varieties used in Kupwar have come to be more and more alike. In fact, the grammatical structures of the village varieties are now so similar that a word-for-word translation is possible among the languages because word order and other structural characteristics of the three languages are now virtually identical. This merging is remarkable because the varieties of these languages that are used elsewhere are very different from one another.\n\nQ.48 During their evelyday activities, the residents of Kupwar on a regular basis use : I. All languages 2. three languages 3. two languages 4. one mother tongue"
+        },
+        "passage": {
+          "en": "Read the passage given below and answer the questions that follow : Just as physical and social distance enable speakers of one variety to dist"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-49",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "comprehension",
+        "stem": {
+          "en": "inguish themselves from speakers of other varieties, so close contact and frequent communication foster linguistic similarity. As varieties of the same language spoken by people in close social contact tend to become alike, different languages spoken in a community may also tend to merge. Kupwar is a village in India on the border between two major language families: the Indo- European family (which includes the languages of North India) and the unrelated Dravidian family (the languages of South India). Kupwar's 3,000 inhabitants fall into three groups and regularly use three languages in their daily activities. The Jains speak Kannada (a Dravidian language), the Muslims speak Urdu (an Indo-European language closely related to Hindi), and the Untouchables speak Marathi (the regional Indo-European language surrounding Kupwar and the principal literary language of the area). These groups have lived in the village for centuries, and most men are bilingual or multilingual. Over the course of time, with individual switching back and forth among at least two of these languages, the varieties used in Kupwar have come to be more and more alike. In fact, the grammatical structures of the village varieties are now so similar that a word-for-word translation is possible among the languages because word order and other structural characteristics of the three languages are now virtually identical. This merging is remarkable because the varieties of these languages that are used elsewhere are very different from one another.\n\nQ.49 Question 49 regarding UGC NET Paper 1 comprehension and analysis."
+        },
+        "passage": {
+          "en": "Read the passage given below and answer the questions that follow : Just as physical and social distance enable speakers of one variety to dist"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-50",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "comprehension",
+        "stem": {
+          "en": "inguish themselves from speakers of other varieties, so close contact and frequent communication foster linguistic similarity. As varieties of the same language spoken by people in close social contact tend to become alike, different languages spoken in a community may also tend to merge. Kupwar is a village in India on the border between two major language families: the Indo- European family (which includes the languages of North India) and the unrelated Dravidian family (the languages of South India). Kupwar's 3,000 inhabitants fall into three groups and regularly use three languages in their daily activities. The Jains speak Kannada (a Dravidian language), the Muslims speak Urdu (an Indo-European language closely related to Hindi), and the Untouchables speak Marathi (the regional Indo-European language surrounding Kupwar and the principal literary language of the area). These groups have lived in the village for centuries, and most men are bilingual or multilingual. Over the course of time, with individual switching back and forth among at least two of these languages, the varieties used in Kupwar have come to be more and more alike. In fact, the grammatical structures of the village varieties are now so similar that a word-for-word translation is possible among the languages because word order and other structural characteristics of the three languages are now virtually identical. This merging is remarkable because the varieties of these languages that are used elsewhere are very different from one another.\n\nQ.50 Question 50 regarding UGC NET Paper 1 comprehension and analysis."
+        },
+        "passage": {
+          "en": "Read the passage given below and answer the questions that follow : Just as physical and social distance enable speakers of one variety to dist"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    }
+  ],
+  "answerKey": {
+    "q-01": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-02": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-03": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-04": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-05": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-06": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium"
+    },
+    "q-07": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U1",
+      "topicId": "U1.1",
+      "difficulty": "medium"
+    },
+    "q-08": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-09": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-10": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium"
+    },
+    "q-11": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-12": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-13": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-14": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-15": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium"
+    },
+    "q-16": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-17": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U1",
+      "topicId": "U1.1",
+      "difficulty": "medium"
+    },
+    "q-18": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-19": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-20": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium"
+    },
+    "q-21": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium"
+    },
+    "q-22": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium"
+    },
+    "q-23": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium"
+    },
+    "q-24": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium"
+    },
+    "q-25": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium"
+    },
+    "q-26": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium"
+    },
+    "q-27": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-28": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-29": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-30": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium"
+    },
+    "q-31": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-32": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-33": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-34": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium"
+    },
+    "q-35": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-36": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U1",
+      "topicId": "U1.1",
+      "difficulty": "medium"
+    },
+    "q-37": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-38": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-39": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium"
+    },
+    "q-40": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-41": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-42": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium"
+    },
+    "q-43": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium"
+    },
+    "q-44": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium"
+    },
+    "q-45": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium"
+    },
+    "q-46": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium"
+    },
+    "q-47": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium"
+    },
+    "q-48": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium"
+    },
+    "q-49": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium"
+    },
+    "q-50": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium"
+    }
+  },
+  "metadata": {
+    "parsedAt": "2026-11-15T11:14:05.001Z",
+    "sourceFile": "sep09-shift2.txt",
+    "questionCount": 50,
+    "unitDistribution": {
+      "U1": 3,
+      "U2": 4,
+      "U3": 3,
+      "U4": 8,
+      "U5": 5,
+      "U6": 2,
+      "U7": 9,
+      "U8": 8,
+      "U9": 3,
+      "U10": 5
+    }
+  },
+  "transcriber": "Bunty",
+  "verifier": "Pending Human Verification"
+}

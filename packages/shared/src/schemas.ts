@@ -40,6 +40,7 @@ export const QuestionVersionBase = z.object({
   provenance: ProvenanceSchema,
   createdBy: z.string(),
   reviewedBy: z.string().optional(),
+  defectNote: z.string().optional(),
 });
 /** Cross-field rules, shared by the full schema and by the admin input (zod 4 cannot .pick() a refined object). */
 export function refineQuestion(q: { content: { type: string; options: { id: string }[] }; correct: string[]; provenance: { kind: string; officialPyqVerified?: boolean | undefined } }, ctx: z.RefinementCtx) {
@@ -67,6 +68,8 @@ export const PaperQuestionSchema = z.object({
   qid: id, version: z.number().int().min(1), sectionId: id,
   unitId: id, topicId: id, difficulty: z.enum(DIFFICULTIES),
   content: QuestionContentSchema,
+  defectNote: z.string().optional(),
+  provenance: ProvenanceSchema.optional(),
 });
 export type PaperQuestion = z.infer<typeof PaperQuestionSchema>;
 

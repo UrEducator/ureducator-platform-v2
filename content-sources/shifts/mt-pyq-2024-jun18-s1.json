@@ -1,0 +1,4925 @@
+{
+  "target": "mt-pyq-2024-jun18-s1",
+  "shiftId": "ugcnet-2024-jun18-s1",
+  "mockTestId": "mt-pyq-2024-jun18-s1",
+  "paperId": "paper-pyq-2024-jun18-s1",
+  "title": "UGC NET Paper 1 — 18 June 2024 (Shift 1)",
+  "kind": "pyq",
+  "blueprintId": "ugcnet-paper1-pilot-v1",
+  "paperVersion": 1,
+  "access": "paid",
+  "collectionId": "plan-pyq-2023-premium-pack",
+  "status": "draft",
+  "timed": true,
+  "shuffle": false,
+  "revealPolicy": "immediate",
+  "contentLabel": "under_development",
+  "description": "UGC NET Paper 1, 18 June 2024, Shift 1. 50 questions, 100 marks, 60 minutes.",
+  "instructions": "1. Total duration of UGC NET Paper 1 is 60 minutes.\n2. The paper consists of 50 Multiple Choice Questions (MCQs) carrying 2 marks each (Total 100 marks).\n3. There is NO negative marking for incorrect or unattempted responses.\n4. You can navigate freely between questions using the Question Palette.\n5. Questions can be saved, marked for review, or cleared at any time before final submission.\n6. When the countdown timer reaches 00:00:00, your exam will automatically submit.",
+  "version": 1,
+  "mockTest": {
+    "title": "UGC NET Paper 1 — 18 June 2024 (Shift 1)",
+    "kind": "pyq",
+    "blueprintId": "ugcnet-paper1-pilot-v1",
+    "paperId": "paper-pyq-2024-jun18-s1",
+    "paperVersion": 1,
+    "access": "paid",
+    "collectionId": "plan-pyq-2023-premium-pack",
+    "status": "draft",
+    "timed": true,
+    "shuffle": false,
+    "revealPolicy": "immediate",
+    "contentLabel": "under_development",
+    "description": "UGC NET Paper 1, 18 June 2024, Shift 1. 50 questions, 100 marks, 60 minutes.",
+    "instructions": "1. Total duration of UGC NET Paper 1 is 60 minutes.\n2. The paper consists of 50 Multiple Choice Questions (MCQs) carrying 2 marks each (Total 100 marks).\n3. There is NO negative marking for incorrect or unattempted responses.\n4. You can navigate freely between questions using the Question Palette.\n5. Questions can be saved, marked for review, or cleared at any time before final submission.\n6. When the countdown timer reaches 00:00:00, your exam will automatically submit.",
+    "version": 1,
+    "transcriber": "Bunty",
+    "verifier": "Pending Human Verification"
+  },
+  "paper": {
+    "paperId": "paper-pyq-2024-jun18-s1",
+    "mockTestId": "mt-pyq-2024-jun18-s1",
+    "version": 1,
+    "questions": [
+      {
+        "qid": "q-01",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: The following table shows the percentage (%) distribution of the number of readers of an IT magazine in the years 2019 and 2023, among six different cities A-F. Based on the data in the table, answer the questions that follow:\n\n| City | Percentage of Readers (2019) | Percentage of Readers (2023) |\n| --- | --- | --- |\n| A | 14% | 22% |\n| B | 17% | 20% |\n| C | 24% | 18% |\n| D | 26% | 15% |\n| E | 11% | 13% |\n| F | 8% | 12% |\n\nQ.1 If the number of readers from City-C in the year 2019 and that from City-E in the year 2023 were 51,300, respectively, then the number of readers from City-B in the year 2023 was what percentage more than that in 2019?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "53.7%"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "50.3%"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "52.8%"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "51.5%"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        },
+        "defectNote": "figures incomplete in transcription — requires source check"
+      },
+      {
+        "qid": "q-02",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: The following table shows the percentage (%) distribution of the number of readers of an IT magazine in the years 2019 and 2023, among six different cities A-F. Based on the data in the table, answer the questions that follow:\n\n| City | Percentage of Readers (2019) | Percentage of Readers (2023) |\n| --- | --- | --- |\n| A | 14% | 22% |\n| B | 17% | 20% |\n| C | 24% | 18% |\n| D | 26% | 15% |\n| E | 11% | 13% |\n| F | 8% | 12% |\n\nQ.2 If the number of readers from City-D in the year 2019 and 2023 were 77,400 and 73,100 respectively, then what is the difference between the number of readers from City-F in the year 2019 and that in 2023?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "24,800"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "27,200"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "28,400"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "33,600"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        },
+        "defectNote": "figures/key mismatch — requires source check"
+      },
+      {
+        "qid": "q-03",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: The following table shows the percentage (%) distribution of the number of readers of an IT magazine in the years 2019 and 2023, among six different cities A-F. Based on the data in the table, answer the questions that follow:\n\n| City | Percentage of Readers (2019) | Percentage of Readers (2023) |\n| --- | --- | --- |\n| A | 14% | 22% |\n| B | 17% | 20% |\n| C | 24% | 18% |\n| D | 26% | 15% |\n| E | 11% | 13% |\n| F | 8% | 12% |\n\nQ.3 If the total number of readers from all the six cities A-F together in the year 2023 was 50,000, then the number of readers was more than 7,400 in exactly how many cities in the same year?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "2"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "3"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "4"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "5"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-04",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: The following table shows the percentage (%) distribution of the number of readers of an IT magazine in the years 2019 and 2023, among six different cities A-F. Based on the data in the table, answer the questions that follow:\n\n| City | Percentage of Readers (2019) | Percentage of Readers (2023) |\n| --- | --- | --- |\n| A | 14% | 22% |\n| B | 17% | 20% |\n| C | 24% | 18% |\n| D | 26% | 15% |\n| E | 11% | 13% |\n| F | 8% | 12% |\n\nQ.4 If the total number of readers from all the six cities A-F together in the years 2019 and 2023 were 4.3 lakh and 5.7 lakh, respectively, what was the difference between the total number of readers from City-B and City-C together in the years 2019 and 2023?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "1.175 lakh"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "1.415 lakh"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "1.625 lakh"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "1.596 lakh"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-05",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: The following table shows the percentage (%) distribution of the number of readers of an IT magazine in the years 2019 and 2023, among six different cities A-F. Based on the data in the table, answer the questions that follow:\n\n| City | Percentage of Readers (2019) | Percentage of Readers (2023) |\n| --- | --- | --- |\n| A | 14% | 22% |\n| B | 17% | 20% |\n| C | 24% | 18% |\n| D | 26% | 15% |\n| E | 11% | 13% |\n| F | 8% | 12% |\n\nQ.5 If the ratio of the number of readers from City-A in year 2019 to that in 2023 was 2 : 5, then what was the ratio of the number of readers from all the six cities together in the year 2019 to that in 2023?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "11 : 28"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "55 : 112"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "14 : 25"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "22 : 35"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-06",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U9",
+        "topicId": "U9.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match List - I with List - II.\n\nList-I (Types of toxicants):\nA. Nephrotoxic\nB. Hematotoxic\nC. Pulmonotoxic\nD. Hepatotoxic\n\nList-II (Affected Organ):\nI. Lungs\nII. Kidney\nIII. Liver\nIV. Blood\n\nChoose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A-II, B-IV, C-I, D-III"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-II, B-IV, C-III, D-I"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-I, B-II, C-III, D-IV"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-III, B-I, C-II, D-IV"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-07",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "What is the base-10 equivalent of the base-4 number 3013?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "182"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "196"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "199"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "190"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-08",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "'Mind to mind' communication involves the communication of meanings through:\nA. Physical settings\nB. Shared beliefs\nC. Values\nD. Noise manipulation\nE. Context\n\nChoose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A, B and D only"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "B, C and D only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A, B, C and E only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "C, D and E only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-09",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Identify the correct order of the following list of computer components ranked from slowest to fastest in RAM/storage access time:\nA. CPU cache\nB. RAM\nC. SSD\nD. Optical Drive"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "D, C, B, A"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "C, D, B, A"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A, B, C, D"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "D, B, C, A"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-10",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U5",
+        "topicId": "U5.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match List - I with List - II.\n\nList-I (Words):\nA. FIND\nB. CLOG\nC. SHOW\nD. TIME\n\nList-II (Codes with same rule):\nI. RGKC\nII. DGLB\nIII. AJME\nIV. QFMU\n\nChoose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A-I, B-II, C-III, D-IV"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-II, B-III, C-IV, D-I"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-III, B-IV, C-I, D-II"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-IV, B-I, C-II, D-III"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-11",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U6",
+        "topicId": "U6.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which fallacy is committed in the following statement?\n\"People with cases of flu should be kept in quarantine, because it has never been disproven as the best means of keeping the disease from spreading.\""
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Appeal to Ignorance"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Hasty Generalisation"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Slippery slope"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "False cause"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-12",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "When communication helps a group to achieve its goals, it is known as playing a:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Disruptive role"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Promotive role"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Counteractive role"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Devotional role"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-13",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U5",
+        "topicId": "U5.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Choose the correct mathematical statements from below:\nA. If 40% of 60% of 3/5 of a number is 504, then 25% of 2/7 of that number is equal to 350.\nB. If A is 15% more than B, then B is 13.04% less than A.\nC. 10% of 5 and 5% of 10 add up to 0.1."
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A and B only"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "B and C only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "C and D only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A and D only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-14",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following digital initiatives provides a database of profile information of scientists/researchers and faculty members working at leading academic institutions in India?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "SWAYAM Prabha"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "VIDWAN"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "National Academic Depository (NAD)"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "e-ShodhSindhu"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-15",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "A device used to convert a digital signal to an analogue signal for telephone line communication is called a:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Bridge"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Modem"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Switch"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Network Interface Card (NIC)"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-16",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match List - I with List - II.\n\nList-I (Tasks):\nA. To input voiceovers for a presentation\nB. To input a PIN\nC. To select options from a menu\nD. To operate a flight simulator\n\nList-II (Appropriate Input Device):\nI. Mouse\nII. Joystick\nIII. Microphone\nIV. Number pad\n\nChoose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A-II, B-IV, C-I, D-III"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-III, B-IV, C-I, D-II"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-IV, B-II, C-I, D-III"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-I, B-III, C-II, D-IV"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-17",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U10",
+        "topicId": "U10.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following is the first Post-Independence education commission in India?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Indian Education Commission"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Calcutta University Commission"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "University Education Commission (Radhakrishnan Commission)"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Secondary Education Commission"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-18",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U5",
+        "topicId": "U5.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "A motor boat covers a certain distance downstream in 5 hours but takes 6 hours to return upstream to the starting point. If the speed of the stream is 4 km/h, what is the speed of the motorboat in still water?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "40 km/h"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "42 km/h"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "44 km/h"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "46 km/h"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-19",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following statements about computer memory size is/are true?\nA. 25 KB is larger than 100 MB.\nB. 999 MB is larger than 50 GB.\nC. 3500 KB is smaller than 2 GB.\nD. 2350 bytes is smaller than 2 KB."
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A only"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "C only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A and D only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "B and C only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-20",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U2",
+        "topicId": "U2.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following approaches to the study of reality suggests that only knowledge gained through experience and the senses is acceptable?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Constructionism"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Empiricism"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Ethnography"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Rationalism"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-21",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U5",
+        "topicId": "U5.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "The speed of a boat in still water is 5 km/hr and the speed of the stream is 1 km/hr. A man rows to a place at a distance of 24 km and comes back to the starting point. Find the total time taken by him."
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "8 hr"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "10 hr"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "12 hr"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "15 hr"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-22",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U9",
+        "topicId": "U9.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following are essential requirements for the formation of photochemical SMOG?\nA. Carbon monoxide (CO)\nB. Nitrogen dioxide (NO2)\nC. Carbon dioxide (CO2)\nD. Volatile Organic Compounds (VOCs)\nE. Sunlight\n\nChoose the most appropriate answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A, B and D only"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A, C and E only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "B, D and E only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "B, C, D and E only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-23",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U1",
+        "topicId": "U1.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Knowing that you find algebra more difficult than your sister but that you could improve with practice, is an example of:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Self-Regulation"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Metacognition"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Self-discipline"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Automation"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-24",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U1",
+        "topicId": "U1.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following are subdivisions of Implicit (Unconscious) memory?\nA. Priming\nB. Episodic Memory\nC. Classical conditioning effects\nD. Semantic Memory\nE. Procedural Memory\n\nChoose the most appropriate answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "B and D only"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A, B, D and E only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A, C and E only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A, B, C, D and E"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-25",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match List - I with List - II.\n\nList-I (Concept):\nA. Free commerce and communication\nB. Communication in economics\nC. Language as a conduit of communication\nD. Lines of communication\n\nList-II (Source):\nI. Alfred Marshall\nII. John Locke\nIII. Karl Marx\nIV. Adam Smith\n\nChoose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A-IV, B-III, C-II, D-I"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-II, B-I, C-IV, D-III"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-I, B-IV, C-II, D-III"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-III, B-II, C-I, D-IV"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-26",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U9",
+        "topicId": "U9.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following are true about breeder reactors?\nA. They produce more fissile material than they consume.\nB. There are no breeder reactors in India.\nC. There are two types (Fast and Slow) of breeder reactors.\nD. For breeding operation, the conversion ratio should be more than one.\nE. Breeder reactors produce more nuclear waste than conventional reactors.\n\nChoose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A, C and D only"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A and D only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "B, C and E only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A, D and E only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-27",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "The media accountability system to improve media quality focuses on:\nA. Evaluation\nB. Audience control\nC. Monitoring\nD. Education\nE. Feedback\n\nChoose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A, B and C only"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A, C, D and E only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "B, D and E only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "C, D and E only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-28",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U10",
+        "topicId": "U10.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Identify the correct sequence of the following research councils according to their year of establishment:\nA. Indian Council of Social Science Research (ICSSR)\nB. National Council for Rural Institutes (NCRI)\nC. Indian Council of Philosophical Research (ICPR)\nD. Indian Council of Historical Research (ICHR)\nE. Indian Institute of Advanced Study (IIAS)\n\nChoose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "E, A, D, C, B"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A, E, D, C, B"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "E, D, A, B, C"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A, B, C, D, E"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-29",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U2",
+        "topicId": "U2.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "When you try to predict the value of an outcome variable from one or more predictor variables, you are likely to be using:\nA. The Pearson product-moment correlation\nB. Bivariate regression\nC. Multivariate regression\nD. Analysis of variance\n\nChoose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A, B and C only"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "B and C only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "B, C and D only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A and D only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-30",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U10",
+        "topicId": "U10.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "According to National Credit Framework (NCrF), after obtaining a Bachelor's Degree (Honours / Engineering) of 4 years duration, the credit level earned is:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "5.5"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "6.0"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "6.5"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "7.0"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-31",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U6",
+        "topicId": "U6.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Arrange the following terms in order of increasing intension (connotation):\nA. Fielder\nB. Athlete\nC. Baseball Player\nD. Ball Player\n\nChoose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "B, D, C, A"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A, C, D, B"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "D, B, C, A"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "B, C, D, A"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-32",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U2",
+        "topicId": "U2.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "If a research project is set up so that everybody in the population of interest has an equal chance of being included in the sample, the research involves:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Quota sampling"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Judgemental sampling"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Probability sampling"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Convenience sampling"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-33",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U9",
+        "topicId": "U9.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "What is the full form of POPs in environmental science?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Persistent Organic Pollutants"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Persistent Oxygenated Pollutants"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Polycyclic Organic Pollutants"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Polymerised Organic Pollutants"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-34",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U2",
+        "topicId": "U2.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match List - I with List - II.\n\nList-I (Abbreviation):\nA. et al.\nB. ante.\nC. cf.\nD. ibid.\n\nList-II (Meaning):\nI. In the same place\nII. And others\nIII. Compare\nIV. Before\n\nChoose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A-I, B-II, C-III, D-IV"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-II, B-IV, C-III, D-I"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-III, B-IV, C-I, D-II"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-IV, B-I, C-II, D-III"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-35",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U9",
+        "topicId": "U9.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match List - I with List - II.\n\nList-I (Goals/Targets of MDGs and SDGs):\nA. Goals in Millennium Development Goals\nB. Targets in Millennium Development Goals\nC. Goals in Sustainable Development Goals\nD. Targets in Sustainable Development Goals\n\nList-II (Number of Goals/Targets):\nI. 8\nII. 21\nIII. 17\nIV. 169\n\nChoose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A-I, B-II, C-III, D-IV"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-II, B-I, C-IV, D-III"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-I, B-III, C-II, D-IV"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-IV, B-II, C-I, D-III"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-36",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U10",
+        "topicId": "U10.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "The Second Five Year Plan for higher education included the recommendations of which of the following committees?\nA. University Education Commission\nB. Languages Commission of India\nC. Rural Higher Education Committee\nD. Committee on Establishment of New Universities\nE. Three-year Degree Course Committee\n\nChoose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A, B and C only"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "B, C and D only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "C, D and E only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A, D and E only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-37",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U6",
+        "topicId": "U6.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following statements regarding deductive arguments and propositions are true?\nA. Validity can never apply to any single proposition by itself.\nB. The concept of truth can apply to single propositions.\nC. Arguments can be true or false.\nD. Propositions can be valid or invalid.\n\nChoose the most appropriate answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "D only"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A and B only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "B and C only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A and C only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-38",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U6",
+        "topicId": "U6.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following statements about Nyaya syllogism is correct?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Nyaya syllogism has three propositions."
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Nyaya syllogism has five terms."
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Nyaya syllogism has five propositions."
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Nyaya syllogism has three propositions and three terms."
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-39",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U10",
+        "topicId": "U10.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match List - I with List - II.\n\nList-I (Ancient Treatises):\nA. Lilavati\nB. Yoga-Sutras\nC. Nyaya-Sutras\nD. Arthashastra\n\nList-II (Author):\nI. Chanakya\nII. Gautama\nIII. Patanjali\nIV. Bhaskaracharya\n\nChoose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A-IV, B-III, C-II, D-I"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-III, B-IV, C-II, D-I"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-I, B-II, C-III, D-IV"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-II, B-I, C-IV, D-III"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-40",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U6",
+        "topicId": "U6.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following statements is logically equivalent to the statement: \"No horses are felines\"?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "No felines are horses."
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "All horses are non-felines."
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "All non-horses are felines."
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Some non-felines are horses."
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-41",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U10",
+        "topicId": "U10.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following is the National Coordinator of SWAYAM courses for non-technical post-graduation education?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "All India Council for Technical Education (AICTE)"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "National Institute of Technical Teachers Training and Research (NITTTR)"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "National Council of Educational Research and Training (NCERT)"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "University Grants Commission (UGC)"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-42",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U5",
+        "topicId": "U5.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Arrange the following fractions in increasing order:\nA. 5/19\nB. 22/35\nC. 14/25\nD. 7/11\n\nChoose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A, C, B, D"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "D, C, B, A"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A, B, C, D"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "C, A, D, B"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-43",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U2",
+        "topicId": "U2.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Arrange the different stages involved in the process of deduction in correct sequence:\nA. Theory\nB. Hypothesis confirmed or rejected\nC. Hypothesis\nD. Data Collection\nE. Findings\n\nChoose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A, C, D, E, B"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "C, A, D, E, B"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A, D, C, E, B"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "D, C, A, E, B"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-44",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match List - I with List - II.\n\nList-I (Digital Initiative):\nA. Shodhganga\nB. Shodh Gangotri\nC. Shodh Shuddhi\nD. FOSSEE\n\nList-II (Purpose):\nI. Repository of full-text Indian electronic theses and dissertations\nII. Repository of approved research synopses\nIII. Plagiarism detection software access\nIV. Promotion of open source software in education\n\nChoose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A-I, B-II, C-III, D-IV"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-II, B-I, C-IV, D-III"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-III, B-IV, C-I, D-II"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-IV, B-III, C-II, D-I"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-45",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which technology first marked a clear separation of transportation from communication over long distances?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Telegraph"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Projection"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Printing"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Photography"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-46",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U3",
+        "topicId": "U3.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: According to a World Health Organization (WHO) report, about 80 percent of the world population uses traditional medicine systems in some way or another. Traditional medicine systems in India include Ayurveda, Yoga, Naturopathy, Unani, Siddha, Sowa-Rigpa, and Homeopathy, collectively known as AYUSH. All these systems were formulated, practiced, and integrated into healthcare coverage to achieve safe and economically feasible methods.\n\nIn many countries of the world, medical pluralism is the norm because no single system of medicine can single-handedly address all health concerns, but an integrative approach incorporating the positives of each system can benefit mankind. A patient-centered and individualized approach is the trademark of traditional medicine systems. Increased global attention to Ayush systems enabled the signing of the Host Country Agreement for the establishment of the Global Centre for Traditional Medicine (GCTM) at Jamnagar, Gujarat.\n\nQ.46 Choose the most appropriate title for the passage."
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Allopathy vs Ayurveda"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Holistic Healthcare through Traditional Medicine"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Ayurvedic Pharmacopoeia"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Homeopathy in Modern Era"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-47",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U3",
+        "topicId": "U3.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: According to a World Health Organization (WHO) report, about 80 percent of the world population uses traditional medicine systems in some way or another. Traditional medicine systems in India include Ayurveda, Yoga, Naturopathy, Unani, Siddha, Sowa-Rigpa, and Homeopathy, collectively known as AYUSH. All these systems were formulated, practiced, and integrated into healthcare coverage to achieve safe and economically feasible methods.\n\nIn many countries of the world, medical pluralism is the norm because no single system of medicine can single-handedly address all health concerns, but an integrative approach incorporating the positives of each system can benefit mankind. A patient-centered and individualized approach is the trademark of traditional medicine systems. Increased global attention to Ayush systems enabled the signing of the Host Country Agreement for the establishment of the Global Centre for Traditional Medicine (GCTM) at Jamnagar, Gujarat.\n\nQ.47 In many countries of the world, medical pluralism is the norm because:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Traditional systems of medicine are obsolete."
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "No single system of medicine can single-handedly address all health concerns."
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "An integrative approach cannot benefit mankind."
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Modern healthcare has failed completely."
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-48",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U3",
+        "topicId": "U3.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: According to a World Health Organization (WHO) report, about 80 percent of the world population uses traditional medicine systems in some way or another. Traditional medicine systems in India include Ayurveda, Yoga, Naturopathy, Unani, Siddha, Sowa-Rigpa, and Homeopathy, collectively known as AYUSH. All these systems were formulated, practiced, and integrated into healthcare coverage to achieve safe and economically feasible methods.\n\nIn many countries of the world, medical pluralism is the norm because no single system of medicine can single-handedly address all health concerns, but an integrative approach incorporating the positives of each system can benefit mankind. A patient-centered and individualized approach is the trademark of traditional medicine systems. Increased global attention to Ayush systems enabled the signing of the Host Country Agreement for the establishment of the Global Centre for Traditional Medicine (GCTM) at Jamnagar, Gujarat.\n\nQ.48 Which of the following statements about the traditional Indian medicine systems is FALSE according to the passage?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Each system has unique traditional medical knowledge."
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "They include Ayurveda, Yoga, Naturopathy, Unani, Siddha, Sowa-Rigpa and Homeopathy."
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Modern Health Science preceded them in India."
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "They offer safe and economically feasible methods."
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-49",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U3",
+        "topicId": "U3.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: According to a World Health Organization (WHO) report, about 80 percent of the world population uses traditional medicine systems in some way or another. Traditional medicine systems in India include Ayurveda, Yoga, Naturopathy, Unani, Siddha, Sowa-Rigpa, and Homeopathy, collectively known as AYUSH. All these systems were formulated, practiced, and integrated into healthcare coverage to achieve safe and economically feasible methods.\n\nIn many countries of the world, medical pluralism is the norm because no single system of medicine can single-handedly address all health concerns, but an integrative approach incorporating the positives of each system can benefit mankind. A patient-centered and individualized approach is the trademark of traditional medicine systems. Increased global attention to Ayush systems enabled the signing of the Host Country Agreement for the establishment of the Global Centre for Traditional Medicine (GCTM) at Jamnagar, Gujarat.\n\nQ.49 The WHO Global Centre for Traditional Medicine (GCTM) has been established in:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Geneva"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Jamnagar"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "New Delhi"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Haridwar"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-50",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U3",
+        "topicId": "U3.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: According to a World Health Organization (WHO) report, about 80 percent of the world population uses traditional medicine systems in some way or another. Traditional medicine systems in India include Ayurveda, Yoga, Naturopathy, Unani, Siddha, Sowa-Rigpa, and Homeopathy, collectively known as AYUSH. All these systems were formulated, practiced, and integrated into healthcare coverage to achieve safe and economically feasible methods.\n\nIn many countries of the world, medical pluralism is the norm because no single system of medicine can single-handedly address all health concerns, but an integrative approach incorporating the positives of each system can benefit mankind. A patient-centered and individualized approach is the trademark of traditional medicine systems. Increased global attention to Ayush systems enabled the signing of the Host Country Agreement for the establishment of the Global Centre for Traditional Medicine (GCTM) at Jamnagar, Gujarat.\n\nQ.50 According to the World Health Organization report cited in the passage, what percentage of the world population uses traditional medicine systems in some way or another?"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "About 20%"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "About 50%"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "About 80%"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "About 100%"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      }
+    ],
+    "contentLabel": "under_development",
+    "title": "UGC NET Paper 1 — 18 June 2024 (Shift 1)"
+  },
+  "questions": [
+    {
+      "qid": "q-01",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: The following table shows the percentage (%) distribution of the number of readers of an IT magazine in the years 2019 and 2023, among six different cities A-F. Based on the data in the table, answer the questions that follow:\n\n| City | Percentage of Readers (2019) | Percentage of Readers (2023) |\n| --- | --- | --- |\n| A | 14% | 22% |\n| B | 17% | 20% |\n| C | 24% | 18% |\n| D | 26% | 15% |\n| E | 11% | 13% |\n| F | 8% | 12% |\n\nQ.1 If the number of readers from City-C in the year 2019 and that from City-E in the year 2023 were 51,300, respectively, then the number of readers from City-B in the year 2023 was what percentage more than that in 2019?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "53.7%"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "50.3%"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "52.8%"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "51.5%"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      },
+      "defectNote": "figures incomplete in transcription — requires source check"
+    },
+    {
+      "qid": "q-02",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: The following table shows the percentage (%) distribution of the number of readers of an IT magazine in the years 2019 and 2023, among six different cities A-F. Based on the data in the table, answer the questions that follow:\n\n| City | Percentage of Readers (2019) | Percentage of Readers (2023) |\n| --- | --- | --- |\n| A | 14% | 22% |\n| B | 17% | 20% |\n| C | 24% | 18% |\n| D | 26% | 15% |\n| E | 11% | 13% |\n| F | 8% | 12% |\n\nQ.2 If the number of readers from City-D in the year 2019 and 2023 were 77,400 and 73,100 respectively, then what is the difference between the number of readers from City-F in the year 2019 and that in 2023?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "24,800"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "27,200"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "28,400"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "33,600"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      },
+      "defectNote": "figures/key mismatch — requires source check"
+    },
+    {
+      "qid": "q-03",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: The following table shows the percentage (%) distribution of the number of readers of an IT magazine in the years 2019 and 2023, among six different cities A-F. Based on the data in the table, answer the questions that follow:\n\n| City | Percentage of Readers (2019) | Percentage of Readers (2023) |\n| --- | --- | --- |\n| A | 14% | 22% |\n| B | 17% | 20% |\n| C | 24% | 18% |\n| D | 26% | 15% |\n| E | 11% | 13% |\n| F | 8% | 12% |\n\nQ.3 If the total number of readers from all the six cities A-F together in the year 2023 was 50,000, then the number of readers was more than 7,400 in exactly how many cities in the same year?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "2"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "3"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "4"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "5"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-04",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: The following table shows the percentage (%) distribution of the number of readers of an IT magazine in the years 2019 and 2023, among six different cities A-F. Based on the data in the table, answer the questions that follow:\n\n| City | Percentage of Readers (2019) | Percentage of Readers (2023) |\n| --- | --- | --- |\n| A | 14% | 22% |\n| B | 17% | 20% |\n| C | 24% | 18% |\n| D | 26% | 15% |\n| E | 11% | 13% |\n| F | 8% | 12% |\n\nQ.4 If the total number of readers from all the six cities A-F together in the years 2019 and 2023 were 4.3 lakh and 5.7 lakh, respectively, what was the difference between the total number of readers from City-B and City-C together in the years 2019 and 2023?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "1.175 lakh"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "1.415 lakh"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "1.625 lakh"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "1.596 lakh"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-05",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: The following table shows the percentage (%) distribution of the number of readers of an IT magazine in the years 2019 and 2023, among six different cities A-F. Based on the data in the table, answer the questions that follow:\n\n| City | Percentage of Readers (2019) | Percentage of Readers (2023) |\n| --- | --- | --- |\n| A | 14% | 22% |\n| B | 17% | 20% |\n| C | 24% | 18% |\n| D | 26% | 15% |\n| E | 11% | 13% |\n| F | 8% | 12% |\n\nQ.5 If the ratio of the number of readers from City-A in year 2019 to that in 2023 was 2 : 5, then what was the ratio of the number of readers from all the six cities together in the year 2019 to that in 2023?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "11 : 28"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "55 : 112"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "14 : 25"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "22 : 35"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-06",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match List - I with List - II.\n\nList-I (Types of toxicants):\nA. Nephrotoxic\nB. Hematotoxic\nC. Pulmonotoxic\nD. Hepatotoxic\n\nList-II (Affected Organ):\nI. Lungs\nII. Kidney\nIII. Liver\nIV. Blood\n\nChoose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A-II, B-IV, C-I, D-III"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-II, B-IV, C-III, D-I"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-I, B-II, C-III, D-IV"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-III, B-I, C-II, D-IV"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-07",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "What is the base-10 equivalent of the base-4 number 3013?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "182"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "196"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "199"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "190"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-08",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "'Mind to mind' communication involves the communication of meanings through:\nA. Physical settings\nB. Shared beliefs\nC. Values\nD. Noise manipulation\nE. Context\n\nChoose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A, B and D only"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "B, C and D only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A, B, C and E only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "C, D and E only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-09",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Identify the correct order of the following list of computer components ranked from slowest to fastest in RAM/storage access time:\nA. CPU cache\nB. RAM\nC. SSD\nD. Optical Drive"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "D, C, B, A"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "C, D, B, A"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A, B, C, D"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "D, B, C, A"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-10",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match List - I with List - II.\n\nList-I (Words):\nA. FIND\nB. CLOG\nC. SHOW\nD. TIME\n\nList-II (Codes with same rule):\nI. RGKC\nII. DGLB\nIII. AJME\nIV. QFMU\n\nChoose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A-I, B-II, C-III, D-IV"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-II, B-III, C-IV, D-I"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-III, B-IV, C-I, D-II"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-IV, B-I, C-II, D-III"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-11",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which fallacy is committed in the following statement?\n\"People with cases of flu should be kept in quarantine, because it has never been disproven as the best means of keeping the disease from spreading.\""
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Appeal to Ignorance"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Hasty Generalisation"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Slippery slope"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "False cause"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-12",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "When communication helps a group to achieve its goals, it is known as playing a:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Disruptive role"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Promotive role"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Counteractive role"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Devotional role"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-13",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Choose the correct mathematical statements from below:\nA. If 40% of 60% of 3/5 of a number is 504, then 25% of 2/7 of that number is equal to 350.\nB. If A is 15% more than B, then B is 13.04% less than A.\nC. 10% of 5 and 5% of 10 add up to 0.1."
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A and B only"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "B and C only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "C and D only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A and D only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-14",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following digital initiatives provides a database of profile information of scientists/researchers and faculty members working at leading academic institutions in India?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "SWAYAM Prabha"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "VIDWAN"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "National Academic Depository (NAD)"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "e-ShodhSindhu"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-15",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "A device used to convert a digital signal to an analogue signal for telephone line communication is called a:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Bridge"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Modem"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Switch"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Network Interface Card (NIC)"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-16",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match List - I with List - II.\n\nList-I (Tasks):\nA. To input voiceovers for a presentation\nB. To input a PIN\nC. To select options from a menu\nD. To operate a flight simulator\n\nList-II (Appropriate Input Device):\nI. Mouse\nII. Joystick\nIII. Microphone\nIV. Number pad\n\nChoose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A-II, B-IV, C-I, D-III"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-III, B-IV, C-I, D-II"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-IV, B-II, C-I, D-III"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-I, B-III, C-II, D-IV"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-17",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following is the first Post-Independence education commission in India?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Indian Education Commission"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Calcutta University Commission"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "University Education Commission (Radhakrishnan Commission)"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Secondary Education Commission"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-18",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "A motor boat covers a certain distance downstream in 5 hours but takes 6 hours to return upstream to the starting point. If the speed of the stream is 4 km/h, what is the speed of the motorboat in still water?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "40 km/h"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "42 km/h"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "44 km/h"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "46 km/h"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-19",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following statements about computer memory size is/are true?\nA. 25 KB is larger than 100 MB.\nB. 999 MB is larger than 50 GB.\nC. 3500 KB is smaller than 2 GB.\nD. 2350 bytes is smaller than 2 KB."
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A only"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "C only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A and D only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "B and C only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-20",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following approaches to the study of reality suggests that only knowledge gained through experience and the senses is acceptable?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Constructionism"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Empiricism"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Ethnography"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Rationalism"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-21",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "The speed of a boat in still water is 5 km/hr and the speed of the stream is 1 km/hr. A man rows to a place at a distance of 24 km and comes back to the starting point. Find the total time taken by him."
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "8 hr"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "10 hr"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "12 hr"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "15 hr"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-22",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following are essential requirements for the formation of photochemical SMOG?\nA. Carbon monoxide (CO)\nB. Nitrogen dioxide (NO2)\nC. Carbon dioxide (CO2)\nD. Volatile Organic Compounds (VOCs)\nE. Sunlight\n\nChoose the most appropriate answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A, B and D only"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A, C and E only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "B, D and E only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "B, C, D and E only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-23",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U1",
+      "topicId": "U1.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Knowing that you find algebra more difficult than your sister but that you could improve with practice, is an example of:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Self-Regulation"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Metacognition"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Self-discipline"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Automation"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-24",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U1",
+      "topicId": "U1.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following are subdivisions of Implicit (Unconscious) memory?\nA. Priming\nB. Episodic Memory\nC. Classical conditioning effects\nD. Semantic Memory\nE. Procedural Memory\n\nChoose the most appropriate answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "B and D only"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A, B, D and E only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A, C and E only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A, B, C, D and E"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-25",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match List - I with List - II.\n\nList-I (Concept):\nA. Free commerce and communication\nB. Communication in economics\nC. Language as a conduit of communication\nD. Lines of communication\n\nList-II (Source):\nI. Alfred Marshall\nII. John Locke\nIII. Karl Marx\nIV. Adam Smith\n\nChoose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A-IV, B-III, C-II, D-I"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-II, B-I, C-IV, D-III"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-I, B-IV, C-II, D-III"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-III, B-II, C-I, D-IV"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-26",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following are true about breeder reactors?\nA. They produce more fissile material than they consume.\nB. There are no breeder reactors in India.\nC. There are two types (Fast and Slow) of breeder reactors.\nD. For breeding operation, the conversion ratio should be more than one.\nE. Breeder reactors produce more nuclear waste than conventional reactors.\n\nChoose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A, C and D only"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A and D only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "B, C and E only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A, D and E only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-27",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "The media accountability system to improve media quality focuses on:\nA. Evaluation\nB. Audience control\nC. Monitoring\nD. Education\nE. Feedback\n\nChoose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A, B and C only"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A, C, D and E only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "B, D and E only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "C, D and E only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-28",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Identify the correct sequence of the following research councils according to their year of establishment:\nA. Indian Council of Social Science Research (ICSSR)\nB. National Council for Rural Institutes (NCRI)\nC. Indian Council of Philosophical Research (ICPR)\nD. Indian Council of Historical Research (ICHR)\nE. Indian Institute of Advanced Study (IIAS)\n\nChoose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "E, A, D, C, B"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A, E, D, C, B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "E, D, A, B, C"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A, B, C, D, E"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-29",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "When you try to predict the value of an outcome variable from one or more predictor variables, you are likely to be using:\nA. The Pearson product-moment correlation\nB. Bivariate regression\nC. Multivariate regression\nD. Analysis of variance\n\nChoose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A, B and C only"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "B and C only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "B, C and D only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A and D only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-30",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "According to National Credit Framework (NCrF), after obtaining a Bachelor's Degree (Honours / Engineering) of 4 years duration, the credit level earned is:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "5.5"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "6.0"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "6.5"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "7.0"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-31",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Arrange the following terms in order of increasing intension (connotation):\nA. Fielder\nB. Athlete\nC. Baseball Player\nD. Ball Player\n\nChoose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "B, D, C, A"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A, C, D, B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "D, B, C, A"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "B, C, D, A"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-32",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "If a research project is set up so that everybody in the population of interest has an equal chance of being included in the sample, the research involves:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Quota sampling"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Judgemental sampling"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Probability sampling"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Convenience sampling"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-33",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "What is the full form of POPs in environmental science?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Persistent Organic Pollutants"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Persistent Oxygenated Pollutants"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Polycyclic Organic Pollutants"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Polymerised Organic Pollutants"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-34",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match List - I with List - II.\n\nList-I (Abbreviation):\nA. et al.\nB. ante.\nC. cf.\nD. ibid.\n\nList-II (Meaning):\nI. In the same place\nII. And others\nIII. Compare\nIV. Before\n\nChoose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A-I, B-II, C-III, D-IV"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-II, B-IV, C-III, D-I"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-III, B-IV, C-I, D-II"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-IV, B-I, C-II, D-III"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-35",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match List - I with List - II.\n\nList-I (Goals/Targets of MDGs and SDGs):\nA. Goals in Millennium Development Goals\nB. Targets in Millennium Development Goals\nC. Goals in Sustainable Development Goals\nD. Targets in Sustainable Development Goals\n\nList-II (Number of Goals/Targets):\nI. 8\nII. 21\nIII. 17\nIV. 169\n\nChoose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A-I, B-II, C-III, D-IV"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-II, B-I, C-IV, D-III"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-I, B-III, C-II, D-IV"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-IV, B-II, C-I, D-III"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-36",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "The Second Five Year Plan for higher education included the recommendations of which of the following committees?\nA. University Education Commission\nB. Languages Commission of India\nC. Rural Higher Education Committee\nD. Committee on Establishment of New Universities\nE. Three-year Degree Course Committee\n\nChoose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A, B and C only"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "B, C and D only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "C, D and E only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A, D and E only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-37",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following statements regarding deductive arguments and propositions are true?\nA. Validity can never apply to any single proposition by itself.\nB. The concept of truth can apply to single propositions.\nC. Arguments can be true or false.\nD. Propositions can be valid or invalid.\n\nChoose the most appropriate answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "D only"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A and B only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "B and C only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A and C only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-38",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following statements about Nyaya syllogism is correct?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Nyaya syllogism has three propositions."
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Nyaya syllogism has five terms."
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Nyaya syllogism has five propositions."
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Nyaya syllogism has three propositions and three terms."
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-39",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match List - I with List - II.\n\nList-I (Ancient Treatises):\nA. Lilavati\nB. Yoga-Sutras\nC. Nyaya-Sutras\nD. Arthashastra\n\nList-II (Author):\nI. Chanakya\nII. Gautama\nIII. Patanjali\nIV. Bhaskaracharya\n\nChoose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A-IV, B-III, C-II, D-I"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-III, B-IV, C-II, D-I"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-I, B-II, C-III, D-IV"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-II, B-I, C-IV, D-III"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-40",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following statements is logically equivalent to the statement: \"No horses are felines\"?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "No felines are horses."
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "All horses are non-felines."
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "All non-horses are felines."
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Some non-felines are horses."
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-41",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following is the National Coordinator of SWAYAM courses for non-technical post-graduation education?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "All India Council for Technical Education (AICTE)"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "National Institute of Technical Teachers Training and Research (NITTTR)"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "National Council of Educational Research and Training (NCERT)"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "University Grants Commission (UGC)"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-42",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Arrange the following fractions in increasing order:\nA. 5/19\nB. 22/35\nC. 14/25\nD. 7/11\n\nChoose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A, C, B, D"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "D, C, B, A"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A, B, C, D"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "C, A, D, B"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-43",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Arrange the different stages involved in the process of deduction in correct sequence:\nA. Theory\nB. Hypothesis confirmed or rejected\nC. Hypothesis\nD. Data Collection\nE. Findings\n\nChoose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A, C, D, E, B"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "C, A, D, E, B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A, D, C, E, B"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "D, C, A, E, B"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-44",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match List - I with List - II.\n\nList-I (Digital Initiative):\nA. Shodhganga\nB. Shodh Gangotri\nC. Shodh Shuddhi\nD. FOSSEE\n\nList-II (Purpose):\nI. Repository of full-text Indian electronic theses and dissertations\nII. Repository of approved research synopses\nIII. Plagiarism detection software access\nIV. Promotion of open source software in education\n\nChoose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A-I, B-II, C-III, D-IV"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-II, B-I, C-IV, D-III"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-III, B-IV, C-I, D-II"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-IV, B-III, C-II, D-I"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-45",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which technology first marked a clear separation of transportation from communication over long distances?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Telegraph"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Projection"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Printing"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Photography"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-46",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: According to a World Health Organization (WHO) report, about 80 percent of the world population uses traditional medicine systems in some way or another. Traditional medicine systems in India include Ayurveda, Yoga, Naturopathy, Unani, Siddha, Sowa-Rigpa, and Homeopathy, collectively known as AYUSH. All these systems were formulated, practiced, and integrated into healthcare coverage to achieve safe and economically feasible methods.\n\nIn many countries of the world, medical pluralism is the norm because no single system of medicine can single-handedly address all health concerns, but an integrative approach incorporating the positives of each system can benefit mankind. A patient-centered and individualized approach is the trademark of traditional medicine systems. Increased global attention to Ayush systems enabled the signing of the Host Country Agreement for the establishment of the Global Centre for Traditional Medicine (GCTM) at Jamnagar, Gujarat.\n\nQ.46 Choose the most appropriate title for the passage."
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Allopathy vs Ayurveda"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Holistic Healthcare through Traditional Medicine"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Ayurvedic Pharmacopoeia"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Homeopathy in Modern Era"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-47",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: According to a World Health Organization (WHO) report, about 80 percent of the world population uses traditional medicine systems in some way or another. Traditional medicine systems in India include Ayurveda, Yoga, Naturopathy, Unani, Siddha, Sowa-Rigpa, and Homeopathy, collectively known as AYUSH. All these systems were formulated, practiced, and integrated into healthcare coverage to achieve safe and economically feasible methods.\n\nIn many countries of the world, medical pluralism is the norm because no single system of medicine can single-handedly address all health concerns, but an integrative approach incorporating the positives of each system can benefit mankind. A patient-centered and individualized approach is the trademark of traditional medicine systems. Increased global attention to Ayush systems enabled the signing of the Host Country Agreement for the establishment of the Global Centre for Traditional Medicine (GCTM) at Jamnagar, Gujarat.\n\nQ.47 In many countries of the world, medical pluralism is the norm because:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Traditional systems of medicine are obsolete."
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "No single system of medicine can single-handedly address all health concerns."
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "An integrative approach cannot benefit mankind."
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Modern healthcare has failed completely."
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-48",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: According to a World Health Organization (WHO) report, about 80 percent of the world population uses traditional medicine systems in some way or another. Traditional medicine systems in India include Ayurveda, Yoga, Naturopathy, Unani, Siddha, Sowa-Rigpa, and Homeopathy, collectively known as AYUSH. All these systems were formulated, practiced, and integrated into healthcare coverage to achieve safe and economically feasible methods.\n\nIn many countries of the world, medical pluralism is the norm because no single system of medicine can single-handedly address all health concerns, but an integrative approach incorporating the positives of each system can benefit mankind. A patient-centered and individualized approach is the trademark of traditional medicine systems. Increased global attention to Ayush systems enabled the signing of the Host Country Agreement for the establishment of the Global Centre for Traditional Medicine (GCTM) at Jamnagar, Gujarat.\n\nQ.48 Which of the following statements about the traditional Indian medicine systems is FALSE according to the passage?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Each system has unique traditional medical knowledge."
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "They include Ayurveda, Yoga, Naturopathy, Unani, Siddha, Sowa-Rigpa and Homeopathy."
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Modern Health Science preceded them in India."
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "They offer safe and economically feasible methods."
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-49",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: According to a World Health Organization (WHO) report, about 80 percent of the world population uses traditional medicine systems in some way or another. Traditional medicine systems in India include Ayurveda, Yoga, Naturopathy, Unani, Siddha, Sowa-Rigpa, and Homeopathy, collectively known as AYUSH. All these systems were formulated, practiced, and integrated into healthcare coverage to achieve safe and economically feasible methods.\n\nIn many countries of the world, medical pluralism is the norm because no single system of medicine can single-handedly address all health concerns, but an integrative approach incorporating the positives of each system can benefit mankind. A patient-centered and individualized approach is the trademark of traditional medicine systems. Increased global attention to Ayush systems enabled the signing of the Host Country Agreement for the establishment of the Global Centre for Traditional Medicine (GCTM) at Jamnagar, Gujarat.\n\nQ.49 The WHO Global Centre for Traditional Medicine (GCTM) has been established in:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Geneva"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Jamnagar"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "New Delhi"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Haridwar"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-50",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: According to a World Health Organization (WHO) report, about 80 percent of the world population uses traditional medicine systems in some way or another. Traditional medicine systems in India include Ayurveda, Yoga, Naturopathy, Unani, Siddha, Sowa-Rigpa, and Homeopathy, collectively known as AYUSH. All these systems were formulated, practiced, and integrated into healthcare coverage to achieve safe and economically feasible methods.\n\nIn many countries of the world, medical pluralism is the norm because no single system of medicine can single-handedly address all health concerns, but an integrative approach incorporating the positives of each system can benefit mankind. A patient-centered and individualized approach is the trademark of traditional medicine systems. Increased global attention to Ayush systems enabled the signing of the Host Country Agreement for the establishment of the Global Centre for Traditional Medicine (GCTM) at Jamnagar, Gujarat.\n\nQ.50 According to the World Health Organization report cited in the passage, what percentage of the world population uses traditional medicine systems in some way or another?"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "About 20%"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "About 50%"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "About 80%"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "About 100%"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    }
+  ],
+  "answerKey": {
+    "q-01": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-02": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-03": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-04": {
+      "correct": [
+        "d"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-05": {
+      "correct": [
+        "d"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-06": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium"
+    },
+    "q-07": {
+      "correct": [
+        "c"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-08": {
+      "correct": [
+        "c"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-09": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-10": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium"
+    },
+    "q-11": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium"
+    },
+    "q-12": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-13": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium"
+    },
+    "q-14": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-15": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-16": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-17": {
+      "correct": [
+        "c"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium"
+    },
+    "q-18": {
+      "correct": [
+        "c"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium"
+    },
+    "q-19": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-20": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium"
+    },
+    "q-21": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium"
+    },
+    "q-22": {
+      "correct": [
+        "c"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium"
+    },
+    "q-23": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U1",
+      "topicId": "U1.1",
+      "difficulty": "medium"
+    },
+    "q-24": {
+      "correct": [
+        "c"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U1",
+      "topicId": "U1.1",
+      "difficulty": "medium"
+    },
+    "q-25": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-26": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium"
+    },
+    "q-27": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-28": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium"
+    },
+    "q-29": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium"
+    },
+    "q-30": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium"
+    },
+    "q-31": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium"
+    },
+    "q-32": {
+      "correct": [
+        "c"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium"
+    },
+    "q-33": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium"
+    },
+    "q-34": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium"
+    },
+    "q-35": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium"
+    },
+    "q-36": {
+      "correct": [
+        "c"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium"
+    },
+    "q-37": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium"
+    },
+    "q-38": {
+      "correct": [
+        "c"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium"
+    },
+    "q-39": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium"
+    },
+    "q-40": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium"
+    },
+    "q-41": {
+      "correct": [
+        "d"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium"
+    },
+    "q-42": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium"
+    },
+    "q-43": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium"
+    },
+    "q-44": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-45": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-46": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium"
+    },
+    "q-47": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium"
+    },
+    "q-48": {
+      "correct": [
+        "c"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium"
+    },
+    "q-49": {
+      "correct": [
+        "b"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium"
+    },
+    "q-50": {
+      "correct": [
+        "c"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium"
+    }
+  },
+  "metadata": {
+    "parsedAt": "2026-11-15T11:13:36.480Z",
+    "sourceFile": "jun18-shift1.txt",
+    "questionCount": 50,
+    "unitDistribution": {
+      "U1": 2,
+      "U2": 5,
+      "U3": 5,
+      "U4": 5,
+      "U5": 5,
+      "U6": 5,
+      "U7": 5,
+      "U8": 7,
+      "U9": 5,
+      "U10": 6
+    }
+  },
+  "transcriber": "Bunty",
+  "verifier": "Pending Human Verification"
+}

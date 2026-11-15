@@ -58,12 +58,15 @@ export async function saveQuestion(d: Deps, a: StaffActor, i: z.infer<typeof Sav
 
 export async function transitionQuestion(d: Deps, a: StaffActor, i: { questionId: string; version: number; to: 'draft' | 'review' | 'approved' | 'published' }) {
   return d.store.transact(async (tx) => {
-    const v = await tx.get<{ status: string; createdBy: string; provenance: { copyrightStatus: string } }>(P.questionVersion(i.questionId, i.version));
+    const v = await tx.get<{ status: string; createdBy: string; provenance: { kind: string; copyrightStatus: string; officialPyqVerified?: boolean } }>(P.questionVersion(i.questionId, i.version));
     const head = await tx.get<{ currentVersion: number; publishedVersion?: number }>(P.question(i.questionId));
     if (!v || !head) throw err('not-found', 'QUESTION_NOT_FOUND', 'Question not found.');
     if (!a.emailVerified || !canTransition(roleOf(a), v.status, i.to)) throw err('permission-denied', 'FORBIDDEN', 'This status change is not allowed for your role.');
     if (i.to === 'approved' && v.createdBy === a.uid) throw err('permission-denied', 'SEPARATION_OF_DUTIES', 'A different reviewer must approve your question.');
     if (i.to === 'published' && v.provenance.copyrightStatus === 'unknown') throw err('failed-precondition', 'COPYRIGHT_UNKNOWN', 'Set the copyright status before publishing.');
+    if (i.to === 'published' && v.provenance.kind === 'official_pyq' && !v.provenance.officialPyqVerified) {
+      throw err('failed-precondition', 'UNVERIFIED_CONTENT_RESTRICTED', 'Cannot publish an unverified official PYQ question.');
+    }
     tx.merge(P.questionVersion(i.questionId, i.version), { status: i.to, ...(i.to === 'approved' ? { reviewedBy: a.uid } : {}), statusChangedAtMs: d.clock() });
     if (i.version === head.currentVersion) tx.merge(P.question(i.questionId), { status: i.to });
     if (i.to === 'published') tx.merge(P.question(i.questionId), { publishedVersion: i.version });
@@ -100,12 +103,18 @@ export async function publishMockTest(d: Deps, a: StaffActor, mockTestId: string
   for (const r of test.questionRefs) {
     const [head, v] = await Promise.all([
       d.store.get<{ unitId: string; topicId: string; difficulty: 'easy' | 'medium' | 'hard' }>(P.question(r.qid)),
-      d.store.get<{ status: string; content: PaperQuestion['content']; correct: string[]; explanation?: { en: string; hi?: string }; provenance: { kind: string } }>(P.questionVersion(r.qid, r.version)),
+      d.store.get<{ status: string; content: PaperQuestion['content']; correct: string[]; explanation?: { en: string; hi?: string }; provenance: { kind: string; copyrightStatus: string; officialPyqVerified?: boolean }; defectNote?: string }>(P.questionVersion(r.qid, r.version)),
     ]);
     if (!head || !v) throw err('failed-precondition', 'QUESTION_MISSING', `Question ${r.qid} v${r.version} not found.`);
     if (v.status !== 'published') throw err('failed-precondition', 'QUESTION_NOT_PUBLISHED', `Question ${r.qid} v${r.version} is not published.`);
+    if (v.provenance.kind === 'official_pyq' && !v.provenance.officialPyqVerified) {
+      throw err('failed-precondition', 'UNVERIFIED_CONTENT_RESTRICTED', `Question ${r.qid} has unverified official PYQ provenance and cannot be published in a mock test.`);
+    }
+    if (v.provenance.copyrightStatus === 'unknown') {
+      throw err('failed-precondition', 'UNVERIFIED_CONTENT_RESTRICTED', `Question ${r.qid} has unknown copyright status and cannot be published in a mock test.`);
+    }
     if (v.provenance.kind === 'synthetic_demo') hasSynthetic = true;
-    questions.push({ qid: r.qid, version: r.version, sectionId: r.sectionId, unitId: head.unitId, topicId: head.topicId, difficulty: head.difficulty, content: v.content });
+    questions.push({ qid: r.qid, version: r.version, sectionId: r.sectionId, unitId: head.unitId, topicId: head.topicId, difficulty: head.difficulty, content: v.content, ...(v.defectNote ? { defectNote: v.defectNote } : {}) });
     key[r.qid] = { correct: v.correct, sectionId: r.sectionId, unitId: head.unitId, topicId: head.topicId, difficulty: head.difficulty, ...(v.explanation ? { explanation: v.explanation } : {}) };
   }
   if (test.contentLabel === 'fully_verified' && (hasSynthetic || !bp.data.officialPatternVerified)) throw err('failed-precondition', 'NOT_VERIFIABLE', 'Synthetic questions or an unverified blueprint cannot be published as fully verified.');

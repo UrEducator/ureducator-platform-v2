@@ -97,6 +97,16 @@ describe('question workflow', () => {
     await admin.transitionQuestion(e.d, reviewer, { questionId, version, to: 'approved' });
     await expect(admin.transitionQuestion(e.d, adm, { questionId, version, to: 'published' })).rejects.toMatchObject({ reason: 'COPYRIGHT_UNKNOWN' });
   });
+  it('refuses to publish when question is an unverified official PYQ', async () => {
+    const e = mk();
+    const { questionId, version } = await admin.saveQuestion(e.d, editor, qInput(1));
+    await admin.transitionQuestion(e.d, editor, { questionId, version, to: 'review' });
+    await admin.transitionQuestion(e.d, reviewer, { questionId, version, to: 'approved' });
+    await e.store.merge(P.questionVersion(questionId, version), {
+      provenance: { kind: 'official_pyq', copyrightStatus: 'licensed', officialPyqVerified: false },
+    });
+    await expect(admin.transitionQuestion(e.d, adm, { questionId, version, to: 'published' })).rejects.toMatchObject({ reason: 'UNVERIFIED_CONTENT_RESTRICTED' });
+  });
   it('validates content: correct answer must be an option; single answer means one key', async () => {
     const e = mk();
     await expect(admin.saveQuestion(e.d, editor, qInput(1, { correct: ['f'] }))).rejects.toMatchObject({ reason: 'QUESTION_INVALID' });
@@ -176,6 +186,18 @@ describe('mock test publishing', () => {
   it('never lets synthetic content, or an unverified blueprint, be published as "fully verified"', async () => {
     const e = mk(); const { mockTestId } = await setup(e, 'fully_verified');
     await expect(admin.publishMockTest(e.d, adm, mockTestId)).rejects.toMatchObject({ reason: 'NOT_VERIFIABLE' });
+  });
+  it('rejects publishing a mock test if any question has unverified official PYQ provenance', async () => {
+    const e = mk(); const { mockTestId, refs } = await setup(e);
+    await e.store.merge(P.questionVersion(refs[0]!.qid, refs[0]!.version), {
+      provenance: { kind: 'official_pyq', copyrightStatus: 'licensed', officialPyqVerified: false },
+    });
+    await expect(admin.publishMockTest(e.d, adm, mockTestId)).rejects.toMatchObject({ reason: 'UNVERIFIED_CONTENT_RESTRICTED' });
+  });
+  it('rejects publishing a mock test if any question has copyrightStatus: unknown', async () => {
+    const e = mk(); const { mockTestId, refs } = await setup(e);
+    await e.store.merge(P.questionVersion(refs[0]!.qid, refs[0]!.version), { provenance: { kind: 'official_pyq', copyrightStatus: 'unknown', officialPyqVerified: true } });
+    await expect(admin.publishMockTest(e.d, adm, mockTestId)).rejects.toMatchObject({ reason: 'UNVERIFIED_CONTENT_RESTRICTED' });
   });
   it('needs the publish permission', async () => {
     const e = mk(); const { mockTestId } = await setup(e);

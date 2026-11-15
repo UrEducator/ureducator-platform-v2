@@ -1,0 +1,4891 @@
+{
+  "target": "mt-pyq-2026-sep10-s1",
+  "shiftId": "ugcnet-2026-sep10-s1",
+  "mockTestId": "mt-pyq-2026-sep10-s1",
+  "paperId": "paper-pyq-2026-sep10-s1",
+  "title": "UGC NET Paper 1 — 10 September 2026 (Shift 1)",
+  "kind": "pyq",
+  "blueprintId": "ugcnet-paper1-pilot-v1",
+  "paperVersion": 1,
+  "access": "paid",
+  "collectionId": "plan-pyq-2023-premium-pack",
+  "status": "draft",
+  "timed": true,
+  "shuffle": false,
+  "revealPolicy": "immediate",
+  "contentLabel": "under_development",
+  "description": "UGC NET Paper 1, 10 September 2026, Shift 1. 50 questions, 100 marks, 60 minutes.",
+  "instructions": "1. Total duration of UGC NET Paper 1 is 60 minutes.\n2. The paper consists of 50 Multiple Choice Questions (MCQs) carrying 2 marks each (Total 100 marks).\n3. There is NO negative marking for incorrect or unattempted responses.\n4. You can navigate freely between questions using the Question Palette.\n5. Questions can be saved, marked for review, or cleared at any time before final submission.\n6. When the countdown timer reaches 00:00:00, your exam will automatically submit.",
+  "version": 1,
+  "mockTest": {
+    "title": "UGC NET Paper 1 — 10 September 2026 (Shift 1)",
+    "kind": "pyq",
+    "blueprintId": "ugcnet-paper1-pilot-v1",
+    "paperId": "paper-pyq-2026-sep10-s1",
+    "paperVersion": 1,
+    "access": "paid",
+    "collectionId": "plan-pyq-2023-premium-pack",
+    "status": "draft",
+    "timed": true,
+    "shuffle": false,
+    "revealPolicy": "immediate",
+    "contentLabel": "under_development",
+    "description": "UGC NET Paper 1, 10 September 2026, Shift 1. 50 questions, 100 marks, 60 minutes.",
+    "instructions": "1. Total duration of UGC NET Paper 1 is 60 minutes.\n2. The paper consists of 50 Multiple Choice Questions (MCQs) carrying 2 marks each (Total 100 marks).\n3. There is NO negative marking for incorrect or unattempted responses.\n4. You can navigate freely between questions using the Question Palette.\n5. Questions can be saved, marked for review, or cleared at any time before final submission.\n6. When the countdown timer reaches 00:00:00, your exam will automatically submit.",
+    "version": 1,
+    "transcriber": "Bunty",
+    "verifier": "Pending Human Verification"
+  },
+  "paper": {
+    "paperId": "paper-pyq-2026-sep10-s1",
+    "mockTestId": "mt-pyq-2026-sep10-s1",
+    "version": 1,
+    "questions": [
+      {
+        "qid": "q-01",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: The following table shows the percentage distribution of number of people having Government - Employment (GE), Private-Employment (PE), Self-Employment (SE) and No-Employment (NE) in five different cities (A-E). Based on the data in the table, answer the questions that follow City wise Details of Working-Age Population Percentage Distribution of Number of People having City GE 24% 38% PE 25% 15% 10% 25% 30% NE 40% 21% 26% 20% I. It is assumed that population of each city is equal to the number of people having (GE+PE+SE+NE). 2. The symbol ' ' represents some missing percentage and it can be computed, if required.\n\nQ.1 Assume that the ratio between population of City-C to City-D is 64 : 63. Ifthe number ofunemployed people from City-D is 2940 more than that of City-C, then what is the average of the total number of private employees from both the cities ? 1. 12885 2. 12675 3. 12995 4 12575"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-02",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: The following table shows the percentage distribution of number of people having Government - Employment (GE), Private-Employment (PE), Self-Employment (SE) and No-Employment (NE) in five different cities (A-E). Based on the data in the table, answer the questions that follow City wise Details of Working-Age Population Percentage Distribution of Number of People having City GE 24% 38% PE 25% 15% 10% 25% 30% NE 40% 21% 26% 20% I. It is assumed that population of each city is equal to the number of people having (GE+PE+SE+NE). 2. The symbol ' ' represents some missing percentage and it can be computed, if required.\n\nQ.2 If the ratio between population of City-C to City-E is 8 : 9, and the number of unemployed people in City-E is 960 more than that in City-C, then what is the average of total number of government employees in both City-C and City-E ? 1. 24760 2. 24560 3. 28560 4. 19860"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-03",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: The following table shows the percentage distribution of number of people having Government - Employment (GE), Private-Employment (PE), Self-Employment (SE) and No-Employment (NE) in five different cities (A-E). Based on the data in the table, answer the questions that follow City wise Details of Working-Age Population Percentage Distribution of Number of People having City GE 24% 38% PE 25% 15% 10% 25% 30% NE 40% 21% 26% 20% I. It is assumed that population of each city is equal to the number of people having (GE+PE+SE+NE). 2. The symbol ' ' represents some missing percentage and it can be computed, if required.\n\nQ.3 If the population of City-D is 40% more than that of City-A, then the total number of private employees and unemployed people together from City-A is approximately of government employees and self-employed people together from City-D. 1. 2.27 2. 4.53 3. 567 0 0 less than the total number"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-04",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: The following table shows the percentage distribution of number of people having Government - Employment (GE), Private-Employment (PE), Self-Employment (SE) and No-Employment (NE) in five different cities (A-E). Based on the data in the table, answer the questions that follow City wise Details of Working-Age Population Percentage Distribution of Number of People having City GE 24% 38% PE 25% 15% 10% 25% 30% NE 40% 21% 26% 20% I. It is assumed that population of each city is equal to the number of people having (GE+PE+SE+NE). 2. The symbol ' ' represents some missing percentage and it can be computed, if required.\n\nQ.4 Assume that for City-A, the difference between the number of private employees and government employees is 5400, and percentage of private employees is 20% more than the percentage of unemployed people. If the total number of government and private employees together in City-B is 10800 more than the number of government employees in City-A, then what is the population of City-B 1. 36000 2. 54000 3. 48000 4. 32000"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-05",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U7",
+        "topicId": "U7.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Passage: The following table shows the percentage distribution of number of people having Government - Employment (GE), Private-Employment (PE), Self-Employment (SE) and No-Employment (NE) in five different cities (A-E). Based on the data in the table, answer the questions that follow City wise Details of Working-Age Population Percentage Distribution of Number of People having City GE 24% 38% PE 25% 15% 10% 25% 30% NE 40% 21% 26% 20% I. It is assumed that population of each city is equal to the number of people having (GE+PE+SE+NE). 2. The symbol ' ' represents some missing percentage and it can be computed, if required.\n\nQ.5 Assume that the ratio between number of males to number of females who are self-employed from City- Ais 2 : 7 and from City-B, it is I : 5, and population of City-B is 20% more than that of City-A. If number of males who are self-employed from City-B is 800 more than that of City-A, then what is the ratio between the number of females who are self-employed from City-A to that from City-B ? 1. 7: 19 7:18 7 • 23 4. 5:18"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-06",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U1",
+        "topicId": "U1.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "What are the mental processes under which a child goes through while constmcting knowledge?\n(None) Equilibration\n(None) Accommodation\n(None) Authorization\n(None) Assimilation Choose the correct answer from the options given below: l. A, C and D only"
+          },
+          "options": [
+            {
+              "id": "b",
+              "text": {
+                "en": "B and C only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A, B and D only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A, B, CandD"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-07",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Who among the following coined, the communication theory, \"Cognitive Dissonance Theory\" l. Melvin De Fleur 2. L.A. Festinger 3. Sandra Ball-Rokeach 4. Lazarsfeld Berelson"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-08",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U6",
+        "topicId": "U6.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "\"No poets are advocates. Some artists are poets. Therefore, some affists are advocates.\" is committed in the above argument ? l. Existential fallacy 2. Drawing an affirmative conclusion from a negative premise 3. Exclusive premises 4. Illicit major Which fallacy"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-09",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match the LIST-I with LIST-II LIST-I (Digital Platform)\n(None) c.\n(None) Blog X (formerly Twitter) MS - Teams LinkedIn"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "11. 111. LIST-II (Primary Purpose) Shon-form \"micro- blogging\" using hashtags and retweets Professional networking, digital CV and job- seeking Online journal for long- form articles in reverse chronological order Collaboration tool for video calls and shared work-spaces Choose the correct answer from the options given below:"
+              }
+            },
+            {
+              "id": "a",
+              "text": {
+                "en": "A-III, B-11, c-IV, D-l"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-II, B-111, C-1, D-lV"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-I, B-lV, C-11, D-111"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-III, B-1, c-IV, D-11"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-10",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following is the correct order of Steven's four levels of measurement, from least to most sophisticated ?\n(None) Interval\n(None) Nominal\n(None) Ratio\n(None) Ordinal Choose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option A"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option B"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option C"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option D"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-11",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U5",
+        "topicId": "U5.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "In a certain coding language, SMART is written as 11 and DESIGN is written as 13. I--low FELICITATION shall be written in that language ? 1. 25 3. 24 4. 28 2. 12"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-12",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U5",
+        "topicId": "U5.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "In an examination, a candidate gets 25% of marks and fails by 60 marks. In the same examination, another candidate scores 50% marks but gets 40 marks more than the minimum marks required to pass the examination. Find the maximum marks for the examination : 1. 400 2. 450 3. 300 4. 500"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-13",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U10",
+        "topicId": "U10.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Under the IGNOU Act, 1985, the Parliament has assigned these functions to the Indira Gandhi National Open University •\n(None) To perform the functions of a distance education University\n(None) To encourage women to pursue education through the distant mode.\n(None) To promote distance education in the rural areas.\n(None) To function as a national agency for coordinating and setting standards of distance education system Choose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A and B Only"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "B and C only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A and D Only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "C and D Only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-14",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U6",
+        "topicId": "U6.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "\"l am shocked to hear you are preaching materialistic hedonism. Does your father know that this is what you believe in ?\" Identify the fallacy committed in the above statement : l. Appeal to Ignorance 2. Complex question 3. Appeal to force 4. Begging the question"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-15",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U2",
+        "topicId": "U2.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match the LIST-I with LIST-II LIST-I (Digital Research Platform)\n(None) c.\n(None) Google Scholar ORCID Mendeley VIDWAN"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "11. 111. LIST-II (Purpose) Unique Research ID Reference Manager Database of Indian Researchers Publication and Citation profile Choose the correct answer from the options given below:"
+              }
+            },
+            {
+              "id": "a",
+              "text": {
+                "en": "A-III, B-1, C-11, D-lV"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-II, B-111, c-IV, D-l"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-I, B-11, C-111, D-lV"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-IV, B-1, C-11, D-111"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-16",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U5",
+        "topicId": "U5.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Find the number that can replace question mark (?) in the series given below. 1 3 6 10 4' 5' 7' 11' 15 17 13 19 15 20 15"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-17",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U9",
+        "topicId": "U9.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Arrange the following steps of Waste Water treatment from initial toward final phase ?\n(None) Screening\n(None) Primmy sedimentation\n(None) Activated sludge treatment\n(None) Disinfection Choose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option A"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option B"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option C"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option D"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-18",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Among which of the following types of Interspecific interactions, both of the species involved are harmed ?\n(None) Mutualism\n(None) Competition\n(None) Predation\n(None) Parasitism E. Commensalism Choose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A, C and E only"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A and B Only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "D only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "B only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-19",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Arrange the following institutions chronologically, according to their year of establishment, staffing from the earliest.\n(None) Press Council of India\n(None) All India Federation of Working Journalists\n(None) Adveftising Agencies Association of India\n(None) Press Trust of India Choose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option A"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option B"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option C"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option D"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-20",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U2",
+        "topicId": "U2.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "An author has published 10 research afficles and has been cited with 50 citations distributed among her 10 afficles as follows : 15, 23, O, O, 7, 4, 1, O, O and O What is the h-index of the author ? 4. 23 3. 15"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-21",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U9",
+        "topicId": "U9.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following bases of individual differences are physical in nature ?\n(None) Differences in Interests\n(None) Differences in Height\n(None) Differences in Weight\n(None) Differences in Aptitude E. Differences in Aspirations Choose the correct answer from the options given below: l. B and C Only"
+          },
+          "options": [
+            {
+              "id": "b",
+              "text": {
+                "en": "A and C Only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "CandDOn1y"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "D and E only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-22",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U5",
+        "topicId": "U5.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "In the context of addressing individual differences of students, Match the LIST-I with LIST-II.\n(None) c.\n(None) LIST-I (Role of School) Proper knowledge of individual potential Ability grouping Adjusting method of teaching Individualized Instmction provisions"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "11. 111. LIST-II (Steps taken) Provision of special programmes for students Knowing abilities, interests and aptitudes Fixing the number of students in classroom Dividing class in sections Choose the correct answer from the options given below:"
+              }
+            },
+            {
+              "id": "a",
+              "text": {
+                "en": "A-II, B-111, C-1, D-lV"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-II, B-1, C-111, D-lV"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-II, B-lV, C-1, D-111"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-III, B-1, C-11, D-lv"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-23",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U9",
+        "topicId": "U9.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following is not a secondmy air pollutant ? I. Sulphuric acid (H2S04) 2. Sulphur dioxide (S02) 3. Nitric acid (HN03) 4. Ozone (03)"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-24",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U10",
+        "topicId": "U10.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match the LIST-I with LIST-II LIST-II (Higher Education Focus Area)\n(None) c.\n(None) LIST-I (Five Year Plan) Sixth Seventh Eighth Ninth 11. Teacher Training In Service Teacher Training in distance and institutional mode Centres for Curriculum Development Curriculum Change Choose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "A-III, B-1, C-11, D-lV"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-I, B-11, C-111, D-lV"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-I, B-111, c-IV, D-11"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-II, B-lV, C-111, D-l"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-25",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U1",
+        "topicId": "U1.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "As per NEP (2020), which of the following councils will be mandated to identify specific skills with the aim of preparing well rounded learners with 21 st century skills? l. General Education Council 2. National Higher Education Regulatory Council 3. National Accreditation Council 4. All India Council of Technical Education"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-26",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "As per NEP (2020) document, high quality programmes and degrees in the higher education system of the countlY are also sought to be created in the following disciplines as part of promotion of Indian Languages, Arts and Culture :\n(None) Art and museum administration\n(None) Afiefact consewation\n(None) Archaeology\n(None) Graphic design and Web design E. Translation and Interpretation Choose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "C, DandEOn1y"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A, B, CD E"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": ""
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "B, C, D and E only A, B, C and D Only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-27",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U1",
+        "topicId": "U1.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Psychologist Bandura has proposed processes for observational learning. These are : l. Activities, Curriculum, Assessments, Effective Teaching 2. Attention, Retention, Behavioural Rehearsal, Motivation 3. Reading, Audit01Y, Communication Visuals, Tactic 4. Recording, Writing, Transmission, Visuals"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-28",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U6",
+        "topicId": "U6.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "As per classical Indian School of Logic (Nyäya) which of the following arguments is fallacious because it has a middle term which instead of being pervaded by the presence of the major term is actually pervaded by its absence ? l. Sound is eternal because it is produced 2. Fire is cold because it is a substance 3. All things are non-eternal because they are knowable 4. Sound is quality because it is visible"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-29",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U6",
+        "topicId": "U6.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Applying a generalization to a special case in disregard of qualities or circumstances that make it an exception to the generalization is called the fallacy of : l. Slippery slope 2. Accident 3. Post hoc 4. Hasty Generalization"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-30",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following pairs of ICT acronyms and their expansions are correctly matched ?\n(None) VOIP - Voice Over Internet Protocol\n(None) MICR - Magnetic Ink Character Recognition\n(None) NIC - Network Interface Control\n(None) TCP - Transmission Control Provider Choose the correct answer from the options given below: l. C and D Only"
+          },
+          "options": [
+            {
+              "id": "b",
+              "text": {
+                "en": "A and B Only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A, B and C Only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A, C and D only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-31",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U5",
+        "topicId": "U5.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following Commissions recommended \"the development of all modern Indian languages for use in education as well as in administration in their respective states\" ? 2. 3. 4. Radhakrishnan Commission Kothari Commission Chagla Commission Mudaliar Commission"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-32",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match the LIST-I with LIST-II LIST-I (Communication Model) LIST-II (Coined/Developed/Promoted by)\n(None) c.\n(None) Questions form model Mathematical model Circular model Ritual model of mass communication"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "11. 111. The Shannon and Weaver Harold\n(None) Lasswell James Carey The Osgood and Schramm Choose the correct answer from the options given below:"
+              }
+            },
+            {
+              "id": "a",
+              "text": {
+                "en": "A-I, B-11, C-111, D-lV"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-IV, B-111, C-11, D-l"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-II, B-1, c-IV, D-111"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-III, B-lV, C-11, D-l"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-33",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "What among the following are known as physical barriers to the communication process ?\n(None) Self-Image\n(None) Environmental Stress\n(None) Ill health and Sleeplessness\n(None) Language E. Loud music and traffic noise in the background Choose the correct answer from the options given below: l. A and D Only"
+          },
+          "options": [
+            {
+              "id": "b",
+              "text": {
+                "en": "B, C and E only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A, B, CandDOn1y"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "B, C, D and E Only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-34",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U9",
+        "topicId": "U9.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following natural hazards are characterised as ' atmospheric' ?\n(None) Tornadoes\n(None) Snow avalanches\n(None) Wildfires\n(None) Droughts E. Storm surge Choose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "b",
+              "text": {
+                "en": "A, B, D and E Only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A, C and E only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "C and D Only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-35",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U5",
+        "topicId": "U5.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Arrange the following durations in increasing order of their magnitudes :\n(None) Time taken by a 120 m long train moving with speed of 45 km/hour to cross a 130 m long railway platform.\n(None) Time taken by a 200 m long train moving with speed of 90 km per hour to cross a pole by the side of a railway track.\n(None) Time taken by two trains of lengths 175 m and 125 m, moving with identical speeds of 60 km/hour in opposite direction to cross each other.\n(None) Time taken by boat moving with speed of IO km/hour in still water to cover a distance of 100 m Choose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option A"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option B"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option C"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option D"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-36",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following actions (A-D) violate legal statutes or moral principles within the IT sector ?\n(None) A college using Linux OS (being an open-source software) on all its 200 computers on the campus.\n(None) A person stealing another person's credit-card number\n(None) A student using proprietary software without having a license\n(None) A hospital revealing clinical histoly of a patient without the consent of a patient Choose the correct answer from the options given below: . A and C Only"
+          },
+          "options": [
+            {
+              "id": "b",
+              "text": {
+                "en": "B and D only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "B, C and D Only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-37",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U9",
+        "topicId": "U9.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match the LIST-I with LIST-II LIST-I (Millenium Development\n(None) c.\n(None) Goal-MDG) MDG-2 MDG-7 MDG-8 MDG-I LIST-II (Aim) Eradicate extreme"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "poverty and hunger Global collaboration for 11. development Environmental 111. sustainability Universal primary education Choose the correct answer from the options given below:"
+              }
+            },
+            {
+              "id": "a",
+              "text": {
+                "en": "A-I, B-11, c-IV, D-111"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A-II, B-1, C-111, D-lV"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A-IV, B-111, C-11, D-l"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A-III, B-lV, C-11, D-l"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-38",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U2",
+        "topicId": "U2.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following are the key aspects of a good research problem ?\n(None) Clear and Concise : Explicitly states the issue\n(None) Specific : Focused enough to be studied effectively\n(None) Researchable : Feasible to investigate with available resources and methods\n(None) Subjective : Heavily influenced by the researcher's personal opinions Choose the correct answer from the options given below: . B and D only A and C Only 2. A, B and C Only 3."
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option A"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option B"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option C"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option D"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-39",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Identify the correct order of (A-D) to fill in the missing terms in the paragraph given below. is the standard language used for creating web pages. The is a system of inter connected web pages via the Internet. is the foundation of any data exchange on the web. is the address used to access specific resource on the web.\n(None) HTTP\n(None) WWW\n(None) URL\n(None) HTML Choose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option A"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option B"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option C"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option D"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-40",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U8",
+        "topicId": "U8.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "John Von Neumann is famous as an architect of modern computing because he popularized and formalized the idea of storing both program instmctions and data in the same random access memolY. 2. popularized and formalized the idea of storing data and instmctions in separate memory units. 3. Was a key designer of\"Colossus\", the first large-scale electronic computer. 4. Designed the Analytical Engine, the first mechanical programmable computer"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-41",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U9",
+        "topicId": "U9.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Match the LIST-I with LIST-II"
+          },
+          "options": [
+            {
+              "id": "d",
+              "text": {
+                "en": ": 49\n(None) c.\n(None) LIST-I (Statement) Inverse ratio of 17 : 19 is Compound ratio of"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": ": 7, 5:3 and 4: 7 is Find the sub-triplicate ratio of 512 : 729 Duplicate ratio of"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-42",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Which of the following statements could be inferred immediately from each other ?\n(None) All dogs are loyal animals.\n(None) All loyal animals are dogs.\n(None) No dogs are non-loyal animals.\n(None) All non-dogs are non-loyal animals. Choose the correct answer from the options given below: l. A and C Only"
+          },
+          "options": [
+            {
+              "id": "b",
+              "text": {
+                "en": "A and B Only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "B and C Only"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A and D Only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-43",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U9",
+        "topicId": "U9.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "Imagine you are looking at the relationship between hours studied (x) and exam scores O') for four unique groups (1-4), each consisting of five students. The sum of all x values (b), the sum of all the y values (b), the sum of the product of x and y values (Exy), the sum of squares ofx values (Ex2), and the sum of squares of y values (Ü'2) are given in A-D below for each group. Calculate the Pearson correlation coefficient (r) between x and y for each group and arrange them in ascending order.\n(None) Group 15, Ev-30,Exy 110, Ex-2 55, 212=220\n(None) Group2:Ex c. Group3•.Ex 55, Y2 151\n(None) 17, 77 Choose the correct answer from the options given below: 3."
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option A"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option B"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option C"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option D"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-44",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U4",
+        "topicId": "U4.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "According to Berlo, An act of Communication is tme for which of the following options?\n(None) Communication does not consist of the transmission of meaning\n(None) Communication consists of the transmission of meaning\n(None) Meanings are not transmitted or transferable\n(None) Meanings are transmitted and transferable E. Only messages are transmitted and meanings are not in the messages, they are in the message users Choose the correct answer from the options given below:"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "BandDOn1y"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "A, B and D only"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "A, B, CandDOn1y"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "A, C and E only"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-45",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U3",
+        "topicId": "U3.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "mcq_single",
+          "stem": {
+            "en": "The basis to understand global cultural studies is : l. transactions 2. mobility 3. diffusion 4. dynamism"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-46",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U3",
+        "topicId": "U3.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "comprehension",
+          "stem": {
+            "en": "ind of cultural formations of most interest to the discipline are becoming increasingly mobile everywhere. This is tme in the literal sense that they tend to move across distances and borders, but also in the sense that their relations with their social and material settings (the economy, politics, education, technology and so on) change so quickly and thoroughly, although at different paces and in different ways in different places. It's also tme in the sense that sectors and genres internal to cultures are interacting so dynamically with one another. Culture is not a thing or even a system : It's a set of transactions, processes, mutations, practices, technologies, institutions, out of which things and events (such as movies, poems or world wrestling bouts) are produced, to be experienced, lived out and given meaning and value to in different ways within the unsystematic network of differences and mutations from which they emerged to start with.\n\nQ.46 The passage holds that movies and poems emerge from : l. a systematic network 2. an unsystematic network 3. a set of institutions 4. sectors and genres"
+          },
+          "passage": {
+            "en": "Read the passage given below and answer questions : Diffusion is not the key to global cultural studies. Mobility is. The k"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-47",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U3",
+        "topicId": "U3.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "comprehension",
+          "stem": {
+            "en": "ind of cultural formations of most interest to the discipline are becoming increasingly mobile everywhere. This is tme in the literal sense that they tend to move across distances and borders, but also in the sense that their relations with their social and material settings (the economy, politics, education, technology and so on) change so quickly and thoroughly, although at different paces and in different ways in different places. It's also tme in the sense that sectors and genres internal to cultures are interacting so dynamically with one another. Culture is not a thing or even a system : It's a set of transactions, processes, mutations, practices, technologies, institutions, out of which things and events (such as movies, poems or world wrestling bouts) are produced, to be experienced, lived out and given meaning and value to in different ways within the unsystematic network of differences and mutations from which they emerged to start with.\n\nQ.47 Global cultural studies are most interested in : I. 2. 3. 4. mobile cultural formations static cultural formations diffused cultural formations mutated cultural formations"
+          },
+          "passage": {
+            "en": "Read the passage given below and answer questions : Diffusion is not the key to global cultural studies. Mobility is. The k"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-48",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U3",
+        "topicId": "U3.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "comprehension",
+          "stem": {
+            "en": "ind of cultural formations of most interest to the discipline are becoming increasingly mobile everywhere. This is tme in the literal sense that they tend to move across distances and borders, but also in the sense that their relations with their social and material settings (the economy, politics, education, technology and so on) change so quickly and thoroughly, although at different paces and in different ways in different places. It's also tme in the sense that sectors and genres internal to cultures are interacting so dynamically with one another. Culture is not a thing or even a system : It's a set of transactions, processes, mutations, practices, technologies, institutions, out of which things and events (such as movies, poems or world wrestling bouts) are produced, to be experienced, lived out and given meaning and value to in different ways within the unsystematic network of differences and mutations from which they emerged to start with.\n\nQ.48 The social and material settings of culture, among other things, include l. Politics and education 2. Diffusion only 3. Mutations and diffusion 4. Diffusion and mobility"
+          },
+          "passage": {
+            "en": "Read the passage given below and answer questions : Diffusion is not the key to global cultural studies. Mobility is. The k"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-49",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U10",
+        "topicId": "U10.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "comprehension",
+          "stem": {
+            "en": "ind of cultural formations of most interest to the discipline are becoming increasingly mobile everywhere. This is tme in the literal sense that they tend to move across distances and borders, but also in the sense that their relations with their social and material settings (the economy, politics, education, technology and so on) change so quickly and thoroughly, although at different paces and in different ways in different places. It's also tme in the sense that sectors and genres internal to cultures are interacting so dynamically with one another. Culture is not a thing or even a system : It's a set of transactions, processes, mutations, practices, technologies, institutions, out of which things and events (such as movies, poems or world wrestling bouts) are produced, to be experienced, lived out and given meaning and value to in different ways within the unsystematic network of differences and mutations from which they emerged to start with.\n\nQ.49 Question 49 regarding UGC NET Paper 1 comprehension and analysis."
+          },
+          "passage": {
+            "en": "Read the passage given below and answer questions : Diffusion is not the key to global cultural studies. Mobility is. The k"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      },
+      {
+        "qid": "q-50",
+        "version": 1,
+        "sectionId": "paper1",
+        "unitId": "U10",
+        "topicId": "U10.1",
+        "difficulty": "medium",
+        "content": {
+          "type": "comprehension",
+          "stem": {
+            "en": "ind of cultural formations of most interest to the discipline are becoming increasingly mobile everywhere. This is tme in the literal sense that they tend to move across distances and borders, but also in the sense that their relations with their social and material settings (the economy, politics, education, technology and so on) change so quickly and thoroughly, although at different paces and in different ways in different places. It's also tme in the sense that sectors and genres internal to cultures are interacting so dynamically with one another. Culture is not a thing or even a system : It's a set of transactions, processes, mutations, practices, technologies, institutions, out of which things and events (such as movies, poems or world wrestling bouts) are produced, to be experienced, lived out and given meaning and value to in different ways within the unsystematic network of differences and mutations from which they emerged to start with.\n\nQ.50 Question 50 regarding UGC NET Paper 1 comprehension and analysis."
+          },
+          "passage": {
+            "en": "Read the passage given below and answer questions : Diffusion is not the key to global cultural studies. Mobility is. The k"
+          },
+          "options": [
+            {
+              "id": "a",
+              "text": {
+                "en": "Option 1"
+              }
+            },
+            {
+              "id": "b",
+              "text": {
+                "en": "Option 2"
+              }
+            },
+            {
+              "id": "c",
+              "text": {
+                "en": "Option 3"
+              }
+            },
+            {
+              "id": "d",
+              "text": {
+                "en": "Option 4"
+              }
+            }
+          ]
+        },
+        "provenance": {
+          "kind": "official_pyq",
+          "officialPyqVerified": false
+        }
+      }
+    ],
+    "contentLabel": "under_development",
+    "title": "UGC NET Paper 1 — 10 September 2026 (Shift 1)"
+  },
+  "questions": [
+    {
+      "qid": "q-01",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: The following table shows the percentage distribution of number of people having Government - Employment (GE), Private-Employment (PE), Self-Employment (SE) and No-Employment (NE) in five different cities (A-E). Based on the data in the table, answer the questions that follow City wise Details of Working-Age Population Percentage Distribution of Number of People having City GE 24% 38% PE 25% 15% 10% 25% 30% NE 40% 21% 26% 20% I. It is assumed that population of each city is equal to the number of people having (GE+PE+SE+NE). 2. The symbol ' ' represents some missing percentage and it can be computed, if required.\n\nQ.1 Assume that the ratio between population of City-C to City-D is 64 : 63. Ifthe number ofunemployed people from City-D is 2940 more than that of City-C, then what is the average of the total number of private employees from both the cities ? 1. 12885 2. 12675 3. 12995 4 12575"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-02",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: The following table shows the percentage distribution of number of people having Government - Employment (GE), Private-Employment (PE), Self-Employment (SE) and No-Employment (NE) in five different cities (A-E). Based on the data in the table, answer the questions that follow City wise Details of Working-Age Population Percentage Distribution of Number of People having City GE 24% 38% PE 25% 15% 10% 25% 30% NE 40% 21% 26% 20% I. It is assumed that population of each city is equal to the number of people having (GE+PE+SE+NE). 2. The symbol ' ' represents some missing percentage and it can be computed, if required.\n\nQ.2 If the ratio between population of City-C to City-E is 8 : 9, and the number of unemployed people in City-E is 960 more than that in City-C, then what is the average of total number of government employees in both City-C and City-E ? 1. 24760 2. 24560 3. 28560 4. 19860"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-03",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: The following table shows the percentage distribution of number of people having Government - Employment (GE), Private-Employment (PE), Self-Employment (SE) and No-Employment (NE) in five different cities (A-E). Based on the data in the table, answer the questions that follow City wise Details of Working-Age Population Percentage Distribution of Number of People having City GE 24% 38% PE 25% 15% 10% 25% 30% NE 40% 21% 26% 20% I. It is assumed that population of each city is equal to the number of people having (GE+PE+SE+NE). 2. The symbol ' ' represents some missing percentage and it can be computed, if required.\n\nQ.3 If the population of City-D is 40% more than that of City-A, then the total number of private employees and unemployed people together from City-A is approximately of government employees and self-employed people together from City-D. 1. 2.27 2. 4.53 3. 567 0 0 less than the total number"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-04",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: The following table shows the percentage distribution of number of people having Government - Employment (GE), Private-Employment (PE), Self-Employment (SE) and No-Employment (NE) in five different cities (A-E). Based on the data in the table, answer the questions that follow City wise Details of Working-Age Population Percentage Distribution of Number of People having City GE 24% 38% PE 25% 15% 10% 25% 30% NE 40% 21% 26% 20% I. It is assumed that population of each city is equal to the number of people having (GE+PE+SE+NE). 2. The symbol ' ' represents some missing percentage and it can be computed, if required.\n\nQ.4 Assume that for City-A, the difference between the number of private employees and government employees is 5400, and percentage of private employees is 20% more than the percentage of unemployed people. If the total number of government and private employees together in City-B is 10800 more than the number of government employees in City-A, then what is the population of City-B 1. 36000 2. 54000 3. 48000 4. 32000"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-05",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Passage: The following table shows the percentage distribution of number of people having Government - Employment (GE), Private-Employment (PE), Self-Employment (SE) and No-Employment (NE) in five different cities (A-E). Based on the data in the table, answer the questions that follow City wise Details of Working-Age Population Percentage Distribution of Number of People having City GE 24% 38% PE 25% 15% 10% 25% 30% NE 40% 21% 26% 20% I. It is assumed that population of each city is equal to the number of people having (GE+PE+SE+NE). 2. The symbol ' ' represents some missing percentage and it can be computed, if required.\n\nQ.5 Assume that the ratio between number of males to number of females who are self-employed from City- Ais 2 : 7 and from City-B, it is I : 5, and population of City-B is 20% more than that of City-A. If number of males who are self-employed from City-B is 800 more than that of City-A, then what is the ratio between the number of females who are self-employed from City-A to that from City-B ? 1. 7: 19 7:18 7 • 23 4. 5:18"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-06",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U1",
+      "topicId": "U1.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "What are the mental processes under which a child goes through while constmcting knowledge?\n(None) Equilibration\n(None) Accommodation\n(None) Authorization\n(None) Assimilation Choose the correct answer from the options given below: l. A, C and D only"
+        },
+        "options": [
+          {
+            "id": "b",
+            "text": {
+              "en": "B and C only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A, B and D only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A, B, CandD"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-07",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Who among the following coined, the communication theory, \"Cognitive Dissonance Theory\" l. Melvin De Fleur 2. L.A. Festinger 3. Sandra Ball-Rokeach 4. Lazarsfeld Berelson"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-08",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "\"No poets are advocates. Some artists are poets. Therefore, some affists are advocates.\" is committed in the above argument ? l. Existential fallacy 2. Drawing an affirmative conclusion from a negative premise 3. Exclusive premises 4. Illicit major Which fallacy"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-09",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match the LIST-I with LIST-II LIST-I (Digital Platform)\n(None) c.\n(None) Blog X (formerly Twitter) MS - Teams LinkedIn"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "11. 111. LIST-II (Primary Purpose) Shon-form \"micro- blogging\" using hashtags and retweets Professional networking, digital CV and job- seeking Online journal for long- form articles in reverse chronological order Collaboration tool for video calls and shared work-spaces Choose the correct answer from the options given below:"
+            }
+          },
+          {
+            "id": "a",
+            "text": {
+              "en": "A-III, B-11, c-IV, D-l"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-II, B-111, C-1, D-lV"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-I, B-lV, C-11, D-111"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-III, B-1, c-IV, D-11"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-10",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following is the correct order of Steven's four levels of measurement, from least to most sophisticated ?\n(None) Interval\n(None) Nominal\n(None) Ratio\n(None) Ordinal Choose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option A"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option C"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option D"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-11",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "In a certain coding language, SMART is written as 11 and DESIGN is written as 13. I--low FELICITATION shall be written in that language ? 1. 25 3. 24 4. 28 2. 12"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-12",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "In an examination, a candidate gets 25% of marks and fails by 60 marks. In the same examination, another candidate scores 50% marks but gets 40 marks more than the minimum marks required to pass the examination. Find the maximum marks for the examination : 1. 400 2. 450 3. 300 4. 500"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-13",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Under the IGNOU Act, 1985, the Parliament has assigned these functions to the Indira Gandhi National Open University •\n(None) To perform the functions of a distance education University\n(None) To encourage women to pursue education through the distant mode.\n(None) To promote distance education in the rural areas.\n(None) To function as a national agency for coordinating and setting standards of distance education system Choose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A and B Only"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "B and C only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A and D Only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "C and D Only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-14",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "\"l am shocked to hear you are preaching materialistic hedonism. Does your father know that this is what you believe in ?\" Identify the fallacy committed in the above statement : l. Appeal to Ignorance 2. Complex question 3. Appeal to force 4. Begging the question"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-15",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match the LIST-I with LIST-II LIST-I (Digital Research Platform)\n(None) c.\n(None) Google Scholar ORCID Mendeley VIDWAN"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "11. 111. LIST-II (Purpose) Unique Research ID Reference Manager Database of Indian Researchers Publication and Citation profile Choose the correct answer from the options given below:"
+            }
+          },
+          {
+            "id": "a",
+            "text": {
+              "en": "A-III, B-1, C-11, D-lV"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-II, B-111, c-IV, D-l"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-I, B-11, C-111, D-lV"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-IV, B-1, C-11, D-111"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-16",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Find the number that can replace question mark (?) in the series given below. 1 3 6 10 4' 5' 7' 11' 15 17 13 19 15 20 15"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-17",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Arrange the following steps of Waste Water treatment from initial toward final phase ?\n(None) Screening\n(None) Primmy sedimentation\n(None) Activated sludge treatment\n(None) Disinfection Choose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option A"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option C"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option D"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-18",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Among which of the following types of Interspecific interactions, both of the species involved are harmed ?\n(None) Mutualism\n(None) Competition\n(None) Predation\n(None) Parasitism E. Commensalism Choose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A, C and E only"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A and B Only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "D only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "B only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-19",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Arrange the following institutions chronologically, according to their year of establishment, staffing from the earliest.\n(None) Press Council of India\n(None) All India Federation of Working Journalists\n(None) Adveftising Agencies Association of India\n(None) Press Trust of India Choose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option A"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option C"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option D"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-20",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "An author has published 10 research afficles and has been cited with 50 citations distributed among her 10 afficles as follows : 15, 23, O, O, 7, 4, 1, O, O and O What is the h-index of the author ? 4. 23 3. 15"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-21",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following bases of individual differences are physical in nature ?\n(None) Differences in Interests\n(None) Differences in Height\n(None) Differences in Weight\n(None) Differences in Aptitude E. Differences in Aspirations Choose the correct answer from the options given below: l. B and C Only"
+        },
+        "options": [
+          {
+            "id": "b",
+            "text": {
+              "en": "A and C Only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "CandDOn1y"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "D and E only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-22",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "In the context of addressing individual differences of students, Match the LIST-I with LIST-II.\n(None) c.\n(None) LIST-I (Role of School) Proper knowledge of individual potential Ability grouping Adjusting method of teaching Individualized Instmction provisions"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "11. 111. LIST-II (Steps taken) Provision of special programmes for students Knowing abilities, interests and aptitudes Fixing the number of students in classroom Dividing class in sections Choose the correct answer from the options given below:"
+            }
+          },
+          {
+            "id": "a",
+            "text": {
+              "en": "A-II, B-111, C-1, D-lV"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-II, B-1, C-111, D-lV"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-II, B-lV, C-1, D-111"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-III, B-1, C-11, D-lv"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-23",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following is not a secondmy air pollutant ? I. Sulphuric acid (H2S04) 2. Sulphur dioxide (S02) 3. Nitric acid (HN03) 4. Ozone (03)"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-24",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match the LIST-I with LIST-II LIST-II (Higher Education Focus Area)\n(None) c.\n(None) LIST-I (Five Year Plan) Sixth Seventh Eighth Ninth 11. Teacher Training In Service Teacher Training in distance and institutional mode Centres for Curriculum Development Curriculum Change Choose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "A-III, B-1, C-11, D-lV"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-I, B-11, C-111, D-lV"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-I, B-111, c-IV, D-11"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-II, B-lV, C-111, D-l"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-25",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U1",
+      "topicId": "U1.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "As per NEP (2020), which of the following councils will be mandated to identify specific skills with the aim of preparing well rounded learners with 21 st century skills? l. General Education Council 2. National Higher Education Regulatory Council 3. National Accreditation Council 4. All India Council of Technical Education"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-26",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "As per NEP (2020) document, high quality programmes and degrees in the higher education system of the countlY are also sought to be created in the following disciplines as part of promotion of Indian Languages, Arts and Culture :\n(None) Art and museum administration\n(None) Afiefact consewation\n(None) Archaeology\n(None) Graphic design and Web design E. Translation and Interpretation Choose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "C, DandEOn1y"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A, B, CD E"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": ""
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "B, C, D and E only A, B, C and D Only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-27",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U1",
+      "topicId": "U1.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Psychologist Bandura has proposed processes for observational learning. These are : l. Activities, Curriculum, Assessments, Effective Teaching 2. Attention, Retention, Behavioural Rehearsal, Motivation 3. Reading, Audit01Y, Communication Visuals, Tactic 4. Recording, Writing, Transmission, Visuals"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-28",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "As per classical Indian School of Logic (Nyäya) which of the following arguments is fallacious because it has a middle term which instead of being pervaded by the presence of the major term is actually pervaded by its absence ? l. Sound is eternal because it is produced 2. Fire is cold because it is a substance 3. All things are non-eternal because they are knowable 4. Sound is quality because it is visible"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-29",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Applying a generalization to a special case in disregard of qualities or circumstances that make it an exception to the generalization is called the fallacy of : l. Slippery slope 2. Accident 3. Post hoc 4. Hasty Generalization"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-30",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following pairs of ICT acronyms and their expansions are correctly matched ?\n(None) VOIP - Voice Over Internet Protocol\n(None) MICR - Magnetic Ink Character Recognition\n(None) NIC - Network Interface Control\n(None) TCP - Transmission Control Provider Choose the correct answer from the options given below: l. C and D Only"
+        },
+        "options": [
+          {
+            "id": "b",
+            "text": {
+              "en": "A and B Only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A, B and C Only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A, C and D only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-31",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following Commissions recommended \"the development of all modern Indian languages for use in education as well as in administration in their respective states\" ? 2. 3. 4. Radhakrishnan Commission Kothari Commission Chagla Commission Mudaliar Commission"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-32",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match the LIST-I with LIST-II LIST-I (Communication Model) LIST-II (Coined/Developed/Promoted by)\n(None) c.\n(None) Questions form model Mathematical model Circular model Ritual model of mass communication"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "11. 111. The Shannon and Weaver Harold\n(None) Lasswell James Carey The Osgood and Schramm Choose the correct answer from the options given below:"
+            }
+          },
+          {
+            "id": "a",
+            "text": {
+              "en": "A-I, B-11, C-111, D-lV"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-IV, B-111, C-11, D-l"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-II, B-1, c-IV, D-111"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-III, B-lV, C-11, D-l"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-33",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "What among the following are known as physical barriers to the communication process ?\n(None) Self-Image\n(None) Environmental Stress\n(None) Ill health and Sleeplessness\n(None) Language E. Loud music and traffic noise in the background Choose the correct answer from the options given below: l. A and D Only"
+        },
+        "options": [
+          {
+            "id": "b",
+            "text": {
+              "en": "B, C and E only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A, B, CandDOn1y"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "B, C, D and E Only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-34",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following natural hazards are characterised as ' atmospheric' ?\n(None) Tornadoes\n(None) Snow avalanches\n(None) Wildfires\n(None) Droughts E. Storm surge Choose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "b",
+            "text": {
+              "en": "A, B, D and E Only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A, C and E only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "C and D Only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-35",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Arrange the following durations in increasing order of their magnitudes :\n(None) Time taken by a 120 m long train moving with speed of 45 km/hour to cross a 130 m long railway platform.\n(None) Time taken by a 200 m long train moving with speed of 90 km per hour to cross a pole by the side of a railway track.\n(None) Time taken by two trains of lengths 175 m and 125 m, moving with identical speeds of 60 km/hour in opposite direction to cross each other.\n(None) Time taken by boat moving with speed of IO km/hour in still water to cover a distance of 100 m Choose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option A"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option C"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option D"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-36",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following actions (A-D) violate legal statutes or moral principles within the IT sector ?\n(None) A college using Linux OS (being an open-source software) on all its 200 computers on the campus.\n(None) A person stealing another person's credit-card number\n(None) A student using proprietary software without having a license\n(None) A hospital revealing clinical histoly of a patient without the consent of a patient Choose the correct answer from the options given below: . A and C Only"
+        },
+        "options": [
+          {
+            "id": "b",
+            "text": {
+              "en": "B and D only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "B, C and D Only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-37",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match the LIST-I with LIST-II LIST-I (Millenium Development\n(None) c.\n(None) Goal-MDG) MDG-2 MDG-7 MDG-8 MDG-I LIST-II (Aim) Eradicate extreme"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "poverty and hunger Global collaboration for 11. development Environmental 111. sustainability Universal primary education Choose the correct answer from the options given below:"
+            }
+          },
+          {
+            "id": "a",
+            "text": {
+              "en": "A-I, B-11, c-IV, D-111"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A-II, B-1, C-111, D-lV"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A-IV, B-111, C-11, D-l"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A-III, B-lV, C-11, D-l"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-38",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following are the key aspects of a good research problem ?\n(None) Clear and Concise : Explicitly states the issue\n(None) Specific : Focused enough to be studied effectively\n(None) Researchable : Feasible to investigate with available resources and methods\n(None) Subjective : Heavily influenced by the researcher's personal opinions Choose the correct answer from the options given below: . B and D only A and C Only 2. A, B and C Only 3."
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option A"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option C"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option D"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-39",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Identify the correct order of (A-D) to fill in the missing terms in the paragraph given below. is the standard language used for creating web pages. The is a system of inter connected web pages via the Internet. is the foundation of any data exchange on the web. is the address used to access specific resource on the web.\n(None) HTTP\n(None) WWW\n(None) URL\n(None) HTML Choose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option A"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option C"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option D"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-40",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "John Von Neumann is famous as an architect of modern computing because he popularized and formalized the idea of storing both program instmctions and data in the same random access memolY. 2. popularized and formalized the idea of storing data and instmctions in separate memory units. 3. Was a key designer of\"Colossus\", the first large-scale electronic computer. 4. Designed the Analytical Engine, the first mechanical programmable computer"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-41",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Match the LIST-I with LIST-II"
+        },
+        "options": [
+          {
+            "id": "d",
+            "text": {
+              "en": ": 49\n(None) c.\n(None) LIST-I (Statement) Inverse ratio of 17 : 19 is Compound ratio of"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": ": 7, 5:3 and 4: 7 is Find the sub-triplicate ratio of 512 : 729 Duplicate ratio of"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-42",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Which of the following statements could be inferred immediately from each other ?\n(None) All dogs are loyal animals.\n(None) All loyal animals are dogs.\n(None) No dogs are non-loyal animals.\n(None) All non-dogs are non-loyal animals. Choose the correct answer from the options given below: l. A and C Only"
+        },
+        "options": [
+          {
+            "id": "b",
+            "text": {
+              "en": "A and B Only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "B and C Only"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A and D Only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-43",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "Imagine you are looking at the relationship between hours studied (x) and exam scores O') for four unique groups (1-4), each consisting of five students. The sum of all x values (b), the sum of all the y values (b), the sum of the product of x and y values (Exy), the sum of squares ofx values (Ex2), and the sum of squares of y values (Ü'2) are given in A-D below for each group. Calculate the Pearson correlation coefficient (r) between x and y for each group and arrange them in ascending order.\n(None) Group 15, Ev-30,Exy 110, Ex-2 55, 212=220\n(None) Group2:Ex c. Group3•.Ex 55, Y2 151\n(None) 17, 77 Choose the correct answer from the options given below: 3."
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option A"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option B"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option C"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option D"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-44",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "According to Berlo, An act of Communication is tme for which of the following options?\n(None) Communication does not consist of the transmission of meaning\n(None) Communication consists of the transmission of meaning\n(None) Meanings are not transmitted or transferable\n(None) Meanings are transmitted and transferable E. Only messages are transmitted and meanings are not in the messages, they are in the message users Choose the correct answer from the options given below:"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "BandDOn1y"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "A, B and D only"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "A, B, CandDOn1y"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "A, C and E only"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-45",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "mcq_single",
+        "stem": {
+          "en": "The basis to understand global cultural studies is : l. transactions 2. mobility 3. diffusion 4. dynamism"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-46",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "comprehension",
+        "stem": {
+          "en": "ind of cultural formations of most interest to the discipline are becoming increasingly mobile everywhere. This is tme in the literal sense that they tend to move across distances and borders, but also in the sense that their relations with their social and material settings (the economy, politics, education, technology and so on) change so quickly and thoroughly, although at different paces and in different ways in different places. It's also tme in the sense that sectors and genres internal to cultures are interacting so dynamically with one another. Culture is not a thing or even a system : It's a set of transactions, processes, mutations, practices, technologies, institutions, out of which things and events (such as movies, poems or world wrestling bouts) are produced, to be experienced, lived out and given meaning and value to in different ways within the unsystematic network of differences and mutations from which they emerged to start with.\n\nQ.46 The passage holds that movies and poems emerge from : l. a systematic network 2. an unsystematic network 3. a set of institutions 4. sectors and genres"
+        },
+        "passage": {
+          "en": "Read the passage given below and answer questions : Diffusion is not the key to global cultural studies. Mobility is. The k"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-47",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "comprehension",
+        "stem": {
+          "en": "ind of cultural formations of most interest to the discipline are becoming increasingly mobile everywhere. This is tme in the literal sense that they tend to move across distances and borders, but also in the sense that their relations with their social and material settings (the economy, politics, education, technology and so on) change so quickly and thoroughly, although at different paces and in different ways in different places. It's also tme in the sense that sectors and genres internal to cultures are interacting so dynamically with one another. Culture is not a thing or even a system : It's a set of transactions, processes, mutations, practices, technologies, institutions, out of which things and events (such as movies, poems or world wrestling bouts) are produced, to be experienced, lived out and given meaning and value to in different ways within the unsystematic network of differences and mutations from which they emerged to start with.\n\nQ.47 Global cultural studies are most interested in : I. 2. 3. 4. mobile cultural formations static cultural formations diffused cultural formations mutated cultural formations"
+        },
+        "passage": {
+          "en": "Read the passage given below and answer questions : Diffusion is not the key to global cultural studies. Mobility is. The k"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-48",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "comprehension",
+        "stem": {
+          "en": "ind of cultural formations of most interest to the discipline are becoming increasingly mobile everywhere. This is tme in the literal sense that they tend to move across distances and borders, but also in the sense that their relations with their social and material settings (the economy, politics, education, technology and so on) change so quickly and thoroughly, although at different paces and in different ways in different places. It's also tme in the sense that sectors and genres internal to cultures are interacting so dynamically with one another. Culture is not a thing or even a system : It's a set of transactions, processes, mutations, practices, technologies, institutions, out of which things and events (such as movies, poems or world wrestling bouts) are produced, to be experienced, lived out and given meaning and value to in different ways within the unsystematic network of differences and mutations from which they emerged to start with.\n\nQ.48 The social and material settings of culture, among other things, include l. Politics and education 2. Diffusion only 3. Mutations and diffusion 4. Diffusion and mobility"
+        },
+        "passage": {
+          "en": "Read the passage given below and answer questions : Diffusion is not the key to global cultural studies. Mobility is. The k"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-49",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "comprehension",
+        "stem": {
+          "en": "ind of cultural formations of most interest to the discipline are becoming increasingly mobile everywhere. This is tme in the literal sense that they tend to move across distances and borders, but also in the sense that their relations with their social and material settings (the economy, politics, education, technology and so on) change so quickly and thoroughly, although at different paces and in different ways in different places. It's also tme in the sense that sectors and genres internal to cultures are interacting so dynamically with one another. Culture is not a thing or even a system : It's a set of transactions, processes, mutations, practices, technologies, institutions, out of which things and events (such as movies, poems or world wrestling bouts) are produced, to be experienced, lived out and given meaning and value to in different ways within the unsystematic network of differences and mutations from which they emerged to start with.\n\nQ.49 Question 49 regarding UGC NET Paper 1 comprehension and analysis."
+        },
+        "passage": {
+          "en": "Read the passage given below and answer questions : Diffusion is not the key to global cultural studies. Mobility is. The k"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    },
+    {
+      "qid": "q-50",
+      "version": 1,
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium",
+      "content": {
+        "type": "comprehension",
+        "stem": {
+          "en": "ind of cultural formations of most interest to the discipline are becoming increasingly mobile everywhere. This is tme in the literal sense that they tend to move across distances and borders, but also in the sense that their relations with their social and material settings (the economy, politics, education, technology and so on) change so quickly and thoroughly, although at different paces and in different ways in different places. It's also tme in the sense that sectors and genres internal to cultures are interacting so dynamically with one another. Culture is not a thing or even a system : It's a set of transactions, processes, mutations, practices, technologies, institutions, out of which things and events (such as movies, poems or world wrestling bouts) are produced, to be experienced, lived out and given meaning and value to in different ways within the unsystematic network of differences and mutations from which they emerged to start with.\n\nQ.50 Question 50 regarding UGC NET Paper 1 comprehension and analysis."
+        },
+        "passage": {
+          "en": "Read the passage given below and answer questions : Diffusion is not the key to global cultural studies. Mobility is. The k"
+        },
+        "options": [
+          {
+            "id": "a",
+            "text": {
+              "en": "Option 1"
+            }
+          },
+          {
+            "id": "b",
+            "text": {
+              "en": "Option 2"
+            }
+          },
+          {
+            "id": "c",
+            "text": {
+              "en": "Option 3"
+            }
+          },
+          {
+            "id": "d",
+            "text": {
+              "en": "Option 4"
+            }
+          }
+        ]
+      },
+      "provenance": {
+        "kind": "official_pyq",
+        "officialPyqVerified": false
+      }
+    }
+  ],
+  "answerKey": {
+    "q-01": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-02": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-03": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-04": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-05": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U7",
+      "topicId": "U7.1",
+      "difficulty": "medium"
+    },
+    "q-06": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U1",
+      "topicId": "U1.1",
+      "difficulty": "medium"
+    },
+    "q-07": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-08": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium"
+    },
+    "q-09": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-10": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-11": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium"
+    },
+    "q-12": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium"
+    },
+    "q-13": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium"
+    },
+    "q-14": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium"
+    },
+    "q-15": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium"
+    },
+    "q-16": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium"
+    },
+    "q-17": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium"
+    },
+    "q-18": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-19": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-20": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium"
+    },
+    "q-21": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium"
+    },
+    "q-22": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium"
+    },
+    "q-23": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium"
+    },
+    "q-24": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium"
+    },
+    "q-25": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U1",
+      "topicId": "U1.1",
+      "difficulty": "medium"
+    },
+    "q-26": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-27": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U1",
+      "topicId": "U1.1",
+      "difficulty": "medium"
+    },
+    "q-28": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium"
+    },
+    "q-29": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U6",
+      "topicId": "U6.1",
+      "difficulty": "medium"
+    },
+    "q-30": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-31": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium"
+    },
+    "q-32": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-33": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-34": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium"
+    },
+    "q-35": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U5",
+      "topicId": "U5.1",
+      "difficulty": "medium"
+    },
+    "q-36": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-37": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium"
+    },
+    "q-38": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U2",
+      "topicId": "U2.1",
+      "difficulty": "medium"
+    },
+    "q-39": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-40": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U8",
+      "topicId": "U8.1",
+      "difficulty": "medium"
+    },
+    "q-41": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium"
+    },
+    "q-42": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-43": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U9",
+      "topicId": "U9.1",
+      "difficulty": "medium"
+    },
+    "q-44": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U4",
+      "topicId": "U4.1",
+      "difficulty": "medium"
+    },
+    "q-45": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium"
+    },
+    "q-46": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium"
+    },
+    "q-47": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium"
+    },
+    "q-48": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U3",
+      "topicId": "U3.1",
+      "difficulty": "medium"
+    },
+    "q-49": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium"
+    },
+    "q-50": {
+      "correct": [
+        "a"
+      ],
+      "sectionId": "paper1",
+      "unitId": "U10",
+      "topicId": "U10.1",
+      "difficulty": "medium"
+    }
+  },
+  "metadata": {
+    "parsedAt": "2026-11-15T11:14:10.070Z",
+    "sourceFile": "sep10-shift1.txt",
+    "questionCount": 50,
+    "unitDistribution": {
+      "U1": 3,
+      "U2": 3,
+      "U3": 4,
+      "U4": 7,
+      "U5": 6,
+      "U6": 4,
+      "U7": 5,
+      "U8": 7,
+      "U9": 7,
+      "U10": 4
+    }
+  },
+  "transcriber": "Bunty",
+  "verifier": "Pending Human Verification"
+}

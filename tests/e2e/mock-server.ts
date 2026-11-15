@@ -7,11 +7,12 @@
  */
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
 import { randomBytes, randomUUID } from 'node:crypto';
-import { ROLES, type Role } from '@ureducator/shared';
+import { DEFAULT_BLUEPRINT, ROLES, type AnswerKey, type PublishedPaper, type Role } from '@ureducator/shared';
 import { ENDPOINTS } from '../../functions/src/endpoints';
 import { dispatch, type Identity } from '../../functions/src/infra/dispatch';
 import { MemoryStore } from '../../functions/src/domain/memoryStore';
-import { seedDemo } from '../../functions/src/devtools/demoSeed';
+import { MINI_BLUEPRINT, seedDemo } from '../../functions/src/devtools/demoSeed';
+import { P } from '../../functions/src/domain/paths';
 import type { AuthPort } from '../../functions/src/services/admin';
 
 type User = { uid: string; email: string; password: string; name: string; emailVerified: boolean; role: Role | null };
@@ -23,7 +24,134 @@ let store = new MemoryStore(); const users = new Map<string, User>(); const toke
 const errors: { cid: string; message: string }[] = [];
 
 const auth: AuthPort = { async setRole(uid, role) { const u = users.get(uid); if (u) u.role = role; /* claims reach a token only on refresh, as in Firebase */ } };
-async function reset() { store = new MemoryStore(); users.clear(); tokens.clear(); offset = 0; errors.length = 0; await seedDemo(store, now()); }
+async function reset() {
+  store = new MemoryStore();
+  users.clear();
+  tokens.clear();
+  offset = 0;
+  errors.length = 0;
+  const { miniKey } = await seedDemo(store, now());
+
+  // Disable pilot cohort gate so student tests can run against the mock harness
+  await store.set(P.setting('pilotCohort'), { enabled: false });
+
+  // Seed verified pilot mock tests for student test flow
+  const miniPaper = await store.get<PublishedPaper>(P.paper('demo-mini-p'));
+  const fullPaper = await store.get<PublishedPaper>(P.paper('demo-full-p'));
+  const fullKey = await store.get<AnswerKey>(P.answerKey('demo-full-p'));
+
+  if (miniPaper && miniKey) {
+    const enhancedQuestions = miniPaper.questions.map((q, idx) => {
+      if (idx === 1) {
+        return {
+          ...q,
+          content: {
+            ...q.content,
+            passage: {
+              en: 'Leaders in educational and research institutions once operated under the premise that faculty and researchers should be closely directed and governed through rigid bureaucratic hierarchies. They believed strict top-down compliance was necessary for an academic organization to maintain structural integrity and instructional efficiency. However, contemporary institutional analysis demonstrates that traditional, authoritarian paradigms of administrative power are counterproductive in modern higher education. An excessive emphasis on administrative control squelches intrinsic academic motivation, stifles interdisciplinary innovation, and demoralizes institutional morale.\n\nModern academic leadership requires a fundamental shift: sharing governance rather than hoarding administrative authority. Effective leaders build institutional capacity by engaging faculty, students, and research scholars in participatory decision-making. By decentralizing governance and cultivating autonomous, reflective research environments, higher educational institutions elevate their collective intellectual capability and adapt dynamically to evolving societal needs.',
+            },
+          },
+        };
+      }
+      return q;
+    });
+
+    await store.set(P.paper('paper-pilot-1'), {
+      paperId: 'paper-pilot-1',
+      mockTestId: 'mt-pilot-1',
+      version: 1,
+      questions: enhancedQuestions,
+      contentLabel: 'fully_verified',
+    });
+    await store.set(P.answerKey('paper-pilot-1'), miniKey);
+
+    await store.set(P.mockTest('mt-pilot-1'), {
+      access: 'free',
+      status: 'published',
+      timed: true,
+      shuffle: false,
+      contentLabel: 'fully_verified',
+      version: 1,
+      title: 'Demo mini test',
+      kind: 'custom',
+      blueprintId: MINI_BLUEPRINT.id,
+      paperId: 'paper-pilot-1',
+      paperVersion: 1,
+      revealPolicy: 'immediate',
+      description: 'Ten sample questions, 15 minutes. Good for trying the exam screen and the result report.',
+    });
+
+    await store.set(P.mockTest('mt-pyq-2024-jun18-s1'), {
+      access: 'paid',
+      status: 'draft',
+      timed: true,
+      shuffle: false,
+      contentLabel: 'under_development',
+      version: 1,
+      title: 'UGC NET Paper 1 — 18 June 2024 (Shift 1)',
+      kind: 'pyq',
+      blueprintId: MINI_BLUEPRINT.id,
+      paperId: 'paper-pilot-1',
+      paperVersion: 1,
+      revealPolicy: 'immediate',
+      description: 'UGC NET Paper 1, 18 June 2024, Shift 1. 50 questions, 100 marks, 60 minutes.',
+    });
+
+    await store.set(P.mockTest('mt-pilot-late'), {
+      access: 'free',
+      status: 'published',
+      timed: true,
+      shuffle: false,
+      contentLabel: 'fully_verified',
+      version: 1,
+      title: 'Demo mini test (answers open later)',
+      kind: 'custom',
+      blueprintId: MINI_BLUEPRINT.id,
+      paperId: 'paper-pilot-1',
+      paperVersion: 1,
+      revealPolicy: 'after_close',
+      closesAtMs: now() + 86_400_000,
+      description: 'The same ten questions, but answers and explanations unlock only after the test window closes.',
+    });
+  }
+
+  if (fullPaper && fullKey) {
+    await store.set(P.paper('paper-pilot-full'), {
+      paperId: 'paper-pilot-full',
+      mockTestId: 'mt-pilot-full',
+      version: 1,
+      questions: fullPaper.questions,
+      contentLabel: 'fully_verified',
+    });
+    await store.set(P.answerKey('paper-pilot-full'), fullKey);
+
+    await store.set(P.mockTest('mt-pilot-full'), {
+      access: 'free',
+      status: 'published',
+      timed: true,
+      shuffle: false,
+      contentLabel: 'fully_verified',
+      version: 1,
+      title: 'Full-length format rehearsal (synthetic items)',
+      kind: 'full',
+      blueprintId: DEFAULT_BLUEPRINT.id,
+      paperId: 'paper-pilot-full',
+      paperVersion: 1,
+      revealPolicy: 'immediate',
+      description: '150 placeholder items in the 50 + 100 layout, 300 marks, 180 minutes. Practise the format, not the content.',
+    });
+  }
+
+  // Ensure learning note is verified for student mentor tests in local harness
+  await store.set('learningNotes/n-sampling', {
+    title: 'Probability and non-probability sampling',
+    body: 'In probability sampling every member of the population has a known chance of selection. Simple random, stratified, systematic and cluster sampling are probability methods. Quota, snowball, purposive and convenience sampling are non-probability methods.',
+    verified: true,
+    label: 'Demo note (local test data)',
+    topicId: 'p1-research-types',
+    keywords: ['sampling', 'probability', 'stratified'],
+  });
+}
 
 const send = (res: ServerResponse, status: number, body: unknown) => { res.writeHead(status, { 'content-type': 'application/json', 'cache-control': 'no-store' }); res.end(JSON.stringify(body)); };
 const body = (req: IncomingMessage) => new Promise<unknown>((ok) => { let s = ''; req.on('data', (c) => { s += c; if (s.length > 2_000_000) req.destroy(); }); req.on('end', () => { try { ok(s ? JSON.parse(s) : {}); } catch { ok({}); } }); });
