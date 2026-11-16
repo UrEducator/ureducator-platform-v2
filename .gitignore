@@ -28,3 +28,7 @@ functions/.runtimeconfig.json
 
 # Non-secret staging deploy configuration is committed on purpose
 !functions/.env.ugc-mock-test-staging
+
+# Local review bundles & handoff scratch
+Claude outputs/
+SHARED_HANDOFF/
