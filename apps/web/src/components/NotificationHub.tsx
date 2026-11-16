@@ -21,6 +21,7 @@ import {
 } from 'firebase/firestore';
 import {
   DEFAULT_NOTIFICATION_PREFS,
+  formatUnreadBadge,
   shouldDeliverNotification,
   type NotificationDoc,
   type NotificationPrefs,
@@ -193,9 +194,11 @@ export function NotificationHub() {
     });
   }, [rawNotifications, prefs, activeTab]);
 
-  // Calculate unread count (only unmuted notifications)
+  // Calculate unread count (filtering active Firestore payload for read === false)
   const unreadCount = useMemo(() => {
-    return rawNotifications.filter((n) => !n.read && shouldDeliverNotification(prefs, n.type)).length;
+    return rawNotifications.filter(
+      (n) => n.read === false && shouldDeliverNotification(prefs, n.type)
+    ).length;
   }, [rawNotifications, prefs]);
 
   // Mark single notification read
@@ -281,16 +284,23 @@ export function NotificationHub() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="relative grid size-9 place-items-center rounded-control hover:bg-surface-hover text-ink cursor-pointer transition-colors"
+        className="grid size-9 place-items-center rounded-control hover:bg-surface-hover text-ink cursor-pointer transition-colors"
         aria-label={`Notifications${unreadCount > 0 ? `, ${unreadCount} unread` : ''}`}
         title="Notifications"
       >
-        <Bell className="size-5" />
-        {unreadCount > 0 && (
-          <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-600 px-1 text-[10px] font-bold text-white ring-2 ring-surface animate-in zoom-in-75">
-            {unreadCount > 99 ? '99+' : unreadCount}
-          </span>
-        )}
+        <div className="relative inline-flex items-center justify-center">
+          <Bell className="size-5" />
+          {unreadCount > 0 && (
+            <span
+              className={cn(
+                'absolute -top-1 -right-1 flex items-center justify-center rounded-full bg-red-500 text-white text-[10px] font-bold shadow-xs',
+                unreadCount > 99 ? 'h-4 min-w-5 px-1 -right-2' : 'h-4 w-4'
+              )}
+            >
+              {formatUnreadBadge(unreadCount)}
+            </span>
+          )}
+        </div>
       </button>
 
       {/* Slide-Out Notification Drawer */}

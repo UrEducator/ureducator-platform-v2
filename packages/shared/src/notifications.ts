@@ -66,6 +66,18 @@ export function shouldDeliverNotification(
 }
 
 /**
+ * Formats the unread notification count for badge display.
+ * - Zero-State Hiding: Returns null if count <= 0.
+ * - Maximum Cap: Returns '99+' if count > 99.
+ * - Exact Count: Returns string representation of count (e.g. '1', '42').
+ */
+export function formatUnreadBadge(count: number): string | null {
+  if (count <= 0) return null;
+  if (count > 99) return '99+';
+  return String(count);
+}
+
+/**
  * Generates a unique notification document ID.
  */
 export function generateNotificationId(prefix = 'notif'): string {

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   DEFAULT_NOTIFICATION_PREFS,
+  formatUnreadBadge,
   generateNotificationId,
   NotificationDocSchema,
   NotificationPrefsSchema,
@@ -103,5 +104,20 @@ describe('Phase S: Universal Notification Hub & Preferences', () => {
       actionUrl: '/app',
     };
     expect(SendNotificationInputSchema.safeParse(validSend).success).toBe(true);
+  });
+
+  it('formats unread badge with zero-state hiding and 99+ maximum cap', () => {
+    // Zero-state hiding: returns null
+    expect(formatUnreadBadge(0)).toBeNull();
+    expect(formatUnreadBadge(-1)).toBeNull();
+
+    // Normal counts
+    expect(formatUnreadBadge(1)).toBe('1');
+    expect(formatUnreadBadge(5)).toBe('5');
+    expect(formatUnreadBadge(99)).toBe('99');
+
+    // 99+ cap
+    expect(formatUnreadBadge(100)).toBe('99+');
+    expect(formatUnreadBadge(550)).toBe('99+');
   });
 });
