@@ -13,7 +13,10 @@ import { ENV } from '@/lib/env';
 export function StagingBanner() {
   if (!ENV.isStaging) return null;
   return (
-    <div className="bg-marker px-4 py-1.5 text-center text-sm font-medium text-ink" role="note">
+    <div
+      className="border-b border-line bg-slate-100 dark:bg-slate-900/70 px-4 py-1.5 text-center text-xs font-medium text-muted transition-colors"
+      role="note"
+    >
       {ENV.appEnv === 'local-test' ? 'Local test build.' : 'Staging preview.'} Practice content only. Search engines are told not to index this site. Payments are switched off.
     </div>
   );
