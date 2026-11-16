@@ -25,6 +25,7 @@ export type PilotCohortMember = {
 
 export type MockTestDoc = {
   title: string; kind: 'full' | 'paper1' | 'paper2' | 'unit' | 'topic' | 'pyq' | 'custom';
+  setCode?: string;
   blueprintId: string; paperId: string; paperVersion: number;
   access: 'free' | 'paid'; collectionId?: string;
   status: 'draft' | 'review' | 'approved' | 'published';
@@ -33,6 +34,7 @@ export type MockTestDoc = {
   revealPolicy: 'immediate' | 'after_close';
   contentLabel: 'fully_verified' | 'under_development' | 'sample' | 'coming_soon';
   description?: string; version: number;
+  transcriber?: string; verifier?: string;
 };
 
 export type SessionDoc = {

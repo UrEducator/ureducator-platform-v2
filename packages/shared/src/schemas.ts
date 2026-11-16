@@ -60,8 +60,44 @@ export const QuestionMetaSchema = z.object({
   status: z.enum(PUBLICATION_STATUSES),
   currentVersion: z.number().int().min(1),
   publishedVersion: z.number().int().min(1).optional(),
+  usedInSets: z.array(z.string()).default([]),
 });
 export type QuestionMeta = z.infer<typeof QuestionMetaSchema>;
+
+export const QuestionSchema = QuestionMetaSchema.extend({
+  questionId: id.optional(),
+  preview: z.string().optional(),
+  usedInSets: z.array(z.string()).default([]),
+  mockTestId: z.string().optional(),
+  shiftId: z.string().optional(),
+  paperId: z.string().optional(),
+  updatedAtMs: z.number().int().optional(),
+  createdBy: z.string().optional(),
+});
+export type Question = z.infer<typeof QuestionSchema>;
+
+export const MockTestSchema = z.object({
+  mockTestId: id.optional(),
+  setCode: z.string().default(''),
+  title: z.string().min(3).max(140),
+  kind: z.enum(['full', 'paper1', 'paper2', 'unit', 'topic', 'pyq', 'custom']),
+  blueprintId: id,
+  paperId: z.string().optional(),
+  paperVersion: z.number().int().default(0),
+  access: z.enum(['free', 'paid']),
+  collectionId: id.optional(),
+  status: z.enum(PUBLICATION_STATUSES).default('draft'),
+  timed: z.boolean().default(true),
+  shuffle: z.boolean().default(false),
+  opensAtMs: z.number().int().optional(),
+  closesAtMs: z.number().int().optional(),
+  revealPolicy: z.enum(['immediate', 'after_close']).default('immediate'),
+  contentLabel: z.enum(CONTENT_LABELS).default('fully_verified'),
+  description: z.string().max(600).optional(),
+  version: z.number().int().default(1),
+  questionRefs: z.array(z.object({ qid: id, version: z.number().int().min(1), sectionId: id })).max(200).optional(),
+});
+export type MockTest = z.infer<typeof MockTestSchema>;
 
 /* ---------- Sanitised, student-facing paper (never contains answers) ---------- */
 export const PaperQuestionSchema = z.object({

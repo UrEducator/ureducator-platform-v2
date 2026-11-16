@@ -76,3 +76,67 @@ export function insights(summary: ReturnType<typeof summarise>, weak: TopicAggre
   for (const t of weak.slice(0, 3)) out.push({ id: `weak-${t.topicId}`, severity: 'action', topicId: t.topicId, text: `Revise this topic: ${t.correct}/${t.attempted} correct so far.` });
   return out;
 }
+
+export type QuadrantId = 'mastered' | 'deep_thinker' | 'speed_demon' | 'needs_review';
+
+export interface DiagnosticQuadrant {
+  id: QuadrantId;
+  label: string;
+  badge: string;
+  description: string;
+  recommendation: string;
+  color: string;
+  tone: 'ok' | 'info' | 'warn' | 'bad';
+}
+
+/**
+ * Diagnostic Quadrant Analysis (Speed vs. Accuracy) for UGC NET Paper 1.
+ * Benchmark thresholds: 65% accuracy (qualifying standard) and 60 seconds / question.
+ */
+export function classifyDiagnosticQuadrant(accuracy: number, avgTimeSec: number): DiagnosticQuadrant {
+  const isAccurate = accuracy >= 65;
+  const isFast = avgTimeSec <= 60;
+
+  if (isAccurate && isFast) {
+    return {
+      id: 'mastered',
+      label: 'Mastered / High Accuracy & Fast',
+      badge: 'Mastered',
+      description: 'Quick recall & accurate problem-solving.',
+      recommendation: 'Maintain consistency with periodic revision tests.',
+      color: '#10b981',
+      tone: 'ok',
+    };
+  }
+  if (isAccurate && !isFast) {
+    return {
+      id: 'deep_thinker',
+      label: 'Deep Thinker / High Accuracy & Slow',
+      badge: 'Deep Thinker',
+      description: 'Solid concept grasp, but spending excess time.',
+      recommendation: 'Target speed drills and elimination shortcuts to save test minutes.',
+      color: '#3b82f6',
+      tone: 'info',
+    };
+  }
+  if (!isAccurate && isFast) {
+    return {
+      id: 'speed_demon',
+      label: 'Speed Demon / Guessing',
+      badge: 'Speed Demon',
+      description: 'Answering too quickly with high error rate.',
+      recommendation: 'Slow down. Read question stems and negative qualifiers carefully.',
+      color: '#f59e0b',
+      tone: 'warn',
+    };
+  }
+  return {
+    id: 'needs_review',
+    label: 'Needs Review / Slow & Inaccurate',
+    badge: 'Needs Review',
+    description: 'Foundational gaps causing hesitation and mistakes.',
+    recommendation: 'High priority topic: read notes and solve concept sets.',
+    color: '#ef4444',
+    tone: 'bad',
+  };
+}

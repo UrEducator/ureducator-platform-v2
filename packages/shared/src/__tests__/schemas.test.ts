@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { LeadInput, ProfileUpdateSchema, QuestionVersionSchema, SaveResponsesInput, SubmitExamInput } from '../schemas';
+import { LeadInput, ProfileUpdateSchema, QuestionVersionSchema, SaveResponsesInput, SubmitExamInput, MockTestSchema, QuestionSchema } from '../schemas';
 import { SEED_SUBJECTS } from '../catalogue';
 import { BlueprintSchema, PAPER1_PILOT_BLUEPRINT, maxMarks, totalQuestions } from '../blueprint';
 
@@ -64,6 +64,61 @@ describe('pilot blueprint', () => {
     expect(PAPER1_PILOT_BLUEPRINT.sections).toHaveLength(1);
     expect(PAPER1_PILOT_BLUEPRINT.sections[0]?.paper).toBe('paper1');
     expect(PAPER1_PILOT_BLUEPRINT.sections[0]?.questionCount).toBe(50);
+  });
+});
+
+describe('Phase F taxonomy schemas', () => {
+  it('validates MockTestSchema with setCode conforming to standard format', () => {
+    const mockTest = {
+      mockTestId: 'mt-pyq-2024-jun18-s1',
+      title: 'UGC NET Paper 1 — 18 June 2024 (Shift 1)',
+      setCode: 'PYQ-UN-P1-24J-S1',
+      kind: 'pyq' as const,
+      blueprintId: 'bp1',
+      access: 'paid' as const,
+      contentLabel: 'fully_verified' as const,
+    };
+    const parsed = MockTestSchema.safeParse(mockTest);
+    expect(parsed.success).toBe(true);
+    if (parsed.success) {
+      expect(parsed.data.setCode).toBe('PYQ-UN-P1-24J-S1');
+    }
+  });
+
+  it('validates QuestionSchema with usedInSets array tracking set codes', () => {
+    const qDoc = {
+      subjectId: 'paper1',
+      unitId: 'u1',
+      topicId: 't1',
+      difficulty: 'medium' as const,
+      languages: ['en' as const],
+      status: 'published' as const,
+      currentVersion: 1,
+      preview: 'Preview text for question',
+      usedInSets: ['PYQ-UN-P1-24J-S1', 'UE-UN-P1-MK01'],
+    };
+    const parsed = QuestionSchema.safeParse(qDoc);
+    expect(parsed.success).toBe(true);
+    if (parsed.success) {
+      expect(parsed.data.usedInSets).toEqual(['PYQ-UN-P1-24J-S1', 'UE-UN-P1-MK01']);
+    }
+  });
+
+  it('defaults usedInSets to empty array when omitted', () => {
+    const qDoc = {
+      subjectId: 'paper1',
+      unitId: 'u1',
+      topicId: 't1',
+      difficulty: 'medium' as const,
+      languages: ['en' as const],
+      status: 'draft' as const,
+      currentVersion: 1,
+    };
+    const parsed = QuestionSchema.safeParse(qDoc);
+    expect(parsed.success).toBe(true);
+    if (parsed.success) {
+      expect(parsed.data.usedInSets).toEqual([]);
+    }
   });
 });
 

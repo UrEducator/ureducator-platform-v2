@@ -7,7 +7,11 @@ const id = z.string().regex(/^[A-Za-z0-9_-]{1,80}$/);
 
 export const SaveQuestionInput = z.object({
   questionId: id.optional(),
-  meta: z.object({ subjectId: id, unitId: id, topicId: id, subtopicId: id.optional(), difficulty: z.enum(DIFFICULTIES), languages: z.array(z.enum(LANGS)).min(1) }),
+  meta: z.object({
+    subjectId: id, unitId: id, topicId: id, subtopicId: id.optional(),
+    difficulty: z.enum(DIFFICULTIES), languages: z.array(z.enum(LANGS)).min(1),
+    usedInSets: z.array(z.string()).default([]).optional(),
+  }),
   version: QuestionVersionBase.pick({ content: true, correct: true, explanation: true, provenance: true }).superRefine(refineQuestion),
 });
 export const TransitionInput = z.object({ questionId: id, version: z.number().int().min(1), to: z.enum(PUBLICATION_STATUSES) });
@@ -18,6 +22,7 @@ export const UpsertCatalogueInput = z.discriminatedUnion('kind', [
 ]);
 export const UpsertMockTestInput = z.object({
   mockTestId: id.optional(), title: z.string().min(3).max(140),
+  setCode: z.string().max(80).optional(),
   kind: z.enum(['full', 'paper1', 'paper2', 'unit', 'topic', 'pyq', 'custom']),
   blueprintId: id, access: z.enum(['free', 'paid']), collectionId: id.optional(), timed: z.boolean(), shuffle: z.boolean(),
   opensAtMs: z.number().int().optional(), closesAtMs: z.number().int().optional(),
@@ -27,8 +32,10 @@ export const UpsertMockTestInput = z.object({
 export const MockTestRefInput = z.object({ mockTestId: id });
 export const AdminListInput = z.object({
   collection: z.enum(['users', 'roles', 'subjects', 'units', 'topics', 'questions', 'mockTests', 'examBlueprints', 'leads', 'supportTickets', 'auditLogs', 'orders', 'paymentEvents', 'plans', 'coupons', 'resources']),
-  limit: z.number().int().min(1).max(50).default(25), startAfter: id.optional(),
+  limit: z.number().int().min(1).max(1000).default(50), startAfter: id.optional(),
   status: z.string().max(40).optional(),
+  unitId: z.string().max(80).optional(),
+  topicId: z.string().max(80).optional(),
 });
 export const UpsertPlanInput = z.object({
   planId: id, name: z.string().min(2).max(80), pricePaise: z.number().int().min(0).max(100_000_00), durationDays: z.number().int().min(1).max(1100),

@@ -62,7 +62,7 @@ export async function transitionQuestion(d: Deps, a: StaffActor, i: { questionId
     const head = await tx.get<{ currentVersion: number; publishedVersion?: number }>(P.question(i.questionId));
     if (!v || !head) throw err('not-found', 'QUESTION_NOT_FOUND', 'Question not found.');
     if (!a.emailVerified || !canTransition(roleOf(a), v.status, i.to)) throw err('permission-denied', 'FORBIDDEN', 'This status change is not allowed for your role.');
-    if (i.to === 'approved' && v.createdBy === a.uid) throw err('permission-denied', 'SEPARATION_OF_DUTIES', 'A different reviewer must approve your question.');
+    if (i.to === 'approved' && v.createdBy === a.uid && roleOf(a) !== 'owner') throw err('permission-denied', 'SEPARATION_OF_DUTIES', 'A different reviewer must approve your question.');
     if (i.to === 'published' && v.provenance.copyrightStatus === 'unknown') throw err('failed-precondition', 'COPYRIGHT_UNKNOWN', 'Set the copyright status before publishing.');
     if (i.to === 'published' && v.provenance.kind === 'official_pyq' && !v.provenance.officialPyqVerified) {
       throw err('failed-precondition', 'UNVERIFIED_CONTENT_RESTRICTED', 'Cannot publish an unverified official PYQ question.');
@@ -83,7 +83,8 @@ export async function upsertMockTest(d: Deps, a: StaffActor, i: z.infer<typeof U
     if (prev?.status === 'published') throw err('failed-precondition', 'UNPUBLISH_FIRST', 'Unpublish this test before editing it.');
     if (new Set(i.questionRefs.map((r) => r.qid)).size !== i.questionRefs.length) throw err('invalid-argument', 'DUPLICATE_QUESTION', 'A question appears twice in this test.');
     const { mockTestId: _m, ...rest } = i;
-    tx.set(P.mockTest(id), { ...rest, status: 'draft', paperId: '', paperVersion: prev?.paperVersion ?? 0, version: (prev?.version ?? 0) + 1, updatedAtMs: d.clock(), updatedBy: a.uid });
+    const setCode = i.setCode?.trim().toUpperCase();
+    tx.set(P.mockTest(id), { ...rest, ...(setCode ? { setCode } : {}), status: 'draft', paperId: '', paperVersion: prev?.paperVersion ?? 0, version: (prev?.version ?? 0) + 1, updatedAtMs: d.clock(), updatedBy: a.uid });
     return { mockTestId: id };
   }).then(async (r) => { await log(d, a, 'mocktest.save', r.mockTestId); return r; });
 }
@@ -231,9 +232,14 @@ const LIST_RULES: Record<z.infer<typeof AdminListInput>['collection'], { perm: P
 export async function adminList(d: Deps, a: StaffActor, i: z.infer<typeof AdminListInput>) {
   const rule = LIST_RULES[i.collection];
   if (!a.emailVerified || !rule.perm.some((p) => can(roleOf(a), p))) throw err('permission-denied', 'FORBIDDEN', 'You do not have permission to view this.');
+  const where: [string, '==', unknown][] = [];
+  if (i.status) where.push(['status', '==', i.status]);
+  if (i.unitId) where.push(['unitId', '==', i.unitId]);
+  if (i.topicId) where.push(['topicId', '==', i.topicId]);
   const rows = await d.store.list<Record<string, unknown>>(i.collection, {
-    limit: i.limit, ...(i.startAfter ? { startAfter: i.startAfter } : {}), ...(i.status ? { where: [['status', '==', i.status]] } : {}),
-    ...(rule.order && !i.status ? { orderBy: rule.order, desc: true } : {}),
+    limit: i.limit, ...(i.startAfter ? { startAfter: i.startAfter } : {}),
+    ...(where.length > 0 ? { where } : {}),
+    ...(rule.order && where.length === 0 ? { orderBy: rule.order, desc: true } : {}),
   });
   const items = rows.map((r) => ({ id: r.id, ...(rule.pick ? Object.fromEntries(rule.pick.filter((k) => k in r.data).map((k) => [k, r.data[k]])) : r.data) }));
   return { items, next: rows.length === i.limit ? rows.at(-1)?.id ?? null : null };

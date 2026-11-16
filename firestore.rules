@@ -30,6 +30,8 @@ service cloud.firestore {
     match /results/{id}                 { allow get, list: if signedIn() && resource.data.uid == request.auth.uid; allow write: if false; }
     match /orders/{id}                  { allow get, list: if signedIn() && resource.data.uid == request.auth.uid; allow write: if false; }
     match /supportTickets/{id}          { allow get, list: if signedIn() && resource.data.uid == request.auth.uid; allow write: if false; }
+    match /tickets/{id}                 { allow get, list: if signedIn(); allow write: if false; }
+    match /notifications/{id}          { allow get, list: if signedIn() && (resource.data.userId == request.auth.uid || resource.data.userId == 'GLOBAL'); allow write: if false; }
 
     // ---- Server-only (explicitly denied for documentation; the catch-all below would also deny them) ----
     match /publishedPapers/{id}         { allow read, write: if false; }  // served only through startExam

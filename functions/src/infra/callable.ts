@@ -7,13 +7,21 @@ import { authPort, deps } from './runtime';
 import { dispatch, type EndpointDef } from './dispatch';
 
 let checked = false;
+
+/**
+ * Allowed CORS origins: production and staging domains from CONFIG plus local development origins (localhost:3000).
+ * Handles both standard callable invocations and OPTIONS preflight requests.
+ */
+const LOCAL_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://127.0.0.1:3000'];
+const allowedCorsOrigins = Array.from(new Set([...CONFIG.allowedOrigins, ...LOCAL_ALLOWED_ORIGINS]));
+
 /** Cloud Functions adapter: environment guard, App Check visibility, structured logs, and mapping of safe errors to HttpsError. */
 export function callable(name: string, def: EndpointDef, secrets: SecretParam[] = []) {
   return onCall(
     {
       region: CONFIG.region, maxInstances: CONFIG.maxInstances, minInstances: 0, cpu: 1, concurrency: 40,
       memory: def.memory ?? '512MiB', timeoutSeconds: def.timeoutSeconds ?? 30,
-      cors: CONFIG.allowedOrigins.length ? CONFIG.allowedOrigins : false,
+      cors: allowedCorsOrigins,
       enforceAppCheck: CONFIG.enforceAppCheck, ...(secrets.length ? { secrets } : {}),
     },
     async (req: CallableRequest) => {

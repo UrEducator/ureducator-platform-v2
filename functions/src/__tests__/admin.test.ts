@@ -90,6 +90,23 @@ describe('question workflow', () => {
     await expect(admin.transitionQuestion(e.d, adm, { questionId, version, to: 'approved' })).rejects.toMatchObject({ reason: 'SEPARATION_OF_DUTIES' });
     await expect(admin.transitionQuestion(e.d, reviewer, { questionId, version, to: 'approved' })).resolves.toBeTruthy();
   });
+  it('allows owner to self-approve while enforcing separation of duties for all other staff', async () => {
+    const e = mk();
+    // Non-owner (admin) cannot approve own question
+    const { questionId: q1, version: v1 } = await admin.saveQuestion(e.d, adm, qInput(1));
+    await admin.transitionQuestion(e.d, adm, { questionId: q1, version: v1, to: 'review' });
+    await expect(admin.transitionQuestion(e.d, adm, { questionId: q1, version: v1, to: 'approved' })).rejects.toMatchObject({ reason: 'SEPARATION_OF_DUTIES' });
+
+    // Super admin cannot approve own question
+    const { questionId: q2, version: v2 } = await admin.saveQuestion(e.d, superA, qInput(2));
+    await admin.transitionQuestion(e.d, superA, { questionId: q2, version: v2, to: 'review' });
+    await expect(admin.transitionQuestion(e.d, superA, { questionId: q2, version: v2, to: 'approved' })).rejects.toMatchObject({ reason: 'SEPARATION_OF_DUTIES' });
+
+    // Owner CAN approve own question (owner super-admin override)
+    const { questionId: q3, version: v3 } = await admin.saveQuestion(e.d, owner, qInput(3));
+    await admin.transitionQuestion(e.d, owner, { questionId: q3, version: v3, to: 'review' });
+    await expect(admin.transitionQuestion(e.d, owner, { questionId: q3, version: v3, to: 'approved' })).resolves.toMatchObject({ status: 'approved' });
+  });
   it('refuses to publish when copyright status is unknown', async () => {
     const e = mk();
     const { questionId, version } = await admin.saveQuestion(e.d, editor, qInput(1, { provenance: { kind: 'original', copyrightStatus: 'unknown', officialPyqVerified: false } }));
