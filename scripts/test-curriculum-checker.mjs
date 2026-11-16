@@ -734,37 +734,58 @@ console.log('\n--- Section 6: Claude C-03 Anti-Auto-Promotion Guard ---');
 console.log('\n--- Section 7: Permanent CLI Invocation & Fail-Closed Suite (C-2, C-5, E-3, E-4, E-5) ---');
 {
   const scriptPath = join(REPO_ROOT, 'scripts', 'check-curriculum.mjs');
-  const starterPath = join(REPO_ROOT, 'curriculum', 'paper1.syllabus.json');
-
-  // CLI-1: Normal check on starter syllabus -> exit 0
-  const cli1 = spawnSync(process.execPath, [scriptPath, starterPath], { encoding: 'utf8' });
-  assert(cli1.status === 0, 'CLI-1: Normal check on starter exits with code 0');
-  assert(cli1.stdout.includes('RESULT: PASS (Structurally valid)'), 'CLI-1: Normal check outputs RESULT: PASS (Structurally valid)');
-
-  // CLI-2: Starter syllabus with --release flag -> exit 1
-  const cli2 = spawnSync(process.execPath, [scriptPath, starterPath, '--release'], { encoding: 'utf8' });
-  assert(cli2.status === 1, 'CLI-2: Starter syllabus with --release exits with code 1');
-  assert(cli2.stdout.includes('RESULT: FAIL (Schema and governance errors detected)'), 'CLI-2: Release check outputs RESULT: FAIL');
-  assert(cli2.stdout.includes("Release validation failure (R-1): --release strictly requires V3 verification ('dual_verified')"), 'CLI-2: Error explains strict V3 requirement');
-
-  // CLI-3: Unknown option --relase -> exit 2
-  const cli3 = spawnSync(process.execPath, [scriptPath, starterPath, '--relase'], { encoding: 'utf8' });
-  assert(cli3.status === 2, 'CLI-3: Unknown option --relase exits with code 2');
-  assert(cli3.stderr.includes('Unknown option: --relase'), 'CLI-3: Stderr reports Unknown option: --relase');
-
-  // CLI-4: Incorrect case --Release -> exit 2
-  const cli4 = spawnSync(process.execPath, [scriptPath, starterPath, '--Release'], { encoding: 'utf8' });
-  assert(cli4.status === 2, 'CLI-4: Incorrect case --Release exits with code 2');
-  assert(cli4.stderr.includes('Unknown option: --Release'), 'CLI-4: Stderr reports Unknown option: --Release');
-
-  // CLI-5: Option with argument --release=1 -> exit 2
-  const cli5 = spawnSync(process.execPath, [scriptPath, starterPath, '--release=1'], { encoding: 'utf8' });
-  assert(cli5.status === 2, 'CLI-5: Option with argument --release=1 exits with code 2');
-  assert(cli5.stderr.includes('Unknown option: --release=1'), 'CLI-5: Stderr reports Unknown option: --release=1');
-
-  // E-3: Portable temporary directory management with fs.mkdtempSync and safe cleanup
   const tempDir = mkdtempSync(join(os.tmpdir(), 'ureducator-cli-test-'));
+  const starterPath = join(tempDir, 'paper1.starter.json');
+  writeFileSync(
+    starterPath,
+    JSON.stringify(
+      {
+        subjectCode: '00',
+        subjectName: { en: 'Paper I', hi: 'प्रश्नपत्र I' },
+        syllabusVersion: 1,
+        status: 'draft',
+        verification: 'unverified',
+        effectiveFrom: 'unknown',
+        sourceDocuments: [],
+        transcription: {
+          transcriber: { name: 'PENDING_TRANSCRIPTION', date: '' },
+          verifier: { name: 'PENDING_VERIFICATION', date: '' }
+        },
+        units: []
+      },
+      null,
+      2
+    ),
+    'utf8'
+  );
+
   try {
+    // CLI-1: Normal check on starter syllabus -> exit 0
+    const cli1 = spawnSync(process.execPath, [scriptPath, starterPath], { encoding: 'utf8' });
+    assert(cli1.status === 0, 'CLI-1: Normal check on starter exits with code 0');
+    assert(cli1.stdout.includes('RESULT: PASS (Structurally valid)'), 'CLI-1: Normal check outputs RESULT: PASS (Structurally valid)');
+
+    // CLI-2: Starter syllabus with --release flag -> exit 1
+    const cli2 = spawnSync(process.execPath, [scriptPath, starterPath, '--release'], { encoding: 'utf8' });
+    assert(cli2.status === 1, 'CLI-2: Starter syllabus with --release exits with code 1');
+    assert(cli2.stdout.includes('RESULT: FAIL (Schema and governance errors detected)'), 'CLI-2: Release check outputs RESULT: FAIL');
+    assert(cli2.stdout.includes("Release validation failure (R-1): --release strictly requires V3 verification ('dual_verified')"), 'CLI-2: Error explains strict V3 requirement');
+
+    // CLI-3: Unknown option --relase -> exit 2
+    const cli3 = spawnSync(process.execPath, [scriptPath, starterPath, '--relase'], { encoding: 'utf8' });
+    assert(cli3.status === 2, 'CLI-3: Unknown option --relase exits with code 2');
+    assert(cli3.stderr.includes('Unknown option: --relase'), 'CLI-3: Stderr reports Unknown option: --relase');
+
+    // CLI-4: Incorrect case --Release -> exit 2
+    const cli4 = spawnSync(process.execPath, [scriptPath, starterPath, '--Release'], { encoding: 'utf8' });
+    assert(cli4.status === 2, 'CLI-4: Incorrect case --Release exits with code 2');
+    assert(cli4.stderr.includes('Unknown option: --Release'), 'CLI-4: Stderr reports Unknown option: --Release');
+
+    // CLI-5: Option with argument --release=1 -> exit 2
+    const cli5 = spawnSync(process.execPath, [scriptPath, starterPath, '--release=1'], { encoding: 'utf8' });
+    assert(cli5.status === 2, 'CLI-5: Option with argument --release=1 exits with code 2');
+    assert(cli5.stderr.includes('Unknown option: --release=1'), 'CLI-5: Stderr reports Unknown option: --release=1');
+
     // CLI-6: Target path containing spaces + --release -> exit 1, runs validation
     const spacePath = join(tempDir, 'temp syllabus space test.json');
     copyFileSync(starterPath, spacePath);
@@ -872,12 +893,12 @@ console.log('\n--- Section 8: Final C-03 Acceptance Remediation Tests (F-4, F-5,
   assert(PROSE_BRACKETED_PLACEHOLDER_REGEX.test('[ todo ]') === true, 'G-2: [ todo ] with spaces rejected by bracket regex');
   assert(PROSE_BRACKETED_PLACEHOLDER_REGEX.test('[\nTODO\n]') === true, 'G-2: [\\nTODO\\n] with internal newlines rejected (cleanTextForChecks normalizes)');
 
-  // G-2 / G-1: Dash separators are NOT treated as colon equivalents (G-1 uses only colon separator)
-  // [TODO - reason] is accepted by bracket regex because dash is not the colon separator
-  assert(PROSE_BRACKETED_PLACEHOLDER_REGEX.test('[TODO - reason]') === false, 'G-2/G-1: [TODO - reason] accepted by bracket regex (dash is not separator in G-1)');
-  assert(PROSE_BRACKETED_PLACEHOLDER_REGEX.test('[TEST FIXTURE - NOT OFFICIAL CONTENT]') === false, 'G-2/G-1: [TEST FIXTURE - NOT OFFICIAL] accepted by bracket regex (dash not separator)');
-  // Note: containsProsePlaceholder('[TEST FIXTURE - NOT OFFICIAL CONTENT]') is true via PROSE_PHRASES_REGEX
-  assert(containsProsePlaceholder('[TEST FIXTURE - NOT OFFICIAL CONTENT]') === true, 'G-2: [TEST FIXTURE - NOT OFFICIAL CONTENT] rejected by containsProsePlaceholder (phrase rule)');
+  // F-round: Dash separators ([-–—]\s) ARE treated as valid separator markers
+  // [TODO - reason] and [TEST FIXTURE - NOT OFFICIAL CONTENT] are rejected by bracket regex under unified separator policy
+  assert(PROSE_BRACKETED_PLACEHOLDER_REGEX.test('[TODO - reason]') === true, 'F-round: [TODO - reason] rejected by bracket regex (dash separator active)');
+  assert(PROSE_BRACKETED_PLACEHOLDER_REGEX.test('[TEST FIXTURE - NOT OFFICIAL CONTENT]') === true, 'F-round: [TEST FIXTURE - NOT OFFICIAL] rejected by bracket regex (dash separator active)');
+  // Note: containsProsePlaceholder('[TEST FIXTURE - NOT OFFICIAL CONTENT]') is true via PROSE_PHRASES_REGEX and bracket regex
+  assert(containsProsePlaceholder('[TEST FIXTURE - NOT OFFICIAL CONTENT]') === true, 'G-2: [TEST FIXTURE - NOT OFFICIAL CONTENT] rejected by containsProsePlaceholder');
 
   // G-2 / P03: Exact whole-bracket semantics (embedded marker ≠ whole content)
   assert(PROSE_BRACKETED_PLACEHOLDER_REGEX.test('[Dummy variables]') === false, 'G-2/P03: [Dummy variables] accepted by bracket regex (whole bracket ≠ marker)');
@@ -1237,6 +1258,122 @@ process.stdout.write("FALLBACK_OUTCOME:" + outcome);
     assert(containsProsePlaceholder('LOREM IPSUM2') === false, 'H-4: containsProsePlaceholder("LOREM IPSUM2") === false');
     assert(containsProsePlaceholder('[DUMMY text]') === false, 'H-4: containsProsePlaceholder("[DUMMY text]") === false');
     assert(containsProsePlaceholder('[abc DUMMY]') === false, 'H-4: containsProsePlaceholder("[abc DUMMY]") === false');
+  }
+
+  // -------------------------------------------------------------------------
+  // F-5 Review Remediation: 27 Missing Regression Probes (B06, B10, C30-C33, C38/C39, P21, P23/P24, U15/U16, S54/S55, E80, I77, K44, N70)
+  // -------------------------------------------------------------------------
+  {
+    const P = containsProsePlaceholder;
+    const U = (h) => String.fromCodePoint(parseInt(h, 16));
+
+    // ---- B06: marker + colon + EMPTY description (lowercase, so the uppercase-token rule cannot shadow it)
+    assert(P('[todo:]') === true, 'X-B06: [todo:] (empty description after colon) rejected');
+    assert(P('[परीक्षण:]') === true, 'X-B06: [परीक्षण:] rejected');
+
+    // ---- B10: empty brackets are NOT a marker (guards against an accidental empty alternative)
+    assert(P('[]') === false, 'X-B10: [] accepted');
+    assert(P('[ ]') === false, 'X-B10: [ ] accepted');
+    assert(P('a [] b') === false, 'X-B10: embedded [] accepted');
+
+    // ---- C30 / C32 / C33: invisible characters stripped inside LOWERCASE bracket markers (no other rule shadows them)
+    assert(P('[to' + U('0007') + 'do]') === true, 'X-C30: control character (Cc, U+0007) inside [todo] is stripped');
+    assert(P('[to' + U('034F') + 'do]') === true, 'X-C32: combining grapheme joiner U+034F inside [todo] is stripped');
+    assert(P('[todo' + U('FE0F') + ']') === true, 'X-C33: variation selector U+FE0F after [todo] is stripped');
+    assert(P('[to' + U('FE00') + 'do]') === true, 'X-C33: variation selector U+FE00 inside [todo] is stripped');
+
+    // ---- C38 / C39: NEL and bare CR must behave like a space between the words of a phrase
+    assert(P('TEST' + U('0085') + 'FIXTURE') === true, 'X-C38: NEL (U+0085) between TEST and FIXTURE treated as a space');
+    assert(P('LOREM' + U('000D') + 'IPSUM') === true, 'X-C39: bare CR between LOREM and IPSUM treated as a space');
+
+    // ---- P21 (= AG M04): \s+ means ONE-or-more whitespace; glued LOREMIPSUM is intentionally accepted (pin it)
+    assert(P('LOREMIPSUM') === false, 'X-P21: LOREMIPSUM (no space) accepted');
+    assert(P('TESTFIXTURE') === false, 'X-P21: TESTFIXTURE (no space) accepted');
+
+    // ---- P23 / P24 / U15 / U16: DIGIT boundaries
+    assert(P('1LOREM IPSUM') === false, 'X-P23: digit before LOREM IPSUM => glued, accepted');
+    assert(P('LOREM IPSUM2') === false, 'X-P24: digit after LOREM IPSUM => glued, accepted');
+    assert(P('1TEST FIXTURE') === false, 'X-P23: digit before TEST FIXTURE accepted');
+    assert(P('TEST FIXTURE2') === false, 'X-P24: digit after TEST FIXTURE accepted');
+    assert(P('1TODO') === false, 'X-U15: digit before TODO => glued, accepted');
+    assert(P('TODO1') === false, 'X-U16: digit after TODO => glued, accepted');
+    assert(P('२TODO') === false && P('TODO२') === false, 'X-U15/16: Devanagari digit glued to TODO accepted');
+
+    // ---- S54 / S55: single-verifier "verified" (V2) also rejects placeholders in statements
+    const mkV2 = () => ({
+      subjectCode: '00',
+      subjectName: { en: 'Paper I', hi: 'प्रश्नपत्र I' },
+      syllabusVersion: 1,
+      status: 'in_review',
+      verification: 'verified',
+      effectiveFrom: '2024-06',
+      sourceDocuments: [{ docId: 'DOC-EN', title: 'EN', language: 'en', sha256: H }],
+      transcription: {
+        transcriber: { name: 'Alice', date: '2026-11-05' },
+        verifier: { name: 'Bob', date: '2026-11-05' },
+        isManuallyTypedFromVisual: true,
+      },
+      units: CANONICAL_PAPER_1_UNITS.map((u) => ({
+        unitNo: u.unitNo,
+        title: { en: u.titleEn, hi: u.titleHi },
+        statements: [
+          {
+            statementNo: 1,
+            text: { en: 'S ' + u.unitNo, hi: 'विवरण ' + u.unitNo },
+            page: u.unitNo,
+            sourceDocId: 'DOC-EN',
+          },
+        ],
+      })),
+    });
+
+    let dV2 = mkV2();
+    dV2.units[0].statements[0].text.en = 'Teaching [TODO] later';
+    let rV2 = validateSyllabus(dV2);
+    assert(
+      rV2.valid === false &&
+        rV2.errors.some((e) => /placeholder text found in verified English statement/.test(e)),
+      'X-S54: V2 verified + [TODO] English statement rejected with verified-statement message'
+    );
+
+    dV2 = mkV2();
+    dV2.units[0].statements[0].text.hi = 'विवरण [परीक्षण] शेष';
+    rV2 = validateSyllabus(dV2);
+    assert(
+      rV2.valid === false &&
+        rV2.errors.some((e) => /placeholder text found in verified Hindi statement/.test(e)),
+      'X-S55: V2 verified + [परीक्षण] Hindi statement rejected with verified-statement message'
+    );
+
+    // ---- E80: unusable moduleUrl / argv fail CLOSED-to-false (never throws)
+    assert(isCliEntry({ argv1: '/x/a.mjs', moduleUrl: 'http://example.com/a.mjs' }) === false, 'X-E80: non-file moduleUrl returns false (no throw)');
+    assert(isCliEntry({ argv1: 12345, moduleUrl: 'file:///x/a.mjs' }) === false, 'X-E80: non-string argv1 returns false (no throw)');
+
+    // ---- I77 / K44 / N70: non-string and empty inputs
+    assert(normalizeIdentity(undefined) === '' && normalizeIdentity(42) === '', 'X-I77: normalizeIdentity(non-string) === ""');
+    assert(P(undefined) === false && P(42) === false && P(null) === false, 'X-K44: containsProsePlaceholder(non-string) === false');
+    assert(isPlaceholderName('') === true && isPlaceholderName('   ') === true, 'X-N70: empty / whitespace-only name is a placeholder name');
+  }
+
+  // -------------------------------------------------------------------------
+  // Claude Separator Policy Regression Suite (Dash, En-Dash, Em-Dash vs. Academic Terms)
+  // -------------------------------------------------------------------------
+  {
+    const P = containsProsePlaceholder;
+    // 4 Rejected dash-separator placeholders
+    assert(P('[परीक्षण - सामग्री नहीं]') === true, 'SEP: [परीक्षण - सामग्री नहीं] rejected');
+    assert(P('[PLACEHOLDER - add unit]') === true, 'SEP: [PLACEHOLDER - add unit] rejected');
+    assert(P('[todo - x]') === true, 'SEP: [todo - x] rejected');
+    assert(P('[DUMMY - text]') === true, 'SEP: [DUMMY - text] rejected');
+
+    // En-dash and Em-dash variants
+    assert(P('[TODO – note]') === true, 'SEP: [TODO – note] with en-dash rejected');
+    assert(P('[TODO — note]') === true, 'SEP: [TODO — note] with em-dash rejected');
+
+    // 3 Accepted legitimate academic terminology
+    assert(P('[Dummy variables]') === false, 'SEP: [Dummy variables] accepted');
+    assert(P('[Dummy-coded]') === false, 'SEP: [Dummy-coded] accepted');
+    assert(P('[परीक्षण परिणाम]') === false, 'SEP: [परीक्षण परिणाम] accepted');
   }
 }
 

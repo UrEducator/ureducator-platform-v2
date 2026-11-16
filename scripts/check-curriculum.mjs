@@ -80,7 +80,7 @@ export const NAME_PLACEHOLDER_REGEX = /(?<![\p{L}\p{N}])(?:TODO|TBD|PLACEHOLDER|
 // [PENDING] and [UNKNOWN] are accepted by this rule (not in list); name rule (Policy A) still rejects them.
 // Note: [abc TODO] is rejected by the uppercase-token rule (PROSE_UPPERCASE_TOKENS_REGEX).
 // Note: [TODO fix this] is also rejected by PROSE_UPPERCASE_TOKENS_REGEX.
-export const PROSE_BRACKETED_PLACEHOLDER_REGEX = /\[\s*(?:TODO|TBD|PLACEHOLDER|LOREM\s+IPSUM|DUMMY|FIXME|TEST\s+FIXTURE|परीक्षण)\s*(?::[^\]]*)?\]/iu;
+export const PROSE_BRACKETED_PLACEHOLDER_REGEX = /\[\s*(?:TODO|TBD|PLACEHOLDER|LOREM\s+IPSUM|DUMMY|FIXME|TEST\s+FIXTURE|परीक्षण)\s*(?:(?::|[-–—]\s)[^\]]*)?\]/iu;
 export const PROSE_UPPERCASE_TOKENS_REGEX = /(?<![\p{L}\p{N}])(?:TODO:?|FIXME|TBD)(?![\p{L}\p{N}])/u;
 export const PROSE_PHRASES_REGEX = /(?<![\p{L}\p{N}])(?:LOREM\s+IPSUM|TEST\s+FIXTURE)(?![\p{L}\p{N}])/iu;
 
