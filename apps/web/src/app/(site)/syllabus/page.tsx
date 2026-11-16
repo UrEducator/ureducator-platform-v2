@@ -26,7 +26,7 @@ export default function Page() {
     </details>
   );
   return (
-    <main className="mx-auto max-w-4xl px-4 py-14 sm:px-6">
+    <main className="w-full px-4 py-14 sm:px-6 lg:px-8 xl:px-12">
       <h1 className="text-4xl sm:text-5xl">Syllabus and content status</h1>
       <Alert tone="warn" className="mt-6" title="Not yet checked against the official syllabus">The unit names below follow the commonly published structure of Paper I. They have not been verified against the current NTA notification, so none of it is labelled &ldquo;{LABEL_TEXT.fully_verified}&rdquo;. Paper II subjects are samples only. Read the official syllabus before you plan your study.</Alert>
       <section className="mt-10" aria-labelledby="p1"><h2 id="p1" className="text-2xl">Paper I</h2>{paper1.map((r) => <Block key={r.id} r={r} />)}</section>

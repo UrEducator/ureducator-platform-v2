@@ -7,7 +7,7 @@ export default function Page() {
   useDocumentTitle('Pricing');
   const plans = useLoad((b) => b.reads.publishedPlans());
   return (
-    <main className="mx-auto max-w-4xl px-4 py-14 sm:px-6">
+    <main className="w-full px-4 py-14 sm:px-6 lg:px-8 xl:px-12">
       <h1 className="text-4xl sm:text-5xl">Pricing</h1>
       <Alert tone="info" className="mt-6" title="Payments are switched off in this preview">Nothing can be bought yet. Prices appear below only after an authorised administrator publishes them.</Alert>
       <div className="mt-8">

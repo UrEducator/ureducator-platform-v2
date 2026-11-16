@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 export function Prose({ title, updated, children, notice }: { title: string; updated?: string; children: ReactNode; notice?: ReactNode }) {
   return (
-    <main className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
+    <main className="w-full px-4 py-14 sm:px-6 lg:px-8 xl:px-12">
       <h1 className="text-4xl sm:text-5xl">{title}</h1>
       {updated && <p className="mt-2 text-sm text-muted">{updated}</p>}
       {notice && <div className="mt-6">{notice}</div>}

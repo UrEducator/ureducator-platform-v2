@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import { AuthProvider } from '@/lib/auth';
+import { ToastProvider } from '@/components/ui';
 import { ENV } from '@/lib/env';
 import './globals.css';
 
@@ -25,7 +26,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body>
         <a href="#main" className="skip-link">Skip to main content</a>
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <ToastProvider>{children}</ToastProvider>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -55,7 +55,20 @@ function Body() {
       <div role="status" className="mb-6 rounded-sheet border border-[#f59e0b] bg-[#fef3c7] px-4 py-2.5 text-center text-xs sm:text-sm font-semibold text-[#92400e]">
         UrEducator Pilot Study — Practice Content Only — Not an Official NTA/UGC Publication
       </div>
-      <PageHeader title={t.title} intro={t.description} actions={<ContentLabelPill label={t.contentLabel} />} />
+      <PageHeader
+        title={t.title}
+        intro={t.description}
+        actions={
+          <div className="flex flex-wrap items-center gap-2">
+            {t.setCode && (
+              <span className="rounded bg-neutral-100 px-2 py-0.5 font-mono text-xs font-semibold tracking-wider text-neutral-800 border border-neutral-300">
+                {t.setCode}
+              </span>
+            )}
+            <ContentLabelPill label={t.contentLabel} />
+          </div>
+        }
+      />
       {t.contentLabel !== 'fully_verified' && <Alert tone="warn" className="mb-6" title="Practice content">This test is labelled “{t.contentLabel === 'sample' ? 'sample content' : t.contentLabel.replace('_', ' ')}”. Its questions have not all been checked against official sources, so treat the score as practice only.</Alert>}
       <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
         <Sheet className="p-6">

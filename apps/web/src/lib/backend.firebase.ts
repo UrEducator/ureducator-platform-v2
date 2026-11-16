@@ -20,15 +20,26 @@ async function toUser(u: User | null): Promise<AuthUser | null> {
   return { uid: u.uid, email: u.email, displayName: u.displayName, emailVerified: u.emailVerified, role: typeof t.claims.role === 'string' ? t.claims.role : null };
 }
 const authErr = (e: unknown): ApiError => {
+  if (e instanceof ApiError) return e;
   const c = (e as { code?: string })?.code ?? '';
+  const message = (e as { message?: string })?.message;
   const map: Record<string, string> = {
-    'auth/invalid-credential': 'Email or password is not correct.', 'auth/wrong-password': 'Email or password is not correct.', 'auth/user-not-found': 'Email or password is not correct.',
-    'auth/email-already-in-use': 'An account with this email already exists. Sign in instead.', 'auth/weak-password': 'Choose a password with at least 8 characters.',
-    'auth/too-many-requests': 'Too many attempts. Wait a few minutes and try again.', 'auth/network-request-failed': 'Network problem. Check your connection and try again.',
-    'auth/operation-not-allowed': 'Email sign-in is not switched on for this environment yet.', 'auth/invalid-email': 'Enter a valid email address.',
+    'auth/invalid-credential': 'Email or password is not correct.',
+    'auth/wrong-password': 'Email or password is not correct.',
+    'auth/user-not-found': 'No account found with this email address.',
+    'auth/email-already-in-use': 'An account with this email already exists. Sign in instead.',
+    'auth/weak-password': 'Choose a password with at least 8 characters.',
+    'auth/too-many-requests': 'Too many failed login attempts. Please wait a few minutes and try again.',
+    'auth/network-request-failed': 'Network connection problem. Check your internet connection and try again.',
+    'auth/operation-not-allowed': 'Email sign-in is not switched on for this environment yet.',
+    'auth/invalid-email': 'Please enter a valid email address.',
   };
-  return new ApiError('auth', c || 'AUTH', map[c] ?? 'Could not complete that. Please try again.');
+  return new ApiError('auth', c || 'AUTH', map[c] ?? message ?? 'Could not complete that. Please try again.');
 };
+
+export function getClientFirestore() {
+  return getFirestore(app());
+}
 
 export function createFirebaseBackend(): Backend {
   const a = app(); const auth = getAuth(a); const db = getFirestore(a); const fns = getFunctions(a, ENV.functionsRegion);
@@ -38,7 +49,29 @@ export function createFirebaseBackend(): Backend {
     async signUp(email, password, name) {
       try { const c = await createUserWithEmailAndPassword(auth, email, password); await updateProfile(c.user, { displayName: name }); await sendEmailVerification(c.user); } catch (e) { throw authErr(e); }
     },
-    async signIn(email, password) { try { await signInWithEmailAndPassword(auth, email, password); } catch (e) { throw authErr(e); } },
+    async signIn(email, password) {
+      try {
+        const timeoutPromise = new Promise<never>((_, reject) =>
+          setTimeout(
+            () =>
+              reject(
+                new ApiError(
+                  'auth',
+                  'TIMEOUT',
+                  'Sign-in request timed out. Please check your network connection and try again.'
+                )
+              ),
+            15000
+          )
+        );
+        await Promise.race([
+          signInWithEmailAndPassword(auth, email, password),
+          timeoutPromise,
+        ]);
+      } catch (e) {
+        throw authErr(e);
+      }
+    },
     async signOut() { await signOut(auth); },
     async sendReset(email) { try { await sendPasswordResetEmail(auth, email); } catch (e) { const x = authErr(e); if (x.reason === 'auth/user-not-found') return; throw x; } },
     async resendVerification() { if (auth.currentUser) try { await sendEmailVerification(auth.currentUser); } catch (e) { throw authErr(e); } },

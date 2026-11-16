@@ -289,13 +289,15 @@ export function Dialog({
   children,
   footer,
   tone,
+  headerClassName,
 }: {
   open: boolean;
   onClose: () => void;
-  title: string;
+  title: ReactNode;
   children: ReactNode;
   footer?: ReactNode;
   tone?: 'danger';
+  headerClassName?: string;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   const tid = useId();
@@ -316,9 +318,11 @@ export function Dialog({
       className="m-auto w-[min(32rem,calc(100vw-2rem))] rounded-sheet border border-line-strong bg-surface p-0 text-ink shadow-xl backdrop:bg-black/60 backdrop:backdrop-blur-xs transition-transform duration-150"
     >
       <div className="p-6">
-        <h2 id={tid} className={cn('text-xl font-semibold', tone === 'danger' && 'text-bad')}>
-          {title}
-        </h2>
+        <div className={cn('flex flex-col', headerClassName)}>
+          <h2 id={tid} className={cn('text-xl font-semibold', tone === 'danger' && 'text-bad', headerClassName?.includes('text-center') && 'text-center')}>
+            {title}
+          </h2>
+        </div>
         <div className="mt-3 text-[15px]">{children}</div>
       </div>
       {footer && <div className="flex flex-wrap justify-end gap-2 border-t border-line bg-paper px-6 py-3">{footer}</div>}
@@ -433,3 +437,5 @@ export function Spinner({ label = 'Loading…' }: { label?: string }) {
     </div>
   );
 }
+
+export * from './Toast';

@@ -30,7 +30,7 @@ function Ticket() {
 export default function Page() {
   useDocumentTitle('Contact'); const { status } = useAuth();
   return (
-    <main className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+    <main className="w-full px-4 py-14 sm:px-6 lg:px-8 xl:px-12">
       <h1 className="text-4xl sm:text-5xl">Contact</h1>
       <p className="mt-3 max-w-xl text-muted">Signed-in students can send a support message. Everyone else can leave their email to hear about verified releases.</p>
       <div className="mt-10 grid gap-8 lg:grid-cols-2">

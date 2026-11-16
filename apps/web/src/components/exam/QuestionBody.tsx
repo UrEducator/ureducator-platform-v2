@@ -93,38 +93,35 @@ export function QuestionBody({
 
   if (hasPassage) {
     return (
-      <div className="grid gap-6">
-        {/* Desktop Split-Screen Passage View */}
-        <div className="hidden lg:grid lg:grid-cols-[1.1fr_1fr] lg:gap-8 items-start">
-          <div className="custom-scrollbar sticky top-24 max-h-[calc(100vh-12rem)] overflow-y-auto pr-2">
-            {passageContent}
-          </div>
-          <div className="min-w-0">{questionContent}</div>
+      <div className="grid gap-6 lg:grid-cols-[1.1fr_1fr] lg:gap-8 items-start">
+        {/* Mobile / Tablet Accordion View */}
+        <div className="lg:hidden rounded-sheet border border-pen-200 bg-paper/70">
+          <button
+            type="button"
+            onClick={() => setMobilePassageExpanded(!mobilePassageExpanded)}
+            className="flex w-full items-center justify-between p-3.5 text-left text-sm font-semibold text-pen-900 cursor-pointer"
+            aria-expanded={mobilePassageExpanded}
+          >
+            <span className="inline-flex items-center gap-2">
+              <BookOpen className="size-4 text-pen-600" aria-hidden="true" />
+              Reading Passage {mobilePassageExpanded ? '(Tap to collapse)' : '(Tap to expand)'}
+            </span>
+            {mobilePassageExpanded ? <ChevronUp className="size-4" /> : <ChevronDown className="size-4" />}
+          </button>
+          {mobilePassageExpanded && (
+            <div className="border-t border-line p-4 max-h-[40vh] overflow-y-auto custom-scrollbar">
+              {passageContent}
+            </div>
+          )}
         </div>
 
-        {/* Mobile / Tablet Accordion View */}
-        <div className="lg:hidden grid gap-4">
-          <div className="rounded-sheet border border-pen-200 bg-paper/70">
-            <button
-              type="button"
-              onClick={() => setMobilePassageExpanded(!mobilePassageExpanded)}
-              className="flex w-full items-center justify-between p-3.5 text-left text-sm font-semibold text-pen-900 cursor-pointer"
-              aria-expanded={mobilePassageExpanded}
-            >
-              <span className="inline-flex items-center gap-2">
-                <BookOpen className="size-4 text-pen-600" aria-hidden="true" />
-                Reading Passage {mobilePassageExpanded ? '(Tap to collapse)' : '(Tap to expand)'}
-              </span>
-              {mobilePassageExpanded ? <ChevronUp className="size-4" /> : <ChevronDown className="size-4" />}
-            </button>
-            {mobilePassageExpanded && (
-              <div className="border-t border-line p-4 max-h-[40vh] overflow-y-auto custom-scrollbar">
-                {passageContent}
-              </div>
-            )}
-          </div>
-          {questionContent}
+        {/* Desktop Sticky Passage View */}
+        <div className="hidden lg:block custom-scrollbar sticky top-24 max-h-[calc(100vh-12rem)] overflow-y-auto pr-2">
+          {passageContent}
         </div>
+
+        {/* Single Question Content */}
+        <div className="min-w-0">{questionContent}</div>
       </div>
     );
   }

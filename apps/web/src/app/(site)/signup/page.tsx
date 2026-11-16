@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Suspense, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { AuthFrame } from '@/components/AuthFrame';
-import { Alert, Button, Check, Input } from '@/components/ui';
+import { Alert, Button, Check, Input, toast } from '@/components/ui';
 import { useAuth } from '@/lib/auth';
 import { safeNext } from '@/lib/nav';
 import { asApiError } from '@/lib/types';
@@ -21,7 +21,16 @@ function Form() {
     if (!f.agree) er.agree = 'Tick the box to continue.';
     setErr(er); setFail(''); if (Object.keys(er).length || !backend) return;
     setBusy(true);
-    try { await backend.auth.signUp(f.email.trim(), f.password, f.name.trim()); router.replace(`/verify-email?next=${encodeURIComponent(safeNext(q.get('next')))}`); } catch (x) { setFail(asApiError(x).message); setBusy(false); }
+    try {
+      await backend.auth.signUp(f.email.trim(), f.password, f.name.trim());
+      router.replace(`/verify-email?next=${encodeURIComponent(safeNext(q.get('next')))}`);
+    } catch (x) {
+      const msg = asApiError(x).message;
+      setFail(msg);
+      toast({ title: 'Sign-up Failed', description: msg, tone: 'error' });
+    } finally {
+      setBusy(false);
+    }
   }
   return (
     <AuthFrame title="Create your free account" intro="Free practice tests, an error notebook and a revision planner. We will ask you to confirm your email before your first test." footer={<p>Already have an account? <Link className="font-semibold text-pen-700 underline" href="/login">Sign in</Link></p>}>

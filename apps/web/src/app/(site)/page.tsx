@@ -17,9 +17,9 @@ const FEATURES = [
 export default function Home() {
   const bp = DEFAULT_BLUEPRINT;
   return (
-    <main>
-      <section className="mx-auto grid max-w-6xl items-center gap-10 px-4 pb-16 pt-12 sm:px-6 lg:grid-cols-[1fr_1.05fr] lg:pt-20">
-        <div className="max-w-xl">
+    <main className="w-full">
+      <section className="w-full grid items-center gap-8 lg:gap-12 xl:gap-16 px-4 pb-16 pt-12 sm:px-6 lg:px-8 xl:px-12 lg:grid-cols-[1fr_1.1fr] lg:pt-20">
+        <div className="max-w-2xl">
           <h1 className="text-[2.6rem] leading-[1.04] sm:text-6xl">Sit full UGC NET mock tests on an exam screen you can trust.</h1>
           <p className="mt-5 text-lg text-muted">Timed papers, a question palette and mark for review, just like a computer-based test. Afterwards you see which topics cost you marks and what to revise next.</p>
           <div className="mt-8 flex flex-wrap gap-3"><LinkButton href="/signup" size="lg" variant="marker">Start a free practice test</LinkButton><LinkButton href="/syllabus" size="lg" variant="secondary">See what is verified</LinkButton></div>
@@ -29,7 +29,7 @@ export default function Home() {
       </section>
 
       <section aria-labelledby="what" className="border-y border-line bg-surface">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="w-full grid gap-8 lg:gap-12 xl:gap-16 px-4 py-14 sm:px-6 lg:px-8 xl:px-12 lg:grid-cols-[0.8fr_1.2fr]">
           <div><h2 id="what" className="text-3xl">What you can do here</h2><p className="mt-3 max-w-sm text-muted">Everything below works in this preview. Nothing is marked complete unless it has been tested.</p></div>
           <ul className="divide-y divide-line border-y border-line">
             {FEATURES.map((f) => (
@@ -39,7 +39,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section aria-labelledby="status" className="mx-auto grid max-w-6xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-[0.8fr_1.2fr]">
+      <section aria-labelledby="status" className="w-full grid gap-8 lg:gap-12 xl:gap-16 px-4 py-16 sm:px-6 lg:px-8 xl:px-12 lg:grid-cols-[0.8fr_1.2fr]">
         <div><h2 id="status" className="text-3xl">How we label content</h2><p className="mt-3 max-w-sm text-muted">Exam rules change and question sets vary in quality. Every subject and test carries one of these labels, and nothing is called verified until someone has checked it against the official documents.</p></div>
         <dl className="grid gap-x-8 gap-y-5 sm:grid-cols-2">
           {([['fully_verified', 'Checked against the current official notification and syllabus by a named reviewer.'], ['under_development', 'Being built. Structure is in place but the content has not been fully checked.'], ['sample', 'Written to show how the product works. Not a prediction of the real paper.'], ['coming_soon', 'Planned. Not available to practise yet.']] as [ContentLabel, string][]).map(([k, v]) => (
@@ -49,7 +49,7 @@ export default function Home() {
       </section>
 
       <section aria-labelledby="pattern" className="border-y border-line bg-pen-50">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="w-full grid gap-8 lg:gap-12 xl:gap-16 px-4 py-14 sm:px-6 lg:px-8 xl:px-12 lg:grid-cols-[0.8fr_1.2fr]">
           <div><h2 id="pattern" className="text-3xl">The paper at a glance</h2><p className="mt-3 max-w-sm text-muted">This is the pattern our full-length tests currently follow. It is configurable, and it has not yet been confirmed against the latest official notification, so check the NTA website for the current rules.</p></div>
           <dl className="grid grid-cols-2 gap-6 sm:grid-cols-4">
             {[['Questions', String(totalQuestions(bp))], ['Maximum marks', String(maxMarks(bp))], ['Duration', `${bp.durationMinutes} min`], ['Marking', `+${bp.marking.correct}, no negative`]].map(([k, v]) => (
@@ -59,7 +59,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section aria-labelledby="notify" className="mx-auto grid max-w-6xl gap-8 px-4 py-16 sm:px-6 lg:grid-cols-[0.8fr_1.2fr]">
+      <section aria-labelledby="notify" className="w-full grid gap-8 lg:gap-12 xl:gap-16 px-4 py-16 sm:px-6 lg:px-8 xl:px-12 lg:grid-cols-[0.8fr_1.2fr]">
         <div><h2 id="notify" className="text-3xl">Hear when verified tests are ready</h2><p className="mt-3 max-w-sm text-muted">Leave your email and we will write once, when the first verified set is published. You can ask us to delete your details at any time.</p></div>
         <div className="max-w-md"><LeadForm source="landing" /></div>
       </section>

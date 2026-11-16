@@ -256,8 +256,27 @@ p { text-wrap: pretty; }
   }
 }
 
-/* Printing a result or report drops the chrome */
+/* Printing a result or report drops the chrome and formats cleanly for A4 */
 @media print {
-  .no-print { display: none !important; }
-  body { background: #ffffff !important; color: #000000 !important; }
+  @page {
+    size: A4 portrait;
+    margin: 0.8cm; /* Reduced from 12mm/10mm to pack more data */
+  }
+  .no-print, header, nav, .print\:hidden {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 11pt !important;
+  }
+  #main, main, .print-full-width {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .sheet, section, figure, table {
+    box-shadow: none !important;
+  }
 }

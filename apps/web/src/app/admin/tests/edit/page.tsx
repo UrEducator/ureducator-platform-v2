@@ -16,10 +16,10 @@ const KINDS = [['full', 'Full length'], ['paper1', 'Paper I'], ['paper2', 'Paper
 function Body() {
   useDocumentTitle('Edit test'); const id = useSearchParams().get('id') ?? ''; const router = useRouter(); const { backend } = useAuth(); const { name } = useNames();
   const bps = useAdminList('examBlueprints', undefined, 50); const published = useAdminList('questions', 'published', 50); const tests = useAdminList('mockTests', undefined, 50);
-  const [f, setF] = useState({ title: '', kind: 'custom', blueprintId: '', access: 'free', label: 'under_development', reveal: 'immediate', timed: true, shuffle: false, description: '', closes: '' }); const [refs, setRefs] = useState<Ref[]>([]); const [busy, setBusy] = useState(false); const [msg, setMsg] = useState<{ tone: 'ok' | 'error'; text: string } | null>(null); const [loaded, setLoaded] = useState(!id);
+  const [f, setF] = useState({ title: '', setCode: '', kind: 'custom', blueprintId: '', access: 'free', label: 'under_development', reveal: 'immediate', timed: true, shuffle: false, description: '', closes: '' }); const [refs, setRefs] = useState<Ref[]>([]); const [busy, setBusy] = useState(false); const [msg, setMsg] = useState<{ tone: 'ok' | 'error'; text: string } | null>(null); const [loaded, setLoaded] = useState(!id);
   useEffect(() => {
     if (!id || loaded || tests.loading) return; const t = tests.items.find((x) => x.id === id); if (!t) { setLoaded(true); return; }
-    setF({ title: str(t.title), kind: str(t.kind, 'custom'), blueprintId: str(t.blueprintId), access: str(t.access, 'free'), label: str(t.contentLabel, 'under_development'), reveal: str(t.revealPolicy, 'immediate'), timed: t.timed !== false, shuffle: t.shuffle === true, description: str(t.description), closes: typeof t.closesAtMs === 'number' ? new Date(t.closesAtMs).toISOString().slice(0, 16) : '' });
+    setF({ title: str(t.title), setCode: str(t.setCode).toUpperCase(), kind: str(t.kind, 'custom'), blueprintId: str(t.blueprintId), access: str(t.access, 'free'), label: str(t.contentLabel, 'under_development'), reveal: str(t.revealPolicy, 'immediate'), timed: t.timed !== false, shuffle: t.shuffle === true, description: str(t.description), closes: typeof t.closesAtMs === 'number' ? new Date(t.closesAtMs).toISOString().slice(0, 16) : '' });
     setRefs(Array.isArray(t.questionRefs) ? (t.questionRefs as Ref[]) : []); setLoaded(true);
   }, [id, loaded, tests.loading, tests.items]);
 
@@ -33,7 +33,21 @@ function Body() {
   async function save() {
     if (!backend || !bp) return; setBusy(true); setMsg(null);
     try {
-      const r = await backend.call('adminUpsertMockTest', { ...(id ? { mockTestId: id } : {}), title: f.title.trim(), kind: f.kind as 'custom', blueprintId: bp.id, access: f.access as 'free', timed: f.timed, shuffle: f.shuffle, revealPolicy: f.reveal as 'immediate', contentLabel: f.label as ContentLabel, ...(f.description.trim() ? { description: f.description.trim() } : {}), ...(f.closes ? { closesAtMs: new Date(f.closes).getTime() } : {}), questionRefs: refs });
+      const r = await backend.call('adminUpsertMockTest', {
+        ...(id ? { mockTestId: id } : {}),
+        title: f.title.trim(),
+        ...(f.setCode.trim() ? { setCode: f.setCode.trim().toUpperCase() } : {}),
+        kind: f.kind as 'custom',
+        blueprintId: bp.id,
+        access: f.access as 'free',
+        timed: f.timed,
+        shuffle: f.shuffle,
+        revealPolicy: f.reveal as 'immediate',
+        contentLabel: f.label as ContentLabel,
+        ...(f.description.trim() ? { description: f.description.trim() } : {}),
+        ...(f.closes ? { closesAtMs: new Date(f.closes).getTime() } : {}),
+        questionRefs: refs,
+      });
       setMsg({ tone: 'ok', text: 'Saved as a draft. Publish it from the test list when it is ready.' }); if (!id) router.replace(`/admin/tests/edit?id=${r.mockTestId}`);
     } catch (e) { setMsg({ tone: 'error', text: asApiError(e).message }); } finally { setBusy(false); }
   }
@@ -45,6 +59,15 @@ function Body() {
         <div className="grid gap-6">
           <Sheet className="grid gap-4 p-5 sm:grid-cols-2"><h2 className="text-xl sm:col-span-2">Details</h2>
             <div className="sm:col-span-2"><Input label="Title" value={f.title} onChange={(e) => setF({ ...f, title: e.target.value })} /></div>
+            <div className="sm:col-span-2">
+              <Input
+                label="Set Code"
+                value={f.setCode}
+                onChange={(e) => setF({ ...f, setCode: e.target.value.toUpperCase() })}
+                placeholder="e.g. PYQ-UN-P1-24J-S1 or UE-UN-P1-MK01"
+                hint="Taxonomy format: [SOURCE]-[EXAM]-[SUBJECT]-[TYPE]-[ID] (Uppercase)"
+              />
+            </div>
             <Select label="Kind" value={f.kind} onChange={(e) => setF({ ...f, kind: e.target.value })}>{KINDS.map(([v, l]) => <option key={v} value={v}>{l}</option>)}</Select>
             <Select label="Blueprint" value={f.blueprintId} onChange={(e) => setF({ ...f, blueprintId: e.target.value })}><option value="">Choose…</option>{bps.items.map((b) => <option key={b.id} value={b.id}>{str(b.name, b.id)}</option>)}</Select>
             <Select label="Content label" value={f.label} onChange={(e) => setF({ ...f, label: e.target.value })} hint="“Fully verified” is refused for synthetic questions or an unverified blueprint.">{(Object.keys(LABEL_TEXT) as ContentLabel[]).map((l) => <option key={l} value={l}>{LABEL_TEXT[l]}</option>)}</Select>

@@ -10,7 +10,7 @@ function Body() {
   const valid = /^UR-[A-Z0-9]{8,24}$/.test(id) && /^[a-f0-9]{16,64}$/.test(sig);
   const r = useLoad((b) => b.call('verifyReport', { reportId: id, sig }), [id, sig], valid);
   return (
-    <main className="mx-auto max-w-2xl px-4 py-14 sm:px-6">
+    <main className="w-full px-4 py-14 sm:px-6 lg:px-8 xl:px-12">
       <h1 className="text-4xl">Report verification</h1>
       <div className="mt-6">
         {!valid ? <Alert tone="warn" title="No report to check">Open the link or scan the QR code printed on a UrEducator report.</Alert>
