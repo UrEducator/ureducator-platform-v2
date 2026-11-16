@@ -8,8 +8,8 @@
     "en"
   ],
   "syllabusVersion": 1,
-  "status": "published",
-  "verification": "dual_verified",
+  "status": "draft",
+  "verification": "verified",
   "effectiveFrom": "2026-12",
   "sourceDocuments": [
     {
@@ -28,10 +28,6 @@
       "name": "Syed",
       "date": "2026-11-14"
     },
-    "secondVerifier": {
-      "name": "Claude (Architecture & Security Lead)",
-      "date": "2026-11-14"
-    },
     "isManuallyTypedFromVisual": true
   },
   "metadata": {
@@ -46,9 +42,8 @@
       "date": "2026-11-14"
     },
     "verification": {
-      "verifiedBy": "Kommukuri Subhash Kumar (Bunty)",
-      "date": "2026-11-14",
-      "secondVerifier": "Syed"
+      "verifiedBy": "Syed",
+      "date": "2026-11-14"
     }
   },
   "units": [

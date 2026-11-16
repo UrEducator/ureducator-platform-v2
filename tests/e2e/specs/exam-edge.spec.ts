@@ -4,7 +4,7 @@ import { advanceClock, call, makeUser, reset, serverErrors, signInAs } from './h
 test.beforeEach(async () => { await reset(); });
 test.afterEach(async () => { expect(await serverErrors(), 'unexpected server-side errors').toEqual([]); });
 
-const startMini = async (page: Page, id = 'mt-mini') => {
+const startMini = async (page: Page, id = 'mt-pilot-1') => {
   await page.goto(`/app/tests/detail?id=${id}`);
   await page.getByLabel(/I have read the instructions/).check();
   await page.getByTestId('start-test').click();
@@ -58,9 +58,9 @@ test('the test submits itself when time runs out and the result says so', async 
 
 test('a late submit cannot add answers after the deadline, and a second submit is idempotent', async () => {
   const u = await makeUser();
-  const s = await call(u, 'startExam', { mockTestId: 'mt-mini', language: 'en', clientRequestId: 'req-a1' });
+  const s = await call(u, 'startExam', { mockTestId: 'mt-pilot-1', language: 'en', clientRequestId: 'req-a1' });
   const sid = s.body.data.sessionId as string;
-  const again = await call(u, 'startExam', { mockTestId: 'mt-mini', language: 'en', clientRequestId: 'req-a1' });
+  const again = await call(u, 'startExam', { mockTestId: 'mt-pilot-1', language: 'en', clientRequestId: 'req-a1' });
   expect(again.body.data.sessionId).toBe(sid);                    // same request id: same session, no second attempt
   await call(u, 'saveResponses', { sessionId: sid, seq: 1, responses: [{ qid: 'dq-research-sampling', selected: ['c'], visited: true, marked: false, timeSpentMs: 3000 }] });
   await advanceClock(20 * 60_000);
@@ -73,7 +73,7 @@ test('a late submit cannot add answers after the deadline, and a second submit i
 });
 
 test('with "answers open later" the score is shown but the answer key stays locked until the window closes', async ({ page }) => {
-  const u = await makeUser(); await signInAs(page, u); await startMini(page, 'mt-mini-late');
+  const u = await makeUser(); await signInAs(page, u); await startMini(page, 'mt-pilot-late');
   await page.getByTestId('option-c').check({ force: true });                                   // correct
   await page.getByTestId('save-next').click(); await page.getByTestId('option-a').check({ force: true });   // wrong: lands in the notebook, but only once review opens
   await expect(page.getByText(/All answers saved/)).toBeVisible();
@@ -95,7 +95,7 @@ test('with "answers open later" the score is shown but the answer key stays lock
 
 test("one student cannot read or finish another student's session", async () => {
   const a = await makeUser(); const b = await makeUser();
-  const s = await call(a, 'startExam', { mockTestId: 'mt-mini', language: 'en', clientRequestId: 'req-x1' });
+  const s = await call(a, 'startExam', { mockTestId: 'mt-pilot-1', language: 'en', clientRequestId: 'req-x1' });
   const sid = s.body.data.sessionId as string;
   for (const [name, data] of [['getExamSession', { sessionId: sid }], ['saveResponses', { sessionId: sid, seq: 1, responses: [{ qid: 'dq-research-sampling', selected: ['a'], visited: true, marked: false, timeSpentMs: 1 }] }], ['submitExam', { sessionId: sid, clientRequestId: 'req-x2', finalSeq: 0, reason: 'manual' }], ['getExamResult', { sessionId: sid }], ['generateReport', { sessionId: sid }]] as const) {
     const r = await call(b, name, data); expect(r.body.error?.reason, name).toBe('SESSION_NOT_FOUND');
@@ -104,8 +104,8 @@ test("one student cannot read or finish another student's session", async () => 
 
 test('the 150-question full-length format loads with the 50 + 100 layout, 300 marks and 180 minutes', async ({ page }) => {
   const u = await makeUser(); await signInAs(page, u);
-  await page.goto('/app/tests/detail?id=mt-full');
-  await expect(page.getByText('The test has 150 questions for 300 marks and lasts 180 minutes.')).toBeVisible();
+  await page.goto('/app/tests/detail?id=mt-pilot-full');
+  await expect(page.getByText(/The test has 150 questions for 300 marks and lasts 180 minutes/)).toBeVisible();
   await page.getByLabel(/I have read the instructions/).check(); await page.getByTestId('start-test').click();
   await expect(page.getByRole('heading', { name: /Question 1 of 150/ })).toBeVisible();
   await expect(page.getByTestId('timer')).toHaveText(/^03:00:0\d$|^02:59:5\d$/);

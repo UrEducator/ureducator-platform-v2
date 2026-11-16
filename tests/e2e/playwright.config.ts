@@ -2,7 +2,12 @@ import { defineConfig, devices } from '@playwright/test';
 import { existsSync } from 'node:fs';
 
 // The project's Playwright pins one Chromium revision; the sandbox may ship another. Use whichever is installed.
-const CANDIDATES = ['/opt/pw-browsers/chromium-1248/chrome-linux64/chrome', '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome'];
+const CANDIDATES = [
+  'C:/Program Files/Google/Chrome/Application/chrome.exe',
+  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
+  '/opt/pw-browsers/chromium-1248/chrome-linux64/chrome',
+  '/opt/pw-browsers/chromium-1243/chrome-linux64/chrome',
+];
 const executablePath = process.env.PW_CHROMIUM ?? CANDIDATES.find((p) => existsSync(p));
 
 export default defineConfig({

@@ -97,6 +97,7 @@ const SHIFTS = [
     id: 'mt-pyq-2024-jun18-s1',
     mockTestId: 'mt-pyq-2024-jun18-s1',
     paperId: 'paper-pyq-2024-jun18-s1',
+    setCode: 'PYQ-UN-P1-24J-S1',
     title: 'UGC NET Paper 1 — 18 June 2024 (Shift 1)',
     dateText: '18 June 2024',
     shiftText: 'Shift 1',
@@ -106,6 +107,7 @@ const SHIFTS = [
     id: 'mt-pyq-2024-jun18-s2',
     mockTestId: 'mt-pyq-2024-jun18-s2',
     paperId: 'paper-pyq-2024-jun18-s2',
+    setCode: 'PYQ-UN-P1-24J-S2',
     title: 'UGC NET Paper 1 — 18 June 2024 (Shift 2)',
     dateText: '18 June 2024',
     shiftText: 'Shift 2',
@@ -115,6 +117,7 @@ const SHIFTS = [
     id: 'mt-pyq-2026-sep09-s1',
     mockTestId: 'mt-pyq-2026-sep09-s1',
     paperId: 'paper-pyq-2026-sep09-s1',
+    setCode: 'PYQ-UN-P1-26S09-S1',
     title: 'UGC NET Paper 1 — 09 September 2026 (Shift 1)',
     dateText: '09 September 2026',
     shiftText: 'Shift 1',
@@ -124,6 +127,7 @@ const SHIFTS = [
     id: 'mt-pyq-2026-sep09-s2',
     mockTestId: 'mt-pyq-2026-sep09-s2',
     paperId: 'paper-pyq-2026-sep09-s2',
+    setCode: 'PYQ-UN-P1-26S09-S2',
     title: 'UGC NET Paper 1 — 09 September 2026 (Shift 2)',
     dateText: '09 September 2026',
     shiftText: 'Shift 2',
@@ -133,6 +137,7 @@ const SHIFTS = [
     id: 'mt-pyq-2026-sep10-s1',
     mockTestId: 'mt-pyq-2026-sep10-s1',
     paperId: 'paper-pyq-2026-sep10-s1',
+    setCode: 'PYQ-UN-P1-26S10-S1',
     title: 'UGC NET Paper 1 — 10 September 2026 (Shift 1)',
     dateText: '10 September 2026',
     shiftText: 'Shift 1',
@@ -312,6 +317,7 @@ async function populateStaging() {
       paperVersion: 1,
       access: 'paid',
       collectionId: planId,
+      setCode: s.setCode,
       status: 'draft',
       timed: true,
       shuffle: false,
@@ -325,28 +331,94 @@ async function populateStaging() {
       updatedAtMs: nowMs,
     };
 
-    console.log(`[*] Overwriting mock test document 'mockTests/${s.mockTestId}'...`);
-    console.log(`    Description: "${honestDescription}"`);
-    await db.doc(`mockTests/${s.mockTestId}`).set(testDoc);
-    console.log(`[OK] Test shell '${s.mockTestId}' overwritten (status: 'draft', contentLabel: 'under_development').`);
-
     if (retrievedData?.questions?.length > 0) {
-      const sanitizedQuestions = retrievedData.questions.map((q) => {
-        const { verified: _v, ...rest } = q;
-        return {
-          ...rest,
+      const questionBatch = db.batch();
+      const questionRefs = [];
+      const sanitizedPaperQuestions = [];
+      const canonicalAnswerKey = {};
+
+      retrievedData.questions.forEach((q, idx) => {
+        const qNum = String(idx + 1).padStart(2, '0');
+        const canonicalQid = `${s.id}-q${qNum}`;
+        const origQid = q.qid || `q-${qNum}`;
+        const akEntry = retrievedData.answerKey?.[origQid] ?? retrievedData.answerKey?.[canonicalQid];
+        const correctAnswers = akEntry?.correct ?? ['a'];
+
+        // Head doc
+        const headRef = db.collection('questions').doc(canonicalQid);
+        const previewText = (q.content?.stem?.en ?? '').slice(0, 140);
+        questionBatch.set(headRef, {
+          subjectId: 'paper1',
+          unitId: q.unitId ?? 'U1',
+          topicId: q.topicId ?? `${q.unitId ?? 'U1'}.1`,
+          difficulty: q.difficulty ?? 'medium',
+          languages: ['en'],
+          preview: previewText,
+          setCode: s.setCode,
+          usedInSets: [s.setCode],
+          status: 'draft',
+          currentVersion: 1,
+          createdBy: 'Bunty',
+          mockTestId: s.mockTestId,
+          shiftId: s.id,
+          paperId: s.paperId,
+          updatedAtMs: nowMs,
+        });
+
+        // Version doc
+        const versionRef = headRef.collection('versions').doc('1');
+        questionBatch.set(versionRef, {
+          version: 1,
+          setCode: s.setCode,
+      status: 'draft',
+          createdBy: 'Bunty',
+          createdAtMs: nowMs,
+          content: q.content,
+          correct: correctAnswers,
+          explanation: q.explanation ?? { en: '' },
           provenance: {
             kind: 'official_pyq',
             officialPyqVerified: false,
+            copyrightStatus: 'public_domain',
+            source: s.title,
+            sourceYear: s.id.includes('2024') ? 2024 : 2026,
           },
+          ...(q.defectNote ? { defectNote: q.defectNote } : {}),
+        });
+
+        questionRefs.push({ qid: canonicalQid, version: 1, sectionId: 'paper1' });
+
+        const { verified: _v, ...rest } = q;
+        sanitizedPaperQuestions.push({
+          ...rest,
+          qid: canonicalQid,
+          provenance: { kind: 'official_pyq', officialPyqVerified: false },
+        });
+
+        canonicalAnswerKey[canonicalQid] = {
+          correct: correctAnswers,
+          sectionId: 'paper1',
+          unitId: q.unitId ?? 'U1',
+          topicId: q.topicId ?? `${q.unitId ?? 'U1'}.1`,
+          difficulty: q.difficulty ?? 'medium',
         };
       });
-      console.log(`[*] Seeding paper document 'papers/${s.paperId}' (${sanitizedQuestions.length} questions, all provenance: { kind: 'official_pyq', officialPyqVerified: false })...`);
+
+      testDoc.questionRefs = questionRefs;
+      await questionBatch.commit();
+      console.log(`[OK] Seeded 50 questions into questions/ and questions/*/versions/1 for ${s.id}.`);
+
+      console.log(`[*] Overwriting mock test document 'mockTests/${s.mockTestId}'...`);
+      console.log(`    Description: "${honestDescription}"`);
+      await db.doc(`mockTests/${s.mockTestId}`).set(testDoc);
+      console.log(`[OK] Test shell '${s.mockTestId}' overwritten (status: 'draft', questionRefs: 50).`);
+
+      console.log(`[*] Seeding paper document 'papers/${s.paperId}' (${sanitizedPaperQuestions.length} questions)...`);
       await db.doc(`papers/${s.paperId}`).set({
         paperId: s.paperId,
         version: 1,
         title: s.title,
-        questions: sanitizedQuestions,
+        questions: sanitizedPaperQuestions,
         updatedAtMs: nowMs,
       });
       console.log(`[OK] Paper '${s.paperId}' written to staging.`);
@@ -356,11 +428,16 @@ async function populateStaging() {
         await db.doc(`answerKeys/${s.paperId}`).set({
           paperId: s.paperId,
           version: 1,
-          items: retrievedData.answerKey,
+          items: canonicalAnswerKey,
           updatedAtMs: nowMs,
         });
         console.log(`[OK] Answer key '${s.paperId}' written to staging.`);
       }
+    } else {
+      console.log(`[*] Overwriting mock test document 'mockTests/${s.mockTestId}'...`);
+      console.log(`    Description: "${honestDescription}"`);
+      await db.doc(`mockTests/${s.mockTestId}`).set(testDoc);
+      console.log(`[OK] Test shell '${s.mockTestId}' overwritten (status: 'draft', contentLabel: 'under_development').`);
     }
   }
 

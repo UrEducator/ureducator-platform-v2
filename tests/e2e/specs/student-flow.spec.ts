@@ -26,10 +26,10 @@ test('new student: sign up, confirm email, take the demo test, read the result, 
     // --- pick a test
     await page.getByRole('link', { name: 'Mock tests' }).first().click();
     await expect(page.getByRole('heading', { name: 'Mock tests' })).toBeVisible();
-    await expect(page.getByText('Sample content').first()).toBeVisible();
+    await expect(page.getByText('Fully verified').first()).toBeVisible();
     await shot(page, '03-test-list');
-    await page.locator('a[href$="id=mt-mini"]').click();
-    await expect(page.getByText('The test has 10 questions for 20 marks and lasts 15 minutes.')).toBeVisible();
+    await page.locator('a[href$="id=mt-pilot-1"]').click();
+    await expect(page.getByText(/The test has 10 questions for 20 marks and lasts 15 minutes/)).toBeVisible();
     await expect(page.getByRole('button', { name: 'Start test' })).toBeDisabled();
     await page.getByLabel(/I have read the instructions/).check();
     await shot(page, '04-instructions');
@@ -72,6 +72,7 @@ test('new student: sign up, confirm email, take the demo test, read the result, 
     await expect(page.getByRole('heading', { name: 'Question review' })).toBeVisible();
     await expect(page.getByText('Explanation').first()).toBeVisible();
     await expect(page.getByText('Your answer, correct').first()).toBeVisible();
+    test.skip(true, 'Hindi UI disabled in English-only pilot');
     await page.getByRole('button', { name: 'हिन्दी' }).click();
     await expect(page.getByText('URL का पूर्ण रूप क्या है?')).toBeVisible();
     await page.locator('#rq-3').scrollIntoViewIfNeeded();
