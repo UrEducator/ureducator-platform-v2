@@ -32,3 +32,7 @@ functions/.runtimeconfig.json
 # Local review bundles & handoff scratch
 Claude outputs/
 SHARED_HANDOFF/
+
+# Unlicensed PYQ source material — revisit when licensing is settled
+content-sources/raw/
+content-sources/shifts/
