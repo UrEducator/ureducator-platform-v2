@@ -2,7 +2,6 @@ import type { NextConfig } from 'next';
 
 const backend = process.env.NEXT_PUBLIC_BACKEND ?? 'firebase';
 const config: NextConfig = {
-  output: 'export',                 // static export: served by Firebase Hosting, no Node server to run or pay for
   trailingSlash: false,
   images: { unoptimized: true },
   reactStrictMode: true,
