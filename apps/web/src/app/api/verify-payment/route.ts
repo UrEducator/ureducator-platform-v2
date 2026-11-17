@@ -1,9 +1,7 @@
 import { createHmac, timingSafeEqual } from 'node:crypto';
 import { Buffer } from 'node:buffer';
 import { NextResponse } from 'next/server';
-import { verifyAuthToken, grantEntitlements, recordPaidOrder } from '../_lib/serverAuth';
-
-
+import { verifyAuthToken, callCloudFunction } from '../_lib/serverAuth';
 
 function safeVerifySignature(secret: string, orderId: string, paymentId: string, clientSignature: string): boolean {
   if (!secret || !orderId || !paymentId || !clientSignature) {
@@ -23,7 +21,7 @@ function safeVerifySignature(secret: string, orderId: string, paymentId: string,
 
 export async function POST(req: Request) {
   try {
-    // 1. Session Authentication Check
+    // 1. Session Authentication Check (stateless via Google Identity Toolkit)
     const user = await verifyAuthToken(req);
     if (!user) {
       return NextResponse.json(
@@ -79,17 +77,40 @@ export async function POST(req: Request) {
       );
     }
 
-    // 5. Update Firestore: Grant paper1-all and pyq-2023-pack entitlements to the authenticated user
-    const grantedEntitlements = ['paper1-all', 'pyq-2023-pack'];
-    await grantEntitlements(user.uid, grantedEntitlements, 'plan-pyq-premium-pack');
-    await recordPaidOrder(razorpayOrderId, paymentId);
+    // 5. Authenticated call to Cloud Function `verifyPayment`
+    // Replaces direct Firestore writes with backend Cloud Function execution
+    const orderId = body.orderId || `o_${razorpayOrderId}`;
+    const cloudRes = await callCloudFunction<
+      { orderId: string; razorpayPaymentId: string; razorpaySignature: string },
+      { activated: boolean; duplicate?: boolean }
+    >(
+      'verifyPayment',
+      {
+        orderId,
+        razorpayPaymentId: paymentId,
+        razorpaySignature: signature,
+      },
+      user.token
+    );
+
+    if (!cloudRes.ok || !cloudRes.data) {
+      console.error('[verify-payment] Cloud function verifyPayment failed:', cloudRes.error);
+      return NextResponse.json(
+        {
+          error: 'ACTIVATION_FAILED',
+          message: cloudRes.error || 'Payment verification could not be completed in backend services.',
+        },
+        { status: cloudRes.status && cloudRes.status >= 400 && cloudRes.status < 600 ? cloudRes.status : 502 }
+      );
+    }
 
     return NextResponse.json({
       success: true,
       message: 'Payment signature verified successfully. Entitlements granted.',
       paymentId,
       razorpayOrderId,
-      entitlements: grantedEntitlements,
+      activated: cloudRes.data.activated,
+      duplicate: cloudRes.data.duplicate ?? false,
     });
   } catch (err: unknown) {
     console.error('[verify-payment] Unexpected error:', err);

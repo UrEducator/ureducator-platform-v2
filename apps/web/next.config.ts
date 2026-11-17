@@ -8,7 +8,7 @@ const config: NextConfig = {
   poweredByHeader: false,
   productionBrowserSourceMaps: false,
   // Separate output folders so a local test build (mock backend) can never be mistaken for a deployable build.
-  distDir: backend === 'mock' ? 'out-mock' : 'out',
+  distDir: backend === 'mock' ? '.next-mock' : '.next',
   typedRoutes: false,
   transpilePackages: ['@ureducator/shared'],
   // Always defined, so process.env.NEXT_PUBLIC_BACKEND is replaced by a literal at build time and test-only branches are removed.

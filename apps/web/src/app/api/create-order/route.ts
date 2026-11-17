@@ -1,12 +1,9 @@
-import { Buffer } from 'node:buffer';
 import { NextResponse } from 'next/server';
-import { verifyAuthToken, recordCreatedOrder } from '../_lib/serverAuth';
-
-
+import { verifyAuthToken, callCloudFunction } from '../_lib/serverAuth';
 
 export async function POST(req: Request) {
   try {
-    // 1. Session Authentication Check
+    // 1. Session Authentication Check (stateless via Google Identity Toolkit)
     const user = await verifyAuthToken(req);
     if (!user) {
       return NextResponse.json(
@@ -29,7 +26,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // 3. Plan Specification: ₹499 for plan-pyq-premium-pack
+    // 3. Plan Specification: defaults to plan-pyq-premium-pack
     let body: { planId?: string } = {};
     try {
       body = (await req.json()) as { planId?: string };
@@ -38,67 +35,37 @@ export async function POST(req: Request) {
     }
 
     const planId = body.planId || 'plan-pyq-premium-pack';
-    const amountPaise = 49900; // ₹499.00
-    const currency = 'INR';
-    const receipt = `rcpt_${user.uid.slice(0, 8)}_${Date.now()}`;
 
-    // 4. Secure Server-to-Server Razorpay Order API Call
-    const authHeader = 'Basic ' + Buffer.from(`${keyId}:${keySecret}`).toString('base64');
-    const rzpRes = await fetch('https://api.razorpay.com/v1/orders', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: authHeader,
-      },
-      body: JSON.stringify({
-        amount: amountPaise,
-        currency,
-        receipt,
-        notes: {
-          planId,
-          uid: user.uid,
-          appName: 'UrEducator 2.0',
-        },
-      }),
-    });
+    // 4. Authenticated call to Cloud Function `createOrder`
+    // Ensures all writes pass through our established security rules and transactional order record
+    const cloudRes = await callCloudFunction<
+      { planId: string },
+      { orderId: string; razorpayOrderId: string; amountPaise: number; currency: 'INR' }
+    >('createOrder', { planId }, user.token);
 
-    if (!rzpRes.ok) {
-      const errBody = await rzpRes.text();
-      console.error('[create-order] Razorpay gateway error:', rzpRes.status, errBody);
+    if (!cloudRes.ok || !cloudRes.data) {
+      console.error('[create-order] Cloud function createOrder failed:', cloudRes.error);
       return NextResponse.json(
         {
-          error: 'GATEWAY_ERROR',
-          message: 'The payment service is unavailable or returned an error. You have not been charged.',
+          error: 'ORDER_CREATION_FAILED',
+          message: cloudRes.error || 'Payment order creation failed in backend services.',
         },
-        { status: 502 }
+        { status: cloudRes.status && cloudRes.status >= 400 && cloudRes.status < 600 ? cloudRes.status : 502 }
       );
     }
 
-    const rzpOrder = (await rzpRes.json()) as { id: string; amount: number; currency: string };
-    const orderId = `o_${rzpOrder.id}`;
-
-    // 5. Store order state in Firestore
-    await recordCreatedOrder({
-      uid: user.uid,
-      orderId,
-      razorpayOrderId: rzpOrder.id,
-      planId,
-      amountPaise,
-      currency,
-    });
-
     return NextResponse.json({
       success: true,
-      orderId,
-      razorpayOrderId: rzpOrder.id,
-      amount: amountPaise,
-      currency,
+      orderId: cloudRes.data.orderId,
+      razorpayOrderId: cloudRes.data.razorpayOrderId,
+      amount: cloudRes.data.amountPaise,
+      currency: cloudRes.data.currency,
       keyId,
     });
   } catch (err: unknown) {
     console.error('[create-order] Unexpected error:', err);
     return NextResponse.json(
-      { error: 'INTERNAL_ERROR', message: 'Failed to create payment order.' },
+      { error: 'INTERNAL_ERROR', message: 'An unexpected error occurred while initiating payment order.' },
       { status: 500 }
     );
   }

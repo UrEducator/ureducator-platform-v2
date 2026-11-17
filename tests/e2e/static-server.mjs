@@ -2,7 +2,7 @@
 import { createServer } from 'node:http';
 import { readFile, readdir } from 'node:fs/promises';
 import { extname, join, relative, sep } from 'node:path';
-const root = join(process.cwd(), process.argv[2] ?? 'apps/web/out-mock'); const port = Number(process.argv[3] ?? 3100);
+const root = join(process.cwd(), process.argv[2] ?? 'apps/web/.next-mock'); const port = Number(process.argv[3] ?? 3100);
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.txt': 'text/plain', '.woff2': 'font/woff2', '.woff': 'font/woff', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.png': 'image/png', '.map': 'application/json' };
 
 const fileMap = new Map();
