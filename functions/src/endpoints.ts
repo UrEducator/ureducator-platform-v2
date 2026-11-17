@@ -6,7 +6,7 @@ import {
   AdminListInput, AssignRoleInput, CreateOrderInput, EmptyInput, GetQuestionInput, UpsertBlueprintInput, LeadInput, MentorAskInput, MockTestRefInput, NotebookQuestionInput,
   ProfilePatchSchema, ReportInput, ReviewNotebookInput, SaveQuestionInput, SaveResponsesInput, SessionRefInput, StartExamInput, SubmitExamInput,
   TicketInput, TransitionInput, UpdateLeadInput, UpdateTicketInput, UpsertCatalogueInput, UpsertMockTestInput, UpsertPlanInput,
-  VerifyPaymentInput, VerifyReportInput,
+  VerifyPaymentInput, VerifyReportInput, EscalateTicketInput, RecordPrintAuditInput,
 } from '@ureducator/shared';
 import { define } from './infra/dispatch';
 import { CONFIG } from './infra/config';
@@ -78,6 +78,12 @@ export const ENDPOINTS = {
     run: async (c, i) => { const id = c.secret('RAZORPAY_KEY_ID'); const sec = c.secret('RAZORPAY_KEY_SECRET'); return pay.createOrder(c.d, payCfg(), id && sec ? new pay.RazorpayGateway({ keyId: id, keySecret: sec }) : null, c.actor, i); } }),
   verifyPayment: define({ auth: 'verified', input: VerifyPaymentInput, rate: { limit: 30, windowSec: 3600, by: 'uid' }, memory: '256MiB',
     run: async (c, i) => pay.verifyPayment(c.d, payCfg(), c.secret('RAZORPAY_KEY_SECRET'), c.actor, i) }),
+
+  /* tickets and audit */
+  adminEscalateTicket: define({ ...staff, input: EscalateTicketInput, memory: '256MiB',
+    run: async (c, i) => admin.adminEscalateTicket(c.d, c.actor, i) }),
+  recordPrintAudit: define({ auth: 'user', input: RecordPrintAuditInput, rate: { limit: 60, windowSec: 3600, by: 'uid' }, memory: '256MiB',
+    run: async (c, i) => admin.recordPrintAudit(c.d, c.actor, i) }),
 } as const;
 
 export type EndpointName = keyof typeof ENDPOINTS;

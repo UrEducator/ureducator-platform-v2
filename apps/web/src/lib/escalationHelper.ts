@@ -1,18 +1,3 @@
-import {
-  collection,
-  doc,
-  getDocs,
-  query,
-  updateDoc,
-  where,
-} from 'firebase/firestore';
-import {
-  isTicketEscalationEligible,
-  type SmartTicket,
-  type TicketHistoryItem,
-} from '@ureducator/shared';
-import { getClientFirestore } from '@/lib/backend.firebase';
-
 export interface EscalationAlertPayload {
   ticketId: string;
   studentUid: string;
@@ -55,60 +40,41 @@ export interface EscalationCheckResult {
   error?: string;
 }
 
-export async function checkAndEscalateTickets(now = Date.now()): Promise<EscalationCheckResult> {
+/**
+ * Initiates automated SLA breach escalation.
+ * Invokes the secure serverless route /api/tickets/escalate which delegates Firestore mutations
+ * to the audited Admin SDK Cloud Function.
+ */
+export async function checkAndEscalateTickets(): Promise<EscalationCheckResult> {
   try {
-    const db = getClientFirestore();
-    const snapshot = await getDocs(query(collection(db, 'tickets'), where('status', '==', 'OPEN')));
-    const escalatedTicketIds: string[] = [];
+    const res = await fetch('/api/tickets/escalate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({}),
+    });
 
-    for (const docSnap of snapshot.docs) {
-      const data = docSnap.data() as SmartTicket;
-      if (isTicketEscalationEligible({ status: data.status, createdAtMs: data.createdAtMs }, now)) {
-        const hoursOpen = Math.round((now - data.createdAtMs) / (1000 * 60 * 60));
-        const escalationHistoryEntry: TicketHistoryItem = {
-          status: 'ESCALATED',
-          timestamp: now,
-          updatedBy: 'SYSTEM_ESCALATION_ENGINE',
-          note: `Automated SLA Escalation: Ticket remained in OPEN state for ${hoursOpen} hours (>24h threshold).`,
-        };
-
-        const updatedHistory = [...(data.history || []), escalationHistoryEntry];
-
-        await updateDoc(doc(db, 'tickets', docSnap.id), {
-          status: 'ESCALATED',
-          history: updatedHistory,
-          updatedAtMs: now,
-        });
-
-        escalatedTicketIds.push(data.ticketId);
-
-        await sendEscalationEmailAlert({
-          ticketId: data.ticketId,
-          studentUid: data.studentUid,
-          studentEmail: data.studentEmail,
-          dept: data.dept,
-          severity: data.severity,
-          title: data.title,
-          description: data.description,
-          hoursOpen,
-          escalatedAtMs: now,
-        });
-      }
+    if (!res.ok) {
+      const err = await res.text();
+      console.warn('[escalationHelper] checkAndEscalateTickets API error:', res.status, err);
+      return {
+        success: false,
+        totalChecked: 0,
+        escalatedCount: 0,
+        escalatedTicketIds: [],
+        error: `Server responded with ${res.status}`,
+      };
     }
 
-    return {
-      success: true,
-      totalChecked: snapshot.size,
-      escalatedCount: escalatedTicketIds.length,
-      escalatedTicketIds,
-    };
+    const json = (await res.json()) as EscalationCheckResult;
+    return json;
   } catch (err) {
-    console.warn('[escalationHelper] checkAndEscalateTickets fallback:', err);
+    console.warn('[escalationHelper] checkAndEscalateTickets network error:', err);
     return {
-      success: true,
+      success: false,
       totalChecked: 0,
       escalatedCount: 0,
       escalatedTicketIds: [],
+      error: String(err),
     };
   }
 }

@@ -54,3 +54,15 @@ export const EmptyInput = z.object({}).strict();
 export const GetQuestionInput = z.object({ questionId: id, version: z.number().int().min(1).optional() });
 /** The server owns `version` and decides who may mark a blueprint as matching the official pattern. */
 export const UpsertBlueprintInput = z.object({ blueprint: BlueprintSchema });
+
+export const EscalateTicketInput = z.object({
+  ticketIds: z.array(z.string().min(1).max(120)).optional(),
+  force: z.boolean().optional(),
+}).default({});
+
+export const RecordPrintAuditInput = z.object({
+  reportId: z.string().min(1).max(120),
+  action: z.string().max(80).optional(),
+  method: z.string().max(40).optional(),
+  meta: z.record(z.string(), z.unknown()).optional(),
+});

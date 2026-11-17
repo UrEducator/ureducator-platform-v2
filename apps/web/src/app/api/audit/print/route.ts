@@ -1,41 +1,54 @@
 import { NextResponse } from 'next/server';
-import { recordPrintAuditLog } from '../../_lib/serverAuth';
+import { verifyAuthToken, callCloudFunction } from '../../_lib/serverAuth';
 
 export async function POST(req: Request) {
   try {
+    const user = await verifyAuthToken(req);
+    if (!user) {
+      return NextResponse.json(
+        { error: 'UNAUTHORIZED', message: 'Valid authorization token is required.' },
+        { status: 401 }
+      );
+    }
+
     const body = (await req.json()) as {
-      userId?: string;
-      action?: string;
       reportId?: string;
+      action?: string;
       method?: string;
       meta?: Record<string, unknown>;
     };
 
-    const { userId, action, reportId, method, meta } = body;
+    const { reportId, action, method, meta } = body;
 
-    if (!userId || !reportId) {
+    if (!reportId) {
       return NextResponse.json(
-        { error: 'INVALID_REQUEST', message: 'userId and reportId are required.' },
+        { error: 'INVALID_REQUEST', message: 'reportId is required.' },
         { status: 400 }
       );
     }
 
-    const result = await recordPrintAuditLog({
-      userId,
-      action: action || 'ANALYTICS_REPORT_PRINTED',
-      reportId,
-      method: method || 'print',
-      meta,
-    });
+    const res = await callCloudFunction<
+      { reportId: string; action?: string; method?: string; meta?: Record<string, unknown> },
+      { success: boolean; logId?: string; error?: string }
+    >(
+      'recordPrintAudit',
+      {
+        reportId,
+        action: action || 'ANALYTICS_REPORT_PRINTED',
+        method: method || 'print',
+        meta,
+      },
+      user.token
+    );
 
-    if (!result.success) {
+    if (!res.ok || !res.data?.success) {
       return NextResponse.json(
-        { error: 'AUDIT_WRITE_FAILED', message: result.error },
-        { status: 500 }
+        { error: 'AUDIT_WRITE_FAILED', message: res.error || 'Failed to record audit' },
+        { status: res.status || 500 }
       );
     }
 
-    return NextResponse.json({ success: true, logId: result.logId });
+    return NextResponse.json({ success: true, logId: res.data.logId });
   } catch (err) {
     console.error('[API /api/audit/print] Error writing audit log:', err);
     return NextResponse.json(

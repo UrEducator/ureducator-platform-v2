@@ -1,5 +1,3 @@
-import { randomUUID } from 'node:crypto';
-
 export interface VerifiedUser {
   uid: string;
   email?: string | null;
@@ -133,64 +131,4 @@ export async function callCloudFunction<TReq, TRes>(
     console.error(`[serverAuth] Network error calling Cloud Function ${functionName}:`, err);
     return { ok: false, error: String(err), status: 500 };
   }
-}
-
-/**
- * Records print diagnostic audit logs without relying on firebase-admin SDK.
- */
-export async function recordPrintAuditLog(entry: {
-  userId: string;
-  action?: string;
-  reportId: string;
-  method?: string;
-  meta?: Record<string, unknown>;
-}): Promise<{ success: boolean; logId?: string; error?: string }> {
-  try {
-    const clock = Date.now();
-    const logId = `${clock}_${randomUUID().slice(0, 8)}`;
-    // Audited in server logs without triggering ADC failure on Vercel
-    console.warn(`[AUDIT] Action: ${entry.action || 'ANALYTICS_REPORT_PRINTED'} | User: ${entry.userId} | Report: ${entry.reportId} | Method: ${entry.method || 'print'}`);
-    return { success: true, logId };
-  } catch (err) {
-    console.error('[serverAuth] Failed to generate print auditLog:', err);
-    return { success: false, error: String(err) };
-  }
-}
-
-/**
- * Proxies order creation to the audited Cloud Functions backend.
- */
-export async function recordCreatedOrder(
-  orderDoc: {
-    uid: string;
-    orderId: string;
-    razorpayOrderId: string;
-    planId: string;
-    amountPaise: number;
-    currency: string;
-  },
-  idToken?: string
-): Promise<void> {
-  await callCloudFunction('createOrder', { planId: orderDoc.planId }, idToken);
-}
-
-/**
- * Proxies payment completion and entitlement activation to the audited Cloud Functions backend.
- */
-export async function recordPaidOrder(
-  razorpayOrderId: string,
-  razorpayPaymentId: string,
-  idToken?: string
-): Promise<void> {
-  const orderId = `o_${razorpayOrderId}`;
-  await callCloudFunction('verifyPayment', { orderId, razorpayPaymentId, razorpaySignature: '' }, idToken);
-}
-
-export async function grantEntitlements(
-  _uid: string,
-  _entitlements: string[],
-  _planId = 'plan-pyq-premium-pack',
-  _idToken?: string
-): Promise<void> {
-  // Entitlement grants are now managed exclusively inside the audited Cloud Function verifyPayment
 }

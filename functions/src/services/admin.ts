@@ -2,9 +2,13 @@ import { randomUUID } from 'node:crypto';
 import {
   LIMITS, QuestionVersionSchema, BlueprintSchema, can, canAssign, canTransition,
   type AnswerKey, type Permission, type PublishedPaper, type Role, type PaperQuestion, ROLES,
+  isTicketEscalationEligible, type SmartTicket, type TicketHistoryItem,
 } from '@ureducator/shared';
 import type { z } from 'zod';
-import type { SaveQuestionInput, UpsertCatalogueInput, UpsertMockTestInput, AdminListInput, UpsertPlanInput, UpsertBlueprintInput } from '@ureducator/shared';
+import type {
+  SaveQuestionInput, UpsertCatalogueInput, UpsertMockTestInput, AdminListInput,
+  UpsertPlanInput, UpsertBlueprintInput, EscalateTicketInput, RecordPrintAuditInput,
+} from '@ureducator/shared';
 import type { Actor, MockTestDoc } from '../domain/types';
 import { P } from '../domain/paths';
 import { err, AppError } from '../infra/errors';
@@ -314,4 +318,93 @@ export async function overview(d: Deps, a: StaffActor) {
   add('students', 'students.read', 'users');
   await Promise.all(jobs);
   return { role: r, counts: out };
+}
+
+/* ------------------------------------------------------------ ticket escalation */
+export async function adminEscalateTicket(
+  d: Deps,
+  a: StaffActor,
+  i: z.infer<typeof EscalateTicketInput>
+) {
+  need(a, 'support.write');
+  const now = d.clock();
+  const escalatedTicketIds: string[] = [];
+
+  if (i.ticketIds && i.ticketIds.length > 0) {
+    for (const tid of i.ticketIds) {
+      const doc = await d.store.get<SmartTicket>(`tickets/${tid}`);
+      if (doc && (i.force || isTicketEscalationEligible({ status: doc.status, createdAtMs: doc.createdAtMs }, now))) {
+        const hoursOpen = Math.round((now - doc.createdAtMs) / (1000 * 60 * 60));
+        const escalationHistoryEntry: TicketHistoryItem = {
+          status: 'ESCALATED',
+          timestamp: now,
+          updatedBy: a.uid !== 'anonymous' ? a.uid : 'SYSTEM_ESCALATION_ENGINE',
+          note: `Automated SLA Escalation: Ticket remained in OPEN state for ${hoursOpen} hours (>24h threshold).`,
+        };
+        const updatedHistory = [...(doc.history || []), escalationHistoryEntry];
+        await d.store.merge(`tickets/${tid}`, {
+          status: 'ESCALATED',
+          history: updatedHistory,
+          updatedAtMs: now,
+        });
+        escalatedTicketIds.push(doc.ticketId || tid);
+      }
+    }
+    return {
+      success: true,
+      totalChecked: i.ticketIds.length,
+      escalatedCount: escalatedTicketIds.length,
+      escalatedTicketIds,
+    };
+  }
+
+  const rows = await d.store.list<SmartTicket>('tickets', { where: [['status', '==', 'OPEN']], limit: 100 });
+  for (const r of rows) {
+    const data = r.data;
+    if (i.force || isTicketEscalationEligible({ status: data.status, createdAtMs: data.createdAtMs }, now)) {
+      const hoursOpen = Math.round((now - data.createdAtMs) / (1000 * 60 * 60));
+      const escalationHistoryEntry: TicketHistoryItem = {
+        status: 'ESCALATED',
+        timestamp: now,
+        updatedBy: a.uid !== 'anonymous' ? a.uid : 'SYSTEM_ESCALATION_ENGINE',
+        note: `Automated SLA Escalation: Ticket remained in OPEN state for ${hoursOpen} hours (>24h threshold).`,
+      };
+      const updatedHistory = [...(data.history || []), escalationHistoryEntry];
+      await d.store.merge(`tickets/${r.id}`, {
+        status: 'ESCALATED',
+        history: updatedHistory,
+        updatedAtMs: now,
+      });
+      escalatedTicketIds.push(data.ticketId || r.id);
+    }
+  }
+
+  return {
+    success: true,
+    totalChecked: rows.length,
+    escalatedCount: escalatedTicketIds.length,
+    escalatedTicketIds,
+  };
+}
+
+/* ------------------------------------------------------------ print audit */
+export async function recordPrintAudit(
+  d: Deps,
+  a: StaffActor,
+  i: z.infer<typeof RecordPrintAuditInput>
+) {
+  const clock = d.clock();
+  const logId = `${clock}_${randomUUID().slice(0, 8)}`;
+  const action = i.action || 'ANALYTICS_REPORT_PRINTED';
+  const method = i.method || 'print';
+  await d.store.set(P.audit(logId), {
+    actorUid: a.uid,
+    actorRole: a.role || null,
+    action,
+    target: i.reportId,
+    method,
+    atMs: clock,
+    ...(i.meta ? { meta: i.meta as Record<string, string | number | boolean | null> } : {}),
+  });
+  return { success: true, logId };
 }

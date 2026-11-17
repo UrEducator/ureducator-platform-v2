@@ -18,6 +18,8 @@ import type {
   UpsertMockTestInput,
   UpsertPlanInput,
   VerifyPaymentInput,
+  EscalateTicketInput,
+  RecordPrintAuditInput,
 } from './adminSchemas';
 import type {
   AssignRoleInput,
@@ -71,7 +73,9 @@ export type EndpointName =
   | 'adminUpdateTicket'
   | 'adminUpdateLead'
   | 'createOrder'
-  | 'verifyPayment';
+  | 'verifyPayment'
+  | 'adminEscalateTicket'
+  | 'recordPrintAudit';
 
 export type EndpointInputs = {
   publicConfig: z.input<typeof EmptyInput>;
@@ -108,6 +112,8 @@ export type EndpointInputs = {
   adminUpdateLead: z.input<typeof UpdateLeadInput>;
   createOrder: z.input<typeof CreateOrderInput>;
   verifyPayment: z.input<typeof VerifyPaymentInput>;
+  adminEscalateTicket: z.input<typeof EscalateTicketInput>;
+  recordPrintAudit: z.input<typeof RecordPrintAuditInput>;
 };
 
 export type ExamSessionPayload = {
@@ -216,6 +222,8 @@ export type EndpointOutputs = {
   adminUpdateLead: { leadId: string; ok: boolean };
   createOrder: { orderId: string; amountPaise: number; currency: string; razorpayOrderId?: string };
   verifyPayment: { success: boolean; activated: boolean };
+  adminEscalateTicket: { success: boolean; totalChecked: number; escalatedCount: number; escalatedTicketIds: string[] };
+  recordPrintAudit: { success: boolean; logId: string };
 };
 
 export type In<N extends EndpointName> = EndpointInputs[N];

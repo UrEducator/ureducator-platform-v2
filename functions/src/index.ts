@@ -59,6 +59,9 @@ export const adminUpdateLead = callable('adminUpdateLead', E.adminUpdateLead);
 export const createOrder = callable('createOrder', E.createOrder, secretFor(SECRETS.createOrder));
 export const verifyPayment = callable('verifyPayment', E.verifyPayment, secretFor(SECRETS.verifyPayment));
 
+export const adminEscalateTicket = callable('adminEscalateTicket', E.adminEscalateTicket);
+export const recordPrintAudit = callable('recordPrintAudit', E.recordPrintAudit);
+
 /** Exported only when payments are enabled. Needs the raw body for the signature, so it is a plain HTTP function. */
 const [webhookSecret] = secretFor(SECRETS.razorpayWebhook);
 export const razorpayWebhook = CONFIG.paymentsEnabled && webhookSecret

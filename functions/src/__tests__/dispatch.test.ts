@@ -57,6 +57,6 @@ describe('dispatch pipeline', () => {
     }
   });
   it('declares the expected set of endpoints (guards against accidental removal)', () => {
-    expect(Object.keys(E).sort()).toEqual(['adminGetQuestion', 'adminList', 'adminOverview', 'adminPublishMockTest', 'adminSaveQuestion', 'adminTransitionQuestion', 'adminUnpublishMockTest', 'adminUpdateLead', 'adminUpdateTicket', 'adminUpsertBlueprint', 'adminUpsertCatalogue', 'adminUpsertMockTest', 'adminUpsertPlan', 'askMentor', 'assignRole', 'captureLead', 'claimOwner', 'createOrder', 'createTicket', 'ensureProfile', 'generatePlan', 'generateReport', 'getExamResult', 'getExamSession', 'listNotebook', 'notebookQuestion', 'publicConfig', 'reviewNotebook', 'saveResponses', 'startExam', 'submitExam', 'updateProfile', 'verifyPayment', 'verifyReport'].sort());
+    expect(Object.keys(E).sort()).toEqual(['adminEscalateTicket', 'adminGetQuestion', 'adminList', 'adminOverview', 'adminPublishMockTest', 'adminSaveQuestion', 'adminTransitionQuestion', 'adminUnpublishMockTest', 'adminUpdateLead', 'adminUpdateTicket', 'adminUpsertBlueprint', 'adminUpsertCatalogue', 'adminUpsertMockTest', 'adminUpsertPlan', 'askMentor', 'assignRole', 'captureLead', 'claimOwner', 'createOrder', 'createTicket', 'ensureProfile', 'generatePlan', 'generateReport', 'getExamResult', 'getExamSession', 'listNotebook', 'notebookQuestion', 'publicConfig', 'recordPrintAudit', 'reviewNotebook', 'saveResponses', 'startExam', 'submitExam', 'updateProfile', 'verifyPayment', 'verifyReport'].sort());
   });
 });
