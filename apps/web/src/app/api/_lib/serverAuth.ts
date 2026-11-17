@@ -20,7 +20,10 @@ export async function verifyIdToken(token: string): Promise<{ uid: string; email
       process.env.FIREBASE_API_KEY ||
       '';
 
-    const authEmulator = process.env.FIREBASE_AUTH_EMULATOR_HOST;
+    const authEmulator =
+      process.env.NODE_ENV !== 'production'
+        ? process.env.FIREBASE_AUTH_EMULATOR_HOST
+        : undefined;
     const url = authEmulator
       ? `http://${authEmulator}/identitytoolkit.googleapis.com/v1/accounts:lookup?key=${apiKey}`
       : `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${apiKey}`;
@@ -95,7 +98,10 @@ export async function callCloudFunction<TReq, TRes>(
     process.env.NEXT_PUBLIC_FUNCTIONS_REGION ||
     'asia-south1';
 
-  const functionsEmulator = process.env.FUNCTIONS_EMULATOR_HOST;
+  const functionsEmulator =
+    process.env.NODE_ENV !== 'production'
+      ? process.env.FUNCTIONS_EMULATOR_HOST
+      : undefined;
   const url = functionsEmulator
     ? `http://${functionsEmulator}/${projectId}/${region}/${functionName}`
     : `https://${region}-${projectId}.cloudfunctions.net/${functionName}`;
