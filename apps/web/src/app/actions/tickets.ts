@@ -6,7 +6,6 @@ import {
   query,
   setDoc,
   updateDoc,
-  where,
 } from 'firebase/firestore';
 import {
   CATEGORY_MAP,
@@ -117,6 +116,14 @@ export async function updateTicketStatusAction(
     await updateDoc(docRef, {
       status: input.status,
       updatedAtMs: now,
+    });
+
+    void sendNotification({
+      userId: input.staffUid,
+      type: 'SUPPORT',
+      title: input.status === 'RESOLVED' ? `Ticket Resolved: ${input.ticketId}` : `Ticket ${input.ticketId} Updated: ${input.status}`,
+      message: newHistoryEntry.note || `Your ticket status has been updated to ${input.status}.`,
+      actionUrl: '/app',
     });
 
     if (input.status === 'ESCALATED') {

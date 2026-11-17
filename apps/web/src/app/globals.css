@@ -25,6 +25,16 @@
   --color-line: var(--line);
   --color-line-strong: var(--line-strong);
 
+  /* UrEducator Master Brand Palette */
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-teal: var(--brand-teal);
+
+  /* Shadcn UI Theme Mappings */
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-ring: hsl(var(--ring));
+
   --color-pen-50: var(--pen-50);
   --color-pen-100: var(--pen-100);
   --color-pen-200: var(--pen-200);
@@ -64,17 +74,30 @@
   --line: #d5dae6;
   --line-strong: #aab2c5;
 
+  /* UrEducator Master Brand Palette:
+     Dark Blue: #295c89 | Primary Blue: #3a8bed | Teal Blue: #3ba9d2 */
+  --brand-dark: #295c89;
+  --brand-primary: #3a8bed;
+  --brand-teal: #3ba9d2;
+
+  /* Shadcn UI Theme Variables */
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+  --primary: 213 83% 58%;
+  --primary-foreground: 0 0% 100%;
+  --ring: 213 83% 58%;
+
   --pen-50: #eef0fc;
   --pen-100: #dde2f9;
   --pen-200: #bcc5f1;
-  --pen-500: #3b4fc4;
-  --pen-600: #2a3da6;
-  --pen-700: #1e2d86;
-  --pen-900: #121b57;
+  --pen-500: #3a8bed;
+  --pen-600: #2d72c4;
+  --pen-700: #295c89;
+  --pen-900: #1a3c5a;
 
-  --pen-surface: #1e2d86;
+  --pen-surface: #295c89;
   --pen-surface-ink: #ffffff;
-  --pen-surface-hover: #121b57;
+  --pen-surface-hover: #1a3c5a;
   --bubble-answered-ink: #ffffff;
 
   --marker-soft: #fff4c7;
@@ -98,17 +121,29 @@
   --line: #222d3f;
   --line-strong: #33425b;
 
+  /* UrEducator Master Brand Palette (Dark Mode Contrast-Balanced) */
+  --brand-dark: #3b7bb5;
+  --brand-primary: #5ba2f4;
+  --brand-teal: #58c2ea;
+
+  /* Shadcn UI Theme Variables (Balanced for Contrast) */
+  --background: 222 47% 11%;
+  --foreground: 210 40% 98%;
+  --primary: 213 88% 64%;
+  --primary-foreground: 222 47% 11%;
+  --ring: 213 88% 64%;
+
   --pen-50: #162040;
   --pen-100: #1e2d5c;
   --pen-200: #2d4285;
-  --pen-500: #647cf6;
-  --pen-600: #7b90f8;
-  --pen-700: #93a5fa;
-  --pen-900: #c2cdfc;
+  --pen-500: #5ba2f4;
+  --pen-600: #76b1f6;
+  --pen-700: #93c2f8;
+  --pen-900: #c2dcfb;
 
-  --pen-surface: #647cf6;
+  --pen-surface: #3a8bed;
   --pen-surface-ink: #0b0f17;
-  --pen-surface-hover: #7b90f8;
+  --pen-surface-hover: #5ba2f4;
   --bubble-answered-ink: #0b0f17;
 
   --marker-soft: #382c09;
@@ -269,6 +304,8 @@ p { text-wrap: pretty; }
     background: #ffffff !important;
     color: #0f172a !important;
     font-size: 11pt !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
   #main, main, .print-full-width {
     width: 100% !important;
@@ -278,5 +315,108 @@ p { text-wrap: pretty; }
   }
   .sheet, section, figure, table {
     box-shadow: none !important;
+  }
+
+  /*
+    Transparent Print Surfaces for Watermark Bleed-Through
+    Ensures the fixed background watermark is clearly visible behind text nodes,
+    cards, sheets, tables, and chart surfaces without being occluded by opaque fills.
+  */
+  .sheet,
+  section,
+  figure,
+  table,
+  tbody,
+  thead,
+  tr,
+  th,
+  td,
+  .card,
+  [class*="bg-surface"],
+  [class*="bg-paper"],
+  .recharts-responsive-container,
+  .recharts-wrapper,
+  .recharts-surface {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* Recharts Legend clean wrapping and spacing in print */
+  .recharts-legend-wrapper {
+    position: static !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .recharts-default-legend {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 6px 10px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .recharts-legend-item {
+    display: inline-flex !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+    font-size: 8.5pt !important;
+  }
+
+  /*
+    Ink-Friendly Print Override (Always Light Mode) & Transparent Surfaces
+    Forcefully overrides dark theme variables to light paper colors with !important
+    to eliminate dark/black backgrounds in PDF generation and conserve printer ink.
+    Sets --surface and --background to transparent so the fixed watermark bleeds through cards.
+  */
+  :root,
+  .dark,
+  [data-theme='dark'],
+  [data-theme='light'] {
+    color-scheme: light !important;
+    --paper: #ffffff !important;
+    --surface: transparent !important;
+    --surface-hover: transparent !important;
+    --ink: #1b2130 !important;
+    --muted: #566078 !important;
+    --line: #d5dae6 !important;
+    --line-strong: #aab2c5 !important;
+
+    /* UrEducator Master Brand Palette */
+    --brand-dark: #295c89 !important;
+    --brand-primary: #3a8bed !important;
+    --brand-teal: #3ba9d2 !important;
+
+    /* Shadcn UI Theme Variables (Ink-Friendly Light Mode & Transparent) */
+    --background: transparent !important;
+    --foreground: 222 47% 11% !important;
+    --primary: 213 83% 58% !important;
+    --primary-foreground: 0 0% 100% !important;
+    --ring: 213 83% 58% !important;
+
+    --pen-50: #eef0fc !important;
+    --pen-100: #dde2f9 !important;
+    --pen-200: #bcc5f1 !important;
+    --pen-500: #3a8bed !important;
+    --pen-600: #2d72c4 !important;
+    --pen-700: #295c89 !important;
+    --pen-900: #1a3c5a !important;
+
+    --pen-surface: #295c89 !important;
+    --pen-surface-ink: #ffffff !important;
+    --pen-surface-hover: #1a3c5a !important;
+    --bubble-answered-ink: #ffffff !important;
+
+    --marker-soft: #fff4c7 !important;
+
+    --ok: #11704c !important;
+    --ok-soft: #dcf2e7 !important;
+    --bad: #a92d1a !important;
+    --bad-soft: #fbe4df !important;
+    --review: #6a3c9e !important;
+    --review-soft: #ece2f7 !important;
+    --info-soft: #e3effb !important;
   }
 }

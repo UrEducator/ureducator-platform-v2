@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('ur_theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}})();`,
+            __html: `(function(){try{var s=localStorage.getItem('ur_theme');var m=window.matchMedia('(prefers-color-scheme: dark)').matches;var isDark=(s==='dark'||((!s||s==='system')&&m));var t=isDark?'dark':'light';document.documentElement.setAttribute('data-theme',t);if(isDark)document.documentElement.classList.add('dark');else document.documentElement.classList.remove('dark');}catch(e){}})();`,
           }}
         />
       </head>

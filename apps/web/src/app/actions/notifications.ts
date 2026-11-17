@@ -12,7 +12,6 @@ import {
 import {
   DEFAULT_NOTIFICATION_PREFS,
   generateNotificationId,
-  shouldDeliverNotification,
   type NotificationDoc,
   type NotificationPrefs,
   type SendNotificationInput,

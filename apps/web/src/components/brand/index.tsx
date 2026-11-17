@@ -1,17 +1,8 @@
-import Link from 'next/link';
 import { LABEL_TEXT, type ContentLabel } from '@ureducator/shared';
 import { Pill } from '@/components/ui';
 import { cn } from '@/lib/cn';
 
-/** The mark is one answer bubble, half shaded: a question answered with a pencil. */
-export function Logo({ className, tone = 'ink' }: { className?: string; tone?: 'ink' | 'light' }) {
-  return (
-    <Link href="/" className={cn('inline-flex items-center gap-2.5 font-semibold tracking-tight', tone === 'light' ? 'text-white' : 'text-pen-900', className)} aria-label="UrEducator home">
-      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="11.5" fill="none" stroke="currentColor" strokeWidth="2.5" /><path d="M14 2.5a11.5 11.5 0 0 1 0 23z" fill="#ffd23f" stroke="currentColor" strokeWidth="2.5" /></svg>
-      <span className="text-[1.3rem]">UrEducator</span>
-    </Link>
-  );
-}
+export { Logo, LogoIcon, type LogoProps, type LogoIconProps } from '@/components/Logo';
 
 export function ContentLabelPill({ label }: { label: string }) {
   const tone = label === 'fully_verified' ? 'ok' : label === 'under_development' ? 'warn' : label === 'sample' ? 'review' : 'neutral';

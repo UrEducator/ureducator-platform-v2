@@ -49,6 +49,7 @@ import {
 import { METRIC_DEFINITIONS, consistency, trend } from '@ureducator/shared';
 import { ScoreLine } from '@/components/charts';
 import { Dialog, LinkButton, PageHeader, Sheet, Spinner, Stat, Table, Td } from '@/components/ui';
+import { LogoIcon } from '@/components/Logo';
 import { useAuth } from '@/lib/auth';
 import { cn } from '@/lib/cn';
 import { useDocumentTitle, useLoad } from '@/lib/hooks';
@@ -196,6 +197,36 @@ function ScatterCustomTooltip({ active, payload }: { active?: boolean; payload?:
         <span className="font-semibold block mb-0.5 text-pen-900">Diagnosis:</span>
         {q.recommendation}
       </div>
+    </div>
+  );
+}
+
+/**
+ * Phase U, U.1 & W: Industry-Grade Repeating Print Watermark
+ * - position: fixed centered precisely at top: 50% and left: 50% with transform: translate(-50%, -50%)
+ *   (Forces browsers to repeat across every printed A4 page)
+ * - z-index: -50 (strictly sits behind all text nodes, transparent cards, and charts)
+ * - opacity: 0.20 (increased visibility for high-fidelity A4 printing)
+ * - print-color-adjust: exact and -webkit-print-color-adjust: exact
+ * - renders the brand Logo SVG scaled up large (w-96 h-96)
+ */
+function Watermark() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none hidden print:flex items-center justify-center select-none print:opacity-20"
+      style={{
+        position: 'fixed',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        zIndex: -50,
+        opacity: 0.2,
+        printColorAdjust: 'exact',
+        WebkitPrintColorAdjust: 'exact',
+      }}
+    >
+      <LogoIcon className="w-96 h-96" size={384} />
     </div>
   );
 }
@@ -421,7 +452,10 @@ export default function AnalyticsPage() {
   const shareText = 'Check out my UGC NET diagnostic report on UrEducator!';
 
   return (
-    <div className="w-full space-y-6 print:space-y-3">
+    <div className="w-full space-y-6 print:space-y-3 relative print:overflow-visible">
+      {/* Phase U: Industry-Grade Repeating Print Watermark */}
+      <Watermark />
+
       {/* Task 1: Formal Print-Only Header (strictly hidden on screen, visible on print) */}
       <div className="hidden print:block mb-8 border-b-2 border-pen-900 pb-5 print:mb-3 print:pb-2">
         <div className="flex items-start justify-between">
@@ -734,9 +768,9 @@ export default function AnalyticsPage() {
                       nameKey="unitName"
                       cx="50%"
                       cy="50%"
-                      innerRadius="45%"
-                      outerRadius="72%"
-                      paddingAngle={3}
+                      innerRadius="38%"
+                      outerRadius="62%"
+                      paddingAngle={2.5}
                     >
                       {units.map((entry) => (
                         <Cell key={`cell-${entry.unitId}`} fill={entry.color} stroke="#ffffff" strokeWidth={1.5} />
@@ -750,12 +784,22 @@ export default function AnalyticsPage() {
               )}
             </div>
 
-            {/* Color Pills Strip */}
-            <div className="mt-2 pt-3 border-t border-line grid grid-cols-5 gap-1.5 text-[10px] print:mt-1 print:pt-1 print:gap-1">
+            {/* Color Pills Strip / Legend Container (Phase W: Responsive wrap for A4 Print and Screen) */}
+            <div
+              className="mt-2 pt-3 border-t border-line flex flex-wrap items-center justify-center gap-2 text-[10px] print:mt-1 print:pt-1 print:flex print:flex-wrap print:gap-x-2.5 print:gap-y-1 print:text-[9px]"
+              style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 8px' }}
+            >
               {units.map((u) => (
-                <div key={u.unitId} className="flex items-center gap-1 truncate" title={`${u.unitName}: ${u.timeSharePercent}%`}>
+                <div
+                  key={u.unitId}
+                  className="inline-flex items-center gap-1.5 shrink-0 px-1.5 py-0.5 rounded"
+                  title={`${u.unitName}: ${u.timeSharePercent}%`}
+                >
                   <span className="h-2 w-2 shrink-0 rounded-full" style={{ backgroundColor: u.color }} />
-                  <span className="truncate text-muted">{u.shortName.replace(/^U\d+\s*/, '')}</span>
+                  <span className="text-muted font-medium whitespace-nowrap">
+                    {u.shortName.replace(/^U\d+\s*/, '')}
+                    <span className="text-pen-900 ml-0.5 tabular-nums font-semibold">({u.timeSharePercent}%)</span>
+                  </span>
                 </div>
               ))}
             </div>

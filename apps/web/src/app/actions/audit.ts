@@ -1,4 +1,4 @@
-export async function logPrintEvent(params: {
+export async function logPrintEvent(_params: {
   userId: string;
   action?: string;
   reportId: string;
