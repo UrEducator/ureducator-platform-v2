@@ -317,6 +317,11 @@ p { text-wrap: pretty; }
     box-shadow: none !important;
   }
 
+  /* Table and card print optimization: prevent horizontal overflow clipping on A4 */
+  .overflow-x-auto {
+    overflow: visible !important;
+  }
+
   /*
     Transparent Print Surfaces for Watermark Bleed-Through
     Ensures the fixed background watermark is clearly visible behind text nodes,

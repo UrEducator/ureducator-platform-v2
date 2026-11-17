@@ -202,31 +202,90 @@ function ScatterCustomTooltip({ active, payload }: { active?: boolean; payload?:
 }
 
 /**
- * Phase U, U.1 & W: Industry-Grade Repeating Print Watermark
- * - position: fixed centered precisely at top: 50% and left: 50% with transform: translate(-50%, -50%)
- *   (Forces browsers to repeat across every printed A4 page)
- * - z-index: -50 (strictly sits behind all text nodes, transparent cards, and charts)
- * - opacity: 0.20 (increased visibility for high-fidelity A4 printing)
+ * Phase U, U.1, W & X: Advanced Repeating Print Watermark & Copyright Security
+ * - position: fixed inset-0 z-[-50] (forces browsers to repeat across every printed A4 page)
+ * - Main central LogoIcon + www.ureducator.com at opacity: 0.15 (15%)
+ * - Full-screen fixed SVG with diagonal repeating User ID pattern rotated at -45 deg at opacity: 0.15 (15%)
  * - print-color-adjust: exact and -webkit-print-color-adjust: exact
- * - renders the brand Logo SVG scaled up large (w-96 h-96)
  */
-function Watermark() {
+function Watermark({ userId }: { userId?: string }) {
+  const displayId = userId || 'UrEducator Verified Candidate';
+
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none hidden print:flex items-center justify-center select-none print:opacity-20"
+      className="pointer-events-none hidden print:block select-none"
       style={{
         position: 'fixed',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
+        inset: 0,
         zIndex: -50,
-        opacity: 0.2,
+        pointerEvents: 'none',
         printColorAdjust: 'exact',
         WebkitPrintColorAdjust: 'exact',
       }}
     >
-      <LogoIcon className="w-96 h-96" size={384} />
+      {/* 1. Diagonal Repeating User ID Pattern across full page */}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{
+          opacity: 0.15,
+          printColorAdjust: 'exact',
+          WebkitPrintColorAdjust: 'exact',
+        }}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <pattern
+            id="watermark-userid-pattern"
+            width="320"
+            height="180"
+            patternUnits="userSpaceOnUse"
+            patternTransform="rotate(-45)"
+          >
+            <text
+              x="20"
+              y="50"
+              fill="#295c89"
+              fontSize="12"
+              fontWeight="bold"
+              letterSpacing="0.08em"
+              fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+            >
+              {displayId}
+            </text>
+            <text
+              x="180"
+              y="140"
+              fill="#3ba9d2"
+              fontSize="11"
+              fontWeight="600"
+              letterSpacing="0.06em"
+              fontFamily="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+            >
+              {displayId}
+            </text>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#watermark-userid-pattern)" />
+      </svg>
+
+      {/* 2. Central Branding Logo & Official URL */}
+      <div
+        className="absolute flex flex-col items-center justify-center pointer-events-none"
+        style={{
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          opacity: 0.15,
+          printColorAdjust: 'exact',
+          WebkitPrintColorAdjust: 'exact',
+        }}
+      >
+        <LogoIcon className="w-96 h-96" size={384} />
+        <div className="mt-4 text-lg font-bold tracking-widest text-[#295c89] uppercase">
+          www.ureducator.com
+        </div>
+      </div>
     </div>
   );
 }
@@ -453,8 +512,8 @@ export default function AnalyticsPage() {
 
   return (
     <div className="w-full space-y-6 print:space-y-3 relative print:overflow-visible">
-      {/* Phase U: Industry-Grade Repeating Print Watermark */}
-      <Watermark />
+      {/* Phase U & X: Industry-Grade Repeating Print Watermark & Copyright Protection */}
+      <Watermark userId={user?.email || user?.displayName || user?.uid || 'UrEducator Candidate'} />
 
       {/* Task 1: Formal Print-Only Header (strictly hidden on screen, visible on print) */}
       <div className="hidden print:block mb-8 border-b-2 border-pen-900 pb-5 print:mb-3 print:pb-2">
@@ -694,7 +753,7 @@ export default function AnalyticsPage() {
 
       {/* Main Charts Viewport (Transitions smoothly between the 3 views) */}
       {chartView === 'radar_donut' && (
-        <div className="grid gap-6 lg:grid-cols-2 transition-opacity duration-300 print:gap-3 print:mb-6">
+        <div className="grid gap-6 lg:grid-cols-2 transition-opacity duration-300 print:gap-3 print:mb-6 print:break-inside-avoid">
           {/* Radar Chart Card */}
           <Sheet className="p-6 flex flex-col justify-between print:break-inside-avoid print:p-2.5 print:shadow-none print:border-none overflow-hidden print:overflow-visible">
             <div>
@@ -758,7 +817,7 @@ export default function AnalyticsPage() {
               </p>
             </div>
 
-            <div className="h-[340px] print:min-h-[260px] print:h-[260px] w-full flex items-center justify-center overflow-hidden">
+            <div className="h-[340px] print:min-h-[400px] print:h-[400px] w-full flex items-center justify-center overflow-hidden print:overflow-visible">
               {mounted ? (
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
@@ -1251,17 +1310,17 @@ export default function AnalyticsPage() {
         </div>
 
         {activeTab === 'units' ? (
-          <div className="rounded-xl border border-line bg-surface overflow-x-auto shadow-sm print:rounded-none print:shadow-none print:border-line">
-            <div className="min-w-[850px]">
+          <div className="rounded-xl border border-line bg-surface overflow-x-auto shadow-sm print:rounded-none print:shadow-none print:border-line print:overflow-visible">
+            <div className="min-w-[850px] print:min-w-0 print:w-full">
               {/* Unified Grid Table Header */}
-              <div className="grid grid-cols-[minmax(250px,2fr)_repeat(6,minmax(100px,1fr))] gap-4 items-center bg-sand-50/70 border-b border-line px-4 py-3 text-xs font-bold text-pen-900 uppercase tracking-wider print:px-2 print:py-1.5 print:gap-2">
-                <div className="text-left">Chapter / Module</div>
-                <div className="text-center">Attempted</div>
-                <div className="text-center">Correct</div>
-                <div className="text-center">Accuracy</div>
-                <div className="text-center">Avg Speed</div>
-                <div className="text-center">Time Spent</div>
-                <div className="text-center">Status</div>
+              <div className="grid grid-cols-[minmax(250px,2fr)_repeat(6,minmax(100px,1fr))] gap-4 items-center bg-sand-50/70 border-b border-line px-4 py-3 text-xs font-bold text-pen-900 uppercase tracking-wider print:grid-cols-[minmax(130px,2fr)_repeat(6,minmax(0,1fr))] print:px-1 print:py-1 print:gap-1 print:text-[10px] print:whitespace-normal">
+                <div className="text-left print:whitespace-normal print:text-[10px]">Chapter / Module</div>
+                <div className="text-center print:whitespace-normal print:text-[10px]">Attempted</div>
+                <div className="text-center print:whitespace-normal print:text-[10px]">Correct</div>
+                <div className="text-center print:whitespace-normal print:text-[10px]">Accuracy</div>
+                <div className="text-center print:whitespace-normal print:text-[10px]">Avg Speed</div>
+                <div className="text-center print:whitespace-normal print:text-[10px]">Time Spent</div>
+                <div className="text-center print:whitespace-normal print:text-[10px]">Status</div>
               </div>
 
               {/* Unified Grid Table Body */}
@@ -1288,64 +1347,65 @@ export default function AnalyticsPage() {
                             toggleUnitExpansion(u.unitId);
                           }
                         }}
-                        className={`grid grid-cols-[minmax(250px,2fr)_repeat(6,minmax(100px,1fr))] gap-4 items-center px-4 py-3.5 cursor-pointer transition hover:bg-sand-50/80 print:px-2 print:py-1.5 print:gap-2 print:break-inside-avoid ${
+                        className={`grid grid-cols-[minmax(250px,2fr)_repeat(6,minmax(100px,1fr))] gap-4 items-center px-4 py-3.5 cursor-pointer transition hover:bg-sand-50/80 print:grid-cols-[minmax(130px,2fr)_repeat(6,minmax(0,1fr))] print:px-1 print:py-1 print:gap-1 print:text-[10px] print:whitespace-normal print:break-inside-avoid ${
                           isExpanded ? 'bg-sand-50/50' : ''
                         }`}
                       >
                         {/* Column 1: Chapter / Module (left-aligned) */}
-                        <div className="flex items-center gap-2.5 min-w-0 text-left">
+                        <div className="flex items-center gap-2.5 min-w-0 text-left print:gap-1 print:whitespace-normal">
                           <span className="shrink-0 text-muted group-hover:text-pen-700 transition-colors">
                             {isExpanded ? (
-                              <ChevronDown className="size-4 text-pen-700" />
+                              <ChevronDown className="size-4 text-pen-700 print:size-3" />
                             ) : (
-                              <ChevronRight className="size-4" />
+                              <ChevronRight className="size-4 print:size-3" />
                             )}
                           </span>
-                          <span className="h-2.5 w-2.5 rounded-full shrink-0" style={{ backgroundColor: u.color }} />
-                          <div className="min-w-0 truncate font-medium text-pen-900 text-sm">
+                          <span className="h-2.5 w-2.5 rounded-full shrink-0 print:h-2 print:w-2" style={{ backgroundColor: u.color }} />
+                          <div className="min-w-0 truncate font-medium text-pen-900 text-sm print:truncate-none print:whitespace-normal print:text-[10px]">
                             <span className="font-bold">{u.shortName}:</span> {u.unitName}
-                            <span className="ml-1.5 text-[11px] text-muted">
+                            <span className="ml-1 text-[11px] text-muted print:text-[9px]">
                               ({u.topics.length} topics)
                             </span>
                           </div>
                         </div>
 
                         {/* Column 2: Attempted (center-aligned) */}
-                        <div className="text-center tabular-nums text-muted text-sm">
+                        <div className="text-center tabular-nums text-muted text-sm print:whitespace-normal print:text-[10px]">
                           {u.totalAttempted} / {u.totalQuestions}
                         </div>
 
                         {/* Column 3: Correct (center-aligned) */}
-                        <div className="text-center tabular-nums font-semibold text-pen-900 text-sm">
+                        <div className="text-center tabular-nums font-semibold text-pen-900 text-sm print:whitespace-normal print:text-[10px]">
                           {u.totalCorrect}
                         </div>
 
                         {/* Column 4: Accuracy (center-aligned) */}
-                        <div className="flex flex-col items-center justify-center gap-1 text-center">
-                          <span className="tabular-nums font-bold text-xs text-pen-900">{u.accuracy}%</span>
-                          <div className="h-1.5 w-16 rounded-full bg-sand-200 overflow-hidden">
+                        <div className="flex flex-col items-center justify-center gap-1 text-center print:whitespace-normal print:text-[10px]">
+                          <span className="tabular-nums font-bold text-xs text-pen-900 print:text-[10px]">{u.accuracy}%</span>
+                          <div className="h-1.5 w-16 rounded-full bg-sand-200 overflow-hidden print:w-10">
                             <div
-                              className={`h-full rounded-full ${
-                                u.accuracy >= 75 ? 'bg-emerald-500' : u.accuracy >= 60 ? 'bg-indigo-500' : 'bg-rose-500'
-                              }`}
-                              style={{ width: `${u.accuracy}%` }}
+                              className="h-full rounded-full"
+                              style={{
+                                width: `${u.accuracy}%`,
+                                backgroundColor: u.color,
+                              }}
                             />
                           </div>
                         </div>
 
                         {/* Column 5: Avg Speed (center-aligned) */}
-                        <div className="text-center tabular-nums text-pen-800 text-sm">
+                        <div className="text-center tabular-nums text-pen-800 text-sm print:whitespace-normal print:text-[10px]">
                           {u.avgTimePerQuestion}s / Q
                         </div>
 
                         {/* Column 6: Time Spent (center-aligned) */}
-                        <div className="text-center tabular-nums text-muted text-sm">
+                        <div className="text-center tabular-nums text-muted text-sm print:whitespace-normal print:text-[10px]">
                           {formatSeconds(u.totalTimeSpentSec)}
                         </div>
 
                         {/* Column 7: Status (center-aligned) */}
-                        <div className="flex justify-center items-center">
-                          <span className={`inline-block px-2.5 py-0.5 rounded text-xs font-semibold border ${status.tone}`}>
+                        <div className="flex justify-center items-center print:whitespace-normal print:text-[10px]">
+                          <span className={`inline-block px-2.5 py-0.5 rounded text-xs font-semibold border print:px-1 print:py-0 print:text-[9px] print:whitespace-nowrap ${status.tone}`}>
                             {status.label}
                           </span>
                         </div>
