@@ -16,6 +16,6 @@ export default defineConfig({
   use: { baseURL: 'http://127.0.0.1:3100', trace: 'retain-on-failure', screenshot: 'only-on-failure', ...devices['Desktop Chrome'], launchOptions: { ...(executablePath ? { executablePath } : {}) } },
   webServer: [
     { command: 'node tests/e2e/build-harness.mjs && node tests/e2e/.build/mock-server.cjs', url: 'http://127.0.0.1:4010/__health', reuseExistingServer: false, cwd: '../..', env: { HARNESS_PORT: '4010', OWNER_BOOTSTRAP_EMAIL: 'owner@example.test' } },
-    { command: 'node tests/e2e/static-server.mjs apps/web/out-mock 3100', url: 'http://127.0.0.1:3100/', reuseExistingServer: true, cwd: '../..' },
+    { command: 'node tests/e2e/static-server.mjs apps/web/.next-mock 3100', url: 'http://127.0.0.1:3100/', reuseExistingServer: false, cwd: '../..' },
   ],
 });

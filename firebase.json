@@ -6,7 +6,7 @@
   ],
   "hosting": {
     "site": "ugc-mock-test-staging",
-    "public": "maintenance",
+    "public": "apps/web/out",
     "cleanUrls": true,
     "trailingSlash": false,
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],

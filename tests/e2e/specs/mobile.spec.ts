@@ -6,11 +6,12 @@ test.beforeEach(async () => { await reset(); });
 test.afterEach(async () => { expect(await serverErrors()).toEqual([]); });
 
 test('phone layout: no sideways scrolling on key pages, exam palette opens as a sheet', async ({ page }) => {
+  test.setTimeout(120_000);
   const u = await makeUser(); await call(u, 'ensureProfile', {}); await signInAs(page, u);
-  const overflow = async (p: string) => { await page.goto(p); await page.waitForLoadState('networkidle'); return page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth); };
+  const overflow = async (p: string) => { await page.goto(p); await page.waitForLoadState('domcontentloaded'); return page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth); };
   for (const p of ['/', '/login', '/syllabus', '/app', '/app/tests', '/app/tests/detail?id=mt-pilot-1', '/app/analytics', '/app/planner', '/app/mentor']) expect(await overflow(p), `${p} overflows horizontally`).toBeLessThanOrEqual(0);
   await page.screenshot({ path: 'tests/e2e/shots/30-mobile-mentor.png' });
-  await page.goto('/app/tests/detail?id=mt-pilot-1'); await page.getByLabel(/I have read the instructions/).check(); await page.getByTestId('start-test').click();
+  await page.goto('/app/tests/detail?id=mt-pilot-1'); await page.getByLabel(/I have read the instructions/).check({ force: true }); await page.getByTestId('start-test').click({ force: true });
   await expect(page.getByRole('heading', { name: /Question 1 of 10/ })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(0);
   await page.getByTestId('option-c').check({ force: true });

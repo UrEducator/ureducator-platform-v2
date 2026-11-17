@@ -72,11 +72,11 @@ test('new student: sign up, confirm email, take the demo test, read the result, 
     await expect(page.getByRole('heading', { name: 'Question review' })).toBeVisible();
     await expect(page.getByText('Explanation').first()).toBeVisible();
     await expect(page.getByText('Your answer, correct').first()).toBeVisible();
-    test.skip(true, 'Hindi UI disabled in English-only pilot');
-    await page.getByRole('button', { name: 'हिन्दी' }).click();
-    await expect(page.getByText('URL का पूर्ण रूप क्या है?')).toBeVisible();
-    await page.locator('#rq-3').scrollIntoViewIfNeeded();
-    await shot(page, '09-result-review-hindi');
+    // Review language toggle temporarily hidden for English-only pilot (T-1)
+    // await page.getByRole('button', { name: 'हिन्दी' }).click();
+    // await expect(page.getByText('URL का पूर्ण रूप क्या है?')).toBeVisible();
+    // await page.locator('#rq-3').scrollIntoViewIfNeeded();
+    // await shot(page, '09-result-review-hindi');
     const dl = page.waitForEvent('download');
     await page.getByRole('button', { name: /Download report/ }).click();
     const file = await dl; const path = await file.path();

@@ -28,9 +28,9 @@ const OWNER_BY_ID = ['users', 'performanceSnapshots', 'studyPlans', 'subscriptio
 const OWNER_BY_FIELD = ['examSessions', 'results', 'orders', 'supportTickets'];
 const SERVER_ONLY = [
   'publishedPapers', 'answerKeys', 'questions', 'examResponses', 'errorNotebook', 'learningNotes', 'reports', 'leads', 'consentRecords',
-  'auditLogs', 'paymentEvents', 'coupons', 'roles', 'rateLimits', 'systemSettings', 'resources',
+  'auditLogs', 'paymentEvents', 'coupons', 'roles', 'rateLimits', 'systemSettings', 'resources', 'pilotCohort',
 ];
-const ALL_ROOTS = [...PUBLIC_OPEN, ...PUBLIC_FILTERED, ...OWNER_BY_ID, ...OWNER_BY_FIELD, ...SERVER_ONLY];
+const ALL_ROOTS = [...PUBLIC_OPEN, ...PUBLIC_FILTERED, ...OWNER_BY_ID, ...OWNER_BY_FIELD, ...SERVER_ONLY, 'tickets', 'notifications'];
 
 let env: RulesTestEnvironment;
 const anon = () => env.unauthenticatedContext().firestore();

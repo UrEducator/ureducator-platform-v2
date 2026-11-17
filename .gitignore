@@ -1,5 +1,6 @@
 node_modules/
 .next/
+.next-mock/
 /apps/web/out/
 /apps/web/out-mock/
 dist/

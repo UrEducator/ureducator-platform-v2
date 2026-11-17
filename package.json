@@ -16,6 +16,7 @@
     "typecheck": "npm run typecheck --workspaces --if-present",
     "lint": "eslint .",
     "test": "npm run test --workspaces --if-present",
+    "test:e2e": "playwright test --config tests/e2e/playwright.config.ts",
     "build": "npm run build -w @ureducator/shared && npm run build -w functions && npm run build -w web",
     "verify:bundle": "node scripts/verify-bundle.mjs apps/web/out",
     "test:rules": "node scripts/test-rules.mjs",

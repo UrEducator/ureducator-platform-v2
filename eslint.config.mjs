@@ -8,7 +8,7 @@ import globals from 'globals';
 export default tseslint.config(
   {
     ignores: [
-      '**/node_modules/**', '**/.next/**', 'apps/web/out/**', 'apps/web/out-mock/**', 'functions/lib/**', 'dist/**',
+      '**/node_modules/**', '**/.next/**', '**/.next-mock/**', 'apps/web/out/**', 'apps/web/out-mock/**', 'functions/lib/**', 'dist/**',
       'tests/e2e/.build/**', 'tests/e2e/shots/**', '**/*.tsbuildinfo', 'apps/web/next-env.d.ts', 'coverage/**',
       'playwright-report/**', 'test-results/**',
     ],
