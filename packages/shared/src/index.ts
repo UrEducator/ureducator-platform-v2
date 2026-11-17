@@ -13,3 +13,5 @@ export * from './adminSchemas';
 export * from './clientExam';
 export * from './tickets';
 export * from './notifications';
+export * from './domain';
+export * from './endpointTypes';

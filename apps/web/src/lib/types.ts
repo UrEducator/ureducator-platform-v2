@@ -1,11 +1,16 @@
-import type { EndpointName, ENDPOINTS } from '@fn/endpoints';
-import type { MockTestDoc, ResultDoc, SessionDoc, SnapshotDoc } from '@fn/domain/types';
-import type { z } from 'zod';
-import type { Blueprint, PlanTask } from '@ureducator/shared';
+import type {
+  Blueprint,
+  PlanTask,
+  MockTestDoc,
+  ResultDoc,
+  SessionDoc,
+  SnapshotDoc,
+  EndpointName,
+  In,
+  Out,
+} from '@ureducator/shared';
 
-export type In<N extends EndpointName> = z.input<(typeof ENDPOINTS)[N]['input']>;
-export type Out<N extends EndpointName> = Awaited<ReturnType<(typeof ENDPOINTS)[N]['run']>>;
-export type { EndpointName };
+export type { EndpointName, In, Out };
 
 export type AuthUser = { uid: string; email: string | null; displayName: string | null; emailVerified: boolean; role: string | null };
 export type TestRow = MockTestDoc & { id: string };
